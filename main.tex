@@ -1,0 +1,53 @@
+\documentclass[a4paper,twoside]{book}
+
+% stile del documento e packages
+\input{style/packages}
+\input{style/pagestyle}
+\input{style/theorems}
+
+% bibliografia, immagini, eccetera
+\addbibresource{bibliografia.bib}
+\graphicspath{ {./images/} }
+
+
+
+\begin{document}
+	% [FRONT] ------------------------
+	\frontmatter
+	\pagenumbering{Roman}
+	% copertina
+	\title{\textbf{          }}
+	\author{}
+	\date{}
+	\maketitle
+	
+	% frase introduttiva
+	%\epigraph{}{}
+	
+	% tavola dei contenuti, controlla numerazione 
+	% se aggiungi una copertina esterna
+	\tableofcontents
+	
+	
+	
+	% [MAIN] ------------------------
+	\mainmatter
+	\pagenumbering{Arabic}
+	
+	
+	% [APPENDIX] ------------------------
+	\appendix
+	\pagenumbering{alph}
+	
+	
+	% [BIBLIOGRAFIA] ----------------------
+	%\addcontentsline{toc}{section}{Bibliografia}
+	%\printbibliography[	]
+	
+	
+	
+	% [GLOSSARIO] ----------------------
+	%\addcontentsline{toc}{section}{Glossario}
+	%\printglossaries
+	
+\end{document}	
