@@ -1,0 +1,99 @@
+% [LINGUA E TESTO] -------------------------------
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+
+
+
+% [COLORI, FORME, IMMAGINI] -----------------------
+
+% COLORI
+% lista colori: http://latexcolor.com/
+\usepackage[dvipsnames]{xcolor}
+
+% FORME
+% editor tikz: https://www.mathcha.io/editor
+% editor diagrammi commutativi: https://tikzcd.yichuanshen.de/
+\usepackage{tikz} 
+\usetikzlibrary{calc} % calcolo delle coordinate per 
+\usetikzlibrary{shapes.geometric} % forme geometriche (duh)
+\usepackage{placeins} % posizionamento dei float
+\usepackage{float} % i float: spazi vuoti
+
+% IMMAGINI
+\usepackage{graphicx} % grafica
+\graphicspath{ {./images/} } % cartella immagini
+\usepackage{wrapfig} % supporto delle figure
+
+
+
+% [STRUTTURA DEL TESTO] ------------------------
+
+\usepackage{anyfontsize} % più dimensioni del font
+\usepackage{booktabs} % marginpar (paragrafi a margine)
+\usepackage{fancyhdr} % stile pagine
+\usepackage{epigraph} % citazioni di inizio capitolo
+\usepackage{glossaries} % glossario
+\usepackage{titlesec} % struttura capitoli ecc
+\usepackage[activate={true,nocompatibility},
+final,
+tracking=true,
+kerning=true,
+spacing=true,
+factor=1100,
+stretch=10,
+shrink=10,
+selected=true,
+verbose=errors,
+babel=true]{microtype} % apparenza testo
+\usepackage[autostyle,
+german=guillemets,
+italian=quotes]{csquotes} % usa \enquote{} per le virgolette
+%\usepackage{enumitems} % nuovo ambiente \begin{description}, 
+% usa con \item[label] nuovo item
+
+
+
+% [MATEMATICA] ---------------------------------
+
+\usepackage{mathtools} % estensione e debug del precedente
+\usepackage{amssymb} % più simboli
+\usepackage{amsthm} % setup e formattazione dei teoremi
+\usepackage{amsmath} % font ed operatori
+\usepackage{dsfont} % più simboli
+\usepackage{MnSymbol} % amplia la portata del font
+
+
+
+% [BIBLIOGRAFIA (attenzione!)] ------------------
+
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex} % scarica biblatex
+\usepackage{csquotes} % supporta biblatex
+% \addbibresource per il file bib
+
+
+
+% [HYPERREF (attenzione!)] -----------------------
+% uso del package: https://www.overleaf.com/learn/latex/hyperlinks
+
+\usepackage{hyperref} % link e collegamenti
+\hypersetup{
+	colorlinks=false,
+	% linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,} % setup del package
+
+
+
+% [SUBFILES (attenzione!)] -----------------------
+% I FILES POSSONO ESSERE CARICATI COME \subfile{subfile}
+% i subfile.tex devono iniziare con:
+% \documentclass[main file name]{subfiles}
+% e contenere \begin{document} ed \end{document}
+
+\usepackage{subfiles}
