@@ -1,0 +1,47 @@
+% [FANCY] --------------------------------
+
+\definecolor{stark}{HTML}{9966CC}
+
+% formatta il plain style, chiamato in automatico da \chapter
+\fancypagestyle{plain}{%
+	\fancyhf{}
+	\fancyhead[LE,RO]{\slshape{}}
+	\fancyhead[RE,LO]{{\rightmark}}
+	\fancyfoot[CE,CO]{\leftmark}
+	\fancyfoot[LE,RO]{\textcolor{stark}{\textbf{\thepage}}}	
+}
+
+% formatta tutto il resto
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\slshape{}}
+\fancyhead[RE,LO]{{ \rightmark}}
+\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\textcolor{stark}{\textbf{\thepage}}}
+
+% stile delle barre orizzontali
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand\footnoterule{}
+
+
+
+% [ALTRO] --------------------------------
+
+% nuova pagina per ogni sezione
+%\usepackage{titlesec}
+%\newcommand{\sectionbreak}{\clearpage}
+
+\usepackage{titlesec} %colorazione e stile titoli
+
+\titleformat{\section}
+{\color{stark}\normalfont\Large\bfseries}
+{\color{stark}\thesection}{1em}{}
+
+\titleformat{\subsection}
+{\color{stark}\normalfont\large\bfseries}
+{\color{stark}\thesubsection}{1em}{}
+
+\titleformat{\chapter}
+{\color{stark}\normalfont\Huge\bfseries}
+{\color{stark}\thechapter}{1em}{}
