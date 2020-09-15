@@ -1,0 +1,307 @@
+% lezione 1
+\chapter{Teoria elementare dei numeri}
+\epigraph{\textit{\enquote{La matematica è la regina delle scienze e la teoria dei numeri è la regina della matematica. \\ Non è la conoscenza ma l'atto di imparare, non il possesso ma l'arrivarci, che danno la gioia maggiore.}}}{Carl Friedrich Gauss}
+Viene detta \enquote{elementare} non per la semplicità degli argomenti che tratta, quanto invece per la relativa semplicità degli strumenti matematici che utilizza. \\ \\
+Per ora lavoreremo solo sul ben noto \textit{insieme dei numeri interi}
+\begin{equation*}
+	\mathbb{Z}= \left\{\dots,-2,-1,0,1,2,\dots\right\}
+\end{equation*}
+ma in seguito estenderemo i risultati ai più generali \textit{domini d'integrità}. \\ 
+Vediamo adesso alcuni brevi richiami di algebra; dovrebbero essere tutti fatti noti, ma saranno fondamentali.
+
+%todo: libri GOLDMAN the queen of maths, DIXON history of number theory per approfondire, in bibliografia dopo
+
+
+\section{Aritmetica e numeri interi}
+\subsection{$\mathbb{Z}$: elementi riducibili o primi?}
+\begin{definizione}[Divisore] Siano $a,b \in \mathbb{Z}$; diciamo che \textbf{$a$ divide $b$} (oppure che \textbf{$a$ è un divisore di $b$}) se 
+	\begin{equation*}
+	\exists \ x \in \mathbb{Z} \ \text{tale che} \ b = a \cdot c
+	\end{equation*}
+	ed in notazione lo scriveremo come $a | b$.
+\end{definizione}
+\begin{proposizione}
+	Siano $a,b$ in $\mathbb{Z}$. Allora valgono i seguenti:
+	\begin{enumerate}
+		\item $c|a, \ c|b \ \implies \ c|(a+b)$
+		\item $c|a, \ c|(a+b) \ \implies \ c|b$
+	\end{enumerate}
+\end{proposizione}
+\begin{proof}\ 
+\begin{enumerate}
+	\item Se $c|a$ e $c|b$ allora $a=k_a c$ e $b = k_b c$, otteniamo subito che $(a+b)=c(k_a+k_b)$. Concludiamo notando che $k_a+k_b$ appartiene a $\mathbb{Z}$.
+	\item Come sopra, $a=k_ac$ ed $(a+b)=kc$ quindi $b=(k-k_a)c$. \\ Abbiamo trovato un elemento di $\mathbb{Z}$.
+\end{enumerate}
+\end{proof}
+\begin{definizione}
+	Sia $m$ appartenente a $\mathbb{Z}$, $m \neq \pm 1, 0$.
+	\begin{enumerate}
+		\item $m$ si dice \textbf{irriducibile} se per ogni $a$ e $b$ in $\mathbb{Z}$ con $m=ab$ allora uno tra $a$ e $b$ è invertibile (rispetto al prodotto).
+		\item $m$ si dice \textbf{riducibile} se non è irriducibile (banalmente: se esistono degli $a$, $b$ in $\mathbb{Z}$ con $m=ab$ e nessuno dei due è invertibile rispetto al prodotto)
+		\item $m$ si dice \textbf{primo} se per ogni $a$ e $b$ in $\mathbb{Z}$ con $m|ab$, allora $m|a$ oppure $m|b$. \footnote{Euclide postula che \enquote{\textit{un numero è primo se è misurato dall'unità}}}.
+	\end{enumerate}
+\end{definizione}
+Intuitivamente i \textit{riducibili} sono detti tali perché possono essere \enquote{ridotti} ad un prodotto \enquote{sensato}. \\ \\ Le definizioni di irriducibili e primi in $\mathbb{Z}$ potrebbero trarci in inganno, perché la definizione a cui casualmente ci riconduciamo per i primi è in realtà la definizione formale degli irriducibili; in effetti è curioso, ed è dovuto al fatto che in $\mathbb{Z}$ le due definizioni coincidano (lo dimostreremo). \\ Altro fatto interessante è che accetteremo i numeri negativi come numeri primi.
+\begin{esempio} Vediamo alcuni facili esempi.
+	\begin{itemize}
+		\item[$(8)$] Si noti che $8|40$ e $40=20\cdot 2$, inoltre $8$ non divide né $20$ né $2$. \\
+		Allora 8 non è primo.
+		\item[$(-7)$] Siccome $-7 = (-7)(1)=(7)(-1)$, allora è irriducibile.
+		\item[$(12)$] Siccome $12 = (3)(4)$, allora è riducibile. 
+		\item[$(5)$] Siccome $5 = (5)(1)=(-5)(-1)$, allora è irriducibile. 
+		\item[$(-6)$] Siccome $-6 = (-3)(2)$, allora è riducibile. 
+	\end{itemize}
+\end{esempio}
+\begin{definizione}[$\MCD$] Siano $a$ e $b$ in $\mathbb{Z}$ non entrambi nulli, allora diciamo loro \textbf{massimo comune divisore}:
+	\begin{equation*}
+		\MCD(a,b)=\max\left\{d \in \mathbb{Z} \ \text{tali che} \ d|a, \ d|b\right\}
+	\end{equation*}
+\end{definizione}
+\begin{osservazione}
+	Notiamo che il $\MCD$ è sempre positivo, infatti se uno dei due fosse zero varrebbe che \begin{equation*}
+	\MCD(a,b)= |b|
+	\end{equation*}
+\end{osservazione}
+\begin{teorema}[Divisione euclidea] Siano $a$ e $b$ in $\mathbb{Z}$, con $b \neq 0$. Allora esistono unici $q,r \in \mathbb{Z}$ tali che 
+	\begin{equation*}
+	a = qb + r \ \text{e vale che} \ 0 \leq r \leq |b|
+	\end{equation*}
+\end{teorema}
+\begin{proof}
+	Dimostriamo che $q$ ed $r$ esistono. \\ Supponiamo $a \leq 0$ e $b>0$ senza perdita di generalità; se $a=0$ basta prendere $q=r=0$. Possiamo quindi fissare $b$ e procedere per induzione $a$, con l'ipotesi induttiva che esistano per ogni coppia $(n,b)$ con $n<a$, voglio mostrare che esistono anche per la coppia $(a,b)$.
+	\begin{itemize}
+		\item Se $a<b$ basta prendere $q=0$ ed $r=q$, senza necessità di induzione.
+		\item Se $a\geq b$ allora $a-b=c$ per un certo $c\geq 0$; posso usare l'ipotesi induttiva su $c$, quindi esistono $q'$ ed $r'$ tali che 
+		\begin{equation*}
+		c = q'b + r' \ \text{e vale che} \ 0 \leq r' \leq |b|
+		\end{equation*}
+		e chiaramente ottengo subito
+		\begin{equation*}
+		a = b+c = (q'+1)b + r' \ \text{e vale che} \ 0 \leq r' \leq |b|
+		\end{equation*}
+	\end{itemize}
+Dimostriamo ora l'unicità. \\
+Siano $q$ e $q'$, $r$ ed $r'$ tali che 
+\begin{equation*}
+a = qb + r= q'b + r'\ \text{e vale che} \ 0 \leq r,r' \leq |b|
+\end{equation*}
+Sia senza perdita di generalità $r \geq r'$, ma allora
+\begin{equation*}
+(q'-q)b=r-r' \ \ \ \ 0 \leq r-r' \leq |b|
+\end{equation*}
+Questo vuol dire che $b$ divide $r-r'$, ma per ipotesi $b\geq r,r'$,
+quindi necessariamente $r-r'=0$ ed $r=r'$. Immediatamente segue $q=q'$. \\ \\ Notiamo che se non fosse per la condizione a lato l'unicità non varrebbe! \\ Ad esempio 
+\begin{equation*}
+16 = 4\cdot3+2
+\end{equation*}
+ma siccome abbiamo eliminato la richiesta $0\leq r \leq |b|=3$ allora posso accettare scritture del tipo
+\begin{equation*}
+16=10\cdot3-14
+\end{equation*}
+\end{proof}
+\begin{osservazione}[Algoritmo di Euclide] Possiamo costruire un algoritmo per il calcolo del massimo comune divisore di due $a$ e $b$ generici in $\mathbb{Z}$. Ma come? La dimostrazione che abbiamo visto non è costruttiva. \\ \\ Facciamo alcune osservazioni.
+	\begin{enumerate}
+		\item Sia $c \in \mathbb{Z}$ tale che divide sia $a$ che $b$, allora scriviamo $a=kc$ e $b=hc$. Si noti che
+		\begin{equation*}
+		a=qb+r \implies kc = qhc+r \implies r = (k-qh)c
+		\end{equation*}
+		ovvero $c|r$, quindi i divisori comuni tra $a$ e $b$ dividono anche $r$. \\ Vediamo un esempio numerico, ovviamente $c=2$ divide sia $a=10$ che $b=8$; $a=2\cdot5$, $b=2\cdot4$, allora
+		\begin{equation*}
+		10=q8+r\implies(2\cdot5)=q(2\cdot4)+r\implies r=(5-4q)2
+		\end{equation*}
+		\item Sia ora $c\in \mathbb{Z}$ tale che divide sia $a$ che $r$, ovvero $b=ic$ ed $r=jc$.
+		\begin{equation*}
+		a=qb+r \implies a = qic+jc =(qi+j)c \implies c|a
+		\end{equation*}
+		quindi i divisori comuni tra $b$ ed $r$ dividono anche $a$.
+		\item Unendo quanto appena visto e definendo
+		\begin{equation*}
+		A = \left\{\text{divisori comuni tra $a$ e $b$}\right\}
+		\end{equation*}
+				\begin{equation*}
+		B = \left\{\text{divisori comuni tra $b$ e $r$}\right\}
+		\end{equation*}
+		possiamo notare che $A$=$B$, per definizione allora vale la seguente:
+		\begin{equation*}
+		\MCD(a,b)=\MCD(b,r)
+		\end{equation*}
+	\end{enumerate}
+Vediamo \textbf{l'algoritmo di Euclide} per il calcolo di $\MCD(a,b)$.
+\begin{align*}
+ a &= q_1b + r_1 \ \ \ \ \ \ 0 \leq r_1 \leq |b|\\
+ b &= q_2r_1 + r_2 \ \ \ \ \ \ 0 \leq r_2 \leq |r_1|\\
+&\ \ \vdots \\
+r_{n-2}&=q_{n}r_{n-1}+r_n\ \ \ \ \ \ 0 \leq r_n \leq |r_{n-1}|\\
+r_{n-1}&=q_{n+1}r_n
+\end{align*}
+Vediamo riassunti in breve i passaggi tramite coppie di elementi di $\mathbb{Z}$:
+\begin{equation*}
+(a,b) \to (b,r_1)\to\dots\to(r_{n-1},r_n)
+\end{equation*}
+il loro significato è abbastanza ovvio. Siccome la successione dei resti è una successione di interi strettamente decrescenti e positivi è convergente, ed abbastanza evidentemente converge a $0$. L'ultimo resto non nullo è il massimo comune divisore cercato, ed il resto nullo esiste necessariamente per quanto appena detto: so che è possibile arrivarci con una quantità finita di passi. \\ \\ Ma il valore che otteniamo è \textit{veramente} il massimo comune divisore? Per quanto osservato all'inizio sì, infatti 
+\begin{equation*}
+\MCD(a,b)=\MCD(b,r_1)= \ \dots \ =\MCD(r_{n-1},r_n)=\MCD(r_{n},0)=r_n
+\end{equation*}
+e questo è un risultato tutt'altro che banale. \\ \\
+L'algoritmo di Euclide sarà fondamentale in teoria dei numeri, ad esempio nella costruzione delle \textit{frazioni continue}.
+\end{osservazione}
+\begin{esempio}
+	Proviamo a calcolare il massimo comune divisore tra $76$ e $58$.
+	\begin{align*}
+		76 &= q_158 + r_1 \ \ \ \ \ \ 0 \leq r_1 \leq |58| \ \implies \ (q_1,r_1)=(1,18)\\
+		58 &= q_218 + r_2 \ \ \ \ \ \ 0 \leq r_2 \leq |18| \ \implies \ (q_2,r_2)=(3,4)\\
+		18 &= q_34 + r_3 \ \ \ \ \ \ \ \ 0 \leq r_3 \leq |4| \ \ \implies \ (q_3,r_3)=(4,2)\\
+		4 &= q_42 + r_4 \ \ \ \ \ \ \ \ 0 \leq r_4 \leq |2| \ \ \implies \ (q_4,r_4)=(2,0)
+	\end{align*}
+	Allora il massimo comune divisore tra $76$ e $58$ è il primo $r_i$ che precede il calore nullo, nel nostro caso $2$. Il nostro risultato ha senso? Sì, basta scomporre:
+	\begin{align*}
+	76 &=(19)(2)(2)\\
+	58&=(29)(2)
+	\end{align*}
+	Non potremo sempre permetterci di scomporre, ad esempio non con numeri grandi e brutti, ma perché non provarlo almeno una volta? \\ \\ Cosa succederebbe se invece di scegliere $a=76$ e $b=58$ li invertissimo? Intuitivamente è chiaro che il massimo comune divisore debba risultare identico. Vediamolo.
+	\begin{equation*}
+	58 = q_176 + r_1 \ \ \ \ \ \ 0 \leq r_1 \leq |76| \ \implies \ (q_1,r_1)=(0,58)
+	\end{equation*}
+	Abbastanza curiosamente mi riconduco subito al caso iniziale, ma questo era prevedibile. Per risparmiare tempo e calcoli è sempre più comodo prendere $a\geq b$.
+\end{esempio}
+
+
+
+\subsection{$\mathbb{Z}$: elementi riducibili e primi!}
+\begin{teorema}[Identità di Bezout] Siano $a$ e $b$ in $\mathbb{Z}$, $d$ il loro massimo comune divisore. Allora esistono degli $x,y \in \mathbb{Z}$ tali che
+	\begin{equation*}
+	d=ax+by
+	\end{equation*}
+\end{teorema}
+\begin{proof}
+	Sfrutto la sequenza dell'algoritmo di Euclide prendendo $d=r_n$. Ora posso \enquote{scalare} le uguaglianze, ed ottengo
+	\begin{align*}
+	d &  = r_n = r_{n-2}-q_nr_{n-1}= r_{n-2}-q_n(r_{n-3}-q_{n-1}r_{n-2}) \\ 
+	& = (1+q_nq_{n-1})r_{n-2}+(-q_n)r_{n-3} = \dots
+	\end{align*}
+	Procedendo iterativamente trovo $x$ ed $y$. \\ \\ Questa dimostrazione al contrario di quella della divisione intera con resto è costruttiva, fornisce un algoritmo per ricavare $x$ ed $y$. \\ Sarebbe necessario scrivere esplicitamente $d$ per completare formalmente la dimostrazione, ma la scrittura diventerebbe pesante.
+\end{proof}
+Posso avere però lo stesso risultato tramite una formalizzazione più algebrica del precedente approccio aritmetico.
+\begin{teorema}[Identità di Bezout] \
+	\begin{enumerate}
+		\item Siano $a$ e $b$ in $\mathbb{Z}$ non entrambi nulli, allora 
+		\begin{equation*}
+		I \eqqcolon \left\{na+mb \ | \ n,m \in \mathbb{Z}\right\}
+		\end{equation*}
+		è un ideale di $\mathbb{Z}$.
+		\item Sia $I = (d)$, allora $d$ è il massimo comune divisore tra $a$ e $b$. \footnote{in algebra commutativa $I=(d)$ indica che \textbf{$d$ genera l'ideale $I$}, ovvero che ogni $i \in I$ ha forma $kd$ per un $k$ in $\mathbb{Z}$. Stiamo usando il fatto che $\mathbb{Z}$ sia un dominio ad ideali principali.}
+	\end{enumerate}
+\end{teorema}
+\begin{proof}\
+	\begin{enumerate}
+		\item Perché sia un sottoanello, prima di tutto la differenza di due elementi $x,y \in I$ deve appartenere ad $I$. Ma questo è ovvio per costruzione,
+		\begin{align*}
+		x &= na+mb \\y&=ia+jb
+		\end{align*}
+		\begin{equation*}
+		\implies x-y = (n-i)a+(m-j)b \in I
+		\end{equation*}
+		Altra condizione è che per ogni elemento $k$ dell'anello principale e per ogni $\alpha$ di $I$, $k\alpha$ appartenga al sottoanello.
+		\begin{equation*}
+		k\alpha = k(na+mb)=(kn)a+(km)b\in I
+		\end{equation*}
+		\item Se $I=(d)$ ho che
+		\begin{align*}
+		a&=1a+0b \in I\\ b&=0a+1b \in I
+		\end{align*}
+		e quindi per ipotesi su $I$ ho che $a=cd$, $b=kd$. Inoltre se $d \in I$ allora posso usare la prima identità:
+		\begin{equation*}
+		\exists \ x,y \in \mathbb{Z} \ |\ d=xa+yb
+		\end{equation*}
+		Da questa ottengo che se esiste un $w$ che divide sia $a$ che $b$, allora $w$ divide $xa$ ed $yb$, quindi divide $d$. 
+	\end{enumerate}
+\end{proof}
+\begin{esempio}
+	Utilizzare l'algoritmo di Eulero per il massimo comune divisore di $3522$ e $321$, esprimerlo con l'identità di Bezout.
+	\begin{align*}
+	3522 &= (10)(321)+312\\
+	321 &= (1)(312)+9\\
+	312 &= (34)(9)+6\\
+	9 &=(1)(6)+3\\
+	6 &=(2)(3)+0
+	\end{align*}
+	Abbiamo già visto la procedura, quindi non ci soffermeremo troppo. Per esprimere $d$ come da identità basta ripercorrere la dimostrazione, ovvero 
+	\begin{align*}
+	\MCD(a,b)=3&= 9-6=9-(312-34\cdot9)=-312+35\cdot9\\
+	&= -312+35(321-312)=35\cdot321-36\cdot312\\
+	&= 35\cdot321-36\cdot(3522-10\cdot321)=-36\cdot3522+395\cdot321
+	\end{align*}
+	I calcoli diventano molto brutti molto in fretta.
+\end{esempio}
+\begin{teorema}
+	Sia $n \in \mathbb{Z}$ diverso da $\pm 1,0$, allora
+	\begin{equation*}
+	n \ \text{irriducibile} \ \iff \ n \ \text{primo}
+	\end{equation*}
+\end{teorema}
+\begin{proof}\
+	\begin{itemize}
+		\item[$\implies$] Devo dimostrare che $n$ è primo, supponiamo che $n|ab$; devo dimostrare che $n|a$ oppure $n|b$ cerchiamo di dimostrare ad esempio che $n$ non divide $a$ ma divide $b$.
+		\begin{equation*}
+		n|ab \implies ab=kn \ \ \ k \in \mathbb{Z}
+		\end{equation*}
+		Siccome $n$ è irriducibile, i suoi soli divisori sono $\pm 1$ e $\pm n$, dunque il massimo comune divisore tra $a$ ed $n$ è 1. Per Bezout 
+		\begin{equation*}
+		1=xa+yn
+		\end{equation*}
+		\begin{equation*}
+		b=b\cdot1=b(xa+yn)=x(ab)+n(by)=(xk+by)n
+		\end{equation*}
+		ed abbiamo ottenuto che $n$ divide $b$.
+		\item[$\impliedby$] Sia $n=ab$, allora $n$ divide $a$ oppure $n$ divide $b$. Supponiamo senza perdita di generalità che valga solo la prima, allora $a=kn$ per un certo $k$ intero.
+		\begin{equation*}
+		n = ab = nkb \implies 1 = kb \implies b = \pm 1
+		\end{equation*}
+		ed abbiamo ottenuto che $n$ è irriducibile.
+	\end{itemize}
+\end{proof}
+\begin{teorema}[Teorema fondamentale dell'aritmetica] 
+	Sia $n \in \mathbb{Z}$ diverso da $\pm 1$ o $0$, allora esiste una ed un'unica fattorizzazione del tipo
+	\begin{equation*}
+	n = \pm p_1\cdot p_2 \cdot \ \dots\ \cdot p_s
+	\end{equation*}
+	composta da $p_i$ primi positivi di $\mathbb{Z}$
+\end{teorema}
+\begin{proof} Dimostriamo che esiste. \\ Suppongo senza perdita di generalità che $n>0$, se $n=2$ ho già la fattorizzazione con
+	\begin{equation*}
+	n = 2 = p_1 \ \ (s=1)
+	\end{equation*}
+	Ma allora posso usare un grande classico, l'induzione: procediamo inducendo su $n$. Se la fattorizzazione esiste per ogni intero tra $2$ ed $n-1$ (inclusi):
+	\begin{itemize}
+		\item Se $n$ è irriducibile allora è primo per caratterizzazione dei primi in $\mathbb{Z}$, e come prima $n=p_1$ con $s=1$.
+		\item Se $n$ è riducibile, allora $n=ab$ con $a,b<n$; ma per ipotesi induttiva le fattorizzazioni di $a$ e $b$ in primi esistono, basta moltiplicarle tra di loro.
+	\end{itemize}
+	Dimostriamo l'unicità. \\ Pongo $n>0$ senza perdita di generalità e suppongo di avere
+	\begin{equation*}
+	 n= p_1\cdot p_2 \cdot \ \dots\ \cdot p_s= q_1\cdot q_2 \cdot \ \dots\ \cdot q_t \ \ (s \leq t)
+	\end{equation*}
+	Posso osservare che $p_1$ divide $n$, ed essendo primo si ha che $p_1$ divide un $q_i$ per un qualche indice $i$. Ma siccome $q_i$ è irriducibile deve necessariamente essere $p_1=q_i$. Allora ottengo una seconda fattorizzazione rimuovendoli, ripetendo il ragionamento $s$ volte otterrei
+	\begin{equation*}
+	1 = q_{s+1}\cdot \ \dots \ q_t
+	\end{equation*}
+	che è un assordo siccome 1 non ha fattori irriducibili: allora deve essere $s=t$. \\ Abbiamo già visto la necessità di $q_j = q_i$ per certi indici $i$ e $j$ opportuni, questo chiude la dimostrazione.
+\end{proof}
+%todo: introduzione fantastica per i teoremi di infinità dei primi che mi è arrivata scrivendo, da mettere assolutamente
+Siccome siamo tra matematici potete ammetterlo tranquillamente, quante volte vi è capitato di avere il seguente discorso?\\
+- \enquote{\textit{Quanti sono i numeri primi?}}\\
+- \enquote{\textit{Tanti.}}\\ \\
+Se la risposta è \textit{nessuna}, siamo ancora in tempo per rimediare.
+
+
+
+\section{Divisibilità in domini di integrità}
+
+
+
+
+\section{Aritmetica modulare: anelli di classi di resto}
+
+
+
+
+\section{Residui quadratici}
