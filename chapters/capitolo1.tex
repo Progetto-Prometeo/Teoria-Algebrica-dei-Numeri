@@ -1,11 +1,5 @@
-% lezione 1
-
-\setcounter{chapter}{-1}
-\chapter{Una breve introduzione}
-Questo documento è una raccolta di appunti del corso \textit{Teoria Algebrica dei Numeri} del professor Nadir Murru dell'Università di Trento, svolto nell'anno accademico 2020-2021. \\ \\ Ho aggiunto qualche banale osservazione ed esempio, o limato qualche punto lasciato allo studente nelle dimostrazioni ed osservazioni. Mi sento di dire che il mio scopo era fornire un documento il più completo possibile, che spiegasse in modo accessibile e davvero a tutti anche i dettagli più strani della teoria dei numeri - questo oltre a creare una raccolta di nozioni su teoria dei numeri che possano tornare utili anche a me in futuro. \\ Chiaramente non intendo sostituire due cose: la magnificenza del prendere parte di persona alle lezioni e la sublime esperienza puramente matematica del trovare controesempi o risolvere dimostrazioni di per sé, possibilmente al lume di candela! Sembrerà banale, ma sono queste esperienze a formare uno \textit{studente di matematica} in un \textit{matematico}; il mio consiglio quindi è di provare a risolvere esempi ed esercizi da soli, per quanto difficile anche immaginare le possibili implicazioni di osservazioni e lemmi, e solo infine confrontare il proprio operato con quanto svolto. \\ \\ Ora sedetevi, prendete del succo di mela, rilassatevi, e diamo inizio al nostro viaggio nella teoria dei numeri.
-
-
 \chapter{Teoria elementare dei numeri}
+\label{lezione1}
 \epigraph{\textit{\enquote{La matematica è la regina delle scienze e la teoria dei numeri è la regina della matematica. \\ Non è la conoscenza ma l'atto di imparare, non il possesso ma l'arrivarci, che danno la gioia maggiore.}}}{Carl Friedrich Gauss}
 Viene detta \enquote{elementare} non per la semplicità degli argomenti che tratta, quanto invece per la relativa semplicità degli strumenti matematici che utilizza. \\ \\
 Per ora lavoreremo solo sul ben noto \textit{insieme dei numeri interi}
@@ -296,8 +290,9 @@ Più avanti cercheremo di ottenere risultati \enquote{simili} al teorema fondame
 
 
 
-% lezione 2
+
 \subsection{L'infinità dei numeri primi}
+\label{lezione2}
 Siccome siamo tra matematici potete ammetterlo tranquillamente, quante volte vi è capitato di avere il seguente discorso?\\
 - \enquote{\textit{Quanti sono i numeri primi?}}\\
 - \enquote{\textit{Tanti.}}\\ \\
@@ -359,9 +354,9 @@ Se la risposta è \textit{nessuna}, siamo ancora in tempo per rimediare.
 	ma per quanto abbiamo appena visto dalla formula
 	\begin{align*}
 	\phi(N^2,N)&=1\\
-	&=N^2-\sum_{1\leq i \leq s}\left[\frac{N^2}{p_i}\right]+\sum_{1\leq i,j \leq s}\left[\frac{N^2}{p_ip_j}\right]+ \dots \ + (-1)^s\left[\frac{N^2}{p_i\dots p_s}\right]N^{-1} = mn
+	&=N^2-\sum_{1\leq i \leq s}\left[\frac{N^2}{p_i}\right]+\sum_{1\leq i,j \leq s}\left[\frac{N^2}{p_ip_j}\right]+ \dots \ + (-1)^s\left[\frac{N^2}{p_i\dots p_s}\right]N^{-1} = mN
 	\end{align*}
-	per certi $n, m$ interi. \\ In sintesi se i primi fossero solo $s$ ogni elemento non nullo sarebbe invertibile; quindi se fosse vero $\mathbb{N}$ sarebbe un campo, cosa che non è vera (ad esempio non è nemmeno un anello commutativo con unità perché l'abeliano $(\mathbb{N}^*,\cdot)$ non ha un inverso moltiplicativo, oppure perché $(\mathbb{N},+)$ non ha un inverso additivo).
+	per un certo $m$ intero. \\ In sintesi se i primi fossero solo $s$ ogni elemento non nullo sarebbe invertibile; quindi se fosse vero $\mathbb{N}$ sarebbe un campo, cosa che non è vera (ad esempio non è nemmeno un anello commutativo con unità perché l'abeliano $(\mathbb{N}^*,\cdot)$ non ha un inverso moltiplicativo, oppure perché $(\mathbb{N},+)$ non ha un inverso additivo).
 \end{proof}
 
 
@@ -536,7 +531,7 @@ Notiamo che $\sigma_0(n)=d(n)$ e $\sigma_1(n)=\sigma(n)$, la funzione somma dei 
 	e quindi per la proposizione \ref{somma_moltiplicativa} sono moltiplicative.
 \end{proof}
 
-%lezione 3
+
 
 
 \section{Divisibilità in domini di integrità}
