@@ -9,4 +9,4 @@ Informazioni sullo stile:
 - Preferisco avere alcune formule centrate (ambiente equation) per stile del testo completo
 - Le virgolette si fanno con \enquote{testo}
 - Il main deve restare "pulito", per questo motivo esistono subfiles! In caso di immagini aggiunte via codice (tikz) usare un nuovo documento ed inserirlo con input
-- Per comodità in fase di revisione scrivo come commento %lezione [numlezione] all'inizio di ogni lezione; ovviamente [numlezione] è il numero della lezione
+- Per comodità in fase di revisione scrivo come commento %lezione [numlezione] all'inizio di ogni lezione; ovviamente [numlezione] è il numero della lezione; UPDATE ora questa funzione è svolta da un \label{lezioneX} con X numero lezione ad inizio della lezione, indicizzato nel main sotto "lista lezioni" da \pageref{lezioneX}
