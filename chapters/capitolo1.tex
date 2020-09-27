@@ -16,18 +16,18 @@ Vediamo adesso alcuni brevi richiami di algebra; dovrebbero essere tutti fatti n
 	\begin{equation*}
 	\exists \ x \in \mathbb{Z} \ \text{tale che} \ b = a \cdot c
 	\end{equation*}
-	ed in notazione lo scriveremo come $a | b$.
+	ed in notazione lo scriveremo come $a \mid  b$.
 \end{definizione}
 \begin{proposizione}
 	Siano $a,b$ in $\mathbb{Z}$. Allora valgono i seguenti:
 	\begin{enumerate}
-		\item $c|a, \ c|b \ \implies \ c|(a+b)$
-		\item $c|a, \ c|(a+b) \ \implies \ c|b$
+		\item $c\mid a, \ c\mid b \ \implies \ c\mid (a+b)$
+		\item $c\mid a, \ c\mid (a+b) \ \implies \ c\mid b$
 	\end{enumerate}
 \end{proposizione}
 \begin{proof}\ 
 \begin{enumerate}
-	\item Se $c|a$ e $c|b$ allora $a=k_a c$ e $b = k_b c$, otteniamo subito che $(a+b)=c(k_a+k_b)$. Concludiamo notando che $k_a+k_b$ appartiene a $\mathbb{Z}$.
+	\item Se $c\mid a$ e $c\mid b$ allora $a=k_a c$ e $b = k_b c$, otteniamo subito che $(a+b)=c(k_a+k_b)$. Concludiamo notando che $k_a+k_b$ appartiene a $\mathbb{Z}$.
 	\item Come sopra, $a=k_ac$ ed $(a+b)=kc$ quindi $b=(k-k_a)c$. \\ Abbiamo trovato un elemento di $\mathbb{Z}$.
 \end{enumerate}
 \end{proof}
@@ -36,13 +36,13 @@ Vediamo adesso alcuni brevi richiami di algebra; dovrebbero essere tutti fatti n
 	\begin{enumerate}
 		\item $m$ si dice \textbf{irriducibile} se per ogni $a$ e $b$ in $\mathbb{Z}$ con $m=ab$ allora uno tra $a$ e $b$ è invertibile (rispetto al prodotto).
 		\item $m$ si dice \textbf{riducibile} se non è irriducibile (banalmente: se esistono degli $a$, $b$ in $\mathbb{Z}$ con $m=ab$ e nessuno dei due è invertibile rispetto al prodotto)
-		\item $m$ si dice \textbf{primo} se per ogni $a$ e $b$ in $\mathbb{Z}$ con $m|ab$, allora $m|a$ oppure $m|b$. \footnote{Euclide postula che \enquote{\textit{un numero è primo se è misurato dall'unità}}}.
+		\item $m$ si dice \textbf{primo} se per ogni $a$ e $b$ in $\mathbb{Z}$ con $m\mid ab$, allora $m\mid a$ oppure $m\mid b$. \footnote{Euclide postula che \enquote{\textit{un numero è primo se è misurato dall'unità}}}.
 	\end{enumerate}
 \end{definizione}
 Intuitivamente i \textit{riducibili} sono detti tali perché possono essere \enquote{ridotti} ad un prodotto \enquote{sensato}. \\ \\ Le definizioni di irriducibili e primi in $\mathbb{Z}$ potrebbero trarci in inganno, perché la definizione a cui casualmente ci riconduciamo per i primi è in realtà la definizione formale degli irriducibili; in effetti è curioso, ed è dovuto al fatto che in $\mathbb{Z}$ le due definizioni coincidano (lo dimostreremo). \\ Altro fatto interessante è che accetteremo i numeri negativi come numeri primi.
 \begin{esempio} Vediamo alcuni facili esempi.
 	\begin{itemize}
-		\item[$(8)$] Si noti che $8|40$ e $40=20\cdot 2$, inoltre $8$ non divide né $20$ né $2$. \\
+		\item[$(8)$] Si noti che $8\mid 40$ e $40=20\cdot 2$, inoltre $8$ non divide né $20$ né $2$. \\
 		Allora 8 non è primo.
 		\item[$(-7)$] Siccome $-7 = (-7)(1)=(7)(-1)$, allora è irriducibile.
 		\item[$(12)$] Siccome $12 = (3)(4)$, allora è riducibile. 
@@ -52,7 +52,7 @@ Intuitivamente i \textit{riducibili} sono detti tali perché possono essere \enq
 \end{esempio}
 \begin{definizione}[$\MCD$] Siano $a$ e $b$ in $\mathbb{Z}$ non entrambi nulli, allora diciamo loro \textbf{massimo comune divisore}:
 	\begin{equation*}
-		\MCD(a,b)=\max\left\{d \in \mathbb{Z} \ \text{tali che} \ d|a, \ d|b\right\}
+		\MCD(a,b)=\max\left\{d \in \mathbb{Z} \ \text{tali che} \ d\mid a, \ d\mid b\right\}
 	\end{equation*}
 \end{definizione}
 \begin{osservazione}
@@ -103,42 +103,45 @@ ma siccome abbiamo eliminato la richiesta $0\leq r \leq |b|=3$ allora posso acce
 		\begin{equation*}
 		a=qb+r \implies kc = qhc+r \implies r = (k-qh)c
 		\end{equation*}
-		ovvero $c|r$, quindi i divisori comuni tra $a$ e $b$ dividono anche $r$. \\ Vediamo un esempio numerico, ovviamente $c=2$ divide sia $a=10$ che $b=8$; $a=2\cdot5$, $b=2\cdot4$, allora
+		ovvero $c\mid r$, quindi i divisori comuni tra $a$ e $b$ dividono anche $r$. \\ Vediamo un esempio numerico, ovviamente $c=2$ divide sia $a=10$ che $b=8$; $a=2\cdot5$, $b=2\cdot4$, allora
 		\begin{equation*}
 		10=q8+r\implies(2\cdot5)=q(2\cdot4)+r\implies r=(5-4q)2
 		\end{equation*}
 		\item Sia ora $c\in \mathbb{Z}$ tale che divide sia $a$ che $r$, ovvero $b=ic$ ed $r=jc$.
 		\begin{equation*}
-		a=qb+r \implies a = qic+jc =(qi+j)c \implies c|a
+		a=qb+r \implies a = qic+jc =(qi+j)c \implies c\mid a
 		\end{equation*}
 		quindi i divisori comuni tra $b$ ed $r$ dividono anche $a$.
 		\item Unendo quanto appena visto e definendo
 		\begin{equation*}
-		A = \left\{\text{divisori comuni tra $a$ e $b$}\right\}
+			A = \left\{ d \in \mathbb{Z} \,\middle|\, d \mid a \land d \mid b \right\}
 		\end{equation*}
-				\begin{equation*}
-		B = \left\{\text{divisori comuni tra $b$ e $r$}\right\}
+		\begin{equation*}
+			B = \left\{ d \in \mathbb{Z} \,\middle|\, d \mid b \land d \mid r \right\}
 		\end{equation*}
 		possiamo notare che $A$=$B$, per definizione allora vale la seguente:
 		\begin{equation*}
-		\MCD(a,b)=\MCD(b,r)
+			\MCD(a,b)=\MCD(b,r)
 		\end{equation*}
 	\end{enumerate}
 Vediamo \textbf{l'algoritmo di Euclide} per il calcolo di $\MCD(a,b)$.
-\begin{align*}
- a &= q_1b + r_1 \ \ \ \ \ \ 0 \leq r_1 \leq |b|\\
- b &= q_2r_1 + r_2 \ \ \ \ \ \ 0 \leq r_2 \leq |r_1|\\
-&\ \ \vdots \\
-r_{n-2}&=q_{n}r_{n-1}+r_n\ \ \ \ \ \ 0 \leq r_n \leq |r_{n-1}|\\
-r_{n-1}&=q_{n+1}r_n
-\end{align*}
+\begin{equation*}
+	\arraycolsep=1.4pt
+	\begin{array}{rllll} 		 
+		a 		& = q_1b + r_1 & \quad\ 0 \leq r_1 \leq  |b|\\
+		b 		& = q_2r_1 + r_2 & \quad\ 0 \leq r_2 \leq |r_1|\\
+		   		& \,\vdots 		  & \\		
+		r_{n-2} & = q_{n}r_{n-1}+r_n & \quad\ 0 \leq r_n \leq |r_{n-1}|\\
+		r_{n-1} & = q_{n+1}r_n		 & 
+	\end{array}
+\end{equation*}
 Vediamo riassunti in breve i passaggi tramite coppie di elementi di $\mathbb{Z}$:
 \begin{equation*}
 (a,b) \to (b,r_1)\to\dots\to(r_{n-1},r_n)
 \end{equation*}
 il loro significato è abbastanza ovvio. Siccome la successione dei resti è una successione di interi strettamente decrescenti e positivi è convergente, ed abbastanza evidentemente converge a $0$. L'ultimo resto non nullo è il massimo comune divisore cercato, ed il resto nullo esiste necessariamente per quanto appena detto: so che è possibile arrivarci con una quantità finita di passi. \\ \\ Ma il valore che otteniamo è \textit{veramente} il massimo comune divisore? Per quanto osservato all'inizio sì, infatti 
-\begin{equation*}
-\MCD(a,b)=\MCD(b,r_1)= \ \dots \ =\MCD(r_{n-1},r_n)=\MCD(r_{n},0)=r_n
+\begin{equation*}	
+	\MCD(a,b)= \MCD(b,r_1)= \ \dots \ = \MCD(r_{n-1},r_n)= \MCD(r_{n},0) = r_n
 \end{equation*}
 e questo è un risultato tutt'altro che banale. \\ \\
 L'algoritmo di Euclide sarà fondamentale in teoria dei numeri, ad esempio nella costruzione delle \textit{frazioni continue}.
@@ -184,7 +187,7 @@ Posso avere però lo stesso risultato tramite una formalizzazione più algebrica
 	\begin{enumerate}
 		\item Siano $a$ e $b$ in $\mathbb{Z}$ non entrambi nulli, allora 
 		\begin{equation*}
-		I \eqqcolon \left\{na+mb \ | \ n,m \in \mathbb{Z}\right\}
+		I \eqqcolon \left\{na+mb \, \middle| \, n,m \in \mathbb{Z}\right\}
 		\end{equation*}
 		è un ideale di $\mathbb{Z}$.
 		\item Sia $I = (d)$, allora $d$ è il massimo comune divisore tra $a$ e $b$. \footnote{in algebra commutativa $I=(d)$ indica che \textbf{$d$ genera l'ideale $I$}, ovvero che ogni $i \in I$ ha forma $kd$ per un $k$ in $\mathbb{Z}$. Stiamo usando il fatto che $\mathbb{Z}$ sia un dominio ad ideali principali.}
@@ -216,13 +219,16 @@ Posso avere però lo stesso risultato tramite una formalizzazione più algebrica
 \end{proof}
 \begin{esempio}
 	Utilizzare l'algoritmo di Eulero per il massimo comune divisore di $3522$ e $321$, esprimerlo con l'identità di Bezout.
-	\begin{align*}
-	3522 &= (10)(321)+312\\
-	321 &= (1)(312)+9\\
-	312 &= (34)(9)+6\\
-	9 &=(1)(6)+3\\
-	6 &=(2)(3)+0
-	\end{align*}
+	\begin{equation*}
+		\arraycolsep=1.4pt
+		\begin{array}{rl}
+			3522 &= (10)(321)+312\\
+			321 &= (1)(312)+9\\
+			312 &= (34)(9)+6\\
+			9 &=(1)(6)+3\\
+			6 &=(2)(3)+0
+		\end{array}
+	\end{equation*}
 	Abbiamo già visto la procedura, quindi non ci soffermeremo troppo. Per esprimere $d$ come da identità basta ripercorrere la dimostrazione, ovvero 
 	\begin{align*}
 	\MCD(a,b)=3&= 9-6=9-(312-34\cdot9)=-312+35\cdot9\\
@@ -239,9 +245,9 @@ Posso avere però lo stesso risultato tramite una formalizzazione più algebrica
 \end{teorema}
 \begin{proof}\
 	\begin{itemize}
-		\item[$\implies$] Devo dimostrare che $n$ è primo, supponiamo che $n|ab$; devo dimostrare che $n|a$ oppure $n|b$ cerchiamo di dimostrare ad esempio che $n$ non divide $a$ ma divide $b$.
+		\item[$\implies$] Devo dimostrare che $n$ è primo, supponiamo che $n\mid ab$; devo dimostrare che $n\mid a$ oppure $n\mid b$ cerchiamo di dimostrare ad esempio che $n$ non divide $a$ ma divide $b$.
 		\begin{equation*}
-		n|ab \implies ab=kn \ \ \ k \in \mathbb{Z}
+		n\mid ab \implies ab=kn \ \ \ k \in \mathbb{Z}
 		\end{equation*}
 		Siccome $n$ è irriducibile, i suoi soli divisori sono $\pm 1$ e $\pm n$, dunque il massimo comune divisore tra $a$ ed $n$ è 1. Per Bezout 
 		\begin{equation*}
@@ -304,9 +310,9 @@ Se la risposta è \textit{nessuna}, siamo ancora in tempo per rimediare.
 	\end{equation*}
 	Siccome ci troviamo in $\mathbb{Z}$ possiamo applicare il teorema fondamentale dell'algebra, esiste una ed un'unica fattorizzazione in primi di $N$. Allora uno dei primi che lo fattorizza è anche un suo divisore, ma necessariamente non è uno dei $p_i$; se lo fosse infatti avremmo 
 	\begin{equation*}
-	p|N, \ \ p|p_1 \cdot \ \dots \ \cdot p_n
+	p\mid N, \ \ p\mid p_1 \cdot \ \dots \ \cdot p_n
 	\end{equation*}
-	e per proprietà dei divisori questo implica che $p|1$, assurdo a causa della definizione di primo.
+	e per proprietà dei divisori questo implica che $p\mid 1$, assurdo a causa della definizione di primo.
 \end{proof}
 \begin{proof}[Dimostrazione di Eulero] 
 	Supponiamo che i numeri primi siano finiti, allora possiamo prenderli come $p_1,\dots, p_n$. Per fatti ben noti di analisi matematica possiamo costruire una serie geometrica di natura convergente
@@ -334,7 +340,7 @@ Se la risposta è \textit{nessuna}, siamo ancora in tempo per rimediare.
 	Consideriamo la \textit{funzione di Legendre}: 
 	%todo: funzione di legendre? wtf? introdurre le nuove funzioni?
 	\begin{equation*}
-	\phi(x,y)=\left|\left\{n\in \mathbb{N} \ | \ \text{$1\leq n \leq x$, $n$ non ha fattori primi $p\leq y$}  \right\}\right|
+	\phi(x,y)=\left|\left\{n\in \mathbb{N} \, \middle| \, \text{$1\leq n \leq x$, $n$ non ha fattori primi $p\leq y$}  \right\}\right|
 	\end{equation*}
 	questa funzione è definita per ogni $x,y \in \mathbb{N}^*$.\footnote{$\mathbb{N}^*$ è l'insieme dei naturali meno lo zero, questa notazione si usa spesso in teoria dei gruppi per definire gruppi abeliani moltiplicativi del tipo $(\mathbb{N}^*, \cdot)$.}
 	\\ Consideriamo inoltre la \textit{prime counting function} $\pi(x)$, in particolare la sua proprietà
@@ -390,15 +396,15 @@ Le funzioni aritmetiche sono fondamentali in teoria dei numeri, perché come abb
 	\label{somma_moltiplicativa}
 	Se $f$ è una funzione aritmetica moltiplicativa, allora 
 	\begin{equation*}
-	g(n)\coloneqq \sum_{d|n}f(d)
+	g(n)\coloneqq \sum_{d\mid n}f(d)
 	\end{equation*}
 	è una funzione aritmetica moltiplicativa.
 \end{proposizione}
 \begin{proof}
 	Devo semplicemente dimostrare che $g$ è moltiplicativa seguendo la definizione. Siano allora $m,n \in \mathbb{N}$ tali che $(n-m)=1$.
 	\begin{align*}
-	g(m \cdot n)&=\sum_{d|mn}f(d)=\sum_{a|m}\sum_{b|n}f(a\cdot b)=\sum_{a|m}\sum_{b|n}f(a)\cdot f(b) \\
-	&=\left[\sum_{a|m}f(a)\right]\cdot\left[\sum_{b|n}f(b)\right]=g(m)\cdot g(n)
+	g(m \cdot n)&=\sum_{d\mid mn}f(d)=\sum_{a\mid m}\sum_{b\mid n}f(a\cdot b)=\sum_{a\mid m}\sum_{b\mid n}f(a)\cdot f(b) \\
+	&=\left[\sum_{a\mid m}f(a)\right]\cdot\left[\sum_{b\mid n}f(b)\right]=g(m)\cdot g(n)
 	\end{align*}
 	Nel secondo passaggio ho usato il fatto che se $d$ divide $mn$, allora $d$ è il prodotto di certi $a$ e $b$ coprimi tali che uno divide $m$ e l'altro divide $n$.
 \end{proof}
@@ -424,12 +430,15 @@ n &\longmapsto
 \end{align*}
 La proprietà descritta è palese; vediamo qualche esempio.
 \begin{esempio}
-	\begin{align*}
-	&\mu(7)=-1	\\ 
-	&\mu(18)=\mu(3^2\cdot2)=0\\
-	&\mu(30)=\mu(2\cdot3\cdot5)=-1\\
-	&\mu(6)=\mu(2\cdot3)=1
-	\end{align*}
+	\begin{equation*}
+	\arraycolsep=1.4pt
+	\begin{array}{ll}
+		\mu(7)&=-1	\\ 
+		\mu(18)&=\mu(3^2\cdot2)=0\\
+		\mu(30)& =\mu(2\cdot3\cdot5)=-1\\
+		\mu(6) &=\mu(2\cdot3)=1
+	\end{array}
+	\end{equation*}
 \end{esempio}
 \begin{osservazione}[Proprietà] \
 	\begin{enumerate}
@@ -461,7 +470,7 @@ La proprietà descritta è palese; vediamo qualche esempio.
 \begin{proposizione}
 	\label{somma_moebius}
 	\begin{equation*}
-	\sum_{d|n}\mu(d)=
+	\sum_{d\mid n}\mu(d)=
 	\begin{cases}
 	1 \ & \text{se $n=1$}\\
 	0 \ & \text{se $n>1$}
@@ -471,7 +480,7 @@ La proprietà descritta è palese; vediamo qualche esempio.
 \begin{proof} 
 	Sia $N=p_1^{e_1}\dots p_k^{e_k}$ sotto le opportune ipotesi (viste prima); siccome per $N=1$ la dimostrazione è banale, sia anche $N>1$.
 	\begin{align*}
-	\sum_{d|n}\mu(d)&=1+\sum_i\mu(p_i)+\sum_{i,j}\mu(p_ip_j)+\dots\\
+	\sum_{d\mid n}\mu(d)&=1+\sum_i\mu(p_i)+\sum_{i,j}\mu(p_ip_j)+\dots\\
 	&= 1-k+\binom{k}{2}-\binom{k}{3}+\ \dots \ +(-1)^k=(1-1)^k=0
 	\end{align*}
 	Ho usato pesantemente in entrambi i passaggi la definizione di $\mu$; nel primo è bastato il fatto che non appena un primo è almeno elevato alla seconda la funzione restituisca zero, nel secondo invece si è solo valutata $\mu$.
@@ -479,39 +488,39 @@ La proprietà descritta è palese; vediamo qualche esempio.
 \begin{teorema}[Formula di inversione di M\"obius]
 	Siano $f$ e $g$ due funzioni aritmetiche. Se vale 
 	\begin{equation*}
-	f(n)=\sum_{d|n}g(d)
+	f(n)=\sum_{d\mid n}g(d)
 	\end{equation*}
 	allora possiamo scrivere
 	\begin{equation*}
-	g(n)=\sum_{d|n}\mu\left(\frac{n}{d}\right)f(d)=\sum_{d|n}\mu(d)f\left(\frac{n}{d}\right)
+	g(n)=\sum_{d\mid n}\mu\left(\frac{n}{d}\right)f(d)=\sum_{d\mid n}\mu(d)f\left(\frac{n}{d}\right)
 	\end{equation*}
 \end{teorema}
 \begin{proof}
 	Iniziamo osservando che dato un divisore $d$ di $n$ (ovvero un valore tale che $n/d$ è intero) possiamo scrivere
 	\begin{align*}
-	\sum_{d|n}\mu\left(\frac{n}{d}\right)f(d)&=\sum_{e\cdot d=n}\mu(e)f(d)=\sum_{e|n}\mu(e)f\left(\frac{n}{e}\right)\\
-	&=\sum_{d|n}\mu(d)f\left(\frac{n}{d}\right)
+	\sum_{d\mid n}\mu\left(\frac{n}{d}\right)f(d)&=\sum_{e\cdot d=n}\mu(e)f(d)=\sum_{e\mid n}\mu(e)f\left(\frac{n}{e}\right)\\
+	&=\sum_{d\mid n}\mu(d)f\left(\frac{n}{d}\right)
 	\end{align*}
 	dato che $e$ è divisore di $n$.
 	\begin{align*}
-	\sum_{d|n}\mu\left(\frac{n}{d}\right)f(d)&=\sum_{d|n}\mu\left(\frac{n}{d}\right)\sum_{d'|d}g(d')=\sum_{d'|d|n}g(d')\mu\left(\frac{n}{d}\right)\\
-	&=\sum_{d'|\frac{n}{m}|n}g(d')\mu\left(m\right)
+	\sum_{d\mid n}\mu\left(\frac{n}{d}\right)f(d)&=\sum_{d\mid n}\mu\left(\frac{n}{d}\right)\sum_{d'\mid d}g(d')=\sum_{d'\mid d\mid n}g(d')\mu\left(\frac{n}{d}\right)\\
+	&=\sum_{d'\mid \frac{n}{m}\mid n}g(d')\mu\left(m\right)
 	\end{align*}
 	%todo: notazione strana
 	dove abbiamo usato le seguenti osservazioni:
 	\begin{enumerate}
 		\item ho definito $m=\frac{n}{d}$
-		\item se $d$ e $d'$ sono divisori di $n$, allora $d'|d$ vale se e solo se $\frac{n}{d}|\frac{n}{d'}$
-		\item se $d'$ ed $\frac{n}{m}$ sono divisori di $n$, allora $d'|\frac{n}{m}$ vale se e solo se $m|\frac{n}{d'}$
+		\item se $d$ e $d'$ sono divisori di $n$, allora $d'\mid d$ vale se e solo se $\frac{n}{d}\mid \frac{n}{d'}$
+		\item se $d'$ ed $\frac{n}{m}$ sono divisori di $n$, allora $d'\mid \frac{n}{m}$ vale se e solo se $m\mid \frac{n}{d'}$
 	\end{enumerate}
 	Per la proposizione \ref{somma_moebius} sappiamo che nella sommatoria sopravvivono elementi solo per $d'=n$, quindi otteniamo la tesi.
 \end{proof}
 \paragraph{Funzioni dei divisori}
 \begin{equation*}
-\sigma_k(n)=\sum_{d|n}d^k
+\sigma_k(n)=\sum_{d\mid n}d^k
 \end{equation*}
 \begin{equation*}
-d(n)=\sum_{d|n}1
+d(n)=\sum_{d\mid n}1
 \end{equation*}
 Notiamo che $\sigma_0(n)=d(n)$ e $\sigma_1(n)=\sigma(n)$, la funzione somma dei divisori di $n$. \\ Abbastanza evidentemente $d(n)$ restituisce il numero di divisori di $n$. Invece $\sigma_k(n)$ è la somma delle $k$-esime potenze dei divisori di $n$.
 %todo: cosa sarebbe sigma?
@@ -521,10 +530,10 @@ Notiamo che $\sigma_0(n)=d(n)$ e $\sigma_1(n)=\sigma(n)$, la funzione somma dei 
 \begin{proof}
 	Osserviamo che le due funzioni $u(n)=1$ e $\operatorname{id}(n)=n$ sono aritmetiche e moltiplicative. Ma allora
 	\begin{equation*}
-	d(n)=\sum_{d|n}1=\sum_{d|n}u(d)
+	d(n)=\sum_{d\mid n}1=\sum_{d\mid n}u(d)
 	\end{equation*}
 	\begin{equation*}
-	\sigma(n)=\sum_{d|n}d=\sum_{d|n}\operatorname{id}(d)
+	\sigma(n)=\sum_{d\mid n}d=\sum_{d\mid n}\operatorname{id}(d)
 	\end{equation*}
 	e quindi per la proposizione \ref{somma_moltiplicativa} sono moltiplicative.
 \end{proof}
