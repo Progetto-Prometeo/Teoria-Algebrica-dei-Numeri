@@ -5,9 +5,7 @@
 \input{style/pagestyle}
 \input{style/theorems}
 
-% bibliografia, immagini, eccetera
-\addbibresource{bibliografia.bib}
-\graphicspath{ {./images/} }
+\graphicspath{./images/}
 
 
 
@@ -15,25 +13,27 @@
 	% [FRONT] ------------------------
 	\frontmatter
 	%\pagenumbering{Roman}
-	% copertina
-	\title{\textbf{Teoria Algebrica dei Numeri}}
+	% copertina 
+	\include{style/copertina}
+	\setcounter{page}{1}
+	\title{}
 	\author{Leonardo Errati}
-	\date{}
 	\maketitle
-	
-	% frase introduttiva
-		\epigraph{\textit{\enquote{I matematici hanno cercato invano fino ad oggi di scoprire un qualunque ordine nella sequenza dei numeri primi, ed abbiamo ragione di credere che sia un mistero nel quale la mente umana non penetrerà mai.}}}{Leonard Euler}
 	
 	% tavola dei contenuti, controlla numerazione 
 	% se aggiungi una copertina esterna
 	\tableofcontents
-	
-	
+	\newpage
+		% frase introduttiva
+	\epigraph{\textit{\enquote{I matematici hanno cercato invano fino ad oggi di scoprire un qualunque ordine nella sequenza dei numeri primi, ed abbiamo ragione di credere che sia un mistero nel quale la mente umana non penetrerà mai.}}}{Leonard Euler}
 	
 	\chapter{Una breve introduzione}
 	\section*{Nota al lettore}
 	\addcontentsline{toc}{section}{Nota al lettore}
-	Questo documento è una raccolta di appunti del corso \textit{Teoria Algebrica dei Numeri} del professor Nadir Murru dell'Università di Trento, svolto nell'anno accademico 2020-2021. \\ \\ Ho aggiunto qualche banale osservazione ed esempio, nonché limato alcuni punti lasciati allo studente nelle dimostrazioni e nelle osservazioni. Lo scopo generale è fornire un documento il più completo possibile, che spieghi in modo accessibile davvero a chiunque anche i dettagli più strani della teoria dei numeri - oltre a rendere disponibile per tutti una raccolta di nozioni su teoria dei numeri che possano tornare utili anche a me nel mio futuro percorso. \\ Ritengo fondamentale sottolineare l'insostituibilità di due elementi fondamentali: la magnificenza del prendere parte di persona alle lezioni e la sublime esperienza puramente matematica del trovare controesempi o completare dimostrazioni di per sé, possibilmente a lume di candela in una notte tempestosa! Sembrerà banale, ma sono queste esperienze a formare uno \textit{studente di matematica} in un \textit{matematico}; il mio consiglio quindi è di provare a risolvere esempi ed esercizi da soli, e per quanto difficile provare anche ad immaginare le possibili implicazioni di osservazioni e lemmi, per poi solo infine confrontare il proprio operato con quanto svolto. \\ \\ Avere alcune conoscenze preliminari di algebra sarà sicuramente utile per effettuare alcuni interessanti collegamenti, ma a posteriori posso affermare che non sarà strettamente necessario possederle; quando dovessimo usare nozioni non elementari sarà mia premura inserire un paragrafo a margine o una breve nota a piè di pagina. Chi volesse approfondire ulteriormente potrà trovare decisamente interessanti alcuni libri proposti dal professore stesso, che inserirò in bibliografia e citerò di volta in volta.\\ \\ Ora sedetevi, prendete del succo di mela, rilassatevi, e diamo inizio al nostro viaggio nella teoria dei numeri.
+	Questo documento è una raccolta di appunti del corso \textit{Teoria Algebrica dei Numeri} del professor Nadir Murru dell'Università di Trento, svolto nell'anno accademico 2020-2021. \\ \\ 
+	Ho aggiunto qualche banale osservazione ed esempio, nonché limato alcuni punti lasciati allo studente nel corso delle dimostrazioni e delle osservazioni. Lo scopo generale è fornire un documento il più completo possibile, che spieghi in modo accessibile e comprensibile anche i dettagli più strani della teoria dei numeri. \\ Ritengo fondamentale sottolineare l'insostituibilità di due elementi: la magnificenza del prendere parte di persona alle lezioni e la sublime esperienza puramente matematica del trovare controesempi o completare dimostrazioni di per sé, possibilmente a lume di candela in una notte tempestosa! Sembrerà banale, ma sono queste esperienze a formare uno \textit{studente di matematica} in un \textit{matematico}; il mio consiglio, quindi, è di provare a risolvere esempi ed esercizi da soli e, per quanto difficile, provare anche ad immaginare le possibili implicazioni di osservazioni e lemmi, per poi solo infine confrontare il proprio operato con quanto svolto. \\ \\ 
+	Avere alcune conoscenze preliminari di algebra sarà sicuramente utile per effettuare alcuni interessanti collegamenti, ma a posteriori posso affermare che non sarà strettamente necessario possederle; quando dovessimo usare nozioni non elementari sarà mia premura inserire un paragrafo a margine o una breve nota a piè di pagina. Chi volesse approfondire ulteriormente potrà trovare decisamente interessanti alcuni libri proposti dal professore stesso, che inserirò in bibliografia e citerò di volta in volta.\\ \\ 
+	Ora sedetevi, prendete del succo di mela, rilassatevi, e diamo inizio al nostro viaggio nella teoria dei numeri.
 	
 	
 	
@@ -45,9 +45,11 @@
 	\begin{itemize}
 		\item {\large \textbf{Lezione 1:} \textit{pagina \pageref{lezione1}}}
 		\item {\large \textbf{Lezione 2:} \textit{pagina \pageref{lezione2}}}
+		\item {\large \textbf{Lezione 3:} \textit{pagina \pageref{lezione3}}}
+		\item {\large \textbf{Lezione 4:} \textit{pagina \pageref{lezione4}}}
 	\end{itemize}
-	\renewcommand{\labelitemi}{$\textbullet$}
-	
+	\renewcommand{\labelitemi}{$\bullet$}
+	Non ritengo fondamentale avere una indicizzazione precisa del contenuto lezione per lezione, soprattutto perché in futuro potrebbe variare; questo indice servirà più come una guida approssimativa ai contenuti ed alla \enquote{compartimentazione} del corso.
 	
 	
 	% [MAIN] ------------------------
@@ -64,6 +66,16 @@
 	% [BIBLIOGRAFIA] ----------------------
 	%\addcontentsline{toc}{section}{Bibliografia}
 	\printbibliography
+	
+	
+	
+	%\chapter{Bibliografia}
+	%\begin{itemize}
+		%\item\textbf{[Di99]} Dickson, L.E. \textit{History of the Theory of Numbers}. ISBN: 9780821819388. 1999, AMS Chelsea Publishing.
+		%\item\textbf{[Go98]} Goldman, J. \textit{The Queen of Mathematics: A Historically Motivated Guide to Number Theory}. ISBN: 9781568810065. 1998, Taylor \& Francis.
+		%\item\textbf{[JJ12]} Jones, G.A. and Jones, J.M. \textit{Elementary Number Theory}. ISBN: 9781447106135. 2012, Springer London.
+		%\item\textbf{[HW98]} Hardy, G.H. and Wright, E.M. and Heath-Brown, R. and Silverman, J. and Wiles, A. \textit{An Introduction to the Theory of Numbers}. ISBN: 9780199219865. 2008, OUP Oxford.
+	%\end{itemize}
 	
 	
 	
