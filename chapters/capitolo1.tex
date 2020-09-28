@@ -7,27 +7,32 @@ Per ora lavoreremo solo sul ben noto \textit{insieme dei numeri interi}
 	\mathbb{Z}= \left\{\dots,-2,-1,0,1,2,\dots\right\}
 \end{equation*}
 ma in seguito estenderemo i risultati ai più generali \textit{domini d'integrità}. \\ 
-Vediamo adesso alcuni brevi richiami di algebra; dovrebbero essere tutti fatti noti, ma saranno fondamentali. Per saperne di più sulla storia della teoria dei numeri, si veda \cite{D19}\cite{G97}.
+Vediamo adesso alcuni brevi richiami di algebra; dovrebbero essere tutti fatti noti, ma saranno fondamentali. \\ \\
+Per chi decidesse di approfondire i contenuti del capitolo si segnalano i libri \textbf{[Go98]} e \textbf{[Di99]}.
+
+%todo: libri GOLDMAN the queen of maths, DIXON history of number theory per approfondire, in bibliografia dopo
 
 
 \section{Aritmetica e numeri interi}
 \subsection{$\mathbb{Z}$: elementi riducibili o primi?}
-\begin{definizione}[Divisore] Siano $a,b \in \mathbb{Z}$; diciamo che \textbf{$a$ divide $b$} (oppure che \textbf{$a$ è un divisore di $b$}) se 
+\epigraph{\textit{\enquote{Un numero è primo se è misurato dall'unità}}}{Euclide}
+\begin{definizione}[Divisore] 
+	Siano $a,b \in \mathbb{Z}$; diciamo che \textbf{$a$ divide $b$} (oppure che \textbf{$a$ è un divisore di $b$}) se 
 	\begin{equation*}
 	\exists \ x \in \mathbb{Z} \ \text{tale che} \ b = a \cdot c
 	\end{equation*}
-	ed in notazione lo scriveremo come $a \mid  b$.
+	ed in notazione lo scriveremo come $a | b$.
 \end{definizione}
 \begin{proposizione}
 	Siano $a,b$ in $\mathbb{Z}$. Allora valgono i seguenti:
 	\begin{enumerate}
-		\item $c\mid a, \ c\mid b \ \implies \ c\mid (a+b)$
-		\item $c\mid a, \ c\mid (a+b) \ \implies \ c\mid b$
+		\item $c|a, \ c|b \ \implies \ c|(a+b)$
+		\item $c|a, \ c|(a+b) \ \implies \ c|b$
 	\end{enumerate}
 \end{proposizione}
 \begin{proof}\ 
 \begin{enumerate}
-	\item Se $c\mid a$ e $c\mid b$ allora $a=k_a c$ e $b = k_b c$, otteniamo subito che $(a+b)=c(k_a+k_b)$. Concludiamo notando che $k_a+k_b$ appartiene a $\mathbb{Z}$.
+	\item Se $c|a$ e $c|b$ allora $a=k_a c$ e $b = k_b c$, otteniamo subito che $(a+b)=c(k_a+k_b)$. Concludiamo notando che $k_a+k_b$ appartiene a $\mathbb{Z}$.
 	\item Come sopra, $a=k_ac$ ed $(a+b)=kc$ quindi $b=(k-k_a)c$. \\ Abbiamo trovato un elemento di $\mathbb{Z}$.
 \end{enumerate}
 \end{proof}
@@ -36,13 +41,25 @@ Vediamo adesso alcuni brevi richiami di algebra; dovrebbero essere tutti fatti n
 	\begin{enumerate}
 		\item $m$ si dice \textbf{irriducibile} se per ogni $a$ e $b$ in $\mathbb{Z}$ con $m=ab$ allora uno tra $a$ e $b$ è invertibile (rispetto al prodotto).
 		\item $m$ si dice \textbf{riducibile} se non è irriducibile (banalmente: se esistono degli $a$, $b$ in $\mathbb{Z}$ con $m=ab$ e nessuno dei due è invertibile rispetto al prodotto)
-		\item $m$ si dice \textbf{primo} se per ogni $a$ e $b$ in $\mathbb{Z}$ con $m\mid ab$, allora $m\mid a$ oppure $m\mid b$. \footnote{Euclide postula che \enquote{\textit{un numero è primo se è misurato dall'unità}}}.
+		\item $m$ si dice \textbf{primo} se per ogni $a$ e $b$ in $\mathbb{Z}$ con $m|ab$, allora $m|a$ oppure $m|b$.
+		%todo: inserirla come citazione con epigraph?
 	\end{enumerate}
 \end{definizione}
-Intuitivamente i \textit{riducibili} sono detti tali perché possono essere \enquote{ridotti} ad un prodotto \enquote{sensato}. \\ \\ Le definizioni di irriducibili e primi in $\mathbb{Z}$ potrebbero trarci in inganno, perché la definizione a cui casualmente ci riconduciamo per i primi è in realtà la definizione formale degli irriducibili; in effetti è curioso, ed è dovuto al fatto che in $\mathbb{Z}$ le due definizioni coincidano (lo dimostreremo). \\ Altro fatto interessante è che accetteremo i numeri negativi come numeri primi.
-\begin{esempio} Vediamo alcuni facili esempi.
+\begin{osservazione}[Irriducibili e primi]
+	Intuitivamente i \textit{riducibili} sono detti tali perché possono essere \enquote{ridotti} ad un prodotto \enquote{sensato}. Vediamo di capire meglio cosa si intende: $-7$ è irriducibile in $\mathbb{Z}$ perché posso scriverlo come $(7)(-1)$ e $(-7)(1)$, ed intuitivamente questa non è una \enquote{buona} scomposizione in fattori. Per vederne il motivo possiamo pensare in termini di \textit{numeri primi}. \\ \\ Le definizioni di irriducibili e primi in $\mathbb{Z}$ potrebbero trarci in inganno, perché la definizione a cui casualmente ci riconduciamo per i primi è in realtà la definizione formale degli irriducibili; in effetti è curioso, ed è dovuto al fatto che in $\mathbb{Z}$ le due definizioni coincidano (lo dimostreremo). Altro fatto interessante è che accetteremo i numeri negativi come numeri primi. \\ Da quanto appena osservato possiamo capire la nota sul \enquote{prodotto sensato}, infatti non è possibile accettare $\pm1$ - i riducibili - come primi in $\mathbb{Z}$, e se anche lo fossero causerebbero non pochi problemi in termini di \textit{fattorizzazione unica}.
+	\begin{equation*}
+	(-7)=(7)(1)(-1)
+	\end{equation*}
+	\begin{equation*}
+	(-7)=(-7)(1)(1)(1)(1)
+	\end{equation*}
+	Quale sarebbe allora \textit{la vera fattorizzazione unica}?
+\end{osservazione}
+%todo: esistono posti dove gli invertibili sono primi?
+\begin{esempio} 
+	Vediamo alcuni facili esempi.
 	\begin{itemize}
-		\item[$(8)$] Si noti che $8\mid 40$ e $40=20\cdot 2$, inoltre $8$ non divide né $20$ né $2$. \\
+		\item[$(8)$] Si noti che $8|40$ e $40=20\cdot 2$, inoltre $8$ non divide né $20$ né $2$. \\
 		Allora 8 non è primo.
 		\item[$(-7)$] Siccome $-7 = (-7)(1)=(7)(-1)$, allora è irriducibile.
 		\item[$(12)$] Siccome $12 = (3)(4)$, allora è riducibile. 
@@ -50,17 +67,21 @@ Intuitivamente i \textit{riducibili} sono detti tali perché possono essere \enq
 		\item[$(-6)$] Siccome $-6 = (-3)(2)$, allora è riducibile. 
 	\end{itemize}
 \end{esempio}
-\begin{definizione}[$\MCD$] Siano $a$ e $b$ in $\mathbb{Z}$ non entrambi nulli, allora diciamo loro \textbf{massimo comune divisore}:
+\begin{definizione}[$\MCD$] 
+	Siano $a$ e $b$ in $\mathbb{Z}$ non entrambi nulli, allora diciamo loro \textbf{massimo comune divisore}:
 	\begin{equation*}
-		\MCD(a,b)=\max\left\{d \in \mathbb{Z} \ \text{tali che} \ d\mid a, \ d\mid b\right\}
+		\MCD(a,b)=\max\left\{d \in \mathbb{Z} \ \text{tali che} \ d|a, \ d|b\right\}
 	\end{equation*}
 \end{definizione}
 \begin{osservazione}
-	Notiamo che il $\MCD$ è sempre positivo, infatti se uno dei due fosse zero varrebbe che \begin{equation*}
-	\MCD(a,b)= |b|
+	Notiamo che il $\MCD$ è sempre positivo, infatti se uno dei due - ad esempio $a$ - fosse zero varrebbe che 
+	\begin{equation*}
+	\MCD(0,b)= |b|
 	\end{equation*}
 \end{osservazione}
-\begin{teorema}[Divisione euclidea] Siano $a$ e $b$ in $\mathbb{Z}$, con $b \neq 0$. Allora esistono unici $q,r \in \mathbb{Z}$ tali che 
+\begin{teorema}[Divisione euclidea] 
+	Siano $a$ e $b$ in $\mathbb{Z}$, con $b \neq 0$. \\
+	Allora esistono unici $q,r \in \mathbb{Z}$ tali che 
 	\begin{equation*}
 	a = qb + r \ \text{e vale che} \ 0 \leq r \leq |b|
 	\end{equation*}
@@ -103,45 +124,42 @@ ma siccome abbiamo eliminato la richiesta $0\leq r \leq |b|=3$ allora posso acce
 		\begin{equation*}
 		a=qb+r \implies kc = qhc+r \implies r = (k-qh)c
 		\end{equation*}
-		ovvero $c\mid r$, quindi i divisori comuni tra $a$ e $b$ dividono anche $r$. \\ Vediamo un esempio numerico, ovviamente $c=2$ divide sia $a=10$ che $b=8$; $a=2\cdot5$, $b=2\cdot4$, allora
+		ovvero $c|r$, quindi i divisori comuni tra $a$ e $b$ dividono anche $r$. \\ Vediamo un esempio numerico, ovviamente $c=2$ divide sia $a=10$ che $b=8$; $a=2\cdot5$, $b=2\cdot4$, allora
 		\begin{equation*}
 		10=q8+r\implies(2\cdot5)=q(2\cdot4)+r\implies r=(5-4q)2
 		\end{equation*}
 		\item Sia ora $c\in \mathbb{Z}$ tale che divide sia $a$ che $r$, ovvero $b=ic$ ed $r=jc$.
 		\begin{equation*}
-		a=qb+r \implies a = qic+jc =(qi+j)c \implies c\mid a
+		a=qb+r \implies a = qic+jc =(qi+j)c \implies c|a
 		\end{equation*}
 		quindi i divisori comuni tra $b$ ed $r$ dividono anche $a$.
 		\item Unendo quanto appena visto e definendo
 		\begin{equation*}
-			A = \left\{ d \in \mathbb{Z} \,\middle|\, d \mid a \land d \mid b \right\}
+		A = \left\{\text{divisori comuni tra $a$ e $b$}\right\}
 		\end{equation*}
-		\begin{equation*}
-			B = \left\{ d \in \mathbb{Z} \,\middle|\, d \mid b \land d \mid r \right\}
+				\begin{equation*}
+		B = \left\{\text{divisori comuni tra $b$ e $r$}\right\}
 		\end{equation*}
 		possiamo notare che $A$=$B$, per definizione allora vale la seguente:
 		\begin{equation*}
-			\MCD(a,b)=\MCD(b,r)
+		\MCD(a,b)=\MCD(b,r)
 		\end{equation*}
 	\end{enumerate}
 Vediamo \textbf{l'algoritmo di Euclide} per il calcolo di $\MCD(a,b)$.
-\begin{equation*}
-	\arraycolsep=1.4pt
-	\begin{array}{rllll} 		 
-		a 		& = q_1b + r_1 & \quad\ 0 \leq r_1 \leq  |b|\\
-		b 		& = q_2r_1 + r_2 & \quad\ 0 \leq r_2 \leq |r_1|\\
-		   		& \,\vdots 		  & \\		
-		r_{n-2} & = q_{n}r_{n-1}+r_n & \quad\ 0 \leq r_n \leq |r_{n-1}|\\
-		r_{n-1} & = q_{n+1}r_n		 & 
-	\end{array}
-\end{equation*}
-Vediamo riassunti in breve i passaggi tramite coppie di elementi di $\mathbb{Z}$:
+\begin{align*}
+ a &= q_1b + r_1 \ \ \ \ \ \ 0 \leq r_1 \leq |b|\\
+ b &= q_2r_1 + r_2 \ \ \ \ \ \ 0 \leq r_2 \leq |r_1|\\
+&\ \ \vdots \\
+r_{n-2}&=q_{n}r_{n-1}+r_n\ \ \ \ \ \ 0 \leq r_n \leq |r_{n-1}|\\
+r_{n-1}&=q_{n+1}r_n
+\end{align*}
+Possiamo riassumere in breve i passaggi tramite coppie di elementi di $\mathbb{Z}$:
 \begin{equation*}
 (a,b) \to (b,r_1)\to\dots\to(r_{n-1},r_n)
 \end{equation*}
 il loro significato è abbastanza ovvio. Siccome la successione dei resti è una successione di interi strettamente decrescenti e positivi è convergente, ed abbastanza evidentemente converge a $0$. L'ultimo resto non nullo è il massimo comune divisore cercato, ed il resto nullo esiste necessariamente per quanto appena detto: so che è possibile arrivarci con una quantità finita di passi. \\ \\ Ma il valore che otteniamo è \textit{veramente} il massimo comune divisore? Per quanto osservato all'inizio sì, infatti 
-\begin{equation*}	
-	\MCD(a,b)= \MCD(b,r_1)= \ \dots \ = \MCD(r_{n-1},r_n)= \MCD(r_{n},0) = r_n
+\begin{equation*}
+\MCD(a,b)=\MCD(b,r_1)= \ \dots \ =\MCD(r_{n-1},r_n)=\MCD(r_{n},0)=r_n
 \end{equation*}
 e questo è un risultato tutt'altro che banale. \\ \\
 L'algoritmo di Euclide sarà fondamentale in teoria dei numeri, ad esempio nella costruzione delle \textit{frazioni continue}.
@@ -169,7 +187,8 @@ L'algoritmo di Euclide sarà fondamentale in teoria dei numeri, ad esempio nella
 
 
 \subsection{$\mathbb{Z}$: elementi riducibili e primi!}
-\begin{teorema}[Identità di Bezout] Siano $a$ e $b$ in $\mathbb{Z}$, $d$ il loro massimo comune divisore. Allora esistono degli $x,y \in \mathbb{Z}$ tali che
+\begin{teorema}[Identità di Bezout] 
+	Siano $a$ e $b$ in $\mathbb{Z}$, $d$ il loro massimo comune divisore. Allora esistono degli $x,y \in \mathbb{Z}$ tali che
 	\begin{equation*}
 	d=ax+by
 	\end{equation*}
@@ -187,7 +206,7 @@ Posso avere però lo stesso risultato tramite una formalizzazione più algebrica
 	\begin{enumerate}
 		\item Siano $a$ e $b$ in $\mathbb{Z}$ non entrambi nulli, allora 
 		\begin{equation*}
-		I \eqqcolon \left\{na+mb \, \middle| \, n,m \in \mathbb{Z}\right\}
+		I \eqqcolon \left\{na+mb \ | \ n,m \in \mathbb{Z}\right\}
 		\end{equation*}
 		è un ideale di $\mathbb{Z}$.
 		\item Sia $I = (d)$, allora $d$ è il massimo comune divisore tra $a$ e $b$. \footnote{in algebra commutativa $I=(d)$ indica che \textbf{$d$ genera l'ideale $I$}, ovvero che ogni $i \in I$ ha forma $kd$ per un $k$ in $\mathbb{Z}$. Stiamo usando il fatto che $\mathbb{Z}$ sia un dominio ad ideali principali.}
@@ -219,16 +238,13 @@ Posso avere però lo stesso risultato tramite una formalizzazione più algebrica
 \end{proof}
 \begin{esempio}
 	Utilizzare l'algoritmo di Eulero per il massimo comune divisore di $3522$ e $321$, esprimerlo con l'identità di Bezout.
-	\begin{equation*}
-		\arraycolsep=1.4pt
-		\begin{array}{rl}
-			3522 &= (10)(321)+312\\
-			321 &= (1)(312)+9\\
-			312 &= (34)(9)+6\\
-			9 &=(1)(6)+3\\
-			6 &=(2)(3)+0
-		\end{array}
-	\end{equation*}
+	\begin{align*}
+	3522 &= (10)(321)+312\\
+	321 &= (1)(312)+9\\
+	312 &= (34)(9)+6\\
+	9 &=(1)(6)+3\\
+	6 &=(2)(3)+0
+	\end{align*}
 	Abbiamo già visto la procedura, quindi non ci soffermeremo troppo. Per esprimere $d$ come da identità basta ripercorrere la dimostrazione, ovvero 
 	\begin{align*}
 	\MCD(a,b)=3&= 9-6=9-(312-34\cdot9)=-312+35\cdot9\\
@@ -245,9 +261,9 @@ Posso avere però lo stesso risultato tramite una formalizzazione più algebrica
 \end{teorema}
 \begin{proof}\
 	\begin{itemize}
-		\item[$\implies$] Devo dimostrare che $n$ è primo, supponiamo che $n\mid ab$; devo dimostrare che $n\mid a$ oppure $n\mid b$ cerchiamo di dimostrare ad esempio che $n$ non divide $a$ ma divide $b$.
+		\item[$\implies$] Devo dimostrare che $n$ è primo, supponiamo che $n|ab$; devo dimostrare che $n|a$ oppure $n|b$ cerchiamo di dimostrare ad esempio che $n$ non divide $a$ ma divide $b$.
 		\begin{equation*}
-		n\mid ab \implies ab=kn \ \ \ k \in \mathbb{Z}
+		n|ab \implies ab=kn \ \ \ k \in \mathbb{Z}
 		\end{equation*}
 		Siccome $n$ è irriducibile, i suoi soli divisori sono $\pm 1$ e $\pm n$, dunque il massimo comune divisore tra $a$ ed $n$ è 1. Per Bezout 
 		\begin{equation*}
@@ -296,6 +312,7 @@ Più avanti cercheremo di ottenere risultati \enquote{simili} al teorema fondame
 
 
 \subsection{L'infinità dei numeri primi}
+\epigraph{\textit{\enquote{Ciò che è affermato senza prova, può essere negato senza prova.}}}{Euclide}
 \label{lezione2}
 Siccome siamo tra matematici potete ammetterlo tranquillamente, quante volte vi è capitato di avere il seguente discorso?\\
 - \enquote{\textit{Quanti sono i numeri primi?}}\\
@@ -304,15 +321,16 @@ Se la risposta è \textit{nessuna}, siamo ancora in tempo per rimediare.
 \begin{teorema}
 	Esistono infiniti numeri primi.
 \end{teorema}
-\begin{proof}[Dimostrazione di Euclide] Supponiamo che i numeri primi siano finiti, allora possiamo prenderli come $p_1, \ \dots, \ p_n$ (positivi). Sia
+\begin{proof}[Dimostrazione di Euclide] 
+	Supponiamo che i numeri primi siano finiti, allora possiamo prenderli come $p_1, \ \dots, \ p_n$ (positivi). Sia
 	\begin{equation*}
 	N = p_1 \cdot \ \dots \ \cdot p_n +1
 	\end{equation*}
 	Siccome ci troviamo in $\mathbb{Z}$ possiamo applicare il teorema fondamentale dell'algebra, esiste una ed un'unica fattorizzazione in primi di $N$. Allora uno dei primi che lo fattorizza è anche un suo divisore, ma necessariamente non è uno dei $p_i$; se lo fosse infatti avremmo 
 	\begin{equation*}
-	p\mid N, \ \ p\mid p_1 \cdot \ \dots \ \cdot p_n
+	p|N, \ \ p|p_1 \cdot \ \dots \ \cdot p_n
 	\end{equation*}
-	e per proprietà dei divisori questo implica che $p\mid 1$, assurdo a causa della definizione di primo.
+	e per proprietà dei divisori questo implica che $p|1$, assurdo a causa della definizione di primo.
 \end{proof}
 \begin{proof}[Dimostrazione di Eulero] 
 	Supponiamo che i numeri primi siano finiti, allora possiamo prenderli come $p_1,\dots, p_n$. Per fatti ben noti di analisi matematica possiamo costruire una serie geometrica di natura convergente
@@ -340,7 +358,7 @@ Se la risposta è \textit{nessuna}, siamo ancora in tempo per rimediare.
 	Consideriamo la \textit{funzione di Legendre}: 
 	%todo: funzione di legendre? wtf? introdurre le nuove funzioni?
 	\begin{equation*}
-	\phi(x,y)=\left|\left\{n\in \mathbb{N} \, \middle| \, \text{$1\leq n \leq x$, $n$ non ha fattori primi $p\leq y$}  \right\}\right|
+	\phi(x,y)=\left|\left\{n\in \mathbb{N} \ | \ \text{$1\leq n \leq x$, $n$ non ha fattori primi $p\leq y$}  \right\}\right|
 	\end{equation*}
 	questa funzione è definita per ogni $x,y \in \mathbb{N}^*$.\footnote{$\mathbb{N}^*$ è l'insieme dei naturali meno lo zero, questa notazione si usa spesso in teoria dei gruppi per definire gruppi abeliani moltiplicativi del tipo $(\mathbb{N}^*, \cdot)$.}
 	\\ Consideriamo inoltre la \textit{prime counting function} $\pi(x)$, in particolare la sua proprietà
@@ -373,10 +391,10 @@ Da adesso in poi useremo per comodità la notazione $(n,m)$ per indicare il mass
 	\begin{equation*}
 	f:\mathbb{N}\longrightarrow\mathbb{C}
 	\end{equation*}
-	\textit{In molti dei casi più importanti $f(n))$ è un intero che descrive una proprietà di $n$ nella teoria dei numeri.}} \\ \\
-	%todo: riferimento bibliografico, elementary number theory di G Jones, M Jones; capitolo 8 pagina 143
+	\textit{In molti dei casi più importanti $f(n))$ è un intero che descrive una proprietà di $n$ nella teoria dei numeri.}} 
+	(\textbf{[JJ12]}, capitolo 8 pagina 143)\\ \\
 	\enquote{\textit{Funzioni $f(n)$ sugli interi positivi definite in modo da esprimere una proprietà aritmetica di $n$ sono dette \textbf{funzioni aritmetiche}. }}
-	%todo: bib, Handy e Wright, introduction to the theory of numbers, capitolo 16 pagina 233 edizione 4
+	(\textbf{[HW98]}, capitolo 16 pagina 233, quarta edizione)
 \end{definizione}
 Non sempre è facile definire le funzioni aritmetiche, difatti come abbiamo visto possono essere date definizioni molto diverse ma nello stesso spirito. \\ Per noi una funzione sarà tale solo se avrà valori in $\mathbb{C}$, ma sottintenderemo la sua capacità del rappresentare una proprietà di $n$ (non ci interessa che le funzioni senza tali proprietà siano aritmetiche o meno). 
 \begin{definizione}[Funzione aritmetica]
@@ -396,15 +414,15 @@ Le funzioni aritmetiche sono fondamentali in teoria dei numeri, perché come abb
 	\label{somma_moltiplicativa}
 	Se $f$ è una funzione aritmetica moltiplicativa, allora 
 	\begin{equation*}
-	g(n)\coloneqq \sum_{d\mid n}f(d)
+	g(n)\coloneqq \sum_{d|n}f(d)
 	\end{equation*}
 	è una funzione aritmetica moltiplicativa.
 \end{proposizione}
 \begin{proof}
 	Devo semplicemente dimostrare che $g$ è moltiplicativa seguendo la definizione. Siano allora $m,n \in \mathbb{N}$ tali che $(n-m)=1$.
 	\begin{align*}
-	g(m \cdot n)&=\sum_{d\mid mn}f(d)=\sum_{a\mid m}\sum_{b\mid n}f(a\cdot b)=\sum_{a\mid m}\sum_{b\mid n}f(a)\cdot f(b) \\
-	&=\left[\sum_{a\mid m}f(a)\right]\cdot\left[\sum_{b\mid n}f(b)\right]=g(m)\cdot g(n)
+	g(m \cdot n)&=\sum_{d|mn}f(d)=\sum_{a|m}\sum_{b|n}f(a\cdot b)=\sum_{a|m}\sum_{b|n}f(a)\cdot f(b) \\
+	&=\left[\sum_{a|m}f(a)\right]\cdot\left[\sum_{b|n}f(b)\right]=g(m)\cdot g(n)
 	\end{align*}
 	Nel secondo passaggio ho usato il fatto che se $d$ divide $mn$, allora $d$ è il prodotto di certi $a$ e $b$ coprimi tali che uno divide $m$ e l'altro divide $n$.
 \end{proof}
@@ -430,15 +448,12 @@ n &\longmapsto
 \end{align*}
 La proprietà descritta è palese; vediamo qualche esempio.
 \begin{esempio}
-	\begin{equation*}
-	\arraycolsep=1.4pt
-	\begin{array}{ll}
-		\mu(7)&=-1	\\ 
-		\mu(18)&=\mu(3^2\cdot2)=0\\
-		\mu(30)& =\mu(2\cdot3\cdot5)=-1\\
-		\mu(6) &=\mu(2\cdot3)=1
-	\end{array}
-	\end{equation*}
+	\begin{align*}
+	&\mu(7)=-1	\\ 
+	&\mu(18)=\mu(3^2\cdot2)=0\\
+	&\mu(30)=\mu(2\cdot3\cdot5)=-1\\
+	&\mu(6)=\mu(2\cdot3)=1
+	\end{align*}
 \end{esempio}
 \begin{osservazione}[Proprietà] \
 	\begin{enumerate}
@@ -460,17 +475,15 @@ La proprietà descritta è palese; vediamo qualche esempio.
 		&\neq \mu(1)+\mu(1)=0+0
 		\end{align*}
 		Siccome il massimo comune divisore tra $2$ ed $1$ è $1$, $\mu$ non è additiva.
-		\item La funzione non è completamente additiva. 
-		\begin{center}
-			Non essendo additiva, ovviamente \\ non può essere completamente additiva.
-		\end{center}
+		\item La funzione non è completamente additiva. \\ Non essendo additiva, ovviamente non può essere completamente additiva.
+
 		
 	\end{enumerate}
 \end{osservazione}
 \begin{proposizione}
 	\label{somma_moebius}
 	\begin{equation*}
-	\sum_{d\mid n}\mu(d)=
+	\sum_{d|n}\mu(d)=
 	\begin{cases}
 	1 \ & \text{se $n=1$}\\
 	0 \ & \text{se $n>1$}
@@ -480,7 +493,7 @@ La proprietà descritta è palese; vediamo qualche esempio.
 \begin{proof} 
 	Sia $N=p_1^{e_1}\dots p_k^{e_k}$ sotto le opportune ipotesi (viste prima); siccome per $N=1$ la dimostrazione è banale, sia anche $N>1$.
 	\begin{align*}
-	\sum_{d\mid n}\mu(d)&=1+\sum_i\mu(p_i)+\sum_{i,j}\mu(p_ip_j)+\dots\\
+	\sum_{d|n}\mu(d)&=1+\sum_i\mu(p_i)+\sum_{i,j}\mu(p_ip_j)+\dots\\
 	&= 1-k+\binom{k}{2}-\binom{k}{3}+\ \dots \ +(-1)^k=(1-1)^k=0
 	\end{align*}
 	Ho usato pesantemente in entrambi i passaggi la definizione di $\mu$; nel primo è bastato il fatto che non appena un primo è almeno elevato alla seconda la funzione restituisca zero, nel secondo invece si è solo valutata $\mu$.
@@ -488,67 +501,303 @@ La proprietà descritta è palese; vediamo qualche esempio.
 \begin{teorema}[Formula di inversione di M\"obius]
 	Siano $f$ e $g$ due funzioni aritmetiche. Se vale 
 	\begin{equation*}
-	f(n)=\sum_{d\mid n}g(d)
+	f(n)=\sum_{d|n}g(d)
 	\end{equation*}
 	allora possiamo scrivere
 	\begin{equation*}
-	g(n)=\sum_{d\mid n}\mu\left(\frac{n}{d}\right)f(d)=\sum_{d\mid n}\mu(d)f\left(\frac{n}{d}\right)
+	g(n)=\sum_{d|n}\mu\left(\frac{n}{d}\right)f(d)=\sum_{d|n}\mu(d)f\left(\frac{n}{d}\right)
 	\end{equation*}
 \end{teorema}
 \begin{proof}
 	Iniziamo osservando che dato un divisore $d$ di $n$ (ovvero un valore tale che $n/d$ è intero) possiamo scrivere
 	\begin{align*}
-	\sum_{d\mid n}\mu\left(\frac{n}{d}\right)f(d)&=\sum_{e\cdot d=n}\mu(e)f(d)=\sum_{e\mid n}\mu(e)f\left(\frac{n}{e}\right)\\
-	&=\sum_{d\mid n}\mu(d)f\left(\frac{n}{d}\right)
+	\sum_{d|n}\mu\left(\frac{n}{d}\right)f(d)&=\sum_{e\cdot d=n}\mu(e)f(d)=\sum_{e|n}\mu(e)f\left(\frac{n}{e}\right)\\
+	&=\sum_{d|n}\mu(d)f\left(\frac{n}{d}\right)
 	\end{align*}
 	dato che $e$ è divisore di $n$.
 	\begin{align*}
-	\sum_{d\mid n}\mu\left(\frac{n}{d}\right)f(d)&=\sum_{d\mid n}\mu\left(\frac{n}{d}\right)\sum_{d'\mid d}g(d')=\sum_{d'\mid d\mid n}g(d')\mu\left(\frac{n}{d}\right)\\
-	&=\sum_{d'\mid \frac{n}{m}\mid n}g(d')\mu\left(m\right)
+	\sum_{d|n}\mu\left(\frac{n}{d}\right)f(d)&=\sum_{d|n}\mu\left(\frac{n}{d}\right)\sum_{d'|d}g(d')=\sum_{d'|d|n}g(d')\mu\left(\frac{n}{d}\right)\\
+	&=\sum_{d'|\frac{n}{m}|n}g(d')\mu\left(m\right)
 	\end{align*}
 	%todo: notazione strana
 	dove abbiamo usato le seguenti osservazioni:
 	\begin{enumerate}
 		\item ho definito $m=\frac{n}{d}$
-		\item se $d$ e $d'$ sono divisori di $n$, allora $d'\mid d$ vale se e solo se $\frac{n}{d}\mid \frac{n}{d'}$
-		\item se $d'$ ed $\frac{n}{m}$ sono divisori di $n$, allora $d'\mid \frac{n}{m}$ vale se e solo se $m\mid \frac{n}{d'}$
+		\item se $d$ e $d'$ sono divisori di $n$, allora $d'|d$ vale se e solo se $\frac{n}{d}|\frac{n}{d'}$
+		\item se $d'$ ed $\frac{n}{m}$ sono divisori di $n$, allora $d'|\frac{n}{m}$ vale se e solo se $m|\frac{n}{d'}$
 	\end{enumerate}
-	Per la proposizione \ref{somma_moebius} sappiamo che nella sommatoria sopravvivono elementi solo per $d'=n$, quindi otteniamo la tesi.
+	Per la Proposizione \ref{somma_moebius} sappiamo che nella sommatoria sopravvivono elementi solo per $d'=n$, quindi otteniamo la tesi.
 \end{proof}
 \paragraph{Funzioni dei divisori}
 \begin{equation*}
-\sigma_k(n)=\sum_{d\mid n}d^k
+\sigma_k(n)=\sum_{d|n}d^k
 \end{equation*}
 \begin{equation*}
-d(n)=\sum_{d\mid n}1
+d(n)=\sum_{d|n}1
 \end{equation*}
 Notiamo che $\sigma_0(n)=d(n)$ e $\sigma_1(n)=\sigma(n)$, la funzione somma dei divisori di $n$. \\ Abbastanza evidentemente $d(n)$ restituisce il numero di divisori di $n$. Invece $\sigma_k(n)$ è la somma delle $k$-esime potenze dei divisori di $n$.
-%todo: cosa sarebbe sigma?
 \begin{teorema}
 	Le due funzioni sono moltiplicative.
 \end{teorema}
 \begin{proof}
 	Osserviamo che le due funzioni $u(n)=1$ e $\operatorname{id}(n)=n$ sono aritmetiche e moltiplicative. Ma allora
 	\begin{equation*}
-	d(n)=\sum_{d\mid n}1=\sum_{d\mid n}u(d)
+	d(n)=\sum_{d|n}1=\sum_{d|n}u(d)
 	\end{equation*}
 	\begin{equation*}
-	\sigma(n)=\sum_{d\mid n}d=\sum_{d\mid n}\operatorname{id}(d)
+	\sigma(n)=\sum_{d|n}d=\sum_{d|n}\operatorname{id}(d)
 	\end{equation*}
-	e quindi per la proposizione \ref{somma_moltiplicativa} sono moltiplicative.
+	e quindi per la Proposizione \ref{somma_moltiplicativa} sono moltiplicative.
 \end{proof}
 
 
 
 
-\section{Divisibilità in domini di integrità}
+\section{Divisibilità nei domini di integrità}
+\subsection{Struttura dei domini di integrità}
+\label{lezione3}
+Iniziamo a generalizzare quanto visto nella sezione precedente, da adesso non ci restringeremo più a $\mathbb{Z}$; lavoreremo su una classe di strutture algebriche più generica.
+\begin{definizione}[Dominio di integrità] 
+	Sia $A$ un anello commutativo con identità 1, lo dico \textbf{dominio di integrità} se 
+	\begin{equation*}
+	\forall a,b \in A. \ a \cdot b = 0 \implies a=0 \text{ oppure } b=0
+	\end{equation*}
+\end{definizione}
+\begin{definizione}
+	\
+	\begin{enumerate}
+		\item Un $e \in A$ si dice \textbf{unità} se è invertibile rispetto al prodotto. \\ Solitamente viene indicata con u, in letteratura si trova anche $e$.
+		\item Degli $u,v \in A$ si dicono \textbf{associati} se $u=ev$.
+		\item Un $q \in A$ si dice \textbf{irriducibile} se è non-nullo, se non è un'unità e se 
+		\begin{equation*}
+		\forall a,b \ \text{con} \ q=ab, \ \text{$a$ oppure $b$ sono un'unità}
+		\end{equation*}
+		\item Un $p \in A$ si dice \textbf{primo} se $p|ab \implies $ $p|a$ oppure $p|b$. \footnote{nella definizione compare un \textit{vel}, un \textit{aut inclusivo}; possono essere vere entrambe. Si pensi a $p|p\cdot p$.}
+	\end{enumerate}
+\end{definizione}
+\begin{osservazione} 
+	Facciamo alcune brevi osservazioni sulle definizioni appena date. Ricordiamo che per $k \in A$ anello commutativo possiamo scrivere in notazione compatta 
+	\begin{equation*}
+	(k) \coloneqq \left\{ak \ | \ a \in A\right\}
+	\end{equation*}
+	\begin{enumerate}
+		\item \textbf{$a$ divide $ b \ \iff \ (b) \subset (a)$}\\
+		Se $a|b$ questo vuol dire che $b=ac$ per un certo $c \in A$. Allora sia dato un $x \in (b)$, ha forma $x=kb$, ma per ipotesi $x=k(ac)=(kc)a$ quindi $x$ appartiene anche all'ideale generato da $a$. Si noti come abbiamo usato le ipotesi di $A$ anello commutativo.\\
+		Implicazione inversa: per ipotesi $b \in (a)$, quindi $b=kc$ per un certo $k \in A$.
+		\item \textbf{$a,b$ associati $\iff \ (a)=(b)$}\\
+		Sia $u$ unità. Se sono associati allora $a=1b$, prendo $x \in (a)$; $x=ka$ per un certo $k$, ma per ipotesi $x=k(ub)=b(uk)$ ed $x \in (b)$. Manca da dimostrare $(b) \subset (a)$, ma posso procedere allo stesso modo ricordando che $u$ è invertibile, quindi 
+		\begin{equation*}
+		a=ub \implies au^{-1}=b
+		\end{equation*}
+		e procedo ugualmente. \\ 
+		Se invece $(a)=(b)$, questo vuol dire che $a=k_ab$ e $b=k_ba$. 
+		\begin{equation*}
+		a=a(k_a\cdot k_b) \implies k_a\cdot k_b=1 
+		\end{equation*}
+ 		ma allora posso dire (senza perdita di generalità) che $x$ è l'unità, $a$ e $b$ sono associati.
+		\item \textbf{$p$ è primo $\iff$ $(p)$ è primo}\\
+		Ricordiamo che un ideale $I$ si dice primo se è proprio (non è $A$ stesso) e $\forall a,b$ se $a,b\notin I$ allora $ab \notin I$. Ovviamente possiamo invertire l'implicazione negando i due lati. 
+		\begin{equation*}
+		ab \in (p) \implies a \in (p) \ \text{oppure} \ b \in (p)
+		\end{equation*}
+		Se l'ideale è primo prendiamo $ab \in (p)$, questo vuol dire che $ab=kp$; inoltre per ipotesi se $ab\in(p)$ questo vuol dire che $a\in(p)$ oppure $b\in(p)$.
+		%todo: aut oppure vel?
+		Ma vediamo che queste due ipotesi sono $a=k_ap$ e $b=k_bp$, che sono esattamente quanto volevo dimostrare. \\ L'implicazione opposta è banalmente la stessa dimostrazione ma ripercorsa al contrario.
+	\end{enumerate}
+	Si noti infine che quanto definiamo \textit{unità} non è l'unità intesa quando si definisce un \textit{anello commutativo con unità 1}; i primi sono gli invertibili rispetto al prodotto, la seconda è la classica \textit{identità moltiplicativa} - che indicheremo in notazione con 1. Chiaramente l'identità moltiplicativa è per sua definizione una unità, ma per l'identità moltiplicativa abbiamo delle buone proprietà, ad esempio l'unicità (è facile dimostrarlo), che come si è visto non vale per le unità.
+\end{osservazione}
+\begin{esempio}\
+	\begin{enumerate}
+		\item In $\mathbb{Z}$ le unità sono $\pm 1$, quindi per ogni $a \in \mathbb{Z}$ gli associati sono $\pm a$.
+		\item Se $\mathbb{K}$ è un campo e prendo $\mathbb{K}[x]$, i polinomi costanti $a$ ($a \in \mathbb{K}^*$) sono unità e dato $f(x) \in \mathbb{K}[x]$ gli associati hanno forma $a\cdot f(x)$ per $a \in \mathbb{K}^*$.
+	\end{enumerate}
+\end{esempio}
+\begin{osservazione} 
+	\label{notinD}
+	In un dominio $A$ qualunque un elemento primo è irriducibile. Basta replicare la dimostrazione che abbiamo visto in precedenza.\\
+	Se $p$ è primo e $p=ab$, allora $p|a$ oppure $p|b$. Supponiamo per esempio che valga la prima, allora 
+	\begin{equation*}
+	p=ab=(pk)b \implies kb=1 
+	\end{equation*}
+	e quindi $b$ è l'unità. \\ 
+	Per l'implicazione inversa non basta essere in un dominio, infatti avevamo usato Bezout e la divisione euclidea.
+\end{osservazione}
+\begin{definizione}
+	Sia $A$ un anello commutativo con unità 1.
+	\item Un suo ideale $I$ si dice \textbf{massimale} se è proprio ($I \neq A$) ed ogni ideale $J$ di $A$ con $I \subset J$ è improprio.
+	\item Un suo ideale $I$ si dice \textbf{primo} se è proprio ($I \neq A$) e $\forall a,b \in A$ se $a,b$ non sono in $I$ non vi appartiene neanche il loro prodotto.
+	\item Un suo ideale $I$ si dice \textbf{principale} se è generato da un unico elemento, ovvero $I=(a)$ per un certo $a \in I$.
+\end{definizione}
+\begin{definizione}
+	Sia $A$ un dominio.
+	\begin{enumerate}
+		\item $A$ si dice \textbf{dominio ad ideali principali (PID)} se ogni suo ideale è principale.
+		\item $A$ si dice \textbf{dominio a fattorizzazione unica (UFD)} se ogni suo elemento non invertibile e non nullo ammette una fattorizzazione in elementi riducibili, unica a meno di riordinamento e di elementi associati (\textit{fattorizzazione essenzialmente unica}).
+		\item $A$ si dice \textbf{euclideo} se esiste una funzione 
+		\begin{equation*}
+		f: A^*\longrightarrow \mathbb{N}
+		\end{equation*}
+		tale che per ogni $a,b\in A$ con $b \neq 0$ esistono $q,r \in A$ con $a=qb+r$ e si ha $r=0$ oppure $f(r)\leq f(b)$. \\
+		Intuitivamente si dice tale perché è possibile effettuare la \textit{divisione euclidea} al suo interno.
+		\item $A$ si dice \textbf{principalmente noetheriano} se ogni successione crescente di ideali principali è stazionaria; ovvero se data la catena di inclusioni di ideali principali
+		\begin{equation*}
+		(a_1)\subset(a_2)\subset \dots
+		\end{equation*}
+		esiste un $n\in\mathbb{N}$ tale che $(a_n)=(a_{n+1})=\dots$
+	\end{enumerate}
+\end{definizione}
+\begin{esempio}
+	Un esempio di dominio euclideo è $\mathbb{Z}$, a livello intuitivo anche solo banalmente per la possibilità di effettuare la divisione euclidea al suo interno. \\ Se riflettiamo su come questa avviene possiamo anche dimostrare formalmente che sia euclideo: per come abbiamo definito nella scorsa sezione l'algoritmo euclideo basta porre $f(k)=|k|$. \\ \\ Altro esempio meno banale è $\mathbb{K}[x]$ con $\mathbb{K}$ campo, per effettuare la divisione tra i suoi elementi (\textit{polinomi in $x$}) è sufficiente porre $f(p)=\deg(p)$. \\ Si noti che può essere molto pericoloso definire il grado del polinomio costantemente nullo, ma non è un problema perché la scrittura formale per la divisione euclidea tra polinomi è 
+	\begin{equation*}
+	p=nq+r \ \ \ \text{ con } \deg(r)<\deg(q) \ \text{ oppure } r=0
+	\end{equation*}
+\end{esempio}
+\subsection{Fattorizzazione unica e noetherianità}
+\begin{osservazione}[Come siamo arrivati qui?]
+	Noi vorremo lavorare nei domini a fattorizzazione unica. Abbiamo visto nell'Osservazione \ref{notinD} che la struttura di dominio di integrità \textit{non basta} per lavorare in uno spazio \enquote{buono}, cioè uno che goda di fattorizzazione unica come $\mathbb{Z}$. \\ L'ingrediente fondamentale saranno le catene di ideali principali nella definizione di anello principalmente noetheriano, come vedremo subito.
+\end{osservazione}
+\begin{teorema}[Esistenza della fattorizzazione]
+	Se $A$ è principalmente noetheriano allora posso fattorizzare ogni suo elemento non-nullo e diverso da un'unità come prodotto di elementi irriducibili con \textit{fattorizzazione essenzialmente unica}.
+\end{teorema}
+\begin{proof}
+	Sia $a$ riducibile, quindi $a=xy$. Costruiamo una catena con il seguente algoritmo, poi potremo usare l'ipotesi di noetherianità.
+	\begin{itemize}
+		\item se $x$ non è irriducibile allora $x=a_1d_1$ con $a_1 \neq 0$ ed $a_1,d_1$ non unità:
+		\begin{equation*}
+		a_1|x|a \implies (a)\subset(x)\subset(a_1)
+		\end{equation*}
+		(se invece è irriducibile mi fermo, avrei già una catena stazionaria)
+		\item se $a_1$ non è irriducibile allora $x=a_2d_2$ con $a_2 \neq 0$ ed $a_2,d_2$ non unità:
+		\begin{equation*}
+		(a)\subset(x)\subset(a_1)\subset(a_2)
+		\end{equation*}
+		\item e così via, ottenendo
+		\begin{equation*}
+		(a)\subset(x)\subset(a_1)\subset(a_2)\subset(a_3)\subset\dots
+		\end{equation*}
+	\end{itemize}
+	Per ipotesi esiste un $n$ tale che $(a_n)=(a_{n+1})$, ovvero $a_{n}$ ed $a_{n+1}$ sono associati:
+	\begin{equation*}
+	a_{n}=ua_{n+1} \ \ \ \ \text{ con $u$ unità}
+	\end{equation*}
+	ed inoltre da costruzione abbiamo $a_{n}=d_{n+1}a_{n+1}$ non unità e quindi
+	\begin{equation*}
+	a_{n+1}(d_{n+1}-u)=0 \implies d_{n+1}=u
+	\end{equation*}
+	che implica $a_n$ irriducibile. Ripetendo il ragionamento per $y$ ottengo la tesi. \\ Abbiamo infatti dimostrato che $a$ si scrive tramite prodotto tra un fattore irriducibile (quello che abbiamo trovato) ed \enquote{altro}, ma possiamo fattorizzare la parte non irriducibile, per ipotesi di noetherianità ci dovremo fermare ottenendo un prodotto in irriducibili, essenzialmente unico. \\ \\ Notiamo che la definizione di principalmente noetheriano svolge la funzione del \textit{principio del minimo} sui numeri naturali, equivalente al principio di induzione.\footnote{questo vale per la costruzione dei naturali tramite gli \textit{assiomi di Peano}.} Ci siamo ricondotti elegantemente ad una situazione analoga di quella studiata nella fattorizzazione unica degli interi.
+\end{proof}
+	\label{lezione4}
+\begin{teorema}[Unicità della fattorizzazione]
+	Le seguenti sono equivalenti.
+	\begin{enumerate}
+		\item $A$ è principalmente noetheriano ed ogni elemento irriducibile è primo
+		\item ogni $a \in A$ con $a\neq0$ e non unità si scrive come prodotto di numeri primi (ed eventualmente una unità)
+		\item $A$ è un UFD
+	\end{enumerate}
+\end{teorema}
+\begin{proof}\
+	\begin{itemize}
+		\item[$1 \implies 2$] Vale per il teorema precedente.
+		\item[$2 \implies 3$] Devo mostrare che la fattorizzazione è unica. Siamo $p_i$ e $q_j$ primi (e quindi irriducibili) con
+		\begin{equation*}
+		a=p_1 \dots p_r = q_1 \dots q_s \ \ (r<s)
+		\end{equation*}
+		allora $p_1|q_1 \dots q_s$, che a sua volta implica $p_1|q_1$. Essendo irriducibili sono associati, quindi $p_1=u_1 q_1$ con $u_1$ unità. Procedendo in questo modo per $r$ volte ottengo
+		\begin{equation*}
+		1=\xi_1\dots\xi_r q_{r+1}\dots r_s
+		\end{equation*}
+		e quindi $r=s$. Infatti se non lo fosse tutti i primi a destra sarebbero invertibili. La fattorizzazione è unica a meno di associati.
+		\item[$3 \implies 1$] Dimostriamo prima di tutto che ogni irriducibile è primo. \\ Sia $q|ab$, ovvero $ab=qd=\alpha$.
+		\begin{equation*}
+		d=m_1\dots m_t, \ \ a=p_1\dots p_r, \ \ b=q_1\dots \ q_s
+		\end{equation*}
+		\begin{equation*}
+		\alpha = q (m_1\dots m_t)=(p_1\dots p_r)(q_1\dots \ q_s)
+		\end{equation*}
+		Per unicità della fattorizzazione $q|p_i$ oppure $q|q_j$, cioè $q|a$ oppure $q|b$. \\ \\
+		Dimostriamo che $A$ è principalmente noetheriano. \\ Prendo una catena $(a_1)\subset(a_2)\subset\dots$, utilizzo le fattorizzazioni.
+		\begin{itemize}
+			\item $a_1=q_1\dots q_r$
+			\item siccome $a_2|a_1$ ogni primo della fattorizzazione di $a_2$ compare in quella di $a_1$, inoltre $a_1 \neq a_2$, quindi $a_2$ ha meno fattori
+			\item procedo iterativamente, arrivo ad un $a_n$ irriducibile con 
+			\begin{equation*}
+			(a_n)=(a_{n+1})=\dots
+			\end{equation*}
+		\end{itemize}
+	\end{itemize}
+\end{proof}
+
+Questa condizione però non è \enquote{soddisfacente}, infatti la principale noetherianità non è sempre semplice da verificare. Proviamo a costruire ulteriori relazioni tra i tipi di domini che abbiamo identificato. \\ Ad esempio potremmo caratterizzare i domini in cui gli irriducibili sono anche primi.
+\begin{teorema}[Caratterizzazione dei PID]
+	Se $A$ è un dominio ad ideali principali (PID) le seguenti sono equivalenti.
+	\begin{enumerate}
+		\item $p$ è primo in $A$
+		\item $p$ è irriducibile in $A$
+		\item $p\in A$, $(p)$ è massimale
+	\end{enumerate}
+\end{teorema}
+\begin{proof}\
+	\begin{itemize}
+		\item[$1 \implies 2$] Sia $p=ab$, voglio dimostrare che uno dei due è l'unità. Poiché $p$ è primo, $p|a$ oppure $p|b$. Scegliamo la prima senza perdita di generalità, allora 
+		\begin{equation*}
+		a=pc \implies p=(pc)b\implies cb=1 \implies b \text{ unità}
+		\end{equation*}
+		\item[$2 \implies 3$] sia $(p)\subset I$ con $I$ ideale di $A$, poiché $A$ è un PID allora $I=(k)$ per un certo $k$. Ma come abbiamo visto questo implica che $k|p$.
+		\begin{equation*}
+		k|p \implies p=kc \implies k \text{ oppure } c \text{ unità}
+		\end{equation*}
+		Se $k$ è unità allora $(k)=A$ perché conterrebbe 1.\footnote{se un ideale di $A$ contiene 1 è per sua stessa definizione un ideale improprio, cioè $A$; la verifica è banale.} \\ Se invece $c$ fosse unità potrei scrivere $k=c^{-1}p$ per ottenere $(k)=(p)$.
+		\item[$3 \implies 1$] Se $(p)$ è massimale allora è primo, ma abbiamo visto che questo implica $p$ primo.
+	\end{itemize}
+\end{proof}
+\begin{teorema}[Caratterizzazione degli UFD]
+	Se $A$ è un PID, allora è un dominio a fattorizzazione unica (UFD).
+\end{teorema}
+\begin{proof}
+	Dimostriamo che in un PID ogni ideale è finitamente generato. \\ Consideriamo una catena di ideali $I_1\subset I_2 \subset \dots$, allora $I=\cup_{n=1}^{+\infty}I_n$ è un ideale. Normalmente sarebbe problematico approcciarsi ad un oggetto simile (ha senso scrivere una unione infinita? è ancora un ideale? come scrivo i suoi generatori?), ma sappiamo che $A$ è un dominio ad ideali principali! Allora  
+	\begin{equation*}
+	I = (a_1, \dots, a_m)
+	%todo: come fa ad essere principale se ha m elementi?
+	\end{equation*}
+	 e quindi esiste $N>0$ tale che $I_N$ contenga i generatori di $I$, questo vale necessariamente per come ho costruito $I$, per come ho scelto gli ideali e per proprietà di $A$. Ho appena ottenuto che $I \subset I_N$, quindi evidentemente $I_n=I_N$ per ogni $n\geq N$. \\ Allora $A$ è principalmente noetheriano, e siccome è ad ideali principali ogni elemento irriducibile è primo. Allora è un dominio a fattorizzazione unica.
+\end{proof}
+\begin{teorema}[Caratterizzazione degli euclidei] 
+	Se $A$ è un dominio euclideo, allora è un dominio ad ideali principali (PID).
+\end{teorema}
+\begin{proof}
+	Sia $I$ un ideale di $A$.
+	\begin{equation*}
+	X \coloneqq \left\{f(a) \ | \ a\in I, a \neq 0\right\}\subset \mathbb{N}
+	\end{equation*}
+	Chiaramente $X$ è non vuoto, ammette un minimo ed un massimo in $\mathbb{N}$. \\ Sia $n_0$ il minimo, sia $a_0 \in I$ tale che $f(a_0)=n_0$. Ora prendo un $b \in I$ con $b=a_0q+r$ e $r=b-a_0q\in I$; quindi $r=0$. Allora $b=aq$ ed $I=(a)$.
+	%todo: rivedi dimostrazione
+\end{proof}
+\begin{esempio}
+	Possiamo usare i potenti strumenti che abbiamo appena costruito per studiare il caso \enquote{banale} di $\mathbb{Z}$ con facilità, ed addirittura espanderci a casi ben più complessi.
+	\begin{enumerate}
+		\item $\mathbb{Z}$ è euclideo, quindi un PID, quindi un UFD.
+		\item $\mathbb{K}[x]$ è euclideo, quindi un PID, quindi un UFD.
+	\end{enumerate}
+\end{esempio}
+\begin{osservazione}[Cosa ho appena letto?]
+	\
+	\begin{enumerate}
+		\item in un dominio di integrità un primo è irriducibile, ma non sempre si ha il viceversa
+		\item i domini principalmente noetheriani hanno la fattorizzazione in elementi irriducibili; se gli irriducibili sono primi allora la fattorizzazione è anche unica
+		\item in un PID un elemento è primo se e solo se è irriducibile, inoltre un PID è principalmente noetheriano 
+		\begin{itemize}
+			\item in generale se gli ideali sono finitamente generati ogni catena ascendente è stazionaria
+			\item un PID è un UFD
+		\end{itemize}
+	\item un dominio Euclideo è un PID, che a sua volta è un UFD
+	\end{enumerate}
+\end{osservazione}
+
+
+
+%\section{Aritmetica modulare: anelli di classi di resto}
 
 
 
 
-\section{Aritmetica modulare: anelli di classi di resto}
-
-
-
-
-\section{Residui quadratici}
+%\section{Residui quadratici}
