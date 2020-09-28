@@ -127,7 +127,9 @@ ma siccome abbiamo eliminato la richiesta $0\leq r \leq |b|=3$ allora posso acce
 Vediamo \textbf{l'algoritmo di Euclide} per il calcolo di $\MCD(a,b)$.
 \begin{equation*}
 	\arraycolsep=1.4pt
-	\begin{array}{rllll} 		 
+	\begin{array}{rllll} 
+		 
+
 		a 		& = q_1b + r_1 & \quad\ 0 \leq r_1 \leq  |b|\\
 		b 		& = q_2r_1 + r_2 & \quad\ 0 \leq r_2 \leq |r_1|\\
 		   		& \,\vdots 		  & \\		
@@ -541,14 +543,252 @@ Notiamo che $\sigma_0(n)=d(n)$ e $\sigma_1(n)=\sigma(n)$, la funzione somma dei 
 
 
 
-\section{Divisibilità in domini di integrità}
+\section{Divisibilità nei domini di integrità}
+\subsection{Struttura dei domini di integrità}
+\label{lezione3}
+Iniziamo a generalizzare quanto visto nella sezione precedente, da adesso non ci restringeremo più a $\mathbb{Z}$; lavoreremo su una classe di strutture algebriche più generica.
+\begin{definizione}[Dominio di integrità] 
+	Sia $A$ un anello commutativo con identità 1, lo dico \textbf{dominio di integrità} se 
+	\begin{equation*}
+	\forall a,b \in A. \ a \cdot b = 0 \implies a=0 \text{ oppure } b=0
+	\end{equation*}
+\end{definizione}
+\begin{definizione}
+	\
+	\begin{enumerate}
+		\item Un $e \in A$ si dice \textbf{unità} se è invertibile rispetto al prodotto. \\ Solitamente viene indicata con u, in letteratura si trova anche $e$.
+		\item Degli $u,v \in A$ si dicono \textbf{associati} se $u=ev$.
+		\item Un $q \in A$ si dice \textbf{irriducibile} se è non-nullo, se non è un'unità e se 
+		\begin{equation*}
+		\forall a,b \ \text{con} \ q=ab, \ \text{$a$ oppure $b$ sono un'unità}
+		\end{equation*}
+		\item Un $p \in A$ si dice \textbf{primo} se $p|ab \implies $ $p|a$ oppure $p|b$. \footnote{nella definizione compare un \textit{vel}, un \textit{aut inclusivo}; possono essere vere entrambe. Si pensi a $p|p\cdot p$.}
+	\end{enumerate}
+\end{definizione}
+\begin{osservazione} 
+	Facciamo alcune brevi osservazioni sulle definizioni appena date. Ricordiamo che per $k \in A$ anello commutativo possiamo scrivere in notazione compatta 
+	\begin{equation*}
+	(k) \coloneqq \left\{ak \ | \ a \in A\right\}
+	\end{equation*}
+	\begin{enumerate}
+		\item \textbf{$a$ divide $ b \ \iff \ (b) \subset (a)$}\\
+		Se $a|b$ questo vuol dire che $b=ac$ per un certo $c \in A$. Allora sia dato un $x \in (b)$, ha forma $x=kb$, ma per ipotesi $x=k(ac)=(kc)a$ quindi $x$ appartiene anche all'ideale generato da $a$. Si noti come abbiamo usato le ipotesi di $A$ anello commutativo.\\
+		Implicazione inversa: per ipotesi $b \in (a)$, quindi $b=kc$ per un certo $k \in A$.
+		\item \textbf{$a,b$ associati $\iff \ (a)=(b)$}\\
+		Sia $u$ unità. Se sono associati allora $a=1b$, prendo $x \in (a)$; $x=ka$ per un certo $k$, ma per ipotesi $x=k(ub)=b(uk)$ ed $x \in (b)$. Manca da dimostrare $(b) \subset (a)$, ma posso procedere allo stesso modo ricordando che $u$ è invertibile, quindi 
+		\begin{equation*}
+		a=ub \implies au^{-1}=b
+		\end{equation*}
+		e procedo ugualmente. \\ 
+		Se invece $(a)=(b)$, questo vuol dire che $a=k_ab$ e $b=k_ba$. 
+		\begin{equation*}
+		a=a(k_a\cdot k_b) \implies k_a\cdot k_b=1 
+		\end{equation*}
+ 		ma allora posso dire (senza perdita di generalità) che $x$ è l'unità, $a$ e $b$ sono associati.
+		\item \textbf{$p$ è primo $\iff$ $(p)$ è primo}\\
+		Ricordiamo che un ideale $I$ si dice primo se è proprio (non è $A$ stesso) e $\forall a,b$ se $a,b\notin I$ allora $ab \notin I$. Ovviamente possiamo invertire l'implicazione negando i due lati. 
+		\begin{equation*}
+		ab \in (p) \implies a \in (p) \ \text{oppure} \ b \in (p)
+		\end{equation*}
+		Se l'ideale è primo prendiamo $ab \in (p)$, questo vuol dire che $ab=kp$; inoltre per ipotesi se $ab\in(p)$ questo vuol dire che $a\in(p)$ oppure $b\in(p)$.
+		%todo: aut oppure vel?
+		Ma vediamo che queste due ipotesi sono $a=k_ap$ e $b=k_bp$, che sono esattamente quanto volevo dimostrare. \\ L'implicazione opposta è banalmente la stessa dimostrazione ma ripercorsa al contrario.
+	\end{enumerate}
+	Si noti infine che quanto definiamo \textit{unità} non è l'unità intesa quando si definisce un \textit{anello commutativo con unità 1}; i primi sono gli invertibili rispetto al prodotto, la seconda è la classica \textit{identità moltiplicativa} - che indicheremo in notazione con 1. Chiaramente l'identità moltiplicativa è per sua definizione una unità, ma per l'identità moltiplicativa abbiamo delle buone proprietà, ad esempio l'unicità (è facile dimostrarlo), che come si è visto non vale per le unità.
+\end{osservazione}
+\begin{esempio}\
+	\begin{enumerate}
+		\item In $\mathbb{Z}$ le unità sono $\pm 1$, quindi per ogni $a \in \mathbb{Z}$ gli associati sono $\pm a$.
+		\item Se $\mathbb{K}$ è un campo e prendo $\mathbb{K}[x]$, i polinomi costanti $a$ ($a \in \mathbb{K}^*$) sono unità e dato $f(x) \in \mathbb{K}[x]$ gli associati hanno forma $a\cdot f(x)$ per $a \in \mathbb{K}^*$.
+	\end{enumerate}
+\end{esempio}
+\begin{osservazione} 
+	\label{notinD}
+	In un dominio $A$ qualunque un elemento primo è irriducibile. Basta replicare la dimostrazione che abbiamo visto in precedenza.\\
+	Se $p$ è primo e $p=ab$, allora $p|a$ oppure $p|b$. Supponiamo per esempio che valga la prima, allora 
+	\begin{equation*}
+	p=ab=(pk)b \implies kb=1 
+	\end{equation*}
+	e quindi $b$ è l'unità. \\ 
+	Per l'implicazione inversa non basta essere in un dominio, infatti avevamo usato Bezout e la divisione euclidea.
+\end{osservazione}
+\begin{definizione}
+	Sia $A$ un anello commutativo con unità 1.
+	\item Un suo ideale $I$ si dice \textbf{massimale} se è proprio ($I \neq A$) ed ogni ideale $J$ di $A$ con $I \subset J$ è improprio.
+	\item Un suo ideale $I$ si dice \textbf{primo} se è proprio ($I \neq A$) e $\forall a,b \in A$ se $a,b$ non sono in $I$ non vi appartiene neanche il loro prodotto.
+	\item Un suo ideale $I$ si dice \textbf{principale} se è generato da un unico elemento, ovvero $I=(a)$ per un certo $a \in I$.
+\end{definizione}
+\begin{definizione}
+	Sia $A$ un dominio.
+	\begin{enumerate}
+		\item $A$ si dice \textbf{dominio ad ideali principali (PID)} se ogni suo ideale è principale.
+		\item $A$ si dice \textbf{dominio a fattorizzazione unica (UFD)} se ogni suo elemento non invertibile e non nullo ammette una fattorizzazione in elementi riducibili, unica a meno di riordinamento e di elementi associati (\textit{fattorizzazione essenzialmente unica}).
+		\item $A$ si dice \textbf{euclideo} se esiste una funzione 
+		\begin{equation*}
+		f: A^*\longrightarrow \mathbb{N}
+		\end{equation*}
+		tale che per ogni $a,b\in A$ con $b \neq 0$ esistono $q,r \in A$ con $a=qb+r$ e si ha $r=0$ oppure $f(r)\leq f(b)$. \\
+		Intuitivamente si dice tale perché è possibile effettuare la \textit{divisione euclidea} al suo interno.
+		\item $A$ si dice \textbf{principalmente noetheriano} se ogni successione crescente di ideali principali è stazionaria; ovvero se data la catena di inclusioni di ideali principali
+		\begin{equation*}
+		(a_1)\subset(a_2)\subset \dots
+		\end{equation*}
+		esiste un $n\in\mathbb{N}$ tale che $(a_n)=(a_{n+1})=\dots$
+	\end{enumerate}
+\end{definizione}
+\begin{esempio}
+	Un esempio di dominio euclideo è $\mathbb{Z}$, a livello intuitivo anche solo banalmente per la possibilità di effettuare la divisione euclidea al suo interno. \\ Se riflettiamo su come questa avviene possiamo anche dimostrare formalmente che sia euclideo: per come abbiamo definito nella scorsa sezione l'algoritmo euclideo basta porre $f(k)=|k|$. \\ \\ Altro esempio meno banale è $\mathbb{K}[x]$ con $\mathbb{K}$ campo, per effettuare la divisione tra i suoi elementi (\textit{polinomi in $x$}) è sufficiente porre $f(p)=\deg(p)$. \\ Si noti che può essere molto pericoloso definire il grado del polinomio costantemente nullo, ma non è un problema perché la scrittura formale per la divisione euclidea tra polinomi è 
+	\begin{equation*}
+	p=nq+r \ \ \ \text{ con } \deg(r)<\deg(q) \ \text{ oppure } r=0
+	\end{equation*}
+\end{esempio}
+\subsection{Fattorizzazione unica e noetherianità}
+\begin{osservazione}[Come siamo arrivati qui?]
+	Noi vorremo lavorare nei domini a fattorizzazione unica. Abbiamo visto nell'Osservazione \ref{notinD} che la struttura di dominio di integrità \textit{non basta} per lavorare in uno spazio \enquote{buono}, cioè uno che goda di fattorizzazione unica come $\mathbb{Z}$. \\ L'ingrediente fondamentale saranno le catene di ideali principali nella definizione di anello principalmente noetheriano, come vedremo subito.
+\end{osservazione}
+\begin{teorema}[Esistenza della fattorizzazione]
+	Se $A$ è principalmente noetheriano allora posso fattorizzare ogni suo elemento non-nullo e diverso da un'unità come prodotto di elementi irriducibili con \textit{fattorizzazione essenzialmente unica}.
+\end{teorema}
+\begin{proof}
+	Sia $a$ riducibile, quindi $a=xy$. Costruiamo una catena con il seguente algoritmo, poi potremo usare l'ipotesi di noetherianità.
+	\begin{itemize}
+		\item se $x$ non è irriducibile allora $x=a_1d_1$ con $a_1 \neq 0$ ed $a_1,d_1$ non unità:
+		\begin{equation*}
+		a_1|x|a \implies (a)\subset(x)\subset(a_1)
+		\end{equation*}
+		(se invece è irriducibile mi fermo, avrei già una catena stazionaria)
+		\item se $a_1$ non è irriducibile allora $x=a_2d_2$ con $a_2 \neq 0$ ed $a_2,d_2$ non unità:
+		\begin{equation*}
+		(a)\subset(x)\subset(a_1)\subset(a_2)
+		\end{equation*}
+		\item e così via, ottenendo
+		\begin{equation*}
+		(a)\subset(x)\subset(a_1)\subset(a_2)\subset(a_3)\subset\dots
+		\end{equation*}
+	\end{itemize}
+	Per ipotesi esiste un $n$ tale che $(a_n)=(a_{n+1})$, ovvero $a_{n}$ ed $a_{n+1}$ sono associati:
+	\begin{equation*}
+	a_{n}=ua_{n+1} \ \ \ \ \text{ con $u$ unità}
+	\end{equation*}
+	ed inoltre da costruzione abbiamo $a_{n}=d_{n+1}a_{n+1}$ non unità e quindi
+	\begin{equation*}
+	a_{n+1}(d_{n+1}-u)=0 \implies d_{n+1}=u
+	\end{equation*}
+	che implica $a_n$ irriducibile. Ripetendo il ragionamento per $y$ ottengo la tesi. \\ Abbiamo infatti dimostrato che $a$ si scrive tramite prodotto tra un fattore irriducibile (quello che abbiamo trovato) ed \enquote{altro}, ma possiamo fattorizzare la parte non irriducibile, per ipotesi di noetherianità ci dovremo fermare ottenendo un prodotto in irriducibili, essenzialmente unico. \\ \\ Notiamo che la definizione di principalmente noetheriano svolge la funzione del \textit{principio del minimo} sui numeri naturali, equivalente al principio di induzione.\footnote{questo vale per la costruzione dei naturali tramite gli \textit{assiomi di Peano}.} Ci siamo ricondotti elegantemente ad una situazione analoga di quella studiata nella fattorizzazione unica degli interi.
+\end{proof}
+	\label{lezione4}
+\begin{teorema}[Unicità della fattorizzazione]
+	Le seguenti sono equivalenti.
+	\begin{enumerate}
+		\item $A$ è principalmente noetheriano ed ogni elemento irriducibile è primo
+		\item ogni $a \in A$ con $a\neq0$ e non unità si scrive come prodotto di numeri primi (ed eventualmente una unità)
+		\item $A$ è un UFD
+	\end{enumerate}
+\end{teorema}
+\begin{proof}\
+	\begin{itemize}
+		\item[$1 \implies 2$] Vale per il teorema precedente.
+		\item[$2 \implies 3$] Devo mostrare che la fattorizzazione è unica. Siamo $p_i$ e $q_j$ primi (e quindi irriducibili) con
+		\begin{equation*}
+		a=p_1 \dots p_r = q_1 \dots q_s \ \ (r<s)
+		\end{equation*}
+		allora $p_1|q_1 \dots q_s$, che a sua volta implica $p_1|q_1$. Essendo irriducibili sono associati, quindi $p_1=u_1 q_1$ con $u_1$ unità. Procedendo in questo modo per $r$ volte ottengo
+		\begin{equation*}
+		1=\xi_1\dots\xi_r q_{r+1}\dots r_s
+		\end{equation*}
+		e quindi $r=s$. Infatti se non lo fosse tutti i primi a destra sarebbero invertibili. La fattorizzazione è unica a meno di associati.
+		\item[$3 \implies 1$] Dimostriamo prima di tutto che ogni irriducibile è primo. \\ Sia $q|ab$, ovvero $ab=qd=\alpha$.
+		\begin{equation*}
+		d=m_1\dots m_t, \ \ a=p_1\dots p_r, \ \ b=q_1\dots \ q_s
+		\end{equation*}
+		\begin{equation*}
+		\alpha = q (m_1\dots m_t)=(p_1\dots p_r)(q_1\dots \ q_s)
+		\end{equation*}
+		Per unicità della fattorizzazione $q|p_i$ oppure $q|q_j$, cioè $q|a$ oppure $q|b$. \\ \\
+		Dimostriamo che $A$ è principalmente noetheriano. \\ Prendo una catena $(a_1)\subset(a_2)\subset\dots$, utilizzo le fattorizzazioni.
+		\begin{itemize}
+			\item $a_1=q_1\dots q_r$
+			\item siccome $a_2|a_1$ ogni primo della fattorizzazione di $a_2$ compare in quella di $a_1$, inoltre $a_1 \neq a_2$, quindi $a_2$ ha meno fattori
+			\item procedo iterativamente, arrivo ad un $a_n$ irriducibile con 
+			\begin{equation*}
+			(a_n)=(a_{n+1})=\dots
+			\end{equation*}
+		\end{itemize}
+	\end{itemize}
+\end{proof}
+
+Questa condizione però non è \enquote{soddisfacente}, infatti la principale noetherianità non è sempre semplice da verificare. Proviamo a costruire ulteriori relazioni tra i tipi di domini che abbiamo identificato. \\ Ad esempio potremmo caratterizzare i domini in cui gli irriducibili sono anche primi.
+\begin{teorema}[Caratterizzazione dei PID]
+	Se $A$ è un dominio ad ideali principali (PID) le seguenti sono equivalenti.
+	\begin{enumerate}
+		\item $p$ è primo in $A$
+		\item $p$ è irriducibile in $A$
+		\item $p\in A$, $(p)$ è massimale
+	\end{enumerate}
+\end{teorema}
+\begin{proof}\
+	\begin{itemize}
+		\item[$1 \implies 2$] Sia $p=ab$, voglio dimostrare che uno dei due è l'unità. Poiché $p$ è primo, $p|a$ oppure $p|b$. Scegliamo la prima senza perdita di generalità, allora 
+		\begin{equation*}
+		a=pc \implies p=(pc)b\implies cb=1 \implies b \text{ unità}
+		\end{equation*}
+		\item[$2 \implies 3$] sia $(p)\subset I$ con $I$ ideale di $A$, poiché $A$ è un PID allora $I=(k)$ per un certo $k$. Ma come abbiamo visto questo implica che $k|p$.
+		\begin{equation*}
+		k|p \implies p=kc \implies k \text{ oppure } c \text{ unità}
+		\end{equation*}
+		Se $k$ è unità allora $(k)=A$ perché conterrebbe 1.\footnote{se un ideale di $A$ contiene 1 è per sua stessa definizione un ideale improprio, cioè $A$; la verifica è banale.} \\ Se invece $c$ fosse unità potrei scrivere $k=c^{-1}p$ per ottenere $(k)=(p)$.
+		\item[$3 \implies 1$] Se $(p)$ è massimale allora è primo, ma abbiamo visto che questo implica $p$ primo.
+	\end{itemize}
+\end{proof}
+\begin{teorema}[Caratterizzazione degli UFD]
+	Se $A$ è un PID, allora è un dominio a fattorizzazione unica (UFD).
+\end{teorema}
+\begin{proof}
+	Dimostriamo che in un PID ogni ideale è finitamente generato. \\ Consideriamo una catena di ideali $I_1\subset I_2 \subset \dots$, allora $I=\cup_{n=1}^{+\infty}I_n$ è un ideale. Normalmente sarebbe problematico approcciarsi ad un oggetto simile (ha senso scrivere una unione infinita? è ancora un ideale? come scrivo i suoi generatori?), ma sappiamo che $A$ è un dominio ad ideali principali! Allora  
+	\begin{equation*}
+	I = (a_1, \dots, a_m)
+	%todo: come fa ad essere principale se ha m elementi?
+	\end{equation*}
+	 e quindi esiste $N>0$ tale che $I_N$ contenga i generatori di $I$, questo vale necessariamente per come ho costruito $I$, per come ho scelto gli ideali e per proprietà di $A$. Ho appena ottenuto che $I \subset I_N$, quindi evidentemente $I_n=I_N$ per ogni $n\geq N$. \\ Allora $A$ è principalmente noetheriano, e siccome è ad ideali principali ogni elemento irriducibile è primo. Allora è un dominio a fattorizzazione unica.
+\end{proof}
+\begin{teorema}[Caratterizzazione degli euclidei] 
+	Se $A$ è un dominio euclideo, allora è un dominio ad ideali principali (PID).
+\end{teorema}
+\begin{proof}
+	Sia $I$ un ideale di $A$.
+	\begin{equation*}
+	X \coloneqq \left\{f(a) \ | \ a\in I, a \neq 0\right\}\subset \mathbb{N}
+	\end{equation*}
+	Chiaramente $X$ è non vuoto, ammette un minimo ed un massimo in $\mathbb{N}$. \\ Sia $n_0$ il minimo, sia $a_0 \in I$ tale che $f(a_0)=n_0$. Ora prendo un $b \in I$ con $b=a_0q+r$ e $r=b-a_0q\in I$; quindi $r=0$. Allora $b=aq$ ed $I=(a)$.
+	%todo: rivedi dimostrazione
+\end{proof}
+\begin{esempio}
+	Possiamo usare i potenti strumenti che abbiamo appena costruito per studiare il caso \enquote{banale} di $\mathbb{Z}$ con facilità, ed addirittura espanderci a casi ben più complessi.
+	\begin{enumerate}
+		\item $\mathbb{Z}$ è euclideo, quindi un PID, quindi un UFD.
+		\item $\mathbb{K}[x]$ è euclideo, quindi un PID, quindi un UFD.
+	\end{enumerate}
+\end{esempio}
+\begin{osservazione}[Cosa ho appena letto?]
+	\
+	\begin{enumerate}
+		\item in un dominio di integrità un primo è irriducibile, ma non sempre si ha il viceversa
+		\item i domini principalmente noetheriani hanno la fattorizzazione in elementi irriducibili; se gli irriducibili sono primi allora la fattorizzazione è anche unica
+		\item in un PID un elemento è primo se e solo se è irriducibile, inoltre un PID è principalmente noetheriano 
+		\begin{itemize}
+			\item in generale se gli ideali sono finitamente generati ogni catena ascendente è stazionaria
+			\item un PID è un UFD
+		\end{itemize}
+	\item un dominio Euclideo è un PID, che a sua volta è un UFD
+	\end{enumerate}
+\end{osservazione}
 
 
 
 
-\section{Aritmetica modulare: anelli di classi di resto}
+%\section{Aritmetica modulare: anelli di classi di resto}
 
 
 
 
-\section{Residui quadratici}
+%\section{Residui quadratici}
