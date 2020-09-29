@@ -375,10 +375,8 @@ Da adesso in poi useremo per comodità la notazione $(n,m)$ per indicare il mass
 	\begin{equation*}
 	f:\mathbb{N}\longrightarrow\mathbb{C}
 	\end{equation*}
-	\textit{In molti dei casi più importanti $f(n))$ è un intero che descrive una proprietà di $n$ nella teoria dei numeri.}} \\ \\
-	%todo: riferimento bibliografico, elementary number theory di G Jones, M Jones; capitolo 8 pagina 143
-	\enquote{\textit{Funzioni $f(n)$ sugli interi positivi definite in modo da esprimere una proprietà aritmetica di $n$ sono dette \textbf{funzioni aritmetiche}. }}
-	%todo: bib, Handy e Wright, introduction to the theory of numbers, capitolo 16 pagina 233 edizione 4
+	\textit{In molti dei casi più importanti $f(n))$ è un intero che descrive una proprietà di $n$ nella teoria dei numeri.}} (\cite[capitolo 8, pagina 143]{J12}) \\ \\
+	\enquote{\textit{Funzioni $f(n)$ sugli interi positivi definite in modo da esprimere una proprietà aritmetica di $n$ sono dette \textbf{funzioni aritmetiche}.}}(\cite[capitolo 16, pagina 133; quarta edizione]{H08})%todo: mette un + a caso nel tag biblio [Har+08]
 \end{definizione}
 Non sempre è facile definire le funzioni aritmetiche, difatti come abbiamo visto possono essere date definizioni molto diverse ma nello stesso spirito. \\ Per noi una funzione sarà tale solo se avrà valori in $\mathbb{C}$, ma sottintenderemo la sua capacità del rappresentare una proprietà di $n$ (non ci interessa che le funzioni senza tali proprietà siano aritmetiche o meno). 
 \begin{definizione}[Funzione aritmetica]
@@ -525,7 +523,6 @@ La proprietà descritta è palese; vediamo qualche esempio.
 d(n)=\sum_{d\mid n}1
 \end{equation*}
 Notiamo che $\sigma_0(n)=d(n)$ e $\sigma_1(n)=\sigma(n)$, la funzione somma dei divisori di $n$. \\ Abbastanza evidentemente $d(n)$ restituisce il numero di divisori di $n$. Invece $\sigma_k(n)$ è la somma delle $k$-esime potenze dei divisori di $n$.
-%todo: cosa sarebbe sigma?
 \begin{teorema}
 	Le due funzioni sono moltiplicative.
 \end{teorema}
@@ -591,7 +588,6 @@ Iniziamo a generalizzare quanto visto nella sezione precedente, da adesso non ci
 		ab \in (p) \implies a \in (p) \ \text{oppure} \ b \in (p)
 		\end{equation*}
 		Se l'ideale è primo prendiamo $ab \in (p)$, questo vuol dire che $ab=kp$; inoltre per ipotesi se $ab\in(p)$ questo vuol dire che $a\in(p)$ oppure $b\in(p)$.
-		%todo: aut oppure vel?
 		Ma vediamo che queste due ipotesi sono $a=k_ap$ e $b=k_bp$, che sono esattamente quanto volevo dimostrare. \\ L'implicazione opposta è banalmente la stessa dimostrazione ma ripercorsa al contrario.
 	\end{enumerate}
 	Si noti infine che quanto definiamo \textit{unità} non è l'unità intesa quando si definisce un \textit{anello commutativo con unità 1}; i primi sono gli invertibili rispetto al prodotto, la seconda è la classica \textit{identità moltiplicativa} - che indicheremo in notazione con 1. Chiaramente l'identità moltiplicativa è per sua definizione una unità, ma per l'identità moltiplicativa abbiamo delle buone proprietà, ad esempio l'unicità (è facile dimostrarlo), che come si è visto non vale per le unità.
@@ -786,6 +782,206 @@ Questa condizione però non è \enquote{soddisfacente}, infatti la principale no
 
 
 
+\subsection{L'anello degli interi di Gauss}
+\label{lezione5}
+Possiamo sfruttare la teoria appena costruita per studiare una classe molto interessante di anelli. \\
+Consideriamo l'insieme
+\begin{equation*}
+\mathbb{Z}[\sqrt{-k}]\coloneqq \left\{a+b\sqrt{-k} \, \mid \, a,b\in\mathbb{Z}\right\}
+\end{equation*}
+per $k$ un naturale positivo. Spesso lo indicheremo come $\mathbb{Z}[\omega]$, $\omega = \sqrt{-k}=i\sqrt{k}$. \\ Si tratta di un sottoanello di $\mathbb{C}$, quindi di un dominio di integrità.
+\begin{definizione}[Interi di Gauss] 
+	Per $\omega=\sqrt{-1}=i$ otteniamo \textbf{l'anello degli interi di Gauss} $\mathbb{Z}[i]$. I suoi elementi hanno forma $z=a+ib$ con $a,b\in\mathbb{Z}$.\footnote{si possono immaginare gli interi di Gauss come il \enquote{reticolo intero} del piano complesso.}
+\end{definizione}
+\begin{osservazione}[Le unità negli interi di Gauss] 
+	Quali sono le unità in $\mathbb{Z}[i]$? Studiamone la struttura, stiamo cercando gli invertibili rispetto al prodotto.
+	Dato $z=a+ib\in\mathbb{C}$, si verifica facilmente che il suo inverso moltiplicativo è $w=c+di\in\mathbb{C}$ con
+		\begin{equation*}
+			c=\frac{a}{a^2+b^2} \ \ \ \ \ d = \frac{-b}{a^2+b^2}
+		\end{equation*}
+		quindi perché l'inverso di $z\in\mathbb{Z}[i]$ appartenga di nuovo a $\mathbb{Z}[i]$ è necessario che $c$ e $d$ siano interi (ovvero che $a$ e $b$ siano multipli di $a^2+b^2$):
+		\begin{equation*}
+			a=c(a^2+b^2) \ \ \ \ \ b=(-d)(a^2+b^2)
+		\end{equation*}
+		Ma svolgendo i calcoli
+		\begin{align*}
+			a^2+b^2
+			&=c^2(a^2+b^2)^2+(-d)^2(a^2+b^2)^2 \\ 
+			&=(c^2+d^2)(a^2+b^2)^2
+		\end{align*}
+		Siccome siamo in un dominio di integrità ($\mathbb{C}$) e tutti gli elementi sono di $\mathbb{Z}$ posso scrivere
+		\begin{equation*}
+			(b^2+d^2)(a^2+b^2)=1 \implies a^2+b^2=1
+		\end{equation*}
+		e quindi ho quattro casi per $a$ e $b$, poi determino $c$ e $d$ dalla formula.
+		\begin{itemize}
+			\item $a=1$, $b=0$, $c=1$, $d=0$
+			\item $a=-1$, $b=0$, $c=-1$, $d=0$
+			\item $a=0$, $b=1$, $c=0$, $d=1$
+			\item $a=0$, $b=-1$, $c=1$, $d=-1$
+		\end{itemize}
+	Abbiamo quindi visto che:
+		\begin{enumerate}
+		\item Le unità sono $\pm i$ e $\pm 1$.
+		\item Essendo sottoanello di un dominio di integrità (ovvio), $\mathbb{Z}[i]$ è banalmente un dominio di integrità.
+	\end{enumerate}
+	Posso ottenere in modo più algebrico lo stesso risultato?
+\end{osservazione}
+\begin{definizione}
+	Sia $z=a+b\omega\in\mathbb{Z}[\omega]$, $\omega=\sqrt{-k}$ per un $k$ intero positivo; definisco la \textbf{norma di $z$} come 
+	\begin{equation*}
+	N(z)=z\cdot\overline{z}=a^2+kb^2
+	\end{equation*}
+\end{definizione}
+\begin{osservazione}
+	Notiamo che la norma così definita non è una funzione aritmetica; è comunque moltiplicativa.
+\end{osservazione}
+\begin{proposizione}[Caratterizzazione della norma]\
+	\begin{enumerate}
+		\item $N(z)=0$ se e solo se $z=0$
+		\item $N(z\cdot w)=N(z)\cdot N(w)$ per ogni $z,w\in\mathbb{Z}[\omega]$
+		\item $z\in\mathbb{Z}[\omega]$ è una unità se e solo se $N(z)=1$
+	\end{enumerate}
+\end{proposizione}
+\begin{proof}\
+	\begin{itemize}
+		\item Se $z=0$ ha chiaramente norma nulla, vediamo l'implicazione inversa. Se $a^2+kb^2=0$ per $k$ positivo, $a$ e $b$ devono essere necessariamente nulli.
+		\item Si dimostra con calcoli brutali sviluppando $zw$ e $z,w$. Oppure sperando di convincersi abbastanza per non fare i calcoli.
+		\item Se $z$ ha norma 1, $z\cdot\overline{z}=1$ e quindi è ovviamente invertibile con inverso il suo coniugato.\\
+		Se invece è una delle unità, questo vuol dire che esiste un $x$ con $xz=1$. 
+		\begin{align*}
+		N(zx)&=N(1)=1\\
+		&=N(z)N(x)
+		\end{align*}
+		ed allora $N(z)=1$.
+	\end{itemize}
+\end{proof}
+\begin{osservazione}
+	Sia $z=a+b\omega\in\mathbb{Z}[\omega]$ di norma unitaria, questo vuol dire che:
+	\begin{itemize}
+		\item[$(k>1)$] $b=0$ ed $a=\pm1$
+		\item[$(k=1)$] caso degli interi di Gauss
+	\end{itemize}
+\end{osservazione}
+\begin{teorema}
+	Ogni $z\in\mathbb{Z}[\omega]$ non nullo si fattorizza in elementi irriducibili.
+\end{teorema}
+\begin{proof}
+	Siano
+	\begin{equation*}
+		S=\left\{z\neq0, z \in \mathbb{Z}[\omega] \ \text{che non si fattorizzano in irriducibili}\right\}
+	\end{equation*}
+	\begin{equation*}
+		X=\left\{N(z) \, \mid \, z \in S\right\}\subset\mathbb{N}\setminus\left\{0\right\}
+	\end{equation*}
+	Suppongo $X$ non vuoto, allora ammette un elemento minimo; sia $w$ l'elemento di $S$ per cui $X$ ha tale minimo, in simboli $N(w)=\min X$. \\ Essendo non irriducibile posso scrivere $z=xy$ con né $x$ né $y$ unità.
+	\begin{equation*}
+	N(z)=N(x)N(y) \ \text{con} \ N(x),N(y)>1 
+	\end{equation*}
+	Per scelta di $z$ si vede che $x$ ed $y$ non appartengono ad $S$, ma allora si fattorizzano in prodotto di elementi irriducibili, e di conseguenza anche $z$. \\ Allora l'insieme $S$ è vuoto.
+\end{proof}
+\begin{proposizione}
+	Se $k\geq3$ la fattorizzazione in irriducibili esiste (per teorema visto), ma non è unica.
+\end{proposizione}
+\begin{proof}
+	Basta trovare un elemento irriducibile che non sia primo; infatti in un UFD un elemento è irriducibile se e solo se è un primo. \\
+	Iniziamo osservando che 2 è irriducibile. Sia $xy=2$, allora $N(x)N(y)=4$: 
+	\begin{itemize}
+		\item se $N(x)=1$, allora $x$ è una unità
+		\item se $N(x)=2$ allora $N(y)=2$, ma 
+		\begin{equation*}
+		2=N(x)=N(a+b\omega)=a^2+kb^2
+		\end{equation*}
+		non ha soluzioni intere per $k\geq 3$.
+	\end{itemize}
+	Dividiamo il resto della dimostrazione in due casi:
+	\begin{itemize}
+		\item[($k$ pari)] $k=2c=(i\sqrt{k})(-i\sqrt{k})$\\ 2 divide $k=2c$ ma nessuno dei due fattori; si può vedere scrivendo la definizione di divisore. 2 è irriducibile e non primo.
+		\item[($k$ dispari)] $k+1=2c=(1+i\sqrt{k})(1-i\sqrt{k})$\\ Analogamente 2 divide $k+1$ ma non i suoi due fattori
+	\end{itemize}
+\end{proof}
+\begin{proposizione}
+	Se $k=1,2$ allora $\mathbb{Z}[\omega]$ è euclideo (quindi un UFD).
+\end{proposizione}
+\begin{proof}
+	La norma svolge il ruolo della funzione $f$ nella definizione di dominio euclideo.\\ Siano $z,w\in\mathbb{Z}[\omega]$, voglio mostrare che posso fare la divisione intera.
+	Se provassimo a calcolare $z/w$ nel piano complesso otterremmo 
+	\begin{equation*}
+	\frac{z}{w}=x+y\omega \ \ \ \ x,y\in\mathbb{R}
+	\end{equation*}
+	ma questo può non appartenere a $\mathbb{Z}[\omega]$. \\ Prendo $v=a+b\omega$ elemento più vicino alla frazione, visto come punto nel piano di Gauss. Allora posso stimare che 
+	\begin{equation*}
+	|x-a|\leq\frac{1}{2} \ \ \ \ \ \ |y-b|\leq\frac{1}{2}
+	\end{equation*}
+	\begin{equation*}
+	\operatorname{d\left(\frac{z}{w},v\right)}=\sqrt{(x-a)^2+(y-b)^2k}\leq\frac{\sqrt{1+k}}{2}<1
+	\end{equation*}
+	dove ho usato il fatto che $k<3$. \\ Pongo $t=(x-a)+(y-b)\omega$, questo elemento ha norma minore di 1 per quanto appena osservato. Posso prendere $q=v$ ed $r=z-wq$, posso mostrare che ho appena costruito la divisione con resto. Infatti
+	\begin{align*}
+	N(r)&=N(z-wq)=N\left(w(t+q)-qw\right)\\
+	&=N(tw)=N(t)N(w)<N(w)
+	\end{align*}
+\end{proof}
+\subsection{Alcuni esercizi}
+%todo: più esercizi
+\begin{esercizio}[Studio di un anello]
+Lavoriamo in $\mathbb{Z}[\sqrt{-5}]$. \\ Vogliamo verificare che 3 e $4+\omega$ ($\omega=\sqrt{-5}$) sono irriducibili, primi tra loro e \textit{non vale l'identità di Bezout}. \\ \\
+\begin{itemize}
+	\item $N(3)=9$; sia $3=xy$, allora $N(x)N(y)=9$. Ponendo $x=a+b\omega$
+	\begin{equation*}
+	3=N(x)=a^2+5b^2
+	\end{equation*}
+	che non ha soluzioni intere.
+	\item $N(4+\omega)=21$; sia $4+\omega=xy$, allora $N(x)N(y)=21=(3)(7)$. Se lavoriamo come prima otteniamo $N(x)=3$ ed $N(x)=7$ non danno soluzioni intere.
+	\item Hanno divisori comuni? Notiamo che le unità nel nostro dominio sono $\pm1$.
+	\begin{equation*}
+	3=(1)(3)=(-1)(-3)
+	\end{equation*}
+	\begin{equation*}
+	4+\omega=(1)(4+\omega)=(-1)(-4-\omega)
+	\end{equation*}
+	Evidentemente i due non si dividono a vicenda, infatti se (ad esempio) 3 dividesse $4+\omega$ potrei scrivere
+	\begin{equation*}
+	(4+\omega)=3(a+b\omega) \ \ \ \text{per certi $a,b\in\mathbb{Z}$}
+	\end{equation*}
+	che sicuramente non vale. Se invece $4+\omega$ dividesse 3 potrei scrivere
+	\begin{equation*}
+	(4+\omega)(a+b\omega)=3 \ \ \ \text{per certi $a,b\in\mathbb{Z}$}
+	\end{equation*}
+	e svolgendo si trova un sistema senza soluzioni intere.
+	\item Vale l'identità di Bezout? Ovvero, esistono $x=x_1+x_2\omega$ ed $y=y_1+y_2\omega$ tali che $x_i,y_i\in\mathbb{Z}$ e $3x+()y=1$?\\ Se esistessero tali $x$ ed $y$ avrei
+	\begin{equation*}
+	\begin{cases}
+	3x_1+4y_1-5y_2=1\\
+	3x_2+y_1+4y_2=0
+	\end{cases}
+	\end{equation*}
+	da cui $3(x_1-4x_2-7y_2)=1$, che non ha soluzioni intere.
+\end{itemize}
+%todo: quando non vale Bezout? A volte posso fare la divisione euclidea e non avere Bezout?
+\end{esercizio}
+\begin{esercizio}[Non unicità di fattorizzazione]
+	Studiamo la fattorizzazione in $\mathbb{Z}[\sqrt{-5}]$ di $z=6$; sappiamo che qui la fattorizzazione non è unica, possiamo ottenerne due di $z$?
+	\begin{align*}
+	6&=(3)(2)\\
+	&=(1+\omega)(1-\omega)
+	\end{align*}
+	e posso vedere che sono tutti irriducibili. \\ Possiamo sfruttare il fatto che $(a-\omega)(a+\omega)=a^2+5$ per ogni $a$ intero, posso ottenere molte fattorizzazioni non uniche sfruttando questo trucco.
+	\begin{align*}
+	\text{per $a=2$} \ \ \ \ \ \ \ \ \ \ &9=(2+\omega)(2-\omega)=(3)(3)\\
+	\text{per $a=3$} \ \ \ \ \ \ \ \ \ \ &14=(3+\omega)(3-\omega)=(2)(7)\\
+	\text{per $a=4$} \ \ \ \ \ \ \ \ \ \ &21=(4+\omega)(4-\omega)=(3)(7)
+	\end{align*}
+\end{esercizio}
+\begin{esercizio}[Irriducibile non primo]
+	Possiamo verificare che 2 è irriducibile e non primo in $\mathbb{Z}[\sqrt{-5}]$. 
+	\begin{itemize}
+		\item[(irriducibile)] $N(2)=4$, come abbiamo visto più volte se $2=xy$ allora i fattori possono avere norma unitaria (ed allora sono una unità) oppure norma due (ma questo nel nostro anello non è possibile)
+		\item[(non primo)] 2 divide $6=(1-\omega)(1+\omega)$ ma non i due fattori
+	\end{itemize}
+Osserviamo che l'ideale generato da 2 non è primo in $\mathbb{Z}[\sqrt{-5}]$ (in $\mathbb{Z}$ sì), in particolare $\mathbb{Z}[\sqrt{-5}]/(2)$ non è un dominio di integrità.
+%todo: aggiungere spiegazione del fatto, forse anche come osservazione o esercizio
+\end{esercizio}
 %\section{Aritmetica modulare: anelli di classi di resto}
 
 
