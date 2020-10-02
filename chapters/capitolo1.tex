@@ -331,7 +331,7 @@ Se la risposta è \textit{nessuna}, siamo ancora in tempo per rimediare.
 	\end{equation*}
 	che è un valore infinito, perché per teorema fondamentale dell'aritmetica deve darmi la sommatoria $\sum_{n=1}^{+\infty}\frac{1}{n}$. Si noti che sto ancora usando l'ipotesi di finitezza dei primi, ed ho ottenuto la serie armonica (divergente).
 \end{proof}
-\begin{proof}[Dimostrazione di Metrod] 
+\begin{proof}[Dimostrazione di Métrod] 
 	Supponiamo che i numeri primi siano finiti, allora possiamo prenderli come $p_1, \ \dots, \ p_n$. Consideriamo
 	\begin{equation*}
 	N = p_1 \cdot \ \dots \ \cdot p_n, \ \ \ Q_i = \frac{N}{p_i} \ \ i=1,\dots,n
@@ -341,6 +341,7 @@ Se la risposta è \textit{nessuna}, siamo ancora in tempo per rimediare.
 \begin{proof}[Dimostrazione di Cerruti] 
 	Consideriamo la \textit{funzione di Legendre}: 
 	%todo: funzione di legendre? wtf? introdurre le nuove funzioni?
+	% IDEA: Fare un formulario alla fine del libro con cose interessanti di particolari funzioni aritmetiche (?)
 	\begin{equation*}
 	\phi(x,y)=\left|\left\{n\in \mathbb{N} \, \middle| \, \text{$1\leq n \leq x$, $n$ non ha fattori primi $p\leq y$}  \right\}\right|
 	\end{equation*}
@@ -416,7 +417,7 @@ n &\longmapsto |\mathbb{Z}_n^*|
 \end{align*}
 La proprietà di teoria dei numeri che la funzione di Eulero descrive è (abbastanza ovviamente) la cardinalità dell'insieme
 \begin{equation*}
-\left\{m\in\mathbb{N} \ | \ 1\leq m \leq n, \ (m,n)=1\right\}
+\left\{m\in\mathbb{N} \ \middle| \ 1\leq m \leq n, \ (m,n)=1\right\}
 \end{equation*}
 \paragraph{Funzione di M\"obius}
 \begin{align*}
@@ -559,17 +560,17 @@ Iniziamo a generalizzare quanto visto nella sezione precedente, da adesso non ci
 		\begin{equation*}
 		\forall a,b \ \text{con} \ q=ab, \ \text{$a$ oppure $b$ sono un'unità}
 		\end{equation*}
-		\item Un $p \in A$ si dice \textbf{primo} se $p|ab \implies $ $p|a$ oppure $p|b$. \footnote{nella definizione compare un \textit{vel}, un \textit{aut inclusivo}; possono essere vere entrambe. Si pensi a $p|p\cdot p$.}
+		\item Un $p \in A$ si dice \textbf{primo} se $p\mid ab \implies $ $p\mid a$ oppure $p\mid b$. \footnote{nella definizione compare un \textit{vel}, un \textit{aut inclusivo}; possono essere vere entrambe. Si pensi a $p\mid p\cdot p$.}
 	\end{enumerate}
 \end{definizione}
 \begin{osservazione} 
 	Facciamo alcune brevi osservazioni sulle definizioni appena date. Ricordiamo che per $k \in A$ anello commutativo possiamo scrivere in notazione compatta 
 	\begin{equation*}
-	(k) \coloneqq \left\{ak \ | \ a \in A\right\}
+	(k) \coloneqq \left\{ak \ \middle| \ a \in A\right\}
 	\end{equation*}
 	\begin{enumerate}
 		\item \textbf{$a$ divide $ b \ \iff \ (b) \subset (a)$}\\
-		Se $a|b$ questo vuol dire che $b=ac$ per un certo $c \in A$. Allora sia dato un $x \in (b)$, ha forma $x=kb$, ma per ipotesi $x=k(ac)=(kc)a$ quindi $x$ appartiene anche all'ideale generato da $a$. Si noti come abbiamo usato le ipotesi di $A$ anello commutativo.\\
+		Se $a\mid b$ questo vuol dire che $b=ac$ per un certo $c \in A$. Allora sia dato un $x \in (b)$, ha forma $x=kb$, ma per ipotesi $x=k(ac)=(kc)a$ quindi $x$ appartiene anche all'ideale generato da $a$. Si noti come abbiamo usato le ipotesi di $A$ anello commutativo.\\
 		Implicazione inversa: per ipotesi $b \in (a)$, quindi $b=kc$ per un certo $k \in A$.
 		\item \textbf{$a,b$ associati $\iff \ (a)=(b)$}\\
 		Sia $u$ unità. Se sono associati allora $a=1b$, prendo $x \in (a)$; $x=ka$ per un certo $k$, ma per ipotesi $x=k(ub)=b(uk)$ ed $x \in (b)$. Manca da dimostrare $(b) \subset (a)$, ma posso procedere allo stesso modo ricordando che $u$ è invertibile, quindi 
@@ -601,7 +602,7 @@ Iniziamo a generalizzare quanto visto nella sezione precedente, da adesso non ci
 \begin{osservazione} 
 	\label{notinD}
 	In un dominio $A$ qualunque un elemento primo è irriducibile. Basta replicare la dimostrazione che abbiamo visto in precedenza.\\
-	Se $p$ è primo e $p=ab$, allora $p|a$ oppure $p|b$. Supponiamo per esempio che valga la prima, allora 
+	Se $p$ è primo e $p=ab$, allora $p\mid a$ oppure $p\mid b$. Supponiamo per esempio che valga la prima, allora 
 	\begin{equation*}
 	p=ab=(pk)b \implies kb=1 
 	\end{equation*}
@@ -650,7 +651,7 @@ Iniziamo a generalizzare quanto visto nella sezione precedente, da adesso non ci
 	\begin{itemize}
 		\item se $x$ non è irriducibile allora $x=a_1d_1$ con $a_1 \neq 0$ ed $a_1,d_1$ non unità:
 		\begin{equation*}
-		a_1|x|a \implies (a)\subset(x)\subset(a_1)
+		a_1\mid x \mid a \implies (a)\subset(x)\subset(a_1)
 		\end{equation*}
 		(se invece è irriducibile mi fermo, avrei già una catena stazionaria)
 		\item se $a_1$ non è irriducibile allora $x=a_2d_2$ con $a_2 \neq 0$ ed $a_2,d_2$ non unità:
@@ -688,23 +689,23 @@ Iniziamo a generalizzare quanto visto nella sezione precedente, da adesso non ci
 		\begin{equation*}
 		a=p_1 \dots p_r = q_1 \dots q_s \ \ (r<s)
 		\end{equation*}
-		allora $p_1|q_1 \dots q_s$, che a sua volta implica $p_1|q_1$. Essendo irriducibili sono associati, quindi $p_1=u_1 q_1$ con $u_1$ unità. Procedendo in questo modo per $r$ volte ottengo
+		allora $p_1\mid q_1 \dots q_s$, che a sua volta implica $p_1\mid q_1$. Essendo irriducibili sono associati, quindi $p_1=u_1 q_1$ con $u_1$ unità. Procedendo in questo modo per $r$ volte ottengo
 		\begin{equation*}
 		1=\xi_1\dots\xi_r q_{r+1}\dots r_s
 		\end{equation*}
 		e quindi $r=s$. Infatti se non lo fosse tutti i primi a destra sarebbero invertibili. La fattorizzazione è unica a meno di associati.
-		\item[$3 \implies 1$] Dimostriamo prima di tutto che ogni irriducibile è primo. \\ Sia $q|ab$, ovvero $ab=qd=\alpha$.
+		\item[$3 \implies 1$] Dimostriamo prima di tutto che ogni irriducibile è primo. \\ Sia $q\mid ab$, ovvero $ab=qd=\alpha$.
 		\begin{equation*}
 		d=m_1\dots m_t, \ \ a=p_1\dots p_r, \ \ b=q_1\dots \ q_s
 		\end{equation*}
 		\begin{equation*}
 		\alpha = q (m_1\dots m_t)=(p_1\dots p_r)(q_1\dots \ q_s)
 		\end{equation*}
-		Per unicità della fattorizzazione $q|p_i$ oppure $q|q_j$, cioè $q|a$ oppure $q|b$. \\ \\
+		Per unicità della fattorizzazione $q\mid p_i$ oppure $q\mid q_j$, cioè $q\mid a$ oppure $q\mid b$. \\ \\
 		Dimostriamo che $A$ è principalmente noetheriano. \\ Prendo una catena $(a_1)\subset(a_2)\subset\dots$, utilizzo le fattorizzazioni.
 		\begin{itemize}
 			\item $a_1=q_1\dots q_r$
-			\item siccome $a_2|a_1$ ogni primo della fattorizzazione di $a_2$ compare in quella di $a_1$, inoltre $a_1 \neq a_2$, quindi $a_2$ ha meno fattori
+			\item siccome $a_2 \mid a_1$ ogni primo della fattorizzazione di $a_2$ compare in quella di $a_1$, inoltre $a_1 \neq a_2$, quindi $a_2$ ha meno fattori
 			\item procedo iterativamente, arrivo ad un $a_n$ irriducibile con 
 			\begin{equation*}
 			(a_n)=(a_{n+1})=\dots
@@ -724,13 +725,13 @@ Questa condizione però non è \enquote{soddisfacente}, infatti la principale no
 \end{teorema}
 \begin{proof}\
 	\begin{itemize}
-		\item[$1 \implies 2$] Sia $p=ab$, voglio dimostrare che uno dei due è l'unità. Poiché $p$ è primo, $p|a$ oppure $p|b$. Scegliamo la prima senza perdita di generalità, allora 
+		\item[$1 \implies 2$] Sia $p=ab$, voglio dimostrare che uno dei due è l'unità. Poiché $p$ è primo, $p\mid a$ oppure $p\mid b$. Scegliamo la prima senza perdita di generalità, allora 
 		\begin{equation*}
 		a=pc \implies p=(pc)b\implies cb=1 \implies b \text{ unità}
 		\end{equation*}
-		\item[$2 \implies 3$] sia $(p)\subset I$ con $I$ ideale di $A$, poiché $A$ è un PID allora $I=(k)$ per un certo $k$. Ma come abbiamo visto questo implica che $k|p$.
+		\item[$2 \implies 3$] sia $(p)\subset I$ con $I$ ideale di $A$, poiché $A$ è un PID allora $I=(k)$ per un certo $k$. Ma come abbiamo visto questo implica che $k\mid p$.
 		\begin{equation*}
-		k|p \implies p=kc \implies k \text{ oppure } c \text{ unità}
+		k\mid p \implies p=kc \implies k \text{ oppure } c \text{ unità}
 		\end{equation*}
 		Se $k$ è unità allora $(k)=A$ perché conterrebbe 1.\footnote{se un ideale di $A$ contiene 1 è per sua stessa definizione un ideale improprio, cioè $A$; la verifica è banale.} \\ Se invece $c$ fosse unità potrei scrivere $k=c^{-1}p$ per ottenere $(k)=(p)$.
 		\item[$3 \implies 1$] Se $(p)$ è massimale allora è primo, ma abbiamo visto che questo implica $p$ primo.
@@ -740,7 +741,7 @@ Questa condizione però non è \enquote{soddisfacente}, infatti la principale no
 	Se $A$ è un PID, allora è un dominio a fattorizzazione unica (UFD).
 \end{teorema}
 \begin{proof}
-	Dimostriamo che in un PID ogni ideale è finitamente generato. \\ Consideriamo una catena di ideali $I_1\subset I_2 \subset \dots$, allora $I=\cup_{n=1}^{+\infty}I_n$ è un ideale. Normalmente sarebbe problematico approcciarsi ad un oggetto simile (ha senso scrivere una unione infinita? è ancora un ideale? come scrivo i suoi generatori?), ma sappiamo che $A$ è un dominio ad ideali principali! Allora  
+	Dimostriamo che in un PID ogni ideale è finitamente generato. \\ Consideriamo una catena di ideali $I_1\subset I_2 \subset \dots$, allora $I=\bigcup_{n=1}^{+\infty}I_n$ è un ideale. Normalmente sarebbe problematico approcciarsi ad un oggetto simile (ha senso scrivere una unione infinita? è ancora un ideale? come scrivo i suoi generatori?), ma sappiamo che $A$ è un dominio ad ideali principali! Allora  
 	\begin{equation*}
 	I = (a_1, \dots, a_m)
 	%todo: come fa ad essere principale se ha m elementi?
@@ -753,7 +754,7 @@ Questa condizione però non è \enquote{soddisfacente}, infatti la principale no
 \begin{proof}
 	Sia $I$ un ideale di $A$.
 	\begin{equation*}
-	X \coloneqq \left\{f(a) \ | \ a\in I, a \neq 0\right\}\subset \mathbb{N}
+	X \coloneqq \left\{f(a) \ \middle| \ a\in I, a \neq 0\right\}\subset \mathbb{N}
 	\end{equation*}
 	Chiaramente $X$ è non vuoto, ammette un minimo ed un massimo in $\mathbb{N}$. \\ Sia $n_0$ il minimo, sia $a_0 \in I$ tale che $f(a_0)=n_0$. Ora prendo un $b \in I$ con $b=a_0q+r$ e $r=b-a_0q\in I$; quindi $r=0$. Allora $b=aq$ ed $I=(a)$.
 	%todo: rivedi dimostrazione
@@ -849,10 +850,9 @@ per $k$ un naturale positivo. Spesso lo indicheremo come $\mathbb{Z}[\omega]$, $
 		\item Si dimostra con calcoli brutali sviluppando $zw$ e $z,w$. Oppure sperando di convincersi abbastanza per non fare i calcoli.
 		\item Se $z$ ha norma 1, $z\cdot\overline{z}=1$ e quindi è ovviamente invertibile con inverso il suo coniugato.\\
 		Se invece è una delle unità, questo vuol dire che esiste un $x$ con $xz=1$. 
-		\begin{align*}
-		N(zx)&=N(1)=1\\
-		&=N(z)N(x)
-		\end{align*}
+		\begin{equation*}
+			N(z)N(x) = N(zx)=N(1)=1
+		\end{equation*}
 		ed allora $N(z)=1$.
 	\end{itemize}
 \end{proof}
@@ -924,6 +924,16 @@ per $k$ un naturale positivo. Spesso lo indicheremo come $\mathbb{Z}[\omega]$, $
 \end{proof}
 \subsection{Alcuni esercizi}
 %todo: più esercizi
+% Alcuni esercizi: 
+% Dire per quali $k \in \mathbb{N}$ l'estensione
+% $\mathbb{Z}\left[\sqrt{k}\right]$ è un UFD, per quali è  
+% anche un PID, per quali invece è anche un anello euclideo.
+% Trovare casi di UFD non PID e casi PID non euclidei. 
+% Se non si ha voglia di faticare, basta andare sul manuale di
+% Algebra A+B di De Graaf (una lista completa dei PID non UFD
+% mi pare sia in uno dei pdf di materiale extra dato da
+% Murru).
+
 \begin{esercizio}[Studio di un anello]
 Lavoriamo in $\mathbb{Z}[\sqrt{-5}]$. \\ Vogliamo verificare che 3 e $4+\omega$ ($\omega=\sqrt{-5}$) sono irriducibili, primi tra loro e \textit{non vale l'identità di Bezout}. \\ \\
 \begin{itemize}
@@ -949,12 +959,12 @@ Lavoriamo in $\mathbb{Z}[\sqrt{-5}]$. \\ Vogliamo verificare che 3 e $4+\omega$ 
 	(4+\omega)(a+b\omega)=3 \ \ \ \text{per certi $a,b\in\mathbb{Z}$}
 	\end{equation*}
 	e svolgendo si trova un sistema senza soluzioni intere.
-	\item Vale l'identità di Bezout? Ovvero, esistono $x=x_1+x_2\omega$ ed $y=y_1+y_2\omega$ tali che $x_i,y_i\in\mathbb{Z}$ e $3x+()y=1$?\\ Se esistessero tali $x$ ed $y$ avrei
+	\item Vale l'identità di Bezout? Ovvero, esistono $x=x_1+x_2\omega$ ed $y=y_1+y_2\omega$ tali che $x_i,y_i\in\mathbb{Z}$ e $3x+(4+\omega)y=1$?\\ Se esistessero tali $x$ ed $y$ avrei
 	\begin{equation*}
-	\begin{cases}
-	3x_1+4y_1-5y_2=1\\
-	3x_2+y_1+4y_2=0
-	\end{cases}
+		\begin{cases}
+			3x_1+4y_1-5y_2=1\\
+			3x_2+y_1+4y_2=0
+		\end{cases}
 	\end{equation*}
 	da cui $3(x_1-4x_2-7y_2)=1$, che non ha soluzioni intere.
 \end{itemize}
@@ -962,16 +972,20 @@ Lavoriamo in $\mathbb{Z}[\sqrt{-5}]$. \\ Vogliamo verificare che 3 e $4+\omega$ 
 \end{esercizio}
 \begin{esercizio}[Non unicità di fattorizzazione]
 	Studiamo la fattorizzazione in $\mathbb{Z}[\sqrt{-5}]$ di $z=6$; sappiamo che qui la fattorizzazione non è unica, possiamo ottenerne due di $z$?
-	\begin{align*}
-	6&=(3)(2)\\
-	&=(1+\omega)(1-\omega)
-	\end{align*}
+	\begin{equation*}
+	6 =(3)(2) =(1+\omega)(1-\omega)
+	\end{equation*}
 	e posso vedere che sono tutti irriducibili. \\ Possiamo sfruttare il fatto che $(a-\omega)(a+\omega)=a^2+5$ per ogni $a$ intero, posso ottenere molte fattorizzazioni non uniche sfruttando questo trucco.
-	\begin{align*}
-	\text{per $a=2$} \ \ \ \ \ \ \ \ \ \ &9=(2+\omega)(2-\omega)=(3)(3)\\
-	\text{per $a=3$} \ \ \ \ \ \ \ \ \ \ &14=(3+\omega)(3-\omega)=(2)(7)\\
-	\text{per $a=4$} \ \ \ \ \ \ \ \ \ \ &21=(4+\omega)(4-\omega)=(3)(7)
-	\end{align*}
+	\begin{equation*}
+		\begin{array}{lllr}
+			\text{per $a=2$} & & &
+				9=(2+\omega)(2-\omega)=(3)(3)\\
+			\text{per $a=3$} & & &
+				14=(3+\omega)(3-\omega)=(2)(7)\\
+			\text{per $a=4$} & & &
+				21=(4+\omega)(4-\omega)=(3)(7)		
+		\end{array}
+	\end{equation*}
 \end{esercizio}
 \begin{esercizio}[Irriducibile non primo]
 	Possiamo verificare che 2 è irriducibile e non primo in $\mathbb{Z}[\sqrt{-5}]$. 
@@ -1033,7 +1047,7 @@ L'aritmetica modulare lavora negli anelli delle classi di resto
 		&=g^{[b]}=\phi([b])
 		\end{align*}
 		\item[(omomorfismo)] Banalmente vero.
-		\item[(iniettiva)] Ovvio per come è definita la funzione.
+		\item[(iniettiva)] Vediamo che $\ker \phi = \left\{1\right\}$: se $x \in \ker \phi$ allora $\phi(x) = 1$. Per definizione di ordine $g^x = 1$ allora $n \mid x$; da cui dev'essere che $x \equiv n \equiv 0 \mod n$, ovvero $x \equiv 0 \in \mathbb{Z}_n$. 
 		\item[(suriettiva)] Per un fatto noto di algebra una funzione iniettiva tra insiemi finiti della stessa dimensione è anche suriettiva, ed i nostri insiemi sono ciclici.
 	\end{itemize}
 	Avendo trovato un isomorfismo abbiamo ottenuto la tesi.
@@ -1069,19 +1083,18 @@ L'aritmetica modulare lavora negli anelli delle classi di resto
 \end{proposizione}
 \begin{proof}
 	Definiamo le funzioni
-	\begin{align*}
-	\phi:\mathbb{Z}_n&\longrightarrow\mathbb{Z}_a\times \mathbb{Z}_b\\
-	[x]_n&\longmapsto\left([x]_a,[x]_b\right)
-	\end{align*}
-	%todo: trovare voglia di mettere in tabular queste due perché stiano sulla stessa riga
-	\begin{align*}
-	\phi_a:\mathbb{Z}_n&\longrightarrow\mathbb{Z}_a\\
-	[x]_n&\longmapsto[x]_a
-	\end{align*}
-	\begin{align*}
-	\phi_b:\mathbb{Z}_n&\longrightarrow\mathbb{Z}_b\\
-	[x]_n&\longmapsto[x]_b
-	\end{align*}
+	\begin{equation*}
+		\begin{array}{rll}
+			\phi \; \colon & \mathbb{Z}_n & \longrightarrow\mathbb{Z}_a \times \mathbb{Z}_b\\
+			& [x]_n & \longmapsto\left([x]_a,[x]_b\right) \\
+			 & & \\
+			\phi_a \; \colon & \mathbb{Z}_n & \longrightarrow \mathbb{Z}_a \\
+			& [x]_n & \longmapsto[x]_a\\
+			 & & \\
+			\phi_b \; \colon & \mathbb{Z}_n & \longrightarrow\mathbb{Z}_b \\
+			& [x]_n & \longmapsto[x]_b
+		\end{array}
+	\end{equation*}
 	Osserviamo subito che $\phi([x]_n)=\left(\phi_a([x]_n),\phi_b([x]_n)\right)$:
 	\begin{equation*}
 	%https://tikzcd.yichuanshen.de/#N4Igdg9gJgpgziAXAbVABwnAlgFyxMJZABgBoBGAXVJADcBDAGwFcYkQAdDgW3pwAsARoOAAtAL4B9QuNLpMufIRTlSxanSat2XXgOFip9ELPnY8BIqoBMGhizaJOPPkJETJgk3JAZzSomsKOy1HZz03Q0l6LjxueF1XAw8vcQ0YKABzeCJQADMAJwhuJDIQHAgkVRBGekEYRgAFBQtlECwwbFgQGnttJy40fixo73yiksQyiqQgmrqG5v9LJw6utl7QnQ4hkdSfQuLSmhnEAGYaWvqmloDVzqxuzYdt3bGQQ8nq04vy+ixGOx+BAIABrd6fWYnSrnE7-QFOYFgkyUcRAA
@@ -1145,8 +1158,8 @@ L'aritmetica modulare lavora negli anelli delle classi di resto
 		Vediamo un fatto generale per la nostra situazione, $[x]_n$ è invertibile se e solo se lo sono $\left([x]_a\right)$ ed $\left([x]_b\right)$. Infatti se è invertibile si ha $[z]_n=[x]^{-1}_n$, quindi
 		\begin{align*}
 		\left([z]_a[x]_a,[z]_b[x]_b\right)&=\left([z]_a,[z]_b\right)\left([x]_a,[x]_b\right)\\
-		&=\phi([z]_n)\phi([x]_n)=\phi([1]_n)\\
-		&=\left([1]_a,[1]_b\right)
+		&=\phi([z]_n)\phi([x]_n)\\
+		&=\phi([1]_n)=\left([1]_a,[1]_b\right)
 		\end{align*}
 		Se invece sono invertibili $\left([x]_a\right)$ ed $\left([x]_b\right)$ esistono $[z]_a$ e $[z]_b$ loro inversi, quindi basta sfruttare il fatto che le funzioni $\phi_a$ e $\phi_b$ siano omomorfismi. \\ Otteniamo subito che la funzione è iniettiva.
 		\item[(suriettiva)] Come le altre volte.
@@ -1209,11 +1222,11 @@ L'aritmetica modulare lavora negli anelli delle classi di resto
 \begin{teorema}[Teorema di Eulero]
 	Per ogni $a\in\mathbb{Z}_n^*$ vale la seguente formula.
 	\begin{equation*}
-	a^{\phi(n)}\equiv1\mod(n)
+	a^{\phi(n)}\equiv 1 \mod(n)
 	\end{equation*}
 \end{teorema}
 \begin{proof}
-	La tesi è immediata per teorema di Lagrange. %todo:espandi
+	Ricordiamo che $|\mathbb{Z}^*_n| = \phi(n)$, da cui poiché $\langle a\rangle \le \mathbb{Z}^*_n$ dev'essere che l'ordine di $|\langle a\rangle| = o(a) \mid |\mathbb{Z}^*_n|$ dal teorema di Lagrange. Si conclude per definizione di ordine: $1^k = a^{o(a)k} = a^{\phi(n)}$ ovvero la tesi. 
 \end{proof}
 
 
@@ -1250,18 +1263,18 @@ a_kx&\equiv b_k\mod(n_k)
 \end{equation*}
 Allora ogni equazione deve innanzi tutto essere risolvibile secondo il criterio appena studiato, 
 \begin{equation*}
-\MCD(a_i,n_i)\mid b_i \ \ \forall i
+\MCD(a_i,n_i)\mid b_i \ \ \forall i \in \left\{1, \dots, k\right\}
 \end{equation*}
 ma stavolta non è sufficiente a garantire l'esistenza di una soluzione.
 \begin{controesempio}
-	Le condizioni non sono sufficienti. 
+	Le condizioni non sono sufficienti a garantire l'esistenza di una soluzione. Si consideri il seguente sistema lineare 
 	\begin{equation*}
 	\begin{cases}
-	x\equiv 2\mod(4)\\
-	x\equiv 1\mod(2)
+		x\equiv 2\mod(4)\\
+		x\equiv 1\mod(2)
 	\end{cases}
 	\end{equation*}
-	%todo: scrivi meglio controesempio
+	La prima ci dice che $x = 4k + 2$ e quindi è pari; la seconda invece che $x = 2k + 1$ ovvero dispari. Un numero intero non può essere sia pari che dispari da cui la contraddizione.
 \end{controesempio}
 \begin{osservazione}
 	Consideriamo ad esempio il sistema di due equazioni
@@ -1288,8 +1301,8 @@ ma stavolta non è sufficiente a garantire l'esistenza di una soluzione.
 	\begin{equation*}
 	c_1-c_2=hn_2'-kn_1'
 	\end{equation*}
-	che per Bezout ha soluzione se e solo se $\MCD(n_1',n_2')|c_1-c_2$.
-	%todo: il senso di questa osservazione?
+	che per Bezout ha soluzione se e solo se $\MCD(n_1',n_2') \mid c_1-c_2$.
+	%todo: il senso di questa osservazione? Serve a introdurre la condizione sotto per l'esistenza di una soluzione
 \end{osservazione}
 \begin{teorema}[Teorema cinese del resto]
 	Siano $m,n\in\mathbb{Z}$ coprimi ed $a,b\in\mathbb{Z}$. Allora il sistema 
@@ -1311,17 +1324,20 @@ ma stavolta non è sufficiente a garantire l'esistenza di una soluzione.
 	\begin{itemize}
 		\item[(ben definita)] Già visto.
 		\item[(omomorfismo)] Ovvio.
+		% TODO:É spiegato male: la funzione non è iniettiva, ha nucleo non banale. Però il nucleo, il fatto che la mappa è ben definita e suriettiva come omomorfismo tra anelli ci permette di usare il primo teorema di isomorfismo tra anelli. Questo ci regala un isomorfismo, ma la mappa $\phi$ definita sopra NON è l'isomorfismo. (te lo lascio a te dato che il mio stile è abbastanza convoluto e molte volte lascia a desiderare)
+		
 		\item[(iniettiva)]
 		\begin{align*}
-		\ker(\varphi)&=\left\{x\in\mathbb{Z} \, \mid \, x\equiv0\mod(n),x\equiv0\mod(m)\right\}\\
+		\ker(\varphi)&=\left\{x\in\mathbb{Z} \, \middle| \, x\equiv 0 \mod(n),x \equiv 0 \mod(m)\right\}\\
 		%todo: rivedere utilizzo dei \mod, lasciano troppo spazio tra ciò che c'è prima di \mod e la scritta "mod" (in prind: x=0 mod(m))
-		&=\left\{x\in\mathbb{Z} \, \mid \, mn|x\right\}=(mn)\mathbb{Z}
+		&=\left\{x\in\mathbb{Z} \, \middle| \, mn
+		\mid x\right\}=(mn)\mathbb{Z}
 		\end{align*}
 		\item[(suriettiva)]
 		\begin{equation*}
 		\sfrac{\mathbb{Z}}{\ker(\varphi)}\simeq\mathbb{Z}_m\times\mathbb{Z}_n\simeq\mathbb{Z}_{mn}
 		\end{equation*}
-		Allora la funzione è suriettiva. %todo: specifica meglio
+		Allora la funzione è suriettiva. 
 	\end{itemize}
 	Inoltre se $x$ è soluzione, tutte le soluzioni hanno forma 
 	\begin{equation*}
