@@ -1003,7 +1003,7 @@ Osserviamo che l'ideale generato da 2 non è primo in $\mathbb{Z}[\sqrt{-5}]$ (i
 
 \section{Aritmetica modulare}
 \label{lezione6}
-\subsection{La struttura delle classi di resto}
+\subsection{La struttura di $\mathbb{Z}_n$}
 L'aritmetica modulare lavora negli anelli delle classi di resto
 \begin{equation*}
 \left(\mathbb{Z}_n,+,\cdot\right)
@@ -1366,7 +1366,7 @@ ma stavolta non è sufficiente a garantire l'esistenza di una soluzione.
 \begin{proposizione}
 	Sia data la fattorizzazione di $n$
 	\begin{equation*}
-	n=\prod_{i=1}^{n}{p_i}^{\displaystyle{e_i}}=\alpha\cdot\beta\cdot\ \dots \ \omega
+	n=\prod_{i=1}^{n}{p_i}^{{e_i}}=\alpha\cdot\beta\cdot\ \dots \ \omega
 	\end{equation*}
 	dove $\alpha,\beta,\dots,\omega$ sono i fattori (i primi, esponente incluso). Allora 
 	\begin{equation*}
@@ -1398,6 +1398,172 @@ ma stavolta non è sufficiente a garantire l'esistenza di una soluzione.
 	\end{equation*}
 	ha una ed una sola soluzione in modulo $mn$.
 \end{teorema}
+
+
+
+
+\subsection{La struttura ciclica di $\mathbb{Z}^*_p$}
+\label{lezione7}
+Ovviamente prenderemo come $p$ un primo di $\mathbb{Z}$.
+\begin{proposizione}
+	Sia $G=\left\{g_1,\dots,g_s\right\}$ un gruppo abeliano finito, sia $n$ il massimo degli ordini dei suoi elementi. \\ Allora l'ordine di ogni elemento divide $n$.\footnote{non è scontato che $n$ sia uguale ad $s$, anzi se il gruppo non è ciclico vale $n<s$.}
+\end{proposizione}
+\begin{proof}
+	Sia $g\in G$ l'elemento di ordine $n$ massimo e sia $h\in G$ di ordine $m$ generico. Supponiamo per assurdo che $m$ non divida $n$.\\ \\
+	Se $m$ ed $n$ fossero coprimi allora $gh\in G$ avrebbe ordine $mn$, ma questo è in contraddizione con la scelta di $n$. Allora non sono coprimi. Definiamo $\nu_p(x)$ come la valutazione $p$-adica di $x$, ovvero la massima potenza di $p$ che divide $x$; l'idea è avere un primo che divida entrambi con potenze diverse. Sia allora $p$ primo con $\nu_p(m)=e$, $\nu_p(n)=f$, evidentemente $0>e>f$. Consideriamo l'elemento $g^{pf}$, verifichiamo facilmente che ha ordine $\frac{n}{pf}$. 
+	\begin{equation*}
+	\left(g^{pf}\right)^{\sfrac{n}{pf}}=g^n=1
+	\end{equation*}
+	Analogamente $h^{\sfrac{m}{pe}}$ ha ordine $p^e$.
+	\begin{equation*}
+	\left(h^{\sfrac{m}{pe}}\right)^{p^e}=h^m=1
+	\end{equation*}
+	Siccome questi due ordini sono coprimi, $\left(g^{p}\right)^fh^{\sfrac{m}{p^e}}$ appartiene a $G$ ed ha ordine $\frac{n}{pf}p^e=p^{e-f}n>n$; questo contraddice di nuovo la scelta di $n$.
+\end{proof}
+\begin{teorema}
+	Sia $f\in\mathbb{Z}_p[x]$ polinomio non costante e di grado $d$ (nella variabile $x$), allora ha al più $d$ radici in $\mathbb{Z}_p$.
+\end{teorema}
+\begin{proof}
+	Iniziamo ricordando che per teorema di Ruffini $f(a)=0$ se e solo se $(x-a)$ divide $f$. Procediamo per induzione su $d$.
+	\begin{itemize}
+		\item[($d=1$)] Banale, sono nel caso $f(x)=ax+b$ per $a$ non-zero ed $a,b\in\mathbb{Z}_p$. \\ Ovviamente ho una sola radice: $-ba^{-1}$.
+		\item[($d+1$)] Sia ora 
+		\begin{equation*}
+		f(x)=c_0+\ \dots\ +c_{d+1}x^{d+1}  \ \ \ \ \ \ \ \ c_1\in\mathbb{Z}_p,\ c_{d+1}\neq 0
+		\end{equation*}
+		Se non ha radici ottengo la tesi, altrimenti esiste un $a\in\mathbb{Z}_p$ tale che $f(a)=0$. In questo caso posso riscrivere $f$ come 
+		\begin{equation*}
+		f(x)=(x-a)g(x)
+		\end{equation*}
+		per un certo polinomio $g(x)\in\mathbb{Z}_p[x]$ di grado $d$, su cui posso usare l'ipotesi induttiva.
+	\end{itemize}
+\end{proof}
+\begin{teorema}
+	$\left(\mathbb{Z}_p^*,\cdot\right)$ è un gruppo ciclico.
+\end{teorema}
+\begin{proof}
+	Sia $n$ il massimo degli ordini degli $i$ compresi tra $1$ e $p-1$, voglio mostrare che $n=p-1$; in questo modo otterrei che esiste almeno un elemento di ordine $p-1$ e da qui la tesi. \\ Sicuramente $n\leq p-1$ ed $n$ divide $p-1$, in particolare ogni elemento $a$ del gruppo ha ordine $m$ che divide $n$ e quindi
+	\begin{equation*}
+	a^m\equiv a^n\equiv 1\Mod(p) 
+	\end{equation*}
+	Questo vuol dire che $x^n-1\in\mathbb{Z}_p[x]$ ha almeno $p-1$ soluzioni, quindi $p-1\leq n$.
+\end{proof}
+\begin{osservazione}
+	Anche se sappiamo che $\left(\mathbb{Z}_p^*,\cdot\right)$ è ciclico non sempre è facile trovare un suo generatore. 
+	\begin{equation*}
+	\left(\mathbb{Z}_p^*,\cdot\right)\simeq\left(\mathbb{Z}_{p-1},+\right)
+	%todo: controllare se è giusta la formula
+	\end{equation*}
+\end{osservazione}
+
+\subsection{La struttura ciclica di $\mathbb{Z}_n^*$}
+Abbiamo visto che $\left(\mathbb{Z}_n,+\right)$ è ciclico per ogni $n$ e $\left(\mathbb{Z}_p^*,\cdot\right)$ è ciclico per $p$ primo. \\ Non per tutti gli $n$ $\left(\mathbb{Z}_n^*,\cdot\right)$ è ciclico; come possiamo caratterizzare gli $n$ per cui vale?
+\begin{definizione}
+	Un $a\in\mathbb{Z}_n^*$ si dice \textbf{radice primitiva modulo $n$} se ha ordine $\varphi(n)$
+	, ovvero se è un generatore di $\mathbb{Z}_n^*$.
+\end{definizione}
+\begin{esempio}
+	Osserviamo alcuni esempi di radici primitive.
+	\begin{itemize}
+		\item $\mathbb{Z}_2^*=\left\{1\right\}$, è ciclico
+		\item $\mathbb{Z}_4^*=\left\{1,3\right\}$, è ciclico; oltretutto $\left(\mathbb{Z}_4^*,\cdot\right)\simeq\left(\mathbb{Z}_{2},+\right)$
+	\end{itemize}
+\end{esempio}
+\begin{proposizione}
+	Per $n$ pari e per $a\in\mathbb{Z}_n^*$ dispari si ha 
+	\begin{equation*}
+	a^{2^{k-2}}\equiv1\Mod\left(2^k\right)
+	\end{equation*} 
+\end{proposizione}
+\begin{proof}
+	Procediamolo per induzione su $k$, l'ipotesi induttiva è 
+	\begin{equation*}
+	a^{2^{k-2}}\equiv1\Mod2^k \iff a^{\displaystyle2^{k-2}}=1+t2^k \ \ \ \ \ t \in \mathbb{Z}
+	\end{equation*}
+	Per provarlo bastano pochi calcoli.
+	\begin{align*}
+	a^{2^{(k+1)-2}}&=a^{2^{k-2}\cdot2}=\left(a^{2^{k-2}}\right)^2=\left(1+t2^k\right)^2\\
+	&= 1+t2^{k+1}+t^22^{2k}\equiv1\Mod2^{k+1}
+	\end{align*}
+\end{proof}
+\begin{esempio}\
+	\begin{itemize}
+		\item $\mathbb{Z}_8^*=\left\{1,3,5,7\right\}$, $1^2\equiv3^2\equiv5^2\equiv7^2\equiv1\Mod8$
+		\item posso ripetere la stessa procedura per ogni $n=2^k$ pari con $k>2$
+	\end{itemize}
+\end{esempio}
+\begin{teorema}
+	$\left(\mathbb{Z}_{2^k}^*,\cdot\right)$ è ciclico se e solo se $k=1,2$.
+\end{teorema}
+\begin{teorema}
+	Sia $g$ generatore di $\mathbb{Z}_p^*$, allora $g$ o $g+p$ è un generatore di $\mathbb{Z}_{p^2}^*$.
+\end{teorema}
+\begin{proof}
+	Sia $m$ l'ordine di $g$ in $\mathbb{Z}_{p^2}^*$, abbiamo che
+	\begin{enumerate}
+		\item $p-1$ divide $m$
+		\item $m$ divide $p(p-1)$
+	\end{enumerate}
+	e quindi $m=p-1$ oppure $m=p(p-1)$ per unicità della fattorizzazione.
+	\begin{itemize}
+		\item[($m=p-1$)] In maniera analoga dimostriamo che dato $n$ ordine di $g+p$ in $\mathbb{Z}_{p^2}^*$ si ha $n=p-1$ oppure $n=p(p-1)$. Se fosse $n=p-1$
+		\begin{align*}
+		(g+p)^{p-1}&\equiv g^{p-1}+(p-1)pg^{p-2}\Mod p^2\\ 
+		&\equiv 1-pg^{p-2}\Mod p^2 \nequiv 1\Mod p^2
+		\end{align*}
+		e quindi $p^2$ non divide $pg^{p-2}$, $n\neq p-1$.
+		\item[($m=p(p-1)$)] Caso ovvio, $g$ genera $\mathbb{Z}_{p^2}^*$.
+	\end{itemize}
+\end{proof}
+\begin{teorema}
+	Un generatore di $\mathbb{Z}_{p^2}^*$ è un generatore di $\mathbb{Z}_{p^e}^*$, $e\geq2$.
+\end{teorema}
+\begin{proof}
+	Siano $e\geq2$ e $g$ generatore di $\mathbb{Z}_{p^e}^*$, voglio mostrare che è generatore anche di $\mathbb{Z}_{p^{e+1}}^*$. \\ \\ Sia $d$ l'ordine di $g$ in $\mathbb{Z}_{p^{e+1}}^*$, come prima notiamo che 
+	\begin{itemize}
+		\item $p^{e-1}(p-1)$ divide $d$
+		\item $d$ divide $p^e(p-1)$
+		\item $p^e(p-1)=p^{e-1}p(p-1)$
+	\end{itemize}
+Allora $d=p^{e-1}(p-1)$ oppure $d=p^e(p-1)$. Vogliamo vedere che $g^{p^{e-1}(p-1)}$ non equivale ad $1\Mod p^{e+1}$. \\ Sappiamo che:
+\begin{itemize}
+	\item $g^{p^{e-2}(p-1)}$ non equivale ad $1\Mod p^e$
+	\item $g^{p^{e-2}(p-1)}$ equivale ad $1\Mod p^{e-1}$
+\end{itemize}
+quindi $g^{p^{e-2}(p-1)}=1+kp^{e-1}$ e $p$ non divide $k$.
+\begin{align*}
+g^{p^{e-1}(p-1)}&=\left(1+kp^{e-1}\right)^p\equiv 1+kp^e+\frac{1}{2}k^2p^{2e-1}(p-1)\Mod p^{e+1}\\
+&\equiv 1+kp^e\Mod p^{e+1}\nequiv1\Mod p^{e+1}
+\end{align*}
+Nell'ultimo passaggio ho usato il fatto che $p$ non divide $k$.
+\end{proof}
+\begin{teorema}
+	$\left(\mathbb{Z}_{2p^k}^*,\cdot\right)$ è ciclico.
+\end{teorema}
+\begin{proof}
+	Scelgo $p$ dispari siccome ho già trattato il caso $p$ primo pari ($p=2$). Dato che $2$ e $p^k$ sono ciclici, 
+	\begin{equation*}
+	\mathbb{Z}_{2p^k}^*\simeq\mathbb{Z}_{2}^*\times\mathbb{Z}_{p^k}^*\times\mathbb{Z}_{p^k}^*
+	\end{equation*}
+	questo perché $\mathbb{Z}_{2}^*$ è il gruppo banale.
+\end{proof}
+\begin{teorema}
+	$\left(\mathbb{Z}_{n}^*,\cdot\right)$ è un gruppo ciclico se e solo se $n=2,4,p^k,2p^k$ per $p$ primo dispari e $k>0$.
+\end{teorema}
+\begin{proof}
+	Abbiamo già visto che per tali valori di $n$ ottengo un gruppo ciclico, ma ce ne possono essere altri?\\ \\
+	Sia $n$ generico, costruisco la sua fattorizzazione $n=p_1^{e_1}\dots p_r^{e_r}$. Come sappiamo
+	\begin{equation*}
+	\mathbb{Z}_n^*\simeq\mathbb{Z}_{p_1^{e_1}}^*\times\dots\times\mathbb{Z}_{p_r^{e_r}}^*
+	\end{equation*}
+	e possiamo sfruttare il fatto che $\left|\mathbb{Z}_{p_j^{e_j}}^*\right|=\varphi\left(p_j^{e_j}\right)$, sempre pari tranne per $p_i=2$ ed $e_i=1$. Ci basta mostrare che se $G$ ed $H$ sono gruppi ciclici di ordine pari, allora $G\times H$ non è ciclico. Sia $2a$ l'ordine di $G$, $2b$ quello di $H$. \\ Sia $(x,y)\in G\times H$, allora
+	\begin{equation*}
+	(x,y)^{2ab}=(x^{2ab},y^{2ab})=(1,1)
+	\end{equation*}
+	ma l'ordine di $G\times H$ è $4ab$. Non esistono elementi di $G\times H$ che abbiano come ordine il suo.
+\end{proof}
+
+
 
 
 
