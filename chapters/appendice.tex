@@ -1,0 +1,128 @@
+\chapter{Il generatore lineare di Lehmer}
+Studiamo un importante generatore di numeri \enquote{random}, il \textbf{generatore lineare di Lehmer}. Si tratta di un buon metodo, ma non sicuro dal punto di vista crittografico e relativamente obsoleto. \\ \\ Questo è un generatore lineare congruenziale, cioè un generatore in grado di produrre numeri pseudo-casuali. I numeri pseudo-casuali sono numeri generati da un algoritmo deterministico che è comunque in grado di emulare un processo casuale - nel senso probabilistico. \\ \\ Quindi l'algoritmo, pur essendo vincolato dai soliti limiti nella capacità di generare numeri casuali, è molto buono.
+\section{Il metodo di Lehmer}
+Sia dato un $s_0$ arbitrario, siano dati i parametri $a,b,m$. Allora posso costruire un insieme finito grande a piacere di numeri tramite il seguente algoritmo:
+\begin{equation*}
+\begin{cases}
+s_0 \ \ \ \text{seme}\\
+s_{n+1}=as_n+b\Mod(m)
+\end{cases}
+\end{equation*}
+\begin{esempio}
+	Sia ad esempio $m=30$, $a=11$, $b=1$, $s_0=8$.
+	\begin{align*}
+	s_1&\equiv(8)(9)\Mod30\equiv29\Mod30\\
+	s_2&\equiv(320)\Mod30\equiv20\Mod30\\
+	s_1&\equiv(2219)\Mod30\equiv11\Mod30
+	\end{align*}
+\end{esempio}
+I vantaggi di questo algoritmo sono l'immediata implementazione e la semplicità della teoria su cui poggia. Tuttavia bisogna scegliere bene i parametri iniziali; in passato scelte sbagliate di questi parametri hanno portato ad implementazioni incomplete o non sicure dell'algoritmo, si veda in particolare il generatore randomico Park-Miller \textsf{RANDU} degli anni '70. \\ In particolari situazioni l'algoritmo è vulnerabile all'analisi delle frequenze. \\ \\ Nonostante questo il generatoe Lehmer viene ancora utilizzato per sequenze randomiche non legate alla sicurezza informatica, ad esempio \textsf{Microsoft Visual} (C, C++) e le random class di \textsf{Java}.
+
+\section{Il metodo non è sicuro}
+
+	Supponiamo di non conoscere $a$ e neppure $b$, ma di conoscere invece $s_i$ ($i=1,2,3$) ed $m$ dell'esempio precedente. Possiamo costruire il sistema
+	\begin{equation*}
+	\begin{cases}
+	20 =29a+b\Mod30\\
+	11=20a+b\Mod30
+	\end{cases}
+	\end{equation*}
+	Dalla prima equazione ricaviamo $b=20-29a\Mod30$, dalla seconda invece $9a\equiv9\Mod30$. Siccome $9$ e $30$ sono coprimi non posso invertire $9$, ma ho come soluzioni $a=1,11,21$. Ad esempio osservo che $a=1$ è soluzione ed il periodo additivo di 9 in $\mathbb{Z}_{30}$ è 10, ovvero 
+	\begin{equation*}
+	\frac{30}{(9,30)}
+	\end{equation*}
+	(questo vuol dire che sommando 9 a se stesso 10 volte ottengo l'elemento neutro). Allora costruisco le altre soluzioni sommando 10. Sistemando i calcoli ricavo finalmente le soluzioni in $\mod30$:
+	\begin{align*}
+	(a=1,b=21), \ (a=11, b=1), \ (a=21, b=11)
+	\end{align*}
+	Queste tre coppie di valori $(a,b)$ generano la stessa sequenza, quindi non devo preoccuparmi di capire quale sia stata usata inizialmente; ad ogni scelta ottengo la stessa sequenza casuale. \\ \\ Cerchiamo di motivare questo aspetto. In generale se ho $a,b,\alpha,\beta$ tali da soddisfare
+	\begin{equation*}
+	\begin{cases}
+	s_{n+1} =s_na+b\Mod n\\
+	s_{n+2}=s_{n+1}a+b\Mod n
+	\end{cases}
+	\end{equation*}
+	\begin{equation*}
+	s_{n+1}=\alpha s_n+\beta \Mod n
+	\end{equation*}
+	\begin{equation*}
+	s_{n+2}=\alpha s_{n+1}+\beta \Mod n
+	\end{equation*}
+	allora posso riscrivere le condizioni come
+	\begin{equation*}
+	a\left(\alpha s_n+\beta\right)+b=\alpha\left(as_n+b\right)+\beta \Mod n
+	\end{equation*}
+	\begin{equation*}
+	a\beta+b=\alpha b+\beta\Mod n
+	\end{equation*}
+	e dopo altre facili sostituzioni arriviamo a 
+	\begin{equation*}
+	as_{n+2}+b=\alpha s_{n+2}+\beta \Mod n
+	\end{equation*}
+	
+\section{La scelta di Lehmer}
+
+	Lehmer stesso suggerisce dei parametri nella sua presentazione del metodo.\footnote{Lehmer aveva solo affermato quanto segue, l'esercizio è stato ironicamente lasciato al lettore.}
+	\begin{equation*}
+	a=23, b=0, m=10^8+1=17\cdot5882353
+	\end{equation*}
+	La scelta di $a$ è quella migliore possibile per ogni possibile $s_0$:
+	\begin{enumerate}
+		\item nessun altro valore produce una sequenza con periodo più grande
+		\item è il più piccolo per cui capita
+	\end{enumerate}
+	Osserviamo prima di tutto che con questi parametri si ha 
+	\begin{equation*}
+	s_{n+1}=23^ns_0\Mod m
+	\end{equation*}
+	ed il periodo della sequenza $\left\{s_n\right\}_{n\geq0}$ è il più piccolo intero non nullo tale che $s_k=s_0\Mod m$, e questo equivale a dire $23^ks_0=s_0\Mod m$.
+	\begin{itemize}
+		\item[($(s_0,m)=1$)] Il periodo è il più piccolo intero non nullo tale che $23^k\equiv1\Mod n$,:
+		\begin{equation*}
+		\varphi(m)=\varphi(17)\varphi(5882353)=2^8\cdot3\cdot7^2\cdot41\cdot61
+		\end{equation*}
+		ma in questo caso nessun elemento può avere periodo $\varphi(m)$, altrimenti $\mathbb{Z}_m^*$ sarebbe ciclico (e non può esserlo per teorema visto). Inoltre 
+		\begin{equation*}
+		\mathbb{Z}_m^*\simeq\mathbb{Z}_p^*\mathbb{Z}_q^*
+		\end{equation*}
+		pe $p=17$, $q=5882353$. Notando che $P-1$ divide $q-1$ possono esistere elementi di grado $q-1$, il massimo possibile. \\ Effettivamente 23 ha periodo $q-1$, ha il periodo più grande possibile e quindi genera la sequenza più lunga.
+		\item[($(s_0,m)=p$)] Il periodo è il più piccolo intero tale che 
+		\begin{equation*}
+		s_0\left(23^k-1\right)\equiv0\mod m
+		\end{equation*}
+		e siccome $s_0=hp$ per un certo $h$, posso riscrivere in modo equivalente
+		\begin{equation*}
+		23^k\equiv1\Mod q
+		\end{equation*}
+		che è il massimo periodo se e solo se 23 ha periodo moltiplicativo $q-1$ in $\mathbb{Z}_q^*$.
+		\item[($(s_0,m)=q$)] Analogamente ottengo che 23 deve avere periodo moltiplicativo $p-1$ in $\mathbb{Z}_p^*$.
+	\end{itemize}
+	Concludiamo che 23 soddisfa \textit{tutte} queste condizioni, ed è il più piccolo intero ad avere periodo moltiplicativo massimo sia in $\mathbb{Z}_p^*$ che in $\mathbb{Z}_q^*$. \\ Questo è il motivo della scelta di Lehmer.
+	
+	
+
+
+
+\chapter{Implementazione di alcuni metodi}
+
+	\epigraph{\textit{\enquote{Non c'è certezza nella scienza se la matematica non può esservi applicata, o se non vi è comunque in relazione.}}}{Leonardo da Vinci}
+	L'applicazione della teoria algebrica dei numeri trova più che ampio utilizzo in informatica, in particolare è \textit{fondamentale} nel campo della crittografia. \\ Era più che giusto quindi, addirittura d'obbligo, includere un capitolo del genere in un posto così ricco di algebra. \\ \\ In questo capitolo mostreremo l'implementazione di alcuni algoritmi legati agli argomenti svolti. Non saranno scritti in un particolare linguaggio di programmazione, ma piuttosto descritti \enquote{intuitivamente} per essere di immediata comprensione. \newpage
+	\subsection{Ricerca del periodo moltiplicativo}
+	Supponiamo di voler calcolare il periodo moltiplicativo di un certo $a\in\mathbb{Z}_m^*$ dato, sapendo che 
+	\begin{equation*}
+	\varphi(m)=p_1^{e_1}\cdot\dots\cdot p_k^{e_k}
+	\end{equation*}
+	\begin{algoritmo} \ \newline
+			{\fontfamily{cmss}\selectfont
+			\hspace*{10 mm} set t=$\varphi(m)$\\ 
+			\hspace*{10 mm} for $i=1,k$ do \\
+			\hspace*{15 mm} $t=\sfrac{t}{p^{e^i}}$\\
+			\hspace*{15 mm} $a_i=a^t\Mod m$\\
+			\hspace*{15 mm} while $a_i\neq1 \Mod m$ do\\
+			\hspace*{20 mm} $a_i=a_i^{p_i}\Mod m$\\
+			\hspace*{20 mm} $t=t\cdot p_i$\\
+			\hspace*{15 mm} end while\\
+			\hspace*{10 mm} end for\\
+			\hspace*{10 mm} return $t$}
+	\end{algoritmo}
+	In sostanza il programma valuta i \enquote{candidati} al ruolo di periodo, che trova se $a_1\equiv1\Mod m$. Questo mostra che fattorizzare $m$ è un problema collegato al calcolo del periodo moltiplicativo di un elemento di $\mathbb{Z}_m^*$. 
