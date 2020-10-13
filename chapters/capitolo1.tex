@@ -1170,7 +1170,7 @@ Il \textbf{sistema canonico di rappresentanti} di $\mathbb{Z}_n$ è
 		&=\left([x]_a[y]_a,[x]_a[y]_a\right)=\phi\left([x]_n\right)\phi\left([y]_n\right)
 		\end{align*}
 		L'ultima uguaglianza andrebbe formalizzata meglio ripercorrendo i calcoli al contrario. \\
-		\item[(iniettiva)] Il nucleo di $\phi$ sono gli elementi mandati nell'elemento neutro in arrivo, quindi $1$.\footnote{stiamo usando una notazione moltiplicativa per i gruppi; in poche parole, solitamente scriviamo l'operazione come $+$ e di conseguenza il neutro come $0$ ma è possibile usare la moltiplicazione (ed in quel caso l'elemento neutro sarà ovviamente 0).}
+		\item[(iniettiva)] Il nucleo di $\phi$ sono gli elementi mandati nell'elemento neutro in arrivo, quindi $1$.\footnote{stiamo usando una notazione moltiplicativa per i gruppi; in poche parole, solitamente scriviamo l'operazione come $+$ e di conseguenza il neutro come $0$ ma è possibile usare la moltiplicazione (ed in quel caso l'elemento neutro sarà ovviamente $1$).}
 		Vediamo un fatto generale per la nostra situazione, $[x]_n$ è invertibile se e solo se lo sono $\left([x]_a\right)$ ed $\left([x]_b\right)$. Infatti se è invertibile si ha $[z]_n=[x]^{-1}_n$, quindi
 		\begin{align*}
 		\left([z]_a[x]_a,[z]_b[x]_b\right)&=\left([z]_a,[z]_b\right)\left([x]_a,[x]_b\right)\\
@@ -1230,10 +1230,8 @@ Il \textbf{sistema canonico di rappresentanti} di $\mathbb{Z}_n$ è
 		\begin{align*}
 		(a)^{p}\equiv(a)\Mod(p) \ \ \ \ \ \ &\text{ipotesi induttiva}\\
 		(a+1)^p\equiv(a^p+1)\Mod(p) \ \ \ \ \ \ &\text{fatto noto}\\
+		\Longrightarrow (a+1)^{p-1}\equiv (a^p+1) \equiv (a+1)\mod(p)
 		\end{align*}
-		\begin{equation*}
-		(a+1)^{p-1}\equiv (a^p+1)\mod(p)\equiv (a+1)\mod(p)
-		\end{equation*}
 	\end{enumerate}
 \end{proof}
 \begin{proof}[Dimostrazione \enquote{avanzata}] 
@@ -1475,7 +1473,7 @@ Come possiamo caratterizzare gli $n$ per cui otteniamo un $\left(\mathbb{Z}_n^*,
 	\end{itemize}
 \end{esempio}
 \begin{proposizione}
-	Per $n$ pari e per $a\in\mathbb{Z}_n^*$ dispari si ha 
+	Per $n$ pari e per $a\in\mathbb{Z}_n^*$ si ha 
 	\begin{equation*}
 	a^{2^{k-2}}\equiv1\Mod\left(2^k\right)
 	\end{equation*} 
@@ -1521,7 +1519,7 @@ Come possiamo caratterizzare gli $n$ per cui otteniamo un $\left(\mathbb{Z}_n^*,
 	\end{itemize}
 \end{proof}
 \begin{teorema}
-	Un generatore di $\mathbb{Z}_{p^2}^*$ è un generatore di $\mathbb{Z}_{p^e}^*$, $e\geq2$.
+	Un generatore di $\mathbb{Z}_{p^2}^*$ è un generatore di $\mathbb{Z}_{p^e}^*$,  per $p > 2$ primo e $e\geq2$.
 \end{teorema}
 \begin{proof}
 	Siano $e\geq2$ e $g$ generatore di $\mathbb{Z}_{p^e}^*$, voglio mostrare che è generatore anche di $\mathbb{Z}_{p^{e+1}}^*$. \\ \\ Sia $d$ l'ordine di $g$ in $\mathbb{Z}_{p^{e+1}}^*$, come prima notiamo che 
@@ -1548,7 +1546,7 @@ Nell'ultimo passaggio ho usato il fatto che $p$ non divide $k$.
 \begin{proof}
 	Scelgo $p$ dispari siccome ho già trattato il caso $p$ primo pari ($p=2$). Dato che $2$ e $p^k$ sono ciclici, 
 	\begin{equation*}
-	\mathbb{Z}_{2p^k}^*\simeq\mathbb{Z}_{2}^*\times\mathbb{Z}_{p^k}^*\times\mathbb{Z}_{p^k}^*
+	\mathbb{Z}_{2p^k}^*\cong \mathbb{Z}_{2}^*\times\mathbb{Z}_{p^k}^*\cong \mathbb{Z}_{p^k}^*
 	\end{equation*}
 	questo perché $\mathbb{Z}_{2}^*$ è il gruppo banale.
 \end{proof}
@@ -1589,6 +1587,23 @@ Nell'ultimo passaggio ho usato il fatto che $p$ non divide $k$.
 	(3)(6)=1\Mod(17)
 	\end{equation*}
 	Quindi l'inverso cercato è 3.
+\end{esercizio}
+\begin{esercizio}
+	Trovare l'inverso di $111$ in $\mathbb{Z}_{127}$. \\
+	
+	Usiamo la divisione euclidea
+	\begin{align*}
+		127  &= 111 + 16 \\
+		111  &= 7 \cdot 16 - 1 \\
+		16   &= -16\cdot -1 + 0
+	\end{align*}	
+    Dove è stato usato il trucco di $-\lfloor b/2\rfloor < r \le\lfloor{b/2}\rfloor$ per ridurre il numero di passi. Adesso possiamo trovare gli $x,y$ dell'identità di Bezout:
+    \begin{align*}
+    	-1 &= 111 - 7 \cdot 16 \\
+    	-1 &= 111 - 7 \cdot (127 - 111) \\
+    	-1 &= 8 \cdot 111 - 7 \cdot 127 
+    \end{align*}
+	cambiando di segno si ottiene che $(-8) \cdot 111\equiv 1 \mod 127$.
 \end{esercizio}
 \begin{esercizio}
 	Risolvere $9x\equiv12\Mod(51)$.\\ \\
