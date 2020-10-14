@@ -107,7 +107,7 @@ I vantaggi di questo algoritmo sono l'immediata implementazione e la semplicità
 
 	\epigraph{\textit{\enquote{Non c'è certezza nella scienza se la matematica non può esservi applicata, o se non vi è comunque in relazione.}}}{Leonardo da Vinci}
 	L'applicazione della teoria algebrica dei numeri trova più che ampio utilizzo in informatica, in particolare è \textit{fondamentale} nel campo della crittografia. \\ Era più che giusto quindi, addirittura d'obbligo, includere un capitolo del genere in un posto così ricco di algebra. \\ \\ In questo capitolo mostreremo l'implementazione di alcuni algoritmi legati agli argomenti svolti. Non saranno scritti in un particolare linguaggio di programmazione, ma piuttosto descritti \enquote{intuitivamente} per essere di immediata comprensione. \newpage
-	\subsection{Ricerca del periodo moltiplicativo}
+	\section{Ricerca del periodo moltiplicativo}
 	Supponiamo di voler calcolare il periodo moltiplicativo di un certo $a\in\mathbb{Z}_m^*$ dato, sapendo che 
 	\begin{equation*}
 	\varphi(m)=p_1^{e_1}\cdot\dots\cdot p_k^{e_k}
@@ -126,3 +126,28 @@ I vantaggi di questo algoritmo sono l'immediata implementazione e la semplicità
 			\hspace*{10 mm} return $t$}
 	\end{algoritmo}
 	In sostanza il programma valuta i \enquote{candidati} al ruolo di periodo, che trova se $a_1\equiv1\Mod m$. Questo mostra che fattorizzare $m$ è un problema collegato al calcolo del periodo moltiplicativo di un elemento di $\mathbb{Z}_m^*$. 
+	
+	
+	
+	
+	\chapter{Scambio di un bit}
+	Abbiamo già visto la difficoltà della risoluzione del problema della residuosità quadratica: se lavoriamo in modulo $n$ per $n$ composto non-primo è difficile dire se un elemento di $\mathbb{Z}_n^*$ sia un residuo quadratico tanto quanto è difficile trovare una decomposizione in fattori primi di $n$. \\ Questo è applicabile allo scambio di informazioni in bit. \\ \\ Siano A e B (solitamente detti Alice e Bob) enti che cercano di comunicare per un mezzo non sicuro, E (Eve) cerca di carpire il messaggio e leggerlo; lo scopo della crittografia è \textit{criptare} - codificare - il messaggio rendendolo illeggibile a terze parti e poi \textit{decriptarlo} per renderlo di nuovo leggibile. 
+	
+	
+	
+	
+	\section{L'applicazione dei residui}
+	Posso sfruttare la teoria dei residui per rendere sicuro lo scambio di una informazione. Per semplicità lavoriamo con un solo bit $b$, ma ovviamente possiamo estendere a più bit. \\ Il processo segue diverse fasi.
+	\paragraph{Key generation} Alice sceglie una chiave che permetta di criptare e decriptare il messaggio, nel nostro caso il bit. Può farlo scegliendo due primi $p$ e $q$ congrui a $3$ in modulo $4$. Sia $N=pq$, questa sarà la \textit{chiave pubblica}, mentre $(p,q)$ sono la chiave privata. \\ Ovviamente supponiamo che sia difficile ricavare $p$ e $q$ sapendo $N$, devo lavorare con numeri molto grandi (solitamente nell'ordine di 2048 bit) \\ \\
+	\paragraph{Encryption} Ora Bob può utilizzare la chiave pubblica per criptare un messaggio; deve scegliere un $\alpha$ randomico in $\mathbb{Z}_N^*$, ovvero un numero compreso tra $1$ ed $N-1$. \\ Non è sicuro che sia invertibile, ma è comunque molto probabile, infatti ho preso un $N$ molto grande e trovare casualmente un elemento che lo fattorizzi non è semplice. \\ Allora invio il bit $b$ calcolando
+	\begin{equation*}
+	(-1)^b\alpha^2\Mod(N)=c
+	\end{equation*}
+	Ora $c$ è il bit criptato, posso inviarlo tramite il mezzo non sicuro. Nel canale di comunicazione sarà irriconoscibile, se non per Alice.
+	\paragraph{Decryption} Alice possiede la chiave privata, può utilizzarla per decriptare il messaggio calcolando i due simboli di Legendre $\leg{c}{p}$ e $\leg{c}{q}$:
+	\begin{itemize}
+		\item se entrambi valgono 1 il bit originale era $b=0$
+		\item altrimenti il bit originale era $b=1$
+	\end{itemize}
+	Infatti se entrambi sono 1 ottengo che $c$ è un residuo quadratico modulo $N$ (ovvio), ma anche $\alpha^2$ lo è; se $b$ non fosse 0 avrei ottenuto $c$ come $(-1)(\alpha^2)$, che non può assolutamente essere un residuo quadratico modulo $N$. \\ \\
+	Eve vedendo solo $c$ non può fare nulla perché non sa dire se $c$ sia un residuo quadratico modulo $N$. Questo è un problema molto difficile e richiede di fattorizzare $N$, che come sappiamo non è certo un problema da terza elementare.
