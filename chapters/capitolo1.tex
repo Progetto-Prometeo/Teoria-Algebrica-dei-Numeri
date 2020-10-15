@@ -1779,7 +1779,7 @@ Utilizzeremo gli $\mathbb{Z}_n^*$ perché siamo interessati alla struttura molti
 \end{esempio}
 \begin{esempio}
 	\label{residuo_not_primo}
-	Lavoriamo in $\mathbb{Z}_9^*$, quindi non più con $p$ primo; questo esempio tornerà subito utile, proviamo a svolgerlo senza avere presente la teoria che costruiremo. \\ Sappiamo che i residui quadratici sono 3, se li cerchiamo otteniamo 
+	Lavoriamo in $\mathbb{Z}_9^*$, quindi non più con $p$ primo; questo esempio tornerà subito utile, proviamo a svolgerlo senza avere presente la teoria che costruiremo. Sappiamo che i residui quadratici sono 3, se li cerchiamo otteniamo 
 	\begin{align*}
 	&1=(1)(1)=(8)(8)\\
 	&4=(2)(2)=(7)(7)\\
@@ -1915,13 +1915,19 @@ Vediamo che il simbolo di Jacobi è una \enquote{generalizzazione} del simbolo d
 
 
 
-\subsection{Criteri di primalità}
+
+\section{Criteri di primalità}
 I test di primalità vengono usati per determinare non se un dato numero sia primo, ma se sia composto. Questo perché \textit{non sono efficienti}, possono solo marcare i numeri come 
 \begin{itemize}
 	\item \textbf{composto}, in questo caso il numero è sicuramente composto
-	\item \textbf{pseudoprimo}, detto tale perché non è detto che sia primo, potrebbe essere composto!
+	\item \textbf{pseudoprimo}, detto tale perché non è detto che sia primo, potrebbe essere composto nonostante superi il test!
 \end{itemize}
 Non è sufficiente che il numero soddisfi la proprietà del test per essere primo, alcuni numeri composti la possono soddisfare. \\ Ma capiremo meglio con un esempio.
+
+
+
+
+\subsection{I test di Fermat, Eulero e Jacobi}
 \begin{teorema}[Test di Wilson]
 	$n$ è primo se e solo se 
 	\begin{equation*}
@@ -2024,5 +2030,284 @@ I \textbf{numeri di Carmichael} sono numeri composti che sono pseudoprimi di Fer
 	a^{n-1}\equiv1\Mod n
 	\end{equation*}
 \end{proof}
+\label{lezione10}
+\begin{teorema}[Test di Eulero]
+	Dal criterio di Eulero sappiamo che se $p$ è primo allora 
+	\begin{equation*}
+	a^{\frac{p-1}{2}}\equiv\leg{a}{p}\Mod p \equiv\pm1\Mod p 
+	\end{equation*}
+	Allora per controllare la primalità di un $n$ intero fissiamo una base $a$ e verifichiamo se 
+	\begin{equation*}
+	a^{\frac{n-1}{2}}\equiv\pm1\Mod n 
+	\end{equation*}
+\end{teorema}
+\begin{teorema}[Test di Eulero-Jacobi]
+	\begin{equation*}
+	a^{\frac{n-1}{2}}\equiv\leg{a}{n}\Mod n
+	\end{equation*}
+	Sembra un controsenso utilizzare il simbolo di Jacobi - il cui calcolo richiede conoscere la fattorizzazione di $n$ - in un test di primalità, ma esistono algoritmi efficienti per calcolarlo che non utilizzano la fattorizzazione di $n$. Non li vedremo nel corso.
+\end{teorema}
+\begin{osservazione}
+	Sia $n$ pseudoprimo di Eulero-Jacobi, allora vediamo che è anche pseudoprimo di Eulero. Inoltre uno pseudoprimo di Eulero è pseudoprimo di Fermat, perché
+	\begin{equation*}
+	a^{\frac{n-1}{2}} \equiv\pm1\Mod n \implies a^{n-1} \equiv1\Mod n
+	\end{equation*}
+	Ad esempio per $a=2$ abbiamo:
+	\begin{align*}
+	&\text{per Fermat} \ \ \ \ \ \ \ \ \ \ \ \ \ 341,561,645,1105,1387,1729,\dots\\
+	&\text{per Eulero} \ \ \ \ \ \ \ \ \ \ \ \ \ \  341,561,1105,1729,\dots\\
+	&\text{per Eulero-Jacobi} \ \ \ \ \ 561,1105,1729,\dots\\
+	\end{align*}
+	Il test di Eulero-Jacobi è il più efficiente dei tre, molti meno pseudoprimi sono in grado di passarlo rispetto agli altri due.
+\end{osservazione}
+
+
+
+
+\subsection{Il test di Solvay-Strassen}
+\begin{osservazione}
+	Sia dato l'insieme
+	\begin{equation*}
+	F_n=\left\{a\in\mathbb{Z}_n^* \, \mid \, a^{n-1}\equiv1\Mod n\right\}
+	\end{equation*}
+	si vede che se $n$ è primo allora $F_n=\mathbb{Z}_n^*$. Se invece $n$ non è primo la cardinalità di $F_n$ è in generale minore o uguale rispetto a quella di $\mathbb{Z}_n^*$; tuttavia per i numeri di Carmichael sussiste l'uguaglianza, e questo è uno dei problemi generato dagli pseudoprimi.
+\end{osservazione}
+\begin{teorema}
+	Sia $E_n$ l'insieme delle basi $a\in\mathbb{Z}_n^*$ tali che 
+	\begin{equation*}
+	a^{\frac{n-1}{2}}\equiv\leg{a}{n}\Mod n
+	\end{equation*}
+	allora $n$ è primo se e solo se $E_n=\mathbb{Z}_n^*$.
+\end{teorema}
+\begin{proof}
+	L'implicazione destra segue subito dal criterio di Eulero. \\ \\ Supponiamo che $E_n=\mathbb{Z}_n^*$, voglio mostrare che $n$ è primo. Se per ogni base $a$ vale la congruenza 
+	\begin{equation*}
+	a^{\frac{n-1}{2}}\equiv\leg{a}{n}\Mod n
+	\end{equation*}
+	allora $a^{n-1}\equiv1\Mod n$, quindi $n$ è un numero di Carmichael. Supponiamo che $n$ sia composto, quindi scritto come prodotto di primi 
+	\begin{equation*}
+	n=p_1\dots p_t
+	\end{equation*}
+	tutti di potenza unitaria, perché come abbiamo dimostrato i numeri di Carmichael sono liberi da quadrati, e con $t>1$ (perché lo suppongo composto). Ovviamente voglio arrivare ad un assurdo ed ottenere $t=1$. \\ Sia data la funzione 
+	\begin{align*}
+	f:\mathbb{Z}_n^*&\longrightarrow\mathbb{Z}_n^*\\
+	a&\longmapsto a^{\frac{n-1}{2}}\Mod n
+	\end{align*}
+	\begin{itemize}
+		\item è un morfismo (ovvio)
+		\item ha immagine $\pm1$ (per ipotesi)
+	\end{itemize}
+	Allora per primo teorema di isomorfismo la cardinalità del suo nucleo è $\sfrac{\varphi(n)}{2}$. \\ Consideriamo per ogni $p_i$ fattore primo di $n$
+	\begin{align*}
+	f_i:\mathbb{Z}_{p_i}^*&\longrightarrow\mathbb{Z}_{p_i}^*\\
+	a&\longmapsto a^{\frac{n-1}{2}}\Mod p_i
+	\end{align*}
+	\begin{itemize}
+		\item sono morfismi (ovvio)
+		\item hanno immagine $\pm1$ (per ipotesi)
+	\end{itemize}
+	Allora anche il nucleo di questi ha cardinalità $\sfrac{\varphi(p_i)}{2}$. Per teorema cinese del resto $f(a)=1$ se e solo se $f_i(a)=1$ per ogni $i$ compreso tra $1$ e $t$, quindi
+	\begin{equation*}
+	\left|\ker(f)\right|=\prod_i\left|\ker(f_i)\right|
+	\end{equation*}
+	\begin{align*}
+	\frac{\varphi(n)}{2}
+	&=\prod_i\frac{\varphi(p_i)}{2}=\frac{1}{2^t}\prod_i\varphi(p_i)\\
+	&=\frac{\varphi(n)}{2^t}\implies t=1
+	\end{align*}
+\end{proof}
+\begin{corollario}
+	Il test di Eulero-Jacobi viene passato per tutte le basi solo da numeri primi, non esiste un analogo dei numeri di Carmichael per questo test. \\ \\ In particolare se $n$ non è primo 
+	\begin{equation*}
+	\left|E_n\right|\leq\frac{\phi(n)}{2}<\left|\mathbb{Z}_n^*\right|
+	\end{equation*}
+\end{corollario}
+\begin{proof}
+	Dimostriamo che $\left|E_n\right|\leq\frac{\phi(n)}{2}$, il resto è ovvio. Ma anche questo è ovvio, segue direttamente da 
+	\begin{equation*}
+	\left|F_n\right|\leq\frac{\varphi(n)}{2}
+	\end{equation*}
+	per $n$ non primo e non di Carmichael.
+\end{proof}
+\begin{teorema}[Test di Solvay-Strassen]
+	Dato $n$ numero da testare, eseguo il test di Eulero-Jacobi per $k$ basi diverse. In questo modo la probabilità che un numero composto superi il test è maggiorata da $\sfrac{1}{2^k}$, si dimostra grazie al corollario appena visto.
+\end{teorema}
+\begin{definizione}
+	Dico \textbf{pseudoprimi forti} gli pseudoprimi che passano il test di Solvay-Strassen.
+\end{definizione}
+\begin{osservazione}[Caratterizzare gli pseudoprimi forti] 
+	Sia $p$ primo con $p-1=2^km$ per un certo $m$ dispari, allora per un certo $j$ con $0\leq j\leq k-1$
+	\begin{equation*}
+	a^m\equiv1\Mod p \ \text{oppure} \ a^{2^jm}\equiv-1\Mod p
+	\end{equation*}
+	Infatti per il piccolo teorema di Fermat $a^{p-1}$ è congruo ad 1 in modulo $P$, in altre parole $p$ divide $a^{p-1}-1$. Possiamo sfruttare la forma di $p-1$ richiesta per ipotesi per riscrivere
+	\begin{align*}
+	a^{p-1}-1
+	&=a^{2^km}-1\\
+	&=\left(a^{2m}-1\right)\left(a^{4m}-1\right)\dots\\
+	&=\left(a^{m}-1\right)\left(a^{m}+1\right)\left(a^{2m}-1\right)\left(a^{2m}+1\right)\dots\left(a^{2^{k-1}m}-1\right)\left(a^{2^{k-1}m}+1\right)
+	\end{align*}
+	Siccome $p$ primo divide $a^{p-1}-1$ deve dividere almeno uno dei fattori, e se divide uno dei fattori otteniamo le due caratterizzazioni.
+	\\
+	I numeri che soddisfano questa condizione sono gli \textit{pseudoprimi forti}. Sono detti tali perché sono molti meno rispetto a quelli di Fermat, ma più \enquote{resilienti}. Ad esempio per $a=2$ abbiamo
+	\begin{equation*}
+	2047,3277,4033,\dots
+	\end{equation*}
+\end{osservazione}
+
+
+
+
+
+\subsection{Il test di Rabin-Miller}
+Il test di Rabin-Miller viene usato in molte funzioni di valutazione della primalità di linguaggi di programmazione \enquote{matematici}, come ad esempio Python. Si tratta a tutti gli effetti di uno dei due test di primalità più usati al mondo, e quindi di un risultato decisamente importante. Sotto l'ipotesi di Riemann diventa inoltre un criterio di primalità efficiente; allora condizionato all'ipotesi che sia vera assume un carattere ancora più forte. \\ L'altro test più usato è il \textit{test di Bayle}, che combina il test di Lucas a Fermat fortificato.
+\begin{teorema}[Test di Rabin-Miller]
+	Sia $n$ numero da valutare, itero $k$ volte il test di Solvay-Strassen. La probabilità che un numero composto superi il test è maggiorata da $\sfrac{1}{4^k}$, ho ottenuto un test più \enquote{potente}.
+\end{teorema}
+\begin{osservazione}
+	Se condizionato all'ipotesi di Riemann questo test diventa \textit{deterministico}, cioè garantisce con totale sicurezza la primalità di $n=2^km+1$, ed efficiente. Per dimostrare quanto abbiamo appena detto ci serve definire alcuni insiemi e fornire alcuni lemmi intermedi. \footnote{notiamo che non è restrittivo restringersi a questo caso, tutti i primi hanno questa forma.}
+	\begin{align*}
+	&M_n=\left\{a\in\mathbb{Z}_n^* \, \mid \, a^n \ \text{oppure} \ a^{2^jm} \ \equiv-1 \ \text{per un $0\leq j\leq k-1$}\right\}\\
+	&B=\left\{a\in\mathbb{Z}_n^* \, \mid \, a^{2^{s-1}m}\equiv\pm1\Mod n\right\}\\
+	&B'=\left\{a\in\mathbb{Z}_n^*\, \mid \,a^{2^{s-1}m}\equiv1\Mod n \right\}\\
+	&B_p=\left\{a\in\mathbb{Z}_{\alpha_p}^*\, \mid \, a^{2^{s-1}m}\equiv1\Mod p^{\alpha_p}\right\}
+	\end{align*}
+	dove abbiamo usato
+	\begin{itemize}
+		\item $s$ la massima potenza per cui $2^s$ divide $p-1$ per ogni $p$ primo che divide $n$
+		\item $n=\prod_{p\mid n}p^{\alpha_p}=\prod_{i=1}^tp_i^{e^i}$
+	\end{itemize}
+	Intuitivamente il primo insieme è quello delle basi che vengono \enquote{fregate} da $n$ nel test, 
+\end{osservazione}
+\begin{lemma}
+	Vale che $M_n\subset B$.
+\end{lemma}
+\begin{proof}
+	%todo: rivedi quella corretta appena esce, è sbagliata sul pdf originale
+\end{proof}
+\begin{lemma}
+	Sia $G$ gruppo ciclico di ordine $n$, ogni equazione del tipo $x^t=1$ ha un numero di soluzioni pari al massimo comune divisore di $t$ ed $n$.
+\end{lemma}
+\begin{proof}
+	Sia $g$ un generatore di $G$, $x^t=1$ equivale a dire 
+	\begin{align*}
+	g^{\log_gx^t}=g^{\log_g1}
+	&\iff\log_gx^t=\log_g1\\
+	&\iff t\log_gx\equiv\log_g1 \Mod n\\
+	&\iff t\log_gx\equiv0 \Mod n\\
+	&\iff ty\equiv0\Mod n
+	\end{align*}
+	che ha chiaramente il numero di soluzioni richiesto. \\ Ad esempio l'equazione $3y\equiv0\Mod15$ ha soluzioni $0,5,10$. \\ \\ Notiamo che $y$ è necessariamente un intero, abbiamo utilizzato il \textit{logaritmo discreto}; si basa sul fatto che $g$ sia un generatore.
+\end{proof}
+\begin{lemma}
+	La cardinalità di $B$ è 
+	\begin{equation*}
+	\left|B\right|=2\prod_{p\mid n}2^{s-1}\MCD(m,p-1)
+	\end{equation*}
+\end{lemma}
+\begin{proof}
+	Definiamo la mappa 
+	\begin{align*}
+	\theta:B&\longrightarrow \mathbb{Z}_n^*\\
+	a&\longmapsto a^{2^{s-1}m}\Mod n
+	\end{align*}
+	Chiaramente il nucleo di questa mappa è $B'$, l'immagine ha cardinalità 2 (è costituita solo da $\pm1$). Allora 
+	\begin{equation*}
+	\left|B'\right|=\frac{1}{2}\left|B\right|
+	\end{equation*}
+	e per il teorema cinese del resto sappiamo che
+	\begin{equation*}
+	\left|B'\right|=\prod\left|B_p\right|
+	\end{equation*}
+	Ora applichiamo il lemma precedente:
+	\begin{align*}
+	\left|B_p\right|
+	&=\left|\left\{\text{soluzioni di} \ a^{2^{s-1}m}\equiv1\Mod p^{\alpha_p}\right\}\right|\\
+	&=\MCD\left(a^{2^{s-1}m},\varphi\left(p^{\alpha_p}\right)\right)\\
+	&=\MCD\left(a^{2^{s-1}m},p-1\right)\\
+	&=2^{s-1}\MCD(m,p-1)
+	\end{align*}
+	Questo perché se $p$ divide $n$ e $m$ divide $n-1$ abbiamo che $\MCD(p,m)=1$ ed infine che il massimo comune divisore tra $2^{s-1}m$ e $p^{\alpha_p-1}$ è 1. Nell'ultima uguaglianza ho usato la definizione di $s$ come massima potenza di 2 che divide tutti i $p-1$. Allora 
+	\begin{equation*}
+	\left|B\right|=2\left|B'\right|=2\prod_{p\mid n}\left|B_p\right|
+	\end{equation*}
+\end{proof}
+\begin{teorema}
+	Per $n$ composto vale 
+	\begin{equation*}
+	\left|M_n\right|\leq\frac{1}{4}\left|\mathbb{Z}_n^*\right|
+	\end{equation*}
+\end{teorema}
+\begin{proof}
+	Supponiamo che $\left|B\right|>\frac{1}{4}\left|\mathbb{Z}_n^*\right|=\frac{1}{4}\varphi(n)$, per $n$ composto fissato. 
+	\begin{equation*}
+	\frac{1}{4}<\frac{\left|B\right|}{\varphi(n)}=\frac{\left|B\right|}{\prod_{p\mid n}\varphi\left(p^{\alpha_p}\right)}
+	\end{equation*}
+	\begin{equation*}
+	\frac{1}{4}<2\prod_{p\mid n}\frac{2^{s-1}\MCD(m,p-1)}{(p-1)p^{\alpha_p-1}}
+	\end{equation*}
+	Osserviamo che $2^{s-1}\MCD(m,p-1)$ divide $\frac{p-1}{2}$, questo perché 
+	\begin{itemize}
+		\item $2^{s-1}$ divide $\frac{p-1}{2}$ per definizione di $s$
+		\item il massimo comune divisore tra $m$ e $p-1$ divide $p-1$, questo è ovvio
+		\item per $m$ dispari il massimo comune divisore tra $m$ e $p-1$ è un numero dispari, quindi se divide $p-1$ ne divide la parte dispari e quindi divide anche $\frac{p-1}{2}$
+	\end{itemize}
+	Allora $2^{s-1}\MCD(m,p-1)\leq\frac{p-1}{2}$, e tornando alla nostra disuguaglianza
+	\begin{equation*}
+	\frac{1}{4}<2\prod_{p\mid n}\frac{\frac{p-1}{2}}{(p-1)p^{\alpha_p-1}}
+	=2\prod_{p\mid n}\frac{1}{2p^{\alpha_p-1}}\leq2\prod_{p\mid n}\frac{1}{2}=\frac{1}{2^{t-1}}
+	\end{equation*}
+	per $t$ numero di primi che compongono la fattorizzazione di $n$. Perché la disuguaglianza valga $t$ deve essere 1 oppure 2. \\ \\ Se $t=2$ ho due primi $p_1$ e $p_2$, che posso supporre maggiori o uguali di 3. Il caso $p_i=2$ è banale e poco interessante.
+	\begin{equation*}
+	\frac{1}{4}<2\frac{1}{2p_1^{\alpha_1-1}}\frac{1}{2p_2^{\alpha_2-1}}
+	\end{equation*}
+	Affinché la disuguaglianza valga gli $\alpha_i$ devono essere l'unità. La disuguaglianza precedente diventa
+	\begin{equation*}
+	\frac{1}{4}<\frac{2^{s-1}\MCD(m,p_1-1)}{p_1-1}\frac{2^{s-1}\MCD(m,p_2-1)}{p_2-1}
+	\end{equation*}
+	%todo: rivedi passaggio da sopra a sotto, Murru forse ha dato i numeri ed è l'una di notte ed ho sonno; in teoria è giusto come ho scritto qui io
+	\begin{equation*}
+	2>\frac{p_1-1}{2^s\MCD(m,p_1-1)}\frac{p_2-1}{2^s\MCD(m,p_2-1)}
+	\end{equation*}
+	Le frazioni sono due numeri interi perché $p-1$ diviso $2^s$ è un dispari, e viene diviso per un dispari. Perché continui a valere la disuguaglianza allora deve necessariamente essere
+	\begin{equation*}
+	p_1-1=2^s\MCD(m,p_1-1)=2^sD_1, \ p_2-1=2^s\MCD(m,p_2-1)=2^sD_2
+	\end{equation*}
+	Per ipotesi $n=p_1p_2$ ed $n-1=2^km$, quindi $D_1$ divide $m$ (per definizione di massimo comune divisore); ma allora divide anche $p_1p_2-1$, che posso riscrivere come 
+	\begin{equation*}
+	p_1p_2-1=(p_1-1)p_2+(p_2-1)
+	\end{equation*}
+	Otteniamo che $D_1$ divide $p_2-1$, un pari, ma essendo $D_1$ dispari deve dividere la parte dispari di $p_2-1$ che è $D_2$. \\ Ripercorrendo lo stesso ragionamento per $D_2$ otteniamo che $D_1=D_2$, ma allora 
+	\begin{equation*}
+	p_2-1=p_1-1
+	\end{equation*}
+	e quindi $p_2=p_1$, che implica $n$ primo; abbiamo raggiunto un assurdo.
+	%todo: perché implica n primo? forse sono troppo stanco per capirlo
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
