@@ -1,17 +1,22 @@
-\chapter{Teoria elementare dei numeri}
+\part{Teoria elementare dei numeri}
+
+
+
+
+\chapter{Aritmetica sui numeri interi}
 \label{lezione1}
 \epigraph{\textit{\enquote{La matematica è la regina delle scienze e la teoria dei numeri è la regina della matematica. \\ Non è la conoscenza ma l'atto di imparare, non il possesso ma l'arrivarci, che danno la gioia maggiore.}}}{Carl Friedrich Gauss}
-Viene detta \enquote{elementare} non per la semplicità degli argomenti che tratta, quanto invece per la relativa semplicità degli strumenti matematici che utilizza. \\ \\
-Per ora lavoreremo solo sul ben noto \textit{insieme dei numeri interi}
+Questa parte viene detta \enquote{elementare} non per la semplicità degli argomenti che tratta, quanto invece per la relativa semplicità degli strumenti matematici che utilizza. Come vedremo, questa caratteristica non influirà minimamente sull'importanza dei risultati ottenuti - anzi, concluderemo in bellezza dimostrando il teorema che ha portato Gauss ad affermare quanto riportato ad inizio capitolo. \\ \\
+In questo capitolo lavoreremo sul ben noto \textit{insieme dei numeri interi}
 \begin{equation*}
 	\mathbb{Z}= \left\{\dots,-2,-1,0,1,2,\dots\right\}
 \end{equation*}
 ma in seguito estenderemo i risultati ai più generali \textit{domini d'integrità}. \\ 
-Vediamo adesso alcuni brevi richiami di algebra; dovrebbero essere tutti fatti noti, ma saranno fondamentali. Per saperne di più sulla storia della teoria dei numeri, si veda \cite{D19}\cite{G97}.
+Vediamo adesso alcuni brevi richiami di algebra; dovrebbero essere tutti fatti noti, ma saranno fondamentali. Per saperne di più sulla storia della teoria dei numeri, consiglio \cite{D19} e \cite{G97}.
 
 
-\section{Aritmetica e numeri interi}
-\subsection{$\mathbb{Z}$: elementi riducibili o primi?}
+\section{Studio dei numeri interi}
+\subsection{$\mathbb{Z}$: elementi riducibili e primi}
 \begin{definizione}[Divisore] Siano $a,b \in \mathbb{Z}$; diciamo che \textbf{$a$ divide $b$} (oppure che \textbf{$a$ è un divisore di $b$}) se 
 	\begin{equation*}
 	\exists \ x \in \mathbb{Z} \ \text{tale che} \ b = a \cdot c
@@ -170,7 +175,7 @@ L'algoritmo di Euclide sarà fondamentale in teoria dei numeri, ad esempio nella
 
 
 
-\subsection{$\mathbb{Z}$: elementi riducibili e primi!}
+\subsection{$\mathbb{Z}$: irriducibili se e solo se primi}
 \begin{teorema}[Identità di Bezout] Siano $a$ e $b$ in $\mathbb{Z}$, $d$ il loro massimo comune divisore. Allora esistono degli $x,y \in \mathbb{Z}$ tali che
 	\begin{equation*}
 	d=ax+by
@@ -340,7 +345,7 @@ Se la risposta è \textit{nessuna}, siamo ancora in tempo per rimediare.
 \end{proof}
 \begin{proof}[Dimostrazione di Cerruti] 
 	Consideriamo la \textit{funzione di Legendre}: 
-	%todo: funzione di legendre? wtf? introdurre le nuove funzioni?
+	%todo: funzione di legendre? wtf? introdurre le nuove funzioni? aggiungere collegamento alla cosa su legendre che ha scritto giorgio
 	% IDEA: Fare un formulario alla fine del libro con cose interessanti di particolari funzioni aritmetiche (?)
 	\begin{equation*}
 	\phi(x,y)=\left|\left\{n\in \mathbb{N} \, \middle| \, \text{$1\leq n \leq x$, $n$ non ha fattori primi $p\leq y$}  \right\}\right|
@@ -369,7 +374,8 @@ Se la risposta è \textit{nessuna}, siamo ancora in tempo per rimediare.
 
 
 
-\subsection{Le funzioni aritmetiche su $\mathbb{N}$}
+\section{Le funzioni aritmetiche su $\mathbb{N}$}
+\subsection{Definizioni e proprietà}
 Da adesso in poi useremo per comodità la notazione $(n,m)$ per indicare il massimo comune divisore tra $m$ ed $n$.\\ Nel caso dovesse essere ambigua (ad esempio in presenza del generatore di un ideale) torneremo alla notazione meno compatta.
 \begin{definizione}(Funzione aritmetica in letteratura) 
 	\enquote{\textit{Dico \textbf{funzione aritmetica} una funzione $f(n)$ definita su tutti gli $n \in \mathbb{N}$, solitamente costruita come funzione a valori complessi}
@@ -409,6 +415,11 @@ Le funzioni aritmetiche sono fondamentali in teoria dei numeri, perché come abb
 	\end{align*}
 	Nel secondo passaggio ho usato il fatto che se $d$ divide $mn$, allora $d$ è il prodotto di certi $a$ e $b$ coprimi tali che uno divide $m$ e l'altro divide $n$.
 \end{proof}
+
+
+
+
+\subsection{Esempi di funzioni aritmetiche}
 Vediamo alcune delle più importanti funzioni algebriche.
 \paragraph{Funzione di Eulero} \ \\ Detta anche \textit{Euler's totient function}.
 \begin{align*}
@@ -541,10 +552,11 @@ Notiamo che $\sigma_0(n)=d(n)$ e $\sigma_1(n)=\sigma(n)$, la funzione somma dei 
 
 
 
+\chapter{Aritmetica nei domini di integrità}
+\label{lezione3}
+Come abbiamo preannunciato all'inizio dello scorso capitolo, iniziamo a generalizzare quanto visto nella sezione precedente. \\ \\ Da adesso non ci restringeremo più a $\mathbb{Z}$, infatti lavoreremo su una classe di strutture algebriche più generale: i domini di integrità. Vedremo anche gli anelli degli interi di Gauss, un ottimo esempio di anelli \enquote{prototipo} su cui testare le proprietà che studieremo. Difatti studiare la caratterizzazione dei primi e degli irriducibili negli $\mathbb{Z}[\alpha]$ non sarà né troppo complessa, né eccessivamente semplice.
 \section{Divisibilità nei domini di integrità}
 \subsection{Struttura dei domini di integrità}
-\label{lezione3}
-Iniziamo a generalizzare quanto visto nella sezione precedente, da adesso non ci restringeremo più a $\mathbb{Z}$; lavoreremo su una classe di strutture algebriche più generica.
 \begin{definizione}[Dominio di integrità] 
 	Sia $A$ un anello commutativo con identità 1, lo dico \textbf{dominio di integrità} se 
 	\begin{equation*}
@@ -560,7 +572,7 @@ Iniziamo a generalizzare quanto visto nella sezione precedente, da adesso non ci
 		\begin{equation*}
 		\forall a,b \ \text{con} \ q=ab, \ \text{$a$ oppure $b$ sono un'unità}
 		\end{equation*}
-		\item Un $p \in A$ si dice \textbf{primo} se $p\mid ab \implies $ $p\mid a$ oppure $p\mid b$. \footnote{nella definizione compare un \textit{vel}, un \textit{aut inclusivo}; possono essere vere entrambe. Si pensi a $p\mid p\cdot p$.}
+		\item Un $p \in A$ si dice \textbf{primo} se $p\mid ab \implies $ $p\mid a$ oppure $p\mid b$. \footnote{nella definizione compare un \textit{vel}, un \textit{aut inclusivo}; possono essere vere entrambe. Si pensi ad esempio alla situazione $p\mid p\cdot p$.}
 	\end{enumerate}
 \end{definizione}
 \begin{osservazione} 
@@ -639,6 +651,10 @@ Iniziamo a generalizzare quanto visto nella sezione precedente, da adesso non ci
 	p=nq+r \ \ \ \text{ con } \deg(r)<\deg(q) \ \text{ oppure } r=0
 	\end{equation*}
 \end{esempio}
+
+
+
+
 \subsection{Fattorizzazione unica e noetherianità}
 \begin{osservazione}[Come siamo arrivati qui?]
 	Noi vorremo lavorare nei domini a fattorizzazione unica. Abbiamo visto nell'Osservazione \ref{notinD} che la struttura di dominio di integrità \textit{non basta} per lavorare in uno spazio \enquote{buono}, cioè uno che goda di fattorizzazione unica come $\mathbb{Z}$. \\ L'ingrediente fondamentale saranno le catene di ideali principali nella definizione di anello principalmente noetheriano, come vedremo subito.
@@ -783,7 +799,8 @@ Questa condizione però non è \enquote{soddisfacente}, infatti la principale no
 
 
 
-\subsection{L'anello degli interi di Gauss}
+\section{L'anello degli interi di Gauss}
+\subsection{La struttura di anello}
 \label{lezione5}
 Possiamo sfruttare la teoria appena costruita per studiare una classe molto interessante di anelli. \\
 Consideriamo l'insieme
@@ -856,6 +873,7 @@ per $k$ un naturale positivo. Spesso lo indicheremo come $\mathbb{Z}[\omega]$, $
 		ed allora $N(z)=1$.
 	\end{itemize}
 \end{proof}
+\subsection{Fattorizzazione unica}
 \begin{osservazione}
 	Sia $z=a+b\omega\in\mathbb{Z}[\omega]$ di norma unitaria, questo vuol dire che:
 	\begin{itemize}
@@ -922,6 +940,10 @@ per $k$ un naturale positivo. Spesso lo indicheremo come $\mathbb{Z}[\omega]$, $
 	&=N(tw)=N(t)N(w)<N(w)
 	\end{align*}
 \end{proof}
+
+
+
+
 \subsection{Alcuni esercizi}
 %todo: più esercizi
 % Alcuni esercizi: 
@@ -969,7 +991,7 @@ Lavoriamo in $\mathbb{Z}[\sqrt{-5}]$. \\ Vogliamo verificare che 3 e $4+\omega$ 
 	\end{equation*}
 	da cui $3(x_1-4x_2-7y_2)=1$, che non ha soluzioni intere.
 \end{itemize}
-%todo: quando non vale Bezout? A volte posso fare la divisione euclidea e non avere Bezout?
+%todo: quando non vale Bezout? A volte posso fare la divisione euclidea e non avere Bezout? aggiungere discorso che murru ha fatto tempo fa sui domini di bezout
 \end{esercizio}
 \begin{esercizio}[Non unicità di fattorizzazione]
 	Studiamo la fattorizzazione in $\mathbb{Z}[\sqrt{-5}]$ di $z=6$; sappiamo che qui la fattorizzazione non è unica, possiamo ottenerne due di $z$?
@@ -1001,7 +1023,12 @@ Osserviamo che l'ideale generato da 2 non è primo in $\mathbb{Z}[\sqrt{-5}]$ (i
 
 
 
-\section{Aritmetica modulare}
+\chapter{Aritmetica modulare}
+L'aritmetica modulare è fondamentale in teoria dei numeri, ad esempio permette di costruire degli importanti criteri: sui residui quadratici, sui numeri primi, e persino nei test di primalità. \\ \\ Vedremo anche le congruenze lineari ed il \textit{teorema cinese del resto}, risultati fondamentali per quanto seguirà. Concluderemo vedendo la struttura degli $\mathbb{Z}_n^*$.
+
+
+
+\section{Studio delle classi di resto}
 \label{lezione6}
 \subsection{La struttura di $\mathbb{Z}_n$}
 L'aritmetica modulare lavora negli anelli delle classi di resto
@@ -1400,6 +1427,7 @@ ma stavolta non è sufficiente a garantire l'esistenza di una soluzione.
 
 
 
+\section{Classi di resto come gruppi ciclici}
 \subsection{La struttura ciclica di $\mathbb{Z}^*_p$}
 \label{lezione7}
 Ovviamente prenderemo come $p$ un primo di $\mathbb{Z}$.
@@ -1683,6 +1711,8 @@ Nell'ultimo passaggio ho usato il fatto che $p$ non divide $k$.
 
 
 
+\chapter{Applicazioni: teoria dei residui}
+Lo studio dei residui ci permetterà di costruire alcuni criteri di primalità; concluderemo con il \textit{teorema dei due quadrati} e con la \textit{legge di reciprocità quadratica}, dei risultati di grande importanza storica.
 \section{Residui quadratici}
 \label{lezione9}
 Dallo studio delle equazioni (di secondo grado) del tipo
@@ -2288,10 +2318,455 @@ Il test di Rabin-Miller viene usato in molte funzioni di valutazione della prima
 
 
 
+\section{Il teorema dei due quadrati}
+\label{lezione11}
+Quali sono i numeri interi (positivi) che posso scrivere come somma di due interi quadrati? In altre parole cerco gli $n$ naturali tali che 
+\begin{equation*}
+n=x^2+y^2
+\end{equation*}
+per certi $x,y\in\mathbb{N}$. Questo problema è molto importante in teoria dei numeri ed ha interessato molti matematici famosi, infatti è stato studiato da Fermat - che ha impostato la congettura - ed Eulero - che ha formalizzato la soluzione. Inoltre porterà al teorema detto \textit{perla di Gauss}, che ha fatto incoronare a questo matematico la teoria dei numeri come regina della matematica. \\ Vediamo alcuni interi esprimibili come somma di due quadrati:
+\begin{center}
+	\begin{tabular}{c c}
+		0=0+0&6 \ \ \text{(no)}\\
+		1=1+0&7 \ \ \text{(no)}\\
+		2=1+1&8=4+4\\
+		3\ \ \text{(no)}&9=9+0\\
+		4=2+2&10=9+1\\
+		5=4+1&11\ \ \text{(no)}
+	\end{tabular}
+\end{center}
+Lagrange ha dimostrato che \textit{tutti} gli interi sono esprimibili come somma di quattro quadrati. \\ Si provi un esperimento: espandete la sequenza presentata qui sopra, riuscite ad immaginare la congettura che enunceremo?
+\subsection{Il teorema di Eulero}
+Vogliamo sfruttare il \textit{teorema di Eulero} per caratterizzare questa proprietà, ma per poterlo utilizzare serviranno dei lemmi intermedi. \\ Come sempre assumeremo senza perdita di generalità i primi dispari, perché - ovviamente - l'unico primo pari è 2 ed in quel caso diventa banale ottenere il risultato.
+\begin{lemma}
+	\label{prodotto_di_somme_di_quadrati}
+	Se $m$ ed $n$ sono somma di due quadrati, allora anche il loro prodotto lo è. Allora sembra opportuno concentrarsi sulla caratterizzazione dei soli primi come somma di quadrati.
+\end{lemma}
+\begin{proof}
+	Per ipotesi abbiamo $m=a^2+b^2$, $n=c^2+d^2$, allora il loro prodotto si può scrivere come
+	\begin{equation*}
+	mn=(ac+bd)^2+(ad-bc)^2
+	\end{equation*}
+\end{proof}
+\begin{lemma}
+	Se $p$ primo dispari è somma di due quadrati, allora 
+	\begin{equation*}
+	p\equiv1\Mod4
+	\end{equation*}
+\end{lemma}
+\begin{proof}
+	I quadrati di $\mathbb{Z}_4$ sono 0 ed 1 (la verifica è immediata), quindi la somma di due quadrati in $\mathbb{Z}_4$ vale 0, 1 oppure 2.
+	Siccome stiamo lavorando con un primo non può che essere 1.
+\end{proof}
+\begin{lemma}
+	Sia $p$ primo dispari, allora l'equazione $x^2+y^2\equiv0\Mod p$ ha soluzioni non banali se e solo se $p\equiv1\Mod4$.
+\end{lemma}
+\begin{proof}
+	\begin{align*}
+		x^2+y^2\equiv0\Mod p 
+		& \iff a^2+1\equiv0\Mod p \\
+		& \iff a^2\equiv-1\Mod p \\
+		& \iff -1 \in Q_p \iff p\equiv1\Mod4
+	\end{align*}
+	dove ho moltiplicato per $a^2$ inverso di $y^2$, che essendo inverso di un quadrato è ovviamente un quadrato.
+\end{proof}
+\begin{lemma}
+	Se $p$ è primo ed è congruente ad 1 in modulo 4, allora è somma di due quadrati.
+\end{lemma}
+\begin{proof}
+	Sappiamo che ha soluzione la congruenza $a^2+1\equiv0\Mod p$, ovvero esistono un $m>0$ ed un $a$ interi tali che $a^2+1=mp$, possiamo supporre $a$ intero positivo. Voglio mostrare che posso ricondurmi ad un $a$ compreso tra $0$ e $\sfrac{p}{2}$. Se $a$ fosse maggiore di $p$, potrei scrivere 
+	\begin{equation*}
+	a=kp+a' \ \text{con $0<a'<p$}
+	\end{equation*}
+	In modulo $p$ quindi varrebbe che $a^2\equiv(a')^2\equiv-1\Mod p$, inoltre se $a'\geq\frac{p+1}{2}$ allora potrei considerare $b=p-a'$ tale per cui
+	\begin{equation*}
+	0<b<\frac{p}{2} \ \ \text{e} \ \ b^2\equiv(a')^2\equiv-1\Mod p
+	\end{equation*}
+	Quindi possiamo considerare senza perdita di generalità $a$ compreso tra 0 e $\frac{p}{2}$; allora $m=\frac{a^2+1}{p}<p$. Ovvero esiste un $m$ positivo minore di $p$ tale che 
+	\begin{equation*}
+	mp=x^2+y^2
+	\end{equation*}
+	Abbiamo mostrato che un tale $m$ esiste, per $m=1$ ho già la tesi. Partendo da questo voglio mostrare che se $m>1$ allora esiste un $r$ intero con $0<r<m$ tale che $rp$ si può scrivere come somma di due quadrati. In questo modo potrò \enquote{scendere} fino a $p$ (ripetendo il ragionamento su $rp$ in modo iterativo fin quando non arrivo ad $r=1$). Consideriamo $v\leq\frac{m}{2}$, $u\geq-\frac{m}{2}$ tali che 
+	\begin{equation*}
+	u\equiv x\Mod m, \ \ \ v\equiv y\Mod m
+	\end{equation*}
+	A tutti gli effetti sono rappresentanti diversi di $x$ ed $y$ secondo la solita relazione di equivalenza dell'aritmetica modulare. Questi rappresentanti però sono \enquote{ristretti} a valori minori.
+	Allora possiamo riscrivere
+	\begin{align*}
+	x^2+y^2\equiv v^2+u^2 \equiv 0\Mod m \ \iff u^2+v^2=rm
+	\end{align*}
+	Se $m>1$ abbiamo subito che $r$ è non-nullo, infatti se fosse nullo $u$ e $v$ sarebbero nulli, quindi $x$ ed $y$ sarebbero congrui a zero in modulo $m$; questo implicherebbe che $m$ divide $p$, quindi $m$ dovrebbe essere necessariamente 1. \\ 
+	Allora posso scrivere $r=\frac{u^2+v^2}{m}<m$, voglio solo mostrare che è effettivamente il valore $r$ che cercavamo (cioè che moltiplicato per $p$ permette di scrivere $rp$ come somma di due quadrati).
+	\begin{align*}
+	(mp)(rm)&=(x^2+y^2)(u^2+v^2)\\
+	&=(xu+yv)^2+(xv-yu)^2\\
+	&\implies m^2pr=(m\alpha)^2+(m\beta)^2\\
+	&\implies rp=\alpha^2+\beta^2
+	\end{align*}
+	Nel penultimo passaggio ho sfruttato il fatto che $xv+yv\equiv x^2+y^2\equiv0\Mod m$ ed $xv-yv\equiv uv-vu\equiv0\Mod m$, quindi in $\mathbb{Z}$ sono multipli di $m$
+\end{proof}
+\begin{lemma}
+	Sia $n$ somma di due quadrati, $p$ primo somma di due quadrati, se $p$ divide $n$ allora $\sfrac{n}{p}$ è somma di due quadrati.
+\end{lemma}
+\begin{proof}
+	Se $p$ divide $n$, allora $p$ divide anche $(ad+bc)(ad-bc)$; si vede immediatamente. Sfruttando l'ipotesi di primalità di $p$ posso procedere con i soliti due casi:
+	\begin{itemize}
+		\item[($p\mid ad-bc$)] Vale $ad-bc=ep$ per un certo $e$ intero, allora 
+		\begin{equation*}
+		np=e^2p^2+(ac+bd)^2
+		\end{equation*}
+		%todo: spiegare meglio come si è giunti alla equation sopra
+		quindi $p$ divide $ac+bd$, ovvero $ac+bd=fp$ per un certo $f$ intero; questo perché abbiamo un'eguaglianza del tipo $x=y+z$ e sappiamo che $p$ divide $x$ ed $y$, la dimostrazione è immediata. Allora posso scrivere 
+		\begin{equation*}
+		np=e^2p^2+f^2p^2\implies\frac{n}{p}=e^2+f^2
+		\end{equation*}
+		\item[($p\mid ad+bc$)] Analogo, posso scrivere 
+		\begin{equation*}
+		ad+bc=ep
+		\end{equation*}
+		per un certo $k$ intero, e quindi procedo come prima su
+		\begin{equation*}
+		np=(ad-bc)^2+e^2p^2
+		\end{equation*}
+	\end{itemize}
+\end{proof}
+\begin{teorema}[Teorema dei due quadrati di Eulero] 
+	Sia $n$ un numero naturale non-nullo esprimibile tramite la sua fattorizzazione
+	\begin{equation*}
+	n=2^tp_1^{a_1}\dots p_r^{a_r}q_1^{b_1}\dots q_s^{b_s}
+	\end{equation*}
+	dove ho scritto
+	\begin{itemize}
+		\item $p_i$ i primi congrui ad 1 in modulo 4
+		\item $q_j$ i primi congrui a 3 in modulo 4 
+	\end{itemize}
+	Allora $n$ è somma di due quadrati se e solo se $b_j$ è pari per ogni $j$.
+\end{teorema}
+\begin{proof}
+	Se i $b_j$ sono pari, ogni $p_i$ è somma di due quadrati e vale $2=1+1$; questi per lemmi precedenti sono somme di due quadrati. Allora posso scrivere il prodotto come
+	\begin{equation*}
+	m=2^tp_1^{a_1}\dots p_r^{a_r}=a^2+b^2
+	\end{equation*}
+	ed ovviamente se tutti i $b_j$ sono pari posso scrivere
+	\begin{equation*}
+	q_1^{b_1}\dots q_s^{b_s}=c^2
+	\end{equation*}
+	Ma allora $n=(ac)^2+(bc)^2$, ed è una somma di due quadrati. \\ \\ Suppongo invece che $n$ sia scrivibile come somma di quadrati, allora osserviamo che per ogni $D$ intero il numero
+	\begin{equation*}
+	z=D^2q_1\dots q_s
+	\end{equation*}
+	non può essere scritto come somma di due quadrati, infatti se fosse $z=x^2+y^2$ avremmo $x^2+y^2\equiv0\Mod q_1$ e per le caratterizzazioni viste $x,y\equiv0\Mod q_1$. Allora per proprietà dei divisori le soluzioni banali diventano$x=x_1q_1$, $y=y_1q_1$, da cui
+	\begin{equation*}
+	q_1(x_1+y_1)=z \implies q_1\mid D
+	\end{equation*}
+	Sempre per proprietà della divisione posso scrivere $D=D_1q_1$, allora
+	\begin{equation*}
+	x_1^2+y_1^2=D_1^2q_1\dots q_s
+	\end{equation*}
+	Quindi $q_1$ dividerebbe $x_1^2+y_1^2$, e posso ripetere il ragionamento fino ad esaurire i fattori primi $q_1$ da $D$ ottenendo 
+	\begin{equation*}
+	q_1(x_t^2+y_y^2)=D_{t-1}^2q_2\dots q_s
+	\end{equation*}
+	con $D_{t-1}$ e $q_1$ coprimi perché ho \enquote{esaurito} i $q_1$; ma questo è un assurdo, perché da questa espressione si nota che $q_1$ dividerebbe ancora $D_{t-1}$.
+	\\ Abbiamo visto che $z$ non può essere somma di due quadrati; supponiamo ora che qualche $b_j$ nella fattorizzazione sia dispari, allora posso scrivere
+	\begin{equation*}
+	n=2^tp_1^{a_1}\dots p_r^{a_r}Q^2q_{j_1}\dots q_{j_k}
+	\end{equation*}
+	con ${j_1},\dots,{j_k}$ tali che $b_{j_1},\dots,b_{j_k}$ sono dispari e $Q$ raggruppamento delle \enquote{parti pari} dei fattori $q_j$.
+	Usiamo il Lemma \ref{prodotto_di_somme_di_quadrati}, sapendo che $n$, $2$ ed i $p_i$ sono somma di due quadrati otteniamo che $Q^2q_{j_1}\dots q_{j_k}$ è somma di due quadrati, in contraddizione con quanto appena dimostrato.
+\end{proof}
 
 
 
 
+\section{La legge di reciprocità quadratica}
+\label{lezione12}
+Il teorema dei due quadrati dice quali interi $n$ sono descritti dalla \textit{forma quadratica} $n=x^2+y^2$; una forma quadratica è un polinomio omogeneo di secondo grado a coefficienti in un dato campo. \\ Ma questo risultato ad Eulero non bastava. Infatti lui porta il problema al passo successivo: quali interi hanno forma $n=x^2+ay^2$ per un dato $a$ intero? \\ \\
+Iniziamo subito notando che se $m$ ed $n$ godono di questa proprietà (ad $a$ fissato), allora anche il loro prodotto ne gode. Infatti posti $m=x_m^2+ay_m^2$ ed $n=x_n^2+ay_n^2$,
+\begin{align*}
+(n)(m)
+&=\left(x_m^2+ay_m^2\right)\left(x_n^2+ay_n^2\right)\\
+&=\left(x_mx_n\right)^2+\left(ay_my_n\right)^2+a\left(\left(x_my_n\right)^2+\left(x_ny_m\right)^2\right)\\
+&=\left(x_mx_n+ay_my_n\right)^2+a\left(x_my_n-x_my_n^2\right)^2\\
+\end{align*}
+Allora, data la \enquote{proprietà moltiplicativa} della forma quadratica, anche in questo caso possiamo solo concentrarci sullo studio della proprietà per i primi. Per porre in modo diverso la questione, per quali $p$ primi l'equazione 
+\begin{equation*}
+x^2+ay^2\equiv0\Mod p
+\end{equation*}
+ha soluzioni non banali? 
+\begin{align*}
+x^2+ay^2\equiv0\Mod p
+&\iff x^2\equiv -ay^2\Mod p\\
+&\iff -a\equiv \left(xy^{-1}\right)^2\Mod p
+\end{align*}
+questo se $xy$ non è congruo a 0 in modulo $p$. In questo caso ci si riduce a studiare il problema: per quali primi $-a$ è un quadrato in modulo $p$?
+\subsection{Enunciato e prime conseguenze}
+Sicuramente non basta usare il criterio di Eulero, ci sono infiniti primi da controllare! Con la legge di reciprocità quadratica riusciamo a dare una risposta - anche se non del tutto generale - al problema in studio. \\ Il teorema mette in relazione il simbolo di Jacobi  $\leg{p}{q}$ con il suo \enquote{reciproco} $\leg{q}{p}$, quindi il fatto di essere (o meno) quadrato in $\Mod q$ dell'intero $p$ con il fatto di essere (o meno) quadrato in $\Mod p$ dell'intero $q$. 
+\begin{teorema}[Legge di reciprocità quadratica]
+	Siano $p$ e $q$ due primi dispari, allora vale
+	\begin{equation*}
+	\leg{p}{q}\cdot\leg{q}{p}=(-1)^{\frac{p-1}{2}\frac{q-1}{2}}
+	\end{equation*}
+\end{teorema}
+\begin{osservazione} 
+	Evidentemente abbiamo due casi:
+	\begin{itemize}
+		\item se $p\equiv3\Mod4$ e $q\equiv3\Mod4$, $\leg{p}{q}=-\leg{q}{p}$
+		\item altrimenti $\leg{p}{q}=\leg{q}{p}$
+	\end{itemize}
+	in altre parole i due simboli di Jacobi sono uguali se $p$ e $q$ non sono congrui contemporaneamente a $3$ in modulo $4$. 
+\end{osservazione}
+\begin{corollario}[Primo complemento]
+	Possiamo ottenere una caratterizzazione esplicita per i primi $p$ per cui $-1$ è un residuo quadratico in $\Mod p$ (e quelli per cui non lo è).
+	\begin{equation*}
+	\leg{-1}{p}=(-1)^{\frac{p-1}{2}}
+	\end{equation*}
+\end{corollario}
+\begin{corollario}[Secondo complemento]
+	Una caratterizzazione esplicita per i primi $p$ per cui $2$ è un residuo quadratico in $\Mod p$ (e quelli per cui non lo è).
+	\begin{equation*}
+	\leg{2}{p}=(-1)^{\frac{p^2-1}{8}}
+	\end{equation*}
+\end{corollario}
+\begin{esempio}
+	Per quali primi $p$ l'equazione $x^2\equiv10\Mod p$ è risolvibile? \\ \\ 
+	I complementi ci permettono di capire per quali $p$ è risolvibile, ovvero i primi per cui 10 è un residuo quadratico. In altre parole sto cercando i $p$ primi per cui valga $\leg{10}{p}=1$. \\ Notiamo che per moltiplicatività $\leg{10}{p}=\leg{5}{p}\leg{2}{p}$. Studiamo i due simboli di Legendre\footnote{Questo mostra il motivo per cui la legge di reciprocità quadratica non risolve \textit{tutti} i problemi di questo tipo, ad esempio nel nostro caso il problema è riconducibile alla fattorizzazione di 10.}, in particolare iniziamo dal caso in cui entrambi valgono $1$.
+	\begin{itemize}
+		\item $\leg{2}{p}=1$ se e solo se $p\equiv\pm1\Mod8$
+		\item $\leg{5}{p}=\leg{p}{5}=1$ se e solo se $p\equiv\pm1\Mod5$
+	\end{itemize}
+	Qui ho usato il secondo complemento e la legge di reciprocità. Allora abbiamo quattro casi:
+	\begin{equation*}
+	\begin{cases}
+	p\equiv1\Mod8\\p\equiv1\Mod5
+	\end{cases}
+	\iff p\equiv1\Mod40
+	\end{equation*}
+	\begin{equation*}
+	\begin{cases}
+	p\equiv-1\Mod8\\p\equiv-1\Mod5
+	\end{cases}
+	\iff p\equiv31\Mod40
+	\end{equation*}
+	\begin{equation*}
+	\begin{cases}
+	p\equiv-1\Mod8\\p\equiv1\Mod5
+	\end{cases}
+	\iff p\equiv31\Mod40
+	\end{equation*}
+	\begin{equation*}
+	\begin{cases}
+	p\equiv1\Mod8\\p\equiv-1\Mod5
+	\end{cases}
+	\iff p\equiv9\Mod40
+	\end{equation*}
+	(ma ovviamente 9 non è primo). Possiamo procedere anche da
+	\begin{itemize}
+		\item $\leg{2}{p}=-1$ se e solo se $p\equiv3,5\Mod8$
+		\item $\leg{5}{p}=\leg{p}{5}=-1$ se e solo se $p\equiv2,3\Mod5$
+	\end{itemize}
+	dove nuovamente abbiamo usato i due complementi.
+	Ad esempio dal primo caso otteniamo $p=1$ e $p=31$.
+\end{esempio}
+\begin{esempio}
+	Per quali primi l'equazione $x^2\equiv-6\Mod p$ è risolvibile? \\ \\ 
+	Esattamente come prima, notiamo che 
+	\begin{align*}
+	\leg{-6}{p}
+	&=\leg{-1}{p}\leg{2}{p}\leg{3}{p}\\
+	&=(-1)^{\frac{p-1}{2}}(-1)^{\frac{p^2-1}{8}}(-1)^{\frac{p-1}{2}}\leg{p}{3}\\
+	&=(-1)^{\frac{p^2-1}{8}}\leg{p}{3}
+	\end{align*}
+	Ad esempio posso iniziare dal caso
+	\begin{equation*}
+	(-1)^{\frac{p-1}{8}}=1 \iff p\equiv\pm1\Mod8
+	\end{equation*}
+	\begin{equation*}
+	\leg{p}{3}=1 \iff p\equiv1\Mod3
+	\end{equation*}
+	e procedere come appena fatto. Ottengo soluzioni $p\equiv1,5,7,11\Mod24$.
+\end{esempio}
+
+
+
+
+\subsection{Dimostrazioni}
+\begin{osservazione}
+	La dimostrazione del primo complemento viene direttamente dal teorema di Eulero, infatti possiamo caratterizzare 
+	\begin{equation*}
+	(-1)^{\frac{p-1}{2}}
+	\end{equation*}
+	come $-1$ se $p\equiv3\Mod4$, $1$ se $p\equiv1\Mod4$. \\ \\ Per il secondo complemento avremo bisogno del \textit{lemma di Gauss}.
+\end{osservazione}
+\begin{teorema}[Lemma di Gauss]
+	Sia $a\in\mathbb{Z}_p^*$ per $p$ primo dispari fissato, definiamo gli insiemi
+	\begin{equation*}
+	T=\left\{t_k\,\mid\,t_k\equiv ka\Mod p, \ 1\leq k\leq \frac{p-1}{2}\right\}
+	\end{equation*}
+	\begin{equation*}
+	R=\left\{r_j\,\mid\,r_j\in T, \ r_j< \frac{p}{2}\right\}
+	\end{equation*}
+	\begin{equation*}
+	S=\left\{s_i\,\mid\,s_i\in T, \ r_j> \frac{p}{2}\right\}
+	\end{equation*}
+	Allora $\leg{a}{p}=(-1)^n$. Facciamo alcune osservazioni:
+	\begin{itemize}
+		\item diciamo $m$ la cardinalità di $R$, $n$ quella di $S$ 
+		\item $T$ è l'insieme dei multipli di $a$ per $k$ compreso tra $1$ e $\frac{p-1}{2}$
+		\item $R$ ed $S$ hanno significato immediato
+	\end{itemize}
+	
+	
+\end{teorema}
+\begin{esempio}
+	Siano $a=3$, $p=13$, $\frac{p-1}{2}=6$. Allora
+	\begin{equation*}
+	T=\left\{3,6,9,12,2,5\right\}
+	\end{equation*}
+	\begin{equation*}
+	R=\left\{2,3,5,6\right\}
+	\end{equation*}
+	\begin{equation*}
+	S=\left\{9,12\right\}
+	\end{equation*}
+	Notiamo inoltre che $\leg{3}{13}=(-1)^2=1$ per lemma di Gauss, $3$ allora è un quadrato modulo $13$ (si potrebbe vedere anche con il teorema di Eulero). Infatti si verifica che vale
+	\begin{equation*}
+	3^6\equiv729\equiv1\Mod13
+	\end{equation*}
+\end{esempio}
+\begin{proof}
+	Dimostriamo il lemma di Gauss. Consideriamo l'insieme
+	\begin{equation*}
+	p-S=\left\{p-s_1,\dots,p-s_m\right\}
+	\end{equation*}
+	tale che per ogni $i$ si abbia $p_i-s_i<\frac{p}{2}$; allora $p-s_i\notin R$. Infatti supponiamo che per $i$ fissato $p-s_i$ sia un certo $r_j$, allora per ipotesi
+	\begin{equation*}
+	-s_i\equiv r_j\Mod p
+	\end{equation*}
+	ed inoltre vale anche che 
+	\begin{equation*}
+	s_i\equiv ka\Mod p, \ r_j\equiv ha\Mod p
+	\end{equation*}
+	Unendo questi risultati otteniamo $-k\equiv h\Mod p$, quindi $h+k\equiv0\Mod p$ (che equivale a dire $p$ divide $h+k$). Ma $1\leq h\leq\frac{p-1}{2}$, $1\leq k\leq\frac{p-1}{2}$, quindi $h+k<p$; è impossibile che $p$ divida $h+k$. \\ \\ 
+	Allora $T$ è l'unione disgiunta tra $R$ ed $S$. Notiamo che 
+	\begin{itemize}
+		\item $|p-S|=|S|=n$
+		\item $|R|=m$
+		\item $|T|=\frac{p-1}{2}=|R|+|S|=m+n$
+	\end{itemize}
+	e svolgendo i calcoli otteniamo 
+	\begin{align*}
+	\left(\frac{p-1}{2}\right)!
+	&=\prod_{k=1}^{\frac{p-1}{2}}k=\left(\prod_{s=1}^{m}r_j\right)\left(\prod_{i=1}^{n}(p-s_i)\right)\\
+	&\equiv\left(\prod_{s=1}^{m}r_j\right)\left(\prod_{i=1}^{n}(-1)^ns_i\right)\Mod p\\
+	&\equiv\prod_{k=1}^{\frac{p-1}{2}}(ka)(-1)^n\Mod p\\
+	&\equiv\left(\frac{p-1}{2}\right)!\cdot a^{\frac{p-1}{2}}\cdot(-1)^n\Mod p
+	\end{align*}
+	\begin{equation*}
+	\left(\frac{p-1}{2}\right)!\equiv\left(\frac{p-1}{2}\right)!\cdot a^{\frac{p-1}{2}}\cdot(-1)^n\Mod p
+	\end{equation*}
+	Questo implica $a^{\frac{p-1}{2}}\equiv(-1)^n\Mod p$, quindi $\leg{a}{p}=(-1)^n$.
+\end{proof}
+\begin{corollario}[Secondo complemento]
+	\begin{equation*}
+	\leg{2}{p}=(-1)^{\frac{p^2-1}{8}}=
+	\begin{cases}
+	\ -1 \ \ \,p\equiv3,5\Mod8\\
+	\ \,1 \ \ \ \ p\equiv1,7\Mod8\\
+	\end{cases}
+	\end{equation*}
+\end{corollario}
+\begin{proof}
+	\begin{equation*}
+	ka=\left[\frac{ka}{p}\right]p+t_k
+	\end{equation*}
+	dove $t_k$ è il resto, $t_k=ka\Mod p$. Con la notazione $\left[z\right]$ intendiamo la \enquote{parte intera} di $z$, che a priori potrebbe non essere intero. Facciamo alcune osservazioni.
+	\begin{enumerate}
+		\item $\displaystyle \sum_{k=1}^{\frac{p-1}{2}}(ka)=\sum_{k=1}^{\frac{p-1}{2}}\left[\frac{ka}{p}\right]p+\sum_{s=1}^{m}r_s+\sum_{i=1}^{n}s_i$
+		\item $\displaystyle\sum_{k=1}^{\frac{p-1}{2}}k=\sum_{s=1}^{m}r_s+\sum_{i=1}^{n}p-s_i $ 
+		\item Unendo quanto appena osservato si ottiene
+		\begin{equation*}
+		\sum_{k=1}^{\frac{p-1}{2}}k(a-1)=\sum_{k=1}^{\frac{p-1}{2}}\left[\frac{ka}{p}\right]p+2\sum_{i=1}^{n}s_i-np
+		\end{equation*}
+		\begin{equation*}
+		(a-1)\sum_{k=1}^{\frac{p-1}{2}}k\equiv\sum_{k=1}^{\frac{p-1}{2}}\left[\frac{ka}{p}\right]p-n \ \Mod2
+		\end{equation*}
+	\end{enumerate}
+	Per $a=2$ la terza osservazione diventa 
+	%todo: forse non dovrebbe esserci p dopo le quadre, controllare
+	\begin{equation*}
+	\sum_{k=1}^{\frac{p-1}{2}}k\equiv-n\Mod2\equiv n\Mod2
+	\end{equation*}
+	Utilizzando $\sum_{k=1}^{\frac{p-1}{2}}k=\frac{p-1}{2}\left(\frac{p-1}{2}+1\right)\frac{1}{2}?\frac{p^2-1}{8} $ ed il lemma di Gauss otteniamo
+	\begin{equation*}
+	\leg{2}{p}=(-1)^n=(-1)^{\sum_{k=1}^{\frac{p-1}{2}}k}=(-1)^{\frac{p^2-1}{8}}
+	\end{equation*}
+	e da questo infine la tesi.
+\end{proof}
+\begin{proof}
+	Dimostriamo la legge di reciprocità quadratica. \\ \\ Prima di tutto dimostriamo che se $a\in\mathbb{Z}_p^*$ è dispari allora vale
+	\begin{equation*}
+	n\equiv\sum_{k=1}^{2}\left[\frac{ka}{p}\right]\Mod2
+	\end{equation*}
+	dove $n$ è preso dal lemma di Gauss. Questo implicherà $\leg{a}{p}=(-1)^{\sum_{k=1}^{2}\left[\frac{ka}{p}\right]}$. Esattamente come fatto nella dimostrazione del secondo complemento scrivo $ka=\left[\frac{ka}{p}\right]p+t$ e riscrivo le sommatorie viste, ma per $a$ dispari.
+	\begin{equation*}
+	0\equiv\sum_{k=1}^{\frac{p-1}{2}}\left[\frac{ka}{p}\right]-n \ \Mod2
+	\end{equation*}
+	\begin{equation*}
+	n\equiv\sum_{k=1}^{\frac{p-1}{2}}\left[\frac{ka}{p}\right] \Mod2
+	\end{equation*}
+	\begin{equation*}
+	\leg{a}{p}=(-1)^n=(-1)^{\sum_{k=1}^{\frac{p-1}{2}}\left[\frac{ka}{p}\right]}
+	\end{equation*}
+	Si noti che nell'ultimo passaggio ho calcolato il simbolo di Legendre con il lemma di Gauss. \\ \\ Ora supponiamo senza perdita di generalità $p>q$ (infatti se fosse $p<q$ basta scambiarli, ovviamente) e consideriamo il rettangolo in figura.
+	\begin{equation*}
+	\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+	\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+	%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+	%Shape: Rectangle [id:dp5159399739070081] 
+	\draw  [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=0.42 ][line width=1.5]  (181,61) -- (458,61) -- (458,199.5) -- (181,199.5) -- cycle ;
+	%Straight Lines [id:da47338369224995747] 
+	\draw [color={rgb, 255:red, 74; green, 144; blue, 226 }  ,draw opacity=1 ][line width=1.5]    (181,199.5) -- (458,61) ;
+	%Shape: Rectangle [id:dp8995483750887759] 
+	\draw  [color={rgb, 255:red, 208; green, 2; blue, 27 }  ,draw opacity=1 ][fill={rgb, 255:red, 208; green, 2; blue, 27 }  ,fill opacity=0.16 ][dash pattern={on 4.5pt off 4.5pt}] (181,112.4) -- (355,112.4) -- (355,199.5) -- (181,199.5) -- cycle ;
+	
+	% Text Node
+	\draw (153.4,202.6) node [anchor=north west][inner sep=0.75pt]    {$\textcolor[rgb]{0.29,0.56,0.89}{( 0,0)}$};
+	% Text Node
+	\draw (162,39.4) node [anchor=north west][inner sep=0.75pt]    {$\textcolor[rgb]{0.29,0.56,0.89}{\frac{q}{2}}$};
+	% Text Node
+	\draw (465,189.4) node [anchor=north west][inner sep=0.75pt]    {$\textcolor[rgb]{0.29,0.56,0.89}{\frac{p}{2}}$};
+	% Text Node
+	\draw (354,204) node [anchor=north west][inner sep=0.75pt]    {$\textcolor[rgb]{0.82,0.01,0.11}{a}$};
+	% Text Node
+	\draw (153,98) node [anchor=north west][inner sep=0.75pt]    {$\textcolor[rgb]{0.82,0.01,0.11}{\frac{q}{p}}\textcolor[rgb]{0.82,0.01,0.11}{a}$};
+	% Text Node
+	\draw (390.2,160.2) node [anchor=north west][inner sep=0.75pt]    {$\textcolor[rgb]{0.29,0.56,0.89}{T_{1}}$};
+	% Text Node
+	\draw (270.2,80.2) node [anchor=north west][inner sep=0.75pt]    {$\textcolor[rgb]{0.29,0.56,0.89}{T_{2}}$};
+	\end{tikzpicture}
+	\end{equation*}
+		Il numero di punti (appartenenti al reticolo intero) interni al rettangolo può essere calcolato facilmente,
+	\begin{equation*}
+	N=\frac{p-1}{2}\frac{q-1}{2}
+	\end{equation*}
+	ma possiamo calcolarlo in un altro modo. Su $D$ diagonale non esistono punti interi, infatti la retta ha equazione $y=\frac{q}{p}x$ e se un punto $(a,b)$ vi appartiene allora $bp=qa$, il che vuol dire $p\mid qa$ e questo è impossibile per $a\leq\frac{p}{2}$ - quindi nel rettangolo. Divido il rettangolo in due triangoli $T_1$ e $T_2$, $N$ è ovviamente la somma dei numeri di punti interi nei due triangoli. \\ Per il primo triangolo i punti interi di ascissa $a$ sono
+	\begin{equation*}
+	\left(a,1\right),\left(a,2\right),\dots,\left(a,\left[\frac{qa}{p}\right]\right)
+	\end{equation*}
+	In $T_1$ allora ho $\sum_{a=1}^{\frac{p-1}{2}}\left[\frac{qa}{p}\right]$ punti interi, ed analogamente in $T_2$ ne ho $\sum_{a=1}^{\frac{q-1}{2}}\left[\frac{pa}{q}\right]$.
+	\begin{equation*}
+	N=\sum_{a=1}^{\frac{p-1}{2}}\left[\frac{qa}{p}\right]+\sum_{a=1}^{\frac{q-1}{2}}\left[\frac{pa}{q}\right]
+	\end{equation*}
+	\begin{align*}
+	(-1)^N
+	&=(-1)^{\frac{p-1}{2}\frac{q-1}{2}}\\
+	&=(-1)^{\sum_{a=1}^{\frac{p-1}{2}}\left[\frac{qa}{p}\right]}(-1)^{\sum_{a=1}^{\frac{q-1}{2}}\left[\frac{pa}{q}\right]}\\
+	&=\leg{q}{p}\leg{p}{q}
+	\end{align*}
+	dove nell'ultimo passaggio ho usato la prima formula dimostrata.   
+\end{proof}
+\part{Teoria algebrica dei numeri}
 
 
 
