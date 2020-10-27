@@ -1,0 +1,104 @@
+
+\chapter{Funzione di Legendre}
+
+\begin{definizione}
+	Definiamo la \emph{funzione di Legendre} come 
+	\begin{equation*}
+      \phi(n,m) \coloneqq \left|\left\{ 1 \le x \le n \; 
+        \middle|\; n = p^{e_1}_1 \cdots p^{e_l}_l, \text{t.c.}\;
+            p_i > m \right\}\right|
+	\end{equation*} 
+\end{definizione}
+
+\begin{osservazione}
+  Osserviamo che $\phi(k,1) = k$ poiché qualsiasi primo è maggiore di $1$. 
+  In generale se si prende $p_\alpha$ l'$\alpha$-esimo primo allora 
+  $\phi(x,p_\alpha)$ è uguale al numero di numeri rimasti in $\{1,\dots, n\}$ 
+  dopo aver fatto il crivello di Erastotene per $p_1, \dots, p_{\alpha}$.
+\end{osservazione}
+
+\begin{definizione}
+  Definiamo nel seguente metodo la funzione 
+  \begin{equation*}
+    \phi_k(x,y) \coloneqq \left|\left\{ 1 \le n \le x \middle|\, 
+            n = p^{e_1}_1\cdots p^{e_l}_l \;\text{t.c.}\; 
+          \sum_{i=1}^l e_i = k \land \forall i. \, p_i > y \right\}\right|
+  \end{equation*}
+  ovvero la funzione che conta quanti numeri con $k$ fattori (contati con
+  molteplicità) sono tali che ogni suo fattore superi $y$.
+\end{definizione}
+
+\begin{esempio}\
+  \begin{enumerate}
+    \item Calcoliamo $\phi(15,2) = 8$. Vengono tolti tutti
+      i numeri pari in quanto hanno un fattore che è uguale a $2$.
+    \item Calcoliamo $\phi(21,3)$. Allora osserviamo che tutti i multipli di
+      $3$ non vengono contati, i multipli di $2$ neanche. Rimangono quindi
+      $1,5,7,11,13,17,19$. Quindi $\phi(21,3) = 7$.
+  \end{enumerate}
+\end{esempio}
+
+\begin{teorema}
+  Valgono le seguenti proprietà:
+  \begin{enumerate}
+    \item \begin{equation*}
+        \phi(x,2) = \lfloor (x+1)/2 \rfloor
+      \end{equation*}
+    \item Se indicizziamo i primi come la successione $\left\{p_b
+      \right\}_{b\ge 2}$ allora vale la relazione 
+      \begin{equation*}
+        \phi(x,p_b) = \phi(x,p_{b-1}) - \phi(x/p_{b}, p_{b-1})
+      \end{equation*}
+    \item Sia $\pi(x)$ la funzione che conta i primi fino ad $x$. 
+ 		Allora 
+ 		\begin{equation}
+ 			\label{eq:legendre_conta_primi}
+ 			\pi(x) - \pi(\sqrt{x}) = \phi(x,\sqrt{x}) - 1 
+ 		\end{equation}
+  \end{enumerate}
+  \label{lemma:proprietà_funz_legendre}
+\end{teorema}
+\begin{proof}[1]
+  La proprietà è ovvia dato che $\phi(x,2)$ conta solo i numeri dispari fino
+  a $x$, da cui la tesi.
+\end{proof}
+\begin{proof}[2]
+	Definiamo l'insieme dei numeri che vengono filtrati dal crivello 
+	eseguito da $p_1, \dots, p_{b-1}$ e che siano minori o uguali a $x$ come 
+	$C_{b-1}(x)$. 
+	Se $p_b > x$ allora $\phi(x,p_{b-1}) = \phi(x,p_b)$ e non c'è nulla da dimostrare.
+	Se $p_b < x$ allora sia $m \in C_{b}(x) \setminus C_{b-1}(x)$ allora dev'essere che
+	$m = k p_b$ con $k = q_1\cdots q_l$ con $q_i$ primi e $q_i > p_{b-1}$. 
+	Ma il numero dei possibili valori che $k$ non può assumere è proprio $|C_{b-1}(x/p_b)|$. 
+	Da cui segue che
+	\begin{equation*}
+		\begin{array}{lll}
+			& |C_{b}(x)| - |C_{b-1}(x)| & = \frac{x}{p_b} - |C_{b-1}(x/p_b)| \\
+			\Leftrightarrow & (n -\phi(x,p_b)) - (n -\phi(x, p_{b-1})) &= \frac{x}{p_b} - \left(\frac{x}{p_b} - \phi(x/p_b, p_{b-1})\right)\\
+			\Leftrightarrow & \phi(x,p_{b-1}) - \phi(x,p_b) & = \phi(x/p_b, p_{b-1})
+		\end{array}		
+	\end{equation*}
+\end{proof}
+\begin{proof}[3]
+	Basta dimostrare che $\phi(x,\sqrt{x})$ conta solo i primi tra $\sqrt{x}$ e $x$ e 
+	l'elemento $1$. Se $p$ è primo e compreso tra $\left\{\sqrt{x},\dots, x\right\}$ allora
+	viene contato dalla $\phi(x,\sqrt{x})$ per definizione.
+	Se $m$ non primo, allora $m = p_1 \dots p_k$. Vogliamo vedere che non viene contato 
+	dalla $\phi(x,\sqrt{x})$. Se supponessimo che $m$ venga contato dalla $\phi$ allora 
+	tutti i suoi $k \ge 2$ fattori sarebbero $p_i > \sqrt{x}$ e quindi $m > \sqrt{x}^2 > x$ 
+	da cui l'impossibilità della cosa. Segue l'identità \eqref{eq:legendre_conta_primi}.       
+\end{proof}
+
+\begin{esempio}\
+	\begin{enumerate}
+		\item Grazie alla formula ricorsiva è possibile calcolare la funzione di Legendre
+		nel caso $\phi(x,p_b)$ in $b-1$ passi e $2^{b-1}$ calcoli, dove $b$ indica il $b$-esimo 
+		primo. 
+		Per esempio, ricordando che $5$ è il terzo primo 
+		\begin{align*}
+			\phi(30, 5) & = \phi(30, 3) - \phi(6,3) \\
+						& = \phi(30, 2) - \phi(10, 2) - (\phi(6,2) - \phi(2,2)) \\
+						& = 15 - 5 - (3 - 1) = 8
+		\end{align*}
+	\end{enumerate}
+\end{esempio}
