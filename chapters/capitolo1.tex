@@ -2783,7 +2783,7 @@ Sia $A$ un anello commutativo con unità, sia $A[x]$ l'insieme dei polinomi a co
 \begin{itemize}
 	\item $A$ è un sottoanello di $A[x]$
 	\item $A[x]$ è un dominio di integrità se e solo se lo è anche $A$
-	\item gli elementi invertibili di $A[x]$ sono tutti e soli gli elementi invertibili di $A$
+	\item gli elementi invertibili di $A[x]$ sono tutti e soli gli elementi invertibili di $A$\footnote{Se supponessimo che $A$ non sia un dominio di integrità questo non è più vero. Prendiamo per esempio $A = \mathbb{Z}/4\mathbb{Z}$ e allora il polinomio $2x+3$ è invertibile: $(2x+3)(2x+3) = 4x^2 + (12)x + 9 \equiv 1 \mod \mathbb{Z}/4\mathbb{Z}\left[x\right]$}
 \end{itemize}
 In particolare se $\mathbb{F}$ è un campo nell'anello $\mathbb{F}[x]$ possiamo costruire la divisione euclidea. Infatti dati $f$ e $g$ in $\mathbb{F}[x]$ con $g$ non nullo, esistono due unici polinomi $q,r$ tali che 
 \begin{equation*}
@@ -2821,8 +2821,54 @@ con $\deg(r)<\deg(g)$ oppure $r=0$.
 	\begin{equation*}
 	g(x)=x^5+4x^3+x^2+3x+3
 	\end{equation*}
-	Costruire il massimo comune divisore e la scrittura di Bezout del massimo comune divisore.
-	%todo: risolvere?
+	Costruire il massimo comune divisore e la scrittura di Bezout del massimo comune divisore.\\
+	
+	La risoluzione è immediata per algoritmo di divisione euclidea:
+	\begin{center}
+		\begin{tabular}{r|r}
+			$f(x)$ & \multicolumn{1}{l}{$g(x)$}  \\ 
+			\cline{2-2}
+			$x^5+4x^3+x^2+3x+3$      & \multicolumn{1}{l}{$1$}    \\ 
+			\cline{1-1}
+			$5x^3+x$    &                              
+		\end{tabular}
+	\end{center}
+	quindi $f(x) = g(x) + 5x^3+x$. Da cui 
+	\begin{center}
+		\begin{tabular}{r|r}
+			$g(x)$ & \multicolumn{1}{l}{$5x^3+x$}  \\ 
+			\cline{2-2}
+			$x^5+3x^3$      & \multicolumn{1}{l}{$3x^2+3$}    \\ 
+			\cline{1-1}
+			$x^3+x^2+3x+3$    &  \\
+			$x^3+3x$ & \\
+			\cline{1-1} 
+			$x^2+3$ &                      
+		\end{tabular}
+	\end{center}
+	per cui $g(x) = (3x^2+3)(5x^3+x) + x^2+3$ e osserviamo infine che $5x^3+x = (5x)x^2+3$ 
+	e quindi segue che $\gcd(f(x),g(x)) = x^2+3$.\\
+	
+	Ora dobbiamo trovare i coefficienti per l'identità di Bezout. Prendiamo in considerazione 
+	le seguenti equazioni 
+	\begin{equation*}
+		\begin{array}{ll}
+			f(x)&= g(x) + 5x^3+x  \\
+			g(x)&= (3x^2+3)(5x^3+x) + (x^2+3) 
+		\end{array}
+	\end{equation*}
+	allora è equivalente al seguente sistema
+	\begin{equation*}
+		\begin{array}{ll}
+			(3x^2+3)(f(x)-g(x)) &= (3x^2+3)5x^3+x  \\
+			g(x) - (x^2+3) &= (3x^2+3)(5x^3+x)  
+		\end{array}
+	\end{equation*}
+	sostituendo il termine di destra della prima equazione con quanto trovato nella seconda, 
+	si ottiene 
+	\begin{equation*}
+		(4x^2+4)f(x) + (3x^2+4)g(x) = x^2 + 3
+	\end{equation*}
 \end{esercizio}
 \begin{teorema}[di Ruffini]
 	Sia $\mathbb{F}$ un campo, $f\in\mathbb{F}[x]$. $\alpha$ è radice di $f$ se e solo se $x-\alpha$ divide $f(x)$.
