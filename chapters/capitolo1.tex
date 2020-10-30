@@ -2455,15 +2455,15 @@ Vogliamo sfruttare il \textit{teorema di Eulero} per caratterizzare questa propr
 	\begin{equation*}
 	z=D^2q_1\dots q_s
 	\end{equation*}
-	non può essere scritto come somma di due quadrati, infatti se fosse $z=x^2+y^2$ avremmo $x^2+y^2\equiv0\Mod q_1$ e per le caratterizzazioni viste $x,y\equiv0\Mod q_1$. Allora per proprietà dei divisori le soluzioni banali diventano$x=x_1q_1$, $y=y_1q_1$, da cui
+	non può essere scritto come somma di due quadrati, infatti se fosse $z=x^2+y^2$ avremmo $x^2+y^2\equiv0\Mod q_1$ e per le caratterizzazioni viste $x,y\equiv0\Mod q_1$. Allora per proprietà dei divisori le soluzioni banali diventano $x=x_1q_1$, $y=y_1q_1$, da cui
 	\begin{equation*}
-	q_1(x_1+y_1)=z \implies q_1\mid D
+	q_1(x_1^2+y_1^2)=z \implies q_1\mid D
 	\end{equation*}
 	Sempre per proprietà della divisione posso scrivere $D=D_1q_1$, allora
 	\begin{equation*}
 	x_1^2+y_1^2=D_1^2q_1\dots q_s
 	\end{equation*}
-	Quindi $q_1$ dividerebbe $x_1^2+y_1^2$, e posso ripetere il ragionamento fino ad esaurire i fattori primi $q_1$ da $D$ ottenendo 
+	Quindi $q_1$ dividerebbe $x_1^2+y_1^2$, e posso ripetere il ragionamento fino ad esaurire i fattori primi $q_1$ in $D$, ottenendo infine
 	\begin{equation*}
 	q_1(x_t^2+y_y^2)=D_{t-1}^2q_2\dots q_s
 	\end{equation*}
@@ -2767,16 +2767,186 @@ Sicuramente non basta usare il criterio di Eulero, ci sono infiniti primi da con
 	\end{align*}
 	dove nell'ultimo passaggio ho usato la prima formula dimostrata.   
 \end{proof}
+
+
+
+
 \part{Teoria algebrica dei numeri}
+\chapter{Introduzione}
+
+
+
+\section{Anelli di polinomi}
+\subsection{Costruzione}
+\label{lezione14}
+Sia $A$ un anello commutativo con unità, sia $A[x]$ l'insieme dei polinomi a coefficienti in $A$: si vede facilmente che $\left(A[x],+,\cdot\right)$ è un anello commutativo con unità. In particolare valgono i risultati:
+\begin{itemize}
+	\item $A$ è un sottoanello di $A[x]$
+	\item $A[x]$ è un dominio di integrità se e solo se lo è anche $A$
+	\item gli elementi invertibili di $A[x]$ sono tutti e soli gli elementi invertibili di $A$
+\end{itemize}
+In particolare se $\mathbb{F}$ è un campo nell'anello $\mathbb{F}[x]$ possiamo costruire la divisione euclidea. Infatti dati $f$ e $g$ in $\mathbb{F}[x]$ con $g$ non nullo, esistono due unici polinomi $q,r$ tali che 
+\begin{equation*}
+f(x)=q(x)g(x)+r(x)
+\end{equation*}
+con $\deg(r)<\deg(g)$ oppure $r=0$. 
+\begin{esempio}
+	In $\mathbb{Z}_5[x]$ dividere $f(x)=x^3+x^2+x-1$ per $g(x)=2x^2+1$.\\ \\
+	\begin{center}
+		\begin{tabular}{r|r}
+			$x^3+x^2+x-1$ & \multicolumn{1}{l}{$2x^2+1$}  \\ 
+			\cline{2-2}
+			$x^3+3x$      & \multicolumn{1}{l}{$3x+3$}    \\ 
+			\cline{1-1}
+			$x^2-2x-1$    &                               \\
+			$x^2+3$       &                               \\ 
+			\cline{1-1}
+			$-2x-4$       &                              
+		\end{tabular}
+	\end{center}
+	Si può verificare che $f(x)=(3x+3)g(x)+(3x+1)$. Siccome lavoro in un campo, sono sicuro che esiste un inverso per ogni suo elemento.
+\end{esempio}
+\begin{teorema}
+	Sia $\mathbb{F}$ un campo, allora 
+	\begin{enumerate}
+		\item se $\mathbb{F}[x]$ è euclideo, è anche un PID
+		\item se $\mathbb{F}[x]$ è un PID, è anche un UFD
+	\end{enumerate}
+\end{teorema}
+\begin{esercizio}
+	Siano $f$ e $g$ in $\mathbb{Z}_5[x]$ i polinomi 
+	\begin{equation*}
+	f(x)=x^5+2x^3+x^2+4x+3
+	\end{equation*}
+	\begin{equation*}
+	g(x)=x^5+4x^3+x^2+3x+3
+	\end{equation*}
+	Costruire il massimo comune divisore e la scrittura di Bezout del massimo comune divisore.
+	%todo: risolvere?
+\end{esercizio}
+\begin{teorema}[di Ruffini]
+	Sia $\mathbb{F}$ un campo, $f\in\mathbb{F}[x]$. $\alpha$ è radice di $f$ se e solo se $x-\alpha$ divide $f(x)$.
+\end{teorema}
+\begin{proof}
+	Se $\alpha$ è una radice di $f$ posso dividere $f$ per $(x-\alpha)$:
+	\begin{equation*}
+	f(x)=q(x)(x-\alpha)+r
+	\end{equation*}
+	\begin{equation*}
+	f(\alpha)=q(\alpha)(\alpha-\alpha)+r=0
+	\end{equation*}
+	ed ottengo $r=0$. Per l'altro verso invece basta notare che se $x-\alpha$ divide $f$ posso scrivere
+	\begin{equation*}
+	f(x)=q(x)(x-\alpha)
+	\end{equation*}
+	e palesemente $f(\alpha)=0$.
+\end{proof}
+\begin{osservazione}
+	Se $f(x)$ ha una radice in $\mathbb{F}$, allora $f$ è irriducibile in $\mathbb{F}[x]$. Se non ha radici in $\mathbb{F}$ non è detto che sia irriducibile, ad esempio posso prendere in $\mathbb{R}[x]$ il polinomio
+	\begin{equation*}
+	x^4+3x^2+2=(x^2+1)(x^2+2)
+	\end{equation*}
+\end{osservazione}
 
 
 
 
-
-
-
-
-
+\subsection{Quozienti in anelli di polinomi}
+Possiamo caratterizzare i quozienti in anelli di polinomi partendo da un campo $\mathbb{F}$, e quindi dal suo anello di polinomi $\mathbb{F}[x]$. L'anello quoziente ha forma 
+\begin{equation*}
+\sfrac{\mathbb{F}[x]}{I}
+\end{equation*}
+con $I$ ideale di $\mathbb{F}[x]$. Tutti gl ideali di $\mathbb{F}[x]$ sono principali, ovvero nella forma $I=(f)$ per un polinomio $f\in\mathbb{F}[x]$. Prima di tutto possiamo caratterizzare le classi laterali uguali; $(f)+a$ ed $(f)+b$ lo sono se e solo se 
+\begin{equation*}
+a-b\in(f)
+\end{equation*}
+ovvero per $a-b=kf$ multiplo di $f$. In modo equivalente possiamo dire che $a(x)$ e $b(x)$ sono equivalenti rispetto al quoziente per $(f)$ se e solo se
+\begin{equation*}
+a(x)-b(x)=k(x)f(x)
+\end{equation*}
+Risulta evidente che posso costruire le classi di resto in modo esattamente analogo al caso dei numeri interi.
+\begin{proposizione}
+	Sia $\mathbb{F}$ un campo, se $p\in\mathbb{F}[x]$ è irriducibile allora 
+	\begin{equation*}
+	\sfrac{F[x]}{(p)}
+	\end{equation*}
+	è un campo.
+\end{proposizione}
+\begin{proof}
+	Sicuramente è un anello commutativo con identità, vediamo ce ogni elemento non nullo ha un inverso. Sia $(p)+a$ un elemento di $\sfrac{F[x]}{(p)}$ tale che $a$ non appartenga all'ideale generato da $p$ (questo vuol dire che $p$ non divide $a$). Si noti che $(p)+a=(p)$ se e solo se $a-0\in(p)$, quindi non è il nostro caso. Allora il massimo comune divisore tra $p$ ed $a$ è 1, e per divisione euclidea posso scrivere 
+	\begin{equation*}
+	1=r(x)a(x)+s(x)p(x)
+	\end{equation*}
+	per certo $r,s$ polinomi su $\mathbb{F}$. Questo vuol dire che 
+	\begin{equation*}
+	(p)+1=(p)+ra+sp=\left((p)+r\right)\left((p)+a\right)
+	\end{equation*}
+	ed ho appena trovato l'inverso di $(p)+a$, perché $(p)+1$ è l'identità moltiplicativa.
+\end{proof}
+\begin{teorema}[Teorema fondamentale dell'algebra]
+	In $\mathbb{C}[x]$, ogni polinomio di grado almeno 1 ha una radice in $\mathbb{C}$. In particolare, per teorema di Ruffini, sono irriducibili in $\mathbb{C}[x]$ solo i polinomi di grado 1.
+\end{teorema}
+\begin{teorema}
+	In $\mathbb{R}[x]$, un polinomio è irriducibile se e solo se
+	\begin{enumerate}
+		\item è di primo grado
+		\item oppure è di primo grado con discriminante negativo
+	\end{enumerate}
+\end{teorema}
+\begin{teorema}[di Gauss]
+	Sia $f(x)\in\mathbb{Z}[x]$, se $f$ si fattorizza nel prodotto di due polinomi in $\mathbb{Q}[x]$ allora si fattorizza anche nel prodotto di due polinomi in $\mathbb{Z}[x]$.
+\end{teorema}
+\begin{teorema}
+	Sia $f(x)=a_nx^n+\dots+a_1x+a_0\in\mathbb{Z}[x]$ con $a_n\neq0$, se $f$ ha radici in $\mathbb{Q}[x]$ allora ne ho una nella forma $\frac{p}{q}$ dove $p$ divide $a_0$ e $q$ divide $a_n$, $p$ e $q$ coprimi.
+\end{teorema}
+\begin{teorema}[Criterio di Eisenstein]
+	Sia $f(x)=a_nx^n+\dots+a_1x+a_0\in\mathbb{Z}[x]$, se esiste un $p$ primo tale che $p$ divide $a_0,a_1,\dots,a_{n-1}$ e $p^2$ non divide $a_0$, allora $f$ è irriducibile in $\mathbb{Q}[x]$. \\ In particolare è irriducibile anche in $\mathbb{Z}[x]$.
+\end{teorema}
+\begin{esempio}
+	Consideriamo il polinomio $x^2-2$ in $\mathbb{Q}[x]$, tale polinomio è irriducibile, quindi per caratterizzazioni viste $\mathbb{F}=\sfrac{\mathbb{Q}[x]}{(x^2-2)}$ è un campo. \\ Due polinomi in $\mathbb{Q}[x]$ sono equivalenti in $\mathbb{F}$ se hanno lo stesso resto mediante la divisione per $x^2-2$, quindi tutti i polinomi del campo originale sono rappresentati nel quoziente da polinomi di grato 1. Consideriamo ad esempio i due polinomi 
+	\begin{equation*}
+	a(x)=x^3+2x+1, {Q}[\ \ b(x)=x^2-2x-3 \ \ \in\mathbb{Q}[x]
+	\end{equation*}
+	Possiamo verificare facilmente che 
+	\begin{equation*}
+	a\equiv4x+1\Mod (x^2-2)
+	\end{equation*}
+	\begin{equation*}
+	b\equiv-2x-1\Mod (x^2-2)
+	\end{equation*}
+	\begin{equation*}
+	ab\equiv-6x-17\Mod (x^2-2)
+	\end{equation*}
+	Consideriamo ora $\mathbb{Q}[\sqrt{2}]=\left\{a+b\sqrt{2} \, \mid \, a,b\in\mathbb{Q}\right\}$. Si vede facilmente che è un campo rispetto alle solite operazioni sui reali. Allora definiamo la mappa
+	\begin{align*}
+	\varphi:\mathbb{Q}[x]&\longrightarrow\mathbb{Q}[\sqrt{2}]\\
+	f(x)&\longmapsto f(\sqrt{2})
+	\end{align*}
+	Notiamo che verifica le seguenti proprietà:
+	\begin{enumerate}
+		\item è un morfismo
+		\item ha come immagine $\mathbb{Q}[\sqrt{2}]$, è suriettiva
+		\item $\varphi\left(a+b\sqrt{2}\right)=a+bx$
+		\item il suo nucleo è l'ideale generato da $x^2-2$, questo perché tutti i polinomi in $\mathbb{Q}[x]$ che hanno $\sqrt{2}$ come radici sono divisibili per $x^2-2$
+	\end{enumerate}
+	Per il teorema fondamentale degli anelli, ottengo che $\mathbb{F}$ è isomorfo a $\mathbb{Q}[\sqrt{2}]$. In particolare notiamo che 
+	\begin{equation*}
+	a(x) \mapsto 4\sqrt{2}+1
+	\end{equation*}
+	\begin{equation*}
+	b(x) \mapsto 4\sqrt{2}+1
+	\end{equation*}
+	ed ovviamente moltiplicarli in $\mathbb{F}$ è equivalente a moltiplicarli in $\mathbb{Q}[\sqrt{2}]$.
+	\begin{equation*}
+	b(x) \mapsto -6\sqrt{2}-17
+	\end{equation*}
+\end{esempio}
+\begin{esempio}
+	In modo esattamente analogo possiamo vedere che 
+	\begin{equation*}
+	\sfrac{\mathbb{R}[x]}{(x^2+1)}\simeq\mathbb{R}[i]=\mathbb{C}[x]
+	\end{equation*}
+\end{esempio}
 
 
 
