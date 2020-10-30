@@ -2813,6 +2813,7 @@ con $\deg(r)<\deg(g)$ oppure $r=0$.
 		\item se $\mathbb{F}[x]$ è un PID, è anche un UFD
 	\end{enumerate}
 \end{teorema}
+
 \begin{esercizio}
 	Siano $f$ e $g$ in $\mathbb{Z}_5[x]$ i polinomi 
 	\begin{equation*}
@@ -2852,15 +2853,16 @@ con $\deg(r)<\deg(g)$ oppure $r=0$.
 	Ora dobbiamo trovare i coefficienti per l'identità di Bezout. Prendiamo in considerazione 
 	le seguenti equazioni 
 	\begin{equation*}
-		\begin{array}{ll}
-			f(x)&= g(x) + 5x^3+x  \\
-			g(x)&= (3x^2+3)(5x^3+x) + (x^2+3) 
+		\begin{array}{l}
+			f(x)= g(x) + 5x^3+x  \\
+			g(x)= (3x^2+3)(5x^3+x) + (x^2+3) 
 		\end{array}
 	\end{equation*}
 	allora è equivalente al seguente sistema
 	\begin{equation*}
-		\begin{array}{ll}
-			(3x^2+3)(f(x)-g(x)) &= (3x^2+3)5x^3+x  \\
+		\arraycolsep=1.4pt
+		\begin{array}{rl}
+			(3x^2+3)(f(x)-g(x)) &= (3x^2+3)(5x^3+x)  \\
 			g(x) - (x^2+3) &= (3x^2+3)(5x^3+x)  
 		\end{array}
 	\end{equation*}
@@ -2919,7 +2921,7 @@ Risulta evidente che posso costruire le classi di resto in modo esattamente anal
 	è un campo.
 \end{proposizione}
 \begin{proof}
-	Sicuramente è un anello commutativo con identità, vediamo ce ogni elemento non nullo ha un inverso. Sia $(p)+a$ un elemento di $\sfrac{F[x]}{(p)}$ tale che $a$ non appartenga all'ideale generato da $p$ (questo vuol dire che $p$ non divide $a$). Si noti che $(p)+a=(p)$ se e solo se $a-0\in(p)$, quindi non è il nostro caso. Allora il massimo comune divisore tra $p$ ed $a$ è 1, e per divisione euclidea posso scrivere 
+	Sicuramente è un anello commutativo con identità, vediamo che ogni elemento non nullo ha un inverso. Sia $(p)+a$ un elemento di $\sfrac{F[x]}{(p)}$ tale che $a$ non appartenga all'ideale generato da $p$ (questo vuol dire che $p$ non divide $a$). Si noti che $(p)+a=(p)$ se e solo se $a-0\in(p)$, in questo caso $a \equiv 0 \mod (p)$ e dunque non ci interessa. Allora il massimo comune divisore tra $p$ ed $a$ è 1, e per divisione euclidea posso scrivere 
 	\begin{equation*}
 	1=r(x)a(x)+s(x)p(x)
 	\end{equation*}
@@ -2946,12 +2948,12 @@ Risulta evidente che posso costruire le classi di resto in modo esattamente anal
 	Sia $f(x)=a_nx^n+\dots+a_1x+a_0\in\mathbb{Z}[x]$ con $a_n\neq0$, se $f$ ha radici in $\mathbb{Q}[x]$ allora ne ho una nella forma $\frac{p}{q}$ dove $p$ divide $a_0$ e $q$ divide $a_n$, $p$ e $q$ coprimi.
 \end{teorema}
 \begin{teorema}[Criterio di Eisenstein]
-	Sia $f(x)=a_nx^n+\dots+a_1x+a_0\in\mathbb{Z}[x]$, se esiste un $p$ primo tale che $p$ divide $a_0,a_1,\dots,a_{n-1}$ e $p^2$ non divide $a_0$, allora $f$ è irriducibile in $\mathbb{Q}[x]$. \\ In particolare è irriducibile anche in $\mathbb{Z}[x]$.
+	Sia $f(x)= x^n+ a_{n-1}x^{n-1}\dots+a_1x+a_0\in\mathbb{Z}[x]$, se esiste un $p$ primo tale che $p$ divide $a_0,a_1,\dots,a_{n-1}$ e $p^2$ non divide $a_0$, allora $f$ è irriducibile in $\mathbb{Q}[x]$. \\ In particolare è irriducibile anche in $\mathbb{Z}[x]$.
 \end{teorema}
 \begin{esempio}
 	Consideriamo il polinomio $x^2-2$ in $\mathbb{Q}[x]$, tale polinomio è irriducibile, quindi per caratterizzazioni viste $\mathbb{F}=\sfrac{\mathbb{Q}[x]}{(x^2-2)}$ è un campo. \\ Due polinomi in $\mathbb{Q}[x]$ sono equivalenti in $\mathbb{F}$ se hanno lo stesso resto mediante la divisione per $x^2-2$, quindi tutti i polinomi del campo originale sono rappresentati nel quoziente da polinomi di grato 1. Consideriamo ad esempio i due polinomi 
 	\begin{equation*}
-	a(x)=x^3+2x+1, {Q}[\ \ b(x)=x^2-2x-3 \ \ \in\mathbb{Q}[x]
+	a(x)=x^3+2x+1 \in \mathbb{Q}[x] \quad\ b(x)=x^2-2x-3 \in\mathbb{Q}[x]
 	\end{equation*}
 	Possiamo verificare facilmente che 
 	\begin{equation*}
