@@ -3107,18 +3107,19 @@ basta prendere il polinomio $x-a$ in $K[x]$.
 		\begin{equation*}
 		a_0+\dots+a_n\alpha^n = 0 \ \ a_i \in K
 		\end{equation*}
-		Moltiplicando per $(a^{-1})^n$ ottengo che $\alpha^{-1}\in F$, infatti
+		Moltiplicando per $(\alpha^{-1})^n$ ottengo che $\alpha^{-1}\in F$, infatti
 		\begin{equation*}
-		a_n+\dots+a_0\left(\frac{1}{\alpha}\right)^n
+		a_n+\dots+a_0\left(\frac{1}{\alpha}\right)^n = 0
 		\end{equation*}
-		Resta da verificare che se $alpha$ e $\beta$ appartengono ad $F$, allora anche la loro somma ed il loro prodotto appartengono ad $F$. \\ Siccome $\beta$ è algebrico su $K(\alpha)$ si ha 
+		Resta da verificare che se $\alpha$ e $\beta$ appartengono ad $F$, allora anche la loro somma ed il loro prodotto appartengono ad $F$. \\ Siccome $\beta$ è algebrico su $K(\alpha)$ si ha 
 		\begin{align*}
-		[K(\alpha)(\beta):K(\alpha)]=[K(\alpha,\beta):K(\alpha)][K(\alpha):K]
+		[K(\alpha)(\beta):K]=[K(\alpha,\beta):K(\alpha)][K(\alpha):K]
 		\end{align*}
+		dove i prodotti a destra sono finiti per ipotesi; allora
 		\begin{align*}
-		[K(\alpha,\beta):K(\alpha)]=[K(\alpha,\beta):K(\alpha)][K(\alpha):K]
+		[K(\alpha,\beta):K] < +\infty
 		\end{align*}
-		dove i prodotti a destra sono finiti per ipotesi; allora $K(\alpha,\beta)$ è una estensione algebrica di $K$, quindi $\alpha+\beta$ ed $\alpha\beta$ sono algebrici su $K$.
+		quindi $K(\alpha,\beta)$ è una estensione algebrica di $K$ (poiché finita), quindi $\alpha+\beta$ ed $\alpha\beta$ sono algebrici su $K$.
 		\item Sia $\alpha$ radice del polinomio
 		\begin{equation*}
 		a_0+\dots+a_nx^n = 0 \ \ a_i \in F
