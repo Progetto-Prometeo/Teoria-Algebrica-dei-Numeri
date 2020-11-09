@@ -3003,8 +3003,15 @@ Risulta evidente che posso costruire le classi di resto in modo esattamente anal
 \subsection{Estensioni di campi}
 \label{lezione16}
 \begin{definizione}
-	Dati $K$ ed $F$ campi, si dice che \textbf{$F$ è estensione di $K$} se $K$ è un sottocampo di $F$; in simboli scriveremo $F/K$. \\ \\ Ricordando che un elemento di $F$ è algebrico su $K$ se è radice di un polinomio a coefficienti in $K$, l'estensione si dice \textbf{algebrica} se ogni $\alpha\in F$ è algebrico in $K$. \\ Chiaramente tutti gli elementi di $K$ sono algebrici su $K$, basta prendere il polinomio $x-a$ in $K[x]$.
+	Dati $K$ ed $F$ campi, si dice che \textbf{$F$ è estensione di $K$} se $K$ è un sottocampo di $F$; in simboli scriveremo $F/K$.
 \end{definizione}
+\begin{definizione}
+	Un elemento di $F$ è algebrico su $K$ se è radice di un polinomio a coefficienti in $K$, l'estensione si dice \textbf{algebrica} se ogni $\alpha\in F$ è algebrico in $K$.
+\end{definizione}
+
+Chiaramente tutti gli elementi di $K$ sono algebrici su $K$, 
+basta prendere il polinomio $x-a$ in $K[x]$.
+
 \begin{definizione}
 	Sia $F/K$ estensione, $\alpha\in F$.
 	\begin{enumerate}
@@ -3027,28 +3034,27 @@ Risulta evidente che posso costruire le classi di resto in modo esattamente anal
 	\varphi: K[x] &\longrightarrow K[\alpha]\\
 	f(x)&\longmapsto f(\alpha)
 	\end{align*}
-	$\alpha$ è algebrico su $K$ se e solo se questo non è iniettivo.
+	$\alpha$ è algebrico su $K$ se e solo se $\varphi$ non è iniettiva.
 \end{proposizione}
 \begin{proof}
 	Supponiamo che sia algebrico, allora posso scrivere il nucleo del morfismo come 
 	\begin{equation*}
-	\left\{f\in K[x] \ \mid \ f(\alpha)=0\right\}
+	\ker\varphi = \left\{f\in K[x] \ \mid \ f(\alpha)=0\right\}
 	\end{equation*}
-	e notiamo che per ipotesi non è banale. \\ Supponiamo invece che il nucleo sia non banale, allora è un ideale proprio di $K[x]$, otteniamo facilmente che $\alpha$ è algebrico su $K$. Infatti è generato da un certo $M$ polinomio monico irriducibile: se fosse $M(x)=p(x)q(x)$ avremmo $M(\alpha)=p(\alpha)q(\alpha)=0$, quindi almeno uno dei due (supponiamo sia $p$) apparterrebbe al nucleo e sarebbe sia dividendo che divisore di $M$. %todo: perché?
-	Necessariamente $q$ è costante ed $M$ irriducibile, allora $M$ è il polinomio minimo cercato.
+	e notiamo che per ipotesi non è banale. \\ Supponiamo invece che il nucleo sia non banale, allora è un ideale proprio di $K[x]$, otteniamo facilmente che $\alpha$ è algebrico su $K$. Infatti è generato da un certo $M$ polinomio monico irriducibile: se fosse $M(x)=p(x)q(x)$ avremmo $M(\alpha)=p(\alpha)q(\alpha)=0$, quindi almeno uno dei due (supponiamo sia $p$) apparterrebbe al nucleo. Quindi $M \mid p$ perché supponiamo che l'ideale è generato da $M$, ma $p\mid M$ perché $M(x) = p(x)q(x)$. Quindi $M = p$, necessariamente $q$ è costante ed $M$ irriducibile, allora $M$ è il polinomio minimo cercato.
 \end{proof}
 \begin{teorema}
 	$K(\alpha)=K[\alpha]$ se e solo se $\alpha$ è algebrico su $K$.
 \end{teorema}
 \begin{proof}
-	Supponiamo che $\alpha$ sia algebrico; il morfismo $\varphi$ è surgettivo, quindi per teorema di isomorfismo
+	Supponiamo che $\alpha$ sia algebrico; il morfismo $\varphi$ ha $\ker \varphi = (M)$, ma è surgettiva, quindi per teorema di isomorfismo
 	\begin{equation*}
-	K[\alpha]\simeq\sfrac{K[x]}{M}
+	K[\alpha]\simeq\sfrac{K[x]}{(M)}
 	\end{equation*}
-	dove siccome $M$ è irriducibile $K[\alpha]$ è un campo; questo campo contiene sia $K$ che $\alpha$; quindi $K(\alpha)\subset K[\alpha]$. D'altra parte un generico elemento di $K[\alpha]$ appartiene sicuramente a $K(\alpha)$ per la sua scrittura. \\ \\
+	dove siccome $M$ è irriducibile, dunque $K[\alpha]$ è un campo. Questo campo contiene sia $K$ che $\alpha$ quindi $K(\alpha)\subset K[\alpha]$. D'altra parte un generico elemento di $K[\alpha]$ appartiene sicuramente a $K(\alpha)$ per la sua scrittura. \\ \\
 	Assumiamo che $K(\alpha)=K[\alpha]$, si noti che anche $\alpha^{-1}$ appartiene a $K(\alpha)=K[\alpha]$. Allora per un certo $n$ e per alcuni certi $a_i$ vale
 	\begin{equation*}
-	\alpha^{-1}=a_0+\dots+a_n\alpha^m
+	\alpha^{-1}=a_0+\dots+a_n\alpha^n
 	\end{equation*}
 	e quindi il polinomio definito come
 	\begin{equation*}
@@ -3077,13 +3083,15 @@ Risulta evidente che posso costruire le classi di resto in modo esattamente anal
 	%todo: discorso fatto male
 	In generale per $F/K$ si scrive 
 	\begin{equation*}
-	[F:K]=\dim_KF
+	[F:K]=\dim_K F
 	\end{equation*}
-	e che ogni estensione algebrica è finita, viceversa ogni estensione finita è algebrica. \\ \\ Inoltre se si hanno tre campi $K\subset F\subset E$ si ha che 
+	e che ogni estensione finita è algebrica, ma in generale una estensione algebrica potrebbe non essere finita: per esempio l'estensione dei numeri algebrici su $\mathbb{Q}$ è algebrica, ma non è finita. \\ \\ Inoltre se si hanno tre campi $K\subset F\subset E$ si ha che 
 	\begin{equation*}
 	[E:K]=[E:F][F:K]
 	\end{equation*}
 \end{osservazione}
+
+
 \begin{teorema}
 	Si consideri un'estensione $E/K$ e sia $F$ l'insieme degli $\alpha\in E$ algebrici su $K$. Allora
 	\begin{enumerate}
