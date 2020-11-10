@@ -3280,3 +3280,208 @@ Ricordiamo che i campi di numeri sono estensioni finite di $\mathbb{Q}$, ad esem
 		\item[($g(\alpha^p)=0$)] possiamo dire che per ogni $p$ che non divide $n$, per ogni $\alpha$ complesso radice di $f$, $g(\alpha^p)=0$, ovvero $g(\alpha^k)=0$ per ogni $k$ coprimo con $n$. Questo dimostra che $\Phi_n$ e $g$ hanno gli stessi zeri, ovvero $\Phi_n(x)=g(x)$ irriducibile.
 	\end{itemize}
 \end{proof}
+
+
+
+\section{Campi algebrici}
+\subsection{Interi algebrici}
+\label{lezione17}
+Dato un generico $a\in\mathbb{Q}$, come capisco se $a\in\mathbb{Z}$?
+\begin{proposizione}
+	Sia $a\in\mathbb{Q}$, questo è intero se e solo se è radice di un polinomio monico in $\mathbb{Z}[x]$.
+\end{proposizione}
+\begin{proof}
+	Se $a$ è intero, allora prendo il polinomio $f(x)=x-a\in\mathbb{Z}[x]$. Se invece è radice di un polinomio monico nella forma
+	\begin{equation*}
+	f(x)=x^n+a_{n-1}x^{n-1}+\dots+a_0
+	\end{equation*}
+	Allora $a=\frac{p}{q}$, con $p$ divisore di $a_0$ e $q$ divisore di 1. Allora ottengo la tesi.
+\end{proof}
+\begin{definizione}
+	Un $z\in\mathbb{C}$ si dice \textbf{intero algebrico} se è radice di un polinomio monico a coefficienti interi.
+\end{definizione}
+\begin{osservazione}
+	Diciamo $O$ l'insieme degli interi algebrici e $\overline{\mathbb{Q}}$ la chiusura algebrica di $\mathbb{Q}$, si può osservare che $\sfrac{\overline{\mathbb{Q}}}{\mathbb{Q}}$ è un'estensione algebrica infinita. Questo perché per ogni $n\leq1$ esiste un polinomio a coefficienti interi $p$ di grado $n$ irriducibile su $\mathbb{Q}$. Ad esepio possiamo costruire $x^n+2$ sfruttando il criterio di Eisenstein. \\ D'altro canto $\mathbb{C}$ ed $\mathbb{R}$ sono estensioni di $\mathbb{Q}$, ma non sono estensioni algebriche - ad esempio $\pi$ è trascendente. \\ \\ L'anello $O$ degli interi algebrici è incluso nella chiusura algebrica di $\mathbb{Q}$.
+\end{osservazione}
+\begin{definizione}
+	Sia $R$ un anello ed $A$ un suo sottoanello, un $r\in R$ si dice \textbf{intero su $A$} se esiste un polinomio monico a coefficienti in $A$ tale che $p(r)=0$. \footnote{Questo mi permette di definire degli \textit{elementi interi} rispetto ad ogni anello.
+\end{definizione}
+\begin{proposizione}
+	Sia $R$ un anello ed $A$ un suo sottoanello, dati $r_1,\dots,r_n\in R$ sono equivalenti:
+	\begin{enumerate}
+		\item gli $r_i$ sono interi su $A$
+		\item $A[r_1,\dots,r_n]$ è un $A$-modulo finitamente generato
+		\item esiste un anello $B$ che può essere visto come $A$-modulo finitamente generato, ed è tale che $A[r_1,\dots,r_n]\subset B\subset R$
+	\end{enumerate}
+\end{proposizione}
+\begin{proof}\
+	\begin{itemize}
+		\item[($1\implies 2$)] Se $n=1$, per certi $a_i\in A$ vale 
+		\begin{equation*}
+		r_1^m+\dots+a_1r_1+a_0=0
+		\end{equation*}
+		qyubdu $r_i^k$ per $k\geq m$ si esprime come combinazione lineare di $1,r_1,\dots,r_1^{m-1}$ a coefficienti in $A$. Procedo poi per induzione su $n$: siccome $r_n$ intero su $A$ è intero su 
+		\begin{equation*}
+			A[r_1,\dots,r_{n-1}]=C
+		\end{equation*}
+		e $C[r_n]$ è finitamente generato come $C$-modulo, per ipotesi induttiva ottengo che $C$ è finitamente generato come $A$-modulo, quindi anche $C[r_n]$.
+		\item[($2\implies 3$)] Immediato.
+		\item[($3\implies 1$)] Basta mostrare che ogni $b\in B$ è intero su $A$. Siano $b_1,\dots,b_k$ generatori di $B$, considero $b\cdot b_i \in B$.
+		\begin{equation*}
+		 b\cdot b_i = \sum_j a_{ij}b_j \implies \sum_j(\delta_{ij}b-a_{ij})b_j=0
+		\end{equation*}
+		Questo può essere riscritto ponendo $M=(\delta_{ij}b-a_{ij})_{ij}$:
+		\begin{equation*}
+		M
+		\begin{pmatrix}
+		b_1\\ \vdots \\ b_k
+		\end{pmatrix}
+		=0
+		\end{equation*}
+		da cui
+		\begin{equation*}
+		\det(A)\cdot b_i=0 \implies \det(A)=0
+		\end{equation*}
+		quindi $b$ soddisfa un polinomio monico.
+	\end{itemize}
+\end{proof}
+\begin{corollario}
+	L'insieme degli elementi di $R$ interi su $A$ è un sottoanello di $R$.
+\end{corollario}
+\begin{proof}
+	Se $x$ ed $Y$ sono elementi di $R$ interi su $A$, allora 
+	\begin{equation*}
+	A[x+y]\subset A[x,y]
+	\end{equation*}
+	\begin{equation*}
+	A[xy]\subset A[x,y]
+	\end{equation*}
+\end{proof}
+
+
+
+
+\subsection{Il campo delle frazioni}
+Dato $R$ dominio di integrità, è possibile costruire il campo delle frazioni su $R$. Il ragionamento è analogo a quello della costruzione dei razionali a partire dagli interi. \\ \\ Iniziamo da una relazione di equivalenza su $R\times R$:
+\begin{equation*}
+	(a,b)\sim(c,d) \iff ad=bc
+\end{equation*}
+con $b,d$ non-nulli. 
+\begin{proposizione}
+	Si tratta di una relazione di equivalenza.
+\end{proposizione}
+\begin{proof}\
+	\begin{itemize}
+		\item[(riflessiva)] Ovvio.
+		\item[(simmetrica)] Se $(a,b)\sim(c,d)$, questo vuol dire $ad=bc$. Devo ottenere $(c,d)\sim(a,b)$, ovvero $cb=da$, ma anche questo è ovvio.
+		\item[(transitiva)] Se $(a,b)\sim(c,d)$ e $(c,d)\sim(e,f)$, ho come ipotesi
+		\begin{equation*}
+			ad=bc \ \ \ \ cf=de
+		\end{equation*}
+		e devo ottenere $af=be$, ma è ovvio dopo aver svolto alcuni passaggi banali come
+		\begin{equation*}
+		ad=bc\implies a(de)(de)^{-1}=bc
+		\end{equation*}
+	\end{itemize}
+\end{proof}
+\begin{definizione}
+	Il campo $F$ delle frazioni di $R$ è l'insieme delle classi di equivalenza 
+	\begin{equation*}
+	[a,b]=\left\{(c,d)\in R\times R\setminus\left\{0\right\} \ \mid \ (a,b)\sim(c,d)\right\}
+	\end{equation*}
+	i cui elementi si indicano con la frazione $\frac{a}{b}$, sotto le operazioni
+	\begin{equation*}
+	[a_1,b_1]+[a_2,b_2]=[a_1+a_2,b_1+b_2]
+	\end{equation*}
+	\begin{equation*}
+	[a_1,b_1][a_2,b_2]=[a_1a_2,b_1b_2]
+	\end{equation*}
+\end{definizione}
+\begin{osservazione}[Immersione di $R$ in $F$]
+	La seguente mappa è un morfismo di anelli tra $R$ sottoanello di $F$ ed $F $il più piccolo campo contenente $R$:
+	\begin{align*}
+	\Phi:R&\longrightarrow F\\
+	a&\longmapsto [a,1]
+	\end{align*}
+	si tratta dell'immersione di $R$ in $F$.
+\end{osservazione}
+\begin{proposizione}
+	Sia $K$ un campo, 
+	\begin{itemize}
+		\item se ha caratteristica zero contiene un sottocampo isomorfo a $\mathbb{Q}$
+		\item se ha caratteristica $p$ contiene un sottocampo isomorfo a $\mathbb{Z}_p$
+	\end{itemize}
+\end{proposizione}
+\begin{esempio}
+	Un caso abbastanza banale è $R=\mathbb{Z}$, che ha campo delle frazioni $F\simeq\mathbb{Q}$.
+\end{esempio}
+\begin{teorema}
+	L'anello degli interi algebrici $O$ è un dominio il cui campo delle frazioni è la chiusura algebrica di $\mathbb{Q}$.
+\end{teorema}
+\begin{proof}
+	Sia $F$ il campo delle frazioni di $O$, sicuramente è contenuto nella chiusura algebrica di $\mathbb{Q}$; questo perché $\overline{\mathbb{Q}}$ contiene $O$ ed $F$ è per definizione il più piccolo campo contenente $O$. \\ \\ Mostriamo che $\overline{\mathbb{Q}}$ è contenuto in $F$. Un elemento $z\in\overline{\mathbb{Q}}$ è radice di un polinomio a coefficienti in $\mathbb{Q}$; allora posso determinare un polinomio a coefficienti interi di cui $z$ sia radice:
+	\begin{equation*}
+	a_nz^n+a_{n-1}z^{n-1}+\dots+a_1z+a_0=0
+	\end{equation*}
+	da cui moltiplicando per $a_n^{n-1}$ ottengo
+	\begin{equation*}
+	(a_nz)^n+a_{n-1}(a_nz)^{n-1}+\dots+a_1a_n^{n-2}(a_nz)+a_na_{n-1}=0
+	\end{equation*}
+	ovvero $a_nz\in O$ in quanto radice del polinomio monico in $\mathbb{Z}[x]$
+	\begin{equation*}
+	x^n+a_{n-1}x^{n-1}+\dots+a_1a_n^{n-1}x+a_0a_{n-1}
+	\end{equation*}
+	Ma allora $z=\frac{a_nz}{a_n}$ con $a_nz,a_n\in O$, ovvero $z\in F$.
+\end{proof}
+\begin{osservazione}
+	Proprio come $\mathbb{Z}\subset\mathbb{Q}$, con $\mathbb{Q}$ campo delle frazioni di $\mathbb{Z}$, si ha $O\subset\overline{\mathbb{Q}}$, con $\overline{\mathbb{Q}}$ campo delle frazioni di $O$. \\ \\ Dato un campo di numeri $K$ posso inoltre porre 
+	\begin{equation*}
+	O_k=K\cap O
+	\end{equation*}
+	In questo modo $O_k$ è un dominio il cui campo delle frazioni è $K$ ed è l'anello degli interi di $K$.
+\end{osservazione}
+\begin{esempio}
+	Alcuni esempi in $\mathbb{Z}$:
+	\begin{itemize}
+		\item $\sqrt{2}$ è un intero algebrico, è radice di $x^2-2$
+		\item $\frac{1}{\sqrt{2}}$ non è un intero algebrico, è radice di $2x^2-1$
+		\item $i$ è un intero algebrico, $x^2+1$
+		\item $\phi=\frac{1+\sqrt{5}}{2}$ è un intero algebrico, radice di $x^2-x-1$
+	\end{itemize}
+\end{esempio}
+\begin{esempio}
+	$\mathbb{Q}[i]$ è un campo numerico di grado 2, contenente l'anello degli interi di Gauss $\mathbb{Z}[i]$. Vogliamo mostrare che questo è proprio l'anello degli interi di $\mathbb{Q}[i]$, in particolare che dato $z=a+bi\in\mathbb{Q}[i]$ questo è intero algebrico se e solo se $a,b\in\mathbb{Z}$. \\ \\
+	Se prendo un elemento di $\mathbb{Q}[i]$ i cui $a,b$ appartengono a $\mathbb{Z}$, questo è un intero algebrico, perché è radice del polinomio monico a coefficienti interi
+	\begin{equation*}
+	\left(x-(a+bi)\right)\left(x-(a-bi)\right)\in\mathbb{Z}[x]
+	\end{equation*}
+	Per l'altra implicazione invece prendo uno $z\in\mathbb{Q}[i]$ intero algebrico, ovvero $z\in O$. Allora $z\in O_{\mathbb{Q}[i]}$. Voglio mostrare che $a$ e $b$ sono interi. Prendo $\overline{z}$, che è ancora un intero algebrico per ipotesi; anche $\overline{z}\in O_{\mathbb{Q}[i]}$. Siccome $O$ è un anello
+	\begin{equation*}
+	z+\overline{Z}=2a\in O
+	\end{equation*}
+	\begin{equation*}
+	z+\overline{Z}\in O \cap \mathbb{Q} = \mathbb{Z}
+	\end{equation*}
+	Facciamo qualcosa di analogo con $-iz$, che appartiene ancora agli interi algebrici. Allora anche $-iz+i\overline{Z}$ è un intero algebrico, e 
+	\begin{equation*}
+	-iz+i\overline{Z}=2b \in \mathbb{Q}\cap\mathbb{Q}=\mathbb{Z}
+	\end{equation*}
+	Abbiamo ottenuto che $2a=m$ e $2b=n$ per certi $m$ ed $n$ interi; devo dimostrare che sono pari. \\ $z\cdot\overline{z}\in\mathbb{Q}\cap 0 =\mathbb{Z}$, quindi
+	\begin{equation*}
+	z\cdot\overline{Z}=a^2+b^2=\frac{m^2+n^2}{4}\in\mathbb{Z}
+	\end{equation*}
+	ovvero $m^2+n^2\equiv0\Mod4$; $m^2$ ed $n^2$ sono 0 oppure 1 in modulo 4, ma perché la loro somma sia zero devono essere entrambi zero. Allora sono pari. \\ \\ Allora $\mathbb{Z}[i]$, anello degli interi di Gauss, è anello degli interi di $\mathbb{Q}[i]$.
+\end{esempio}
+\begin{esempio}
+	Consideriamo
+	\begin{equation*}
+	\mathbb{Q}[\sqrt{5}]=\left\{a+b\sqrt{5} \ \mid \ a,b\in\mathbb{Q}\right\}
+	\end{equation*}
+	un'estensione di grado 2 su $\mathbb{Q}$. Trova il suo anello degli interi. \\ \\
+	In questo caso $\mathbb{Z}[\sqrt{5}]$ non è uguale a $O_{\mathbb{Q}[\sqrt{5}]}$, è solo incluso. Infatti prendo un $a+b\sqrt{5}\in\mathbb{Z}[\sqrt{5}]$, il polinomio monico di cui è radice si calcola facilmente:
+	\begin{align*}
+	\left(x-(a+b\sqrt{5})\right)\left(x-(a-b\sqrt{5})\right)&=x^2-2ax+a^2-5b^2\in\mathbb{Z}[x]
+	\end{align*}
+	Tuttavia prendo $\frac{1+3\sqrt{5}}{2}$, questo è un intero algebrico perché ha come polinomio monico $x^2-x-11$ ma non appartiene a $\mathbb{Z}[\sqrt{5}]$
+	
+\end{esempio}
