@@ -3003,8 +3003,15 @@ Risulta evidente che posso costruire le classi di resto in modo esattamente anal
 \subsection{Estensioni di campi}
 \label{lezione16}
 \begin{definizione}
-	Dati $K$ ed $F$ campi, si dice che \textbf{$F$ è estensione di $K$} se $K$ è un sottocampo di $F$; in simboli scriveremo $F/K$. \\ \\ Ricordando che un elemento di $F$ è algebrico su $K$ se è radice di un polinomio a coefficienti in $K$, l'estensione si dice \textbf{algebrica} se ogni $\alpha\in F$ è algebrico in $K$. \\ Chiaramente tutti gli elementi di $K$ sono algebrici su $K$, basta prendere il polinomio $x-a$ in $K[x]$.
+	Dati $K$ ed $F$ campi, si dice che \textbf{$F$ è estensione di $K$} se $K$ è un sottocampo di $F$; in simboli scriveremo $F/K$.
 \end{definizione}
+\begin{definizione}
+	Un elemento di $F$ è algebrico su $K$ se è radice di un polinomio a coefficienti in $K$, l'estensione si dice \textbf{algebrica} se ogni $\alpha\in F$ è algebrico in $K$.
+\end{definizione}
+
+Chiaramente tutti gli elementi di $K$ sono algebrici su $K$, 
+basta prendere il polinomio $x-a$ in $K[x]$.
+
 \begin{definizione}
 	Sia $F/K$ estensione, $\alpha\in F$.
 	\begin{enumerate}
@@ -3027,28 +3034,27 @@ Risulta evidente che posso costruire le classi di resto in modo esattamente anal
 	\varphi: K[x] &\longrightarrow K[\alpha]\\
 	f(x)&\longmapsto f(\alpha)
 	\end{align*}
-	$\alpha$ è algebrico su $K$ se e solo se questo non è iniettivo.
+	$\alpha$ è algebrico su $K$ se e solo se $\varphi$ non è iniettiva.
 \end{proposizione}
 \begin{proof}
 	Supponiamo che sia algebrico, allora posso scrivere il nucleo del morfismo come 
 	\begin{equation*}
-	\left\{f\in K[x] \ \mid \ f(\alpha)=0\right\}
+	\ker\varphi = \left\{f\in K[x] \ \mid \ f(\alpha)=0\right\}
 	\end{equation*}
-	e notiamo che per ipotesi non è banale. \\ Supponiamo invece che il nucleo sia non banale, allora è un ideale proprio di $K[x]$, otteniamo facilmente che $\alpha$ è algebrico su $K$. Infatti è generato da un certo $M$ polinomio monico irriducibile: se fosse $M(x)=p(x)q(x)$ avremmo $M(\alpha)=p(\alpha)q(\alpha)=0$, quindi almeno uno dei due (supponiamo sia $p$) apparterrebbe al nucleo e sarebbe sia dividendo che divisore di $M$. %todo: perché?
-	Necessariamente $q$ è costante ed $M$ irriducibile, allora $M$ è il polinomio minimo cercato.
+	e notiamo che per ipotesi non è banale. \\ Supponiamo invece che il nucleo sia non banale, allora è un ideale proprio di $K[x]$, otteniamo facilmente che $\alpha$ è algebrico su $K$. Infatti è generato da un certo $M$ polinomio monico irriducibile: se fosse $M(x)=p(x)q(x)$ avremmo $M(\alpha)=p(\alpha)q(\alpha)=0$, quindi almeno uno dei due (supponiamo sia $p$) apparterrebbe al nucleo. Quindi $M \mid p$ perché supponiamo che l'ideale è generato da $M$, ma $p\mid M$ perché $M(x) = p(x)q(x)$. Quindi $M = p$, necessariamente $q$ è costante ed $M$ irriducibile, allora $M$ è il polinomio minimo cercato.
 \end{proof}
 \begin{teorema}
 	$K(\alpha)=K[\alpha]$ se e solo se $\alpha$ è algebrico su $K$.
 \end{teorema}
 \begin{proof}
-	Supponiamo che $\alpha$ sia algebrico; il morfismo $\varphi$ è surgettivo, quindi per teorema di isomorfismo
+	Supponiamo che $\alpha$ sia algebrico; il morfismo $\varphi$ ha $\ker \varphi = (M)$, ma è surgettiva, quindi per teorema di isomorfismo
 	\begin{equation*}
-	K[\alpha]\simeq\sfrac{K[x]}{M}
+	K[\alpha]\simeq\sfrac{K[x]}{(M)}
 	\end{equation*}
-	dove siccome $M$ è irriducibile $K[\alpha]$ è un campo; questo campo contiene sia $K$ che $\alpha$; quindi $K(\alpha)\subset K[\alpha]$. D'altra parte un generico elemento di $K[\alpha]$ appartiene sicuramente a $K(\alpha)$ per la sua scrittura. \\ \\
+	dove siccome $M$ è irriducibile, dunque $K[\alpha]$ è un campo. Questo campo contiene sia $K$ che $\alpha$ quindi $K(\alpha)\subset K[\alpha]$. D'altra parte un generico elemento di $K[\alpha]$ appartiene sicuramente a $K(\alpha)$ per la sua scrittura. \\ \\
 	Assumiamo che $K(\alpha)=K[\alpha]$, si noti che anche $\alpha^{-1}$ appartiene a $K(\alpha)=K[\alpha]$. Allora per un certo $n$ e per alcuni certi $a_i$ vale
 	\begin{equation*}
-	\alpha^{-1}=a_0+\dots+a_n\alpha^m
+	\alpha^{-1}=a_0+\dots+a_n\alpha^n
 	\end{equation*}
 	e quindi il polinomio definito come
 	\begin{equation*}
@@ -3077,13 +3083,16 @@ Risulta evidente che posso costruire le classi di resto in modo esattamente anal
 	%todo: discorso fatto male
 	In generale per $F/K$ si scrive 
 	\begin{equation*}
-	[F:K]=\dim_KF
+	[F:K]=\dim_K F
 	\end{equation*}
-	e che ogni estensione algebrica è finita, viceversa ogni estensione finita è algebrica. \\ \\ Inoltre se si hanno tre campi $K\subset F\subset E$ si ha che 
+	e che ogni estensione finita è algebrica, ma in generale una estensione algebrica potrebbe non essere finita: per esempio l'estensione dei numeri algebrici su $\mathbb{Q}$ è algebrica, ma non è finita. \\ \\ Inoltre se si hanno tre campi $K\subset F\subset E$ si ha che 
 	\begin{equation*}
 	[E:K]=[E:F][F:K]
 	\end{equation*}
 \end{osservazione}
+
+% TODO: nel caso si volesse inserire una generalizzazione di questo teorema nel caso di domini e A-algebre, si potrebbe inserire il capitolo 4 del Miles Reid.
+
 \begin{teorema}
 	Si consideri un'estensione $E/K$ e sia $F$ l'insieme degli $\alpha\in E$ algebrici su $K$. Allora
 	\begin{enumerate}
@@ -3098,18 +3107,19 @@ Risulta evidente che posso costruire le classi di resto in modo esattamente anal
 		\begin{equation*}
 		a_0+\dots+a_n\alpha^n = 0 \ \ a_i \in K
 		\end{equation*}
-		Moltiplicando per $(a^{-1})^n$ ottengo che $\alpha^{-1}\in F$, infatti
+		Moltiplicando per $(\alpha^{-1})^n$ ottengo che $\alpha^{-1}\in F$, infatti
 		\begin{equation*}
-		a_n+\dots+a_0\left(\frac{1}{\alpha}\right)^n
+		a_n+\dots+a_0\left(\frac{1}{\alpha}\right)^n = 0
 		\end{equation*}
-		Resta da verificare che se $alpha$ e $\beta$ appartengono ad $F$, allora anche la loro somma ed il loro prodotto appartengono ad $F$. \\ Siccome $\beta$ è algebrico su $K(\alpha)$ si ha 
+		Resta da verificare che se $\alpha$ e $\beta$ appartengono ad $F$, allora anche la loro somma ed il loro prodotto appartengono ad $F$. \\ Siccome $\beta$ è algebrico su $K(\alpha)$ si ha 
 		\begin{align*}
-		[K(\alpha)(\beta):K(\alpha)]=[K(\alpha,\beta):K(\alpha)][K(\alpha):K]
+		[K(\alpha)(\beta):K]=[K(\alpha,\beta):K(\alpha)][K(\alpha):K]
 		\end{align*}
+		dove i prodotti a destra sono finiti per ipotesi; allora
 		\begin{align*}
-		[K(\alpha,\beta):K(\alpha)]=[K(\alpha,\beta):K(\alpha)][K(\alpha):K]
+		[K(\alpha,\beta):K] < +\infty
 		\end{align*}
-		dove i prodotti a destra sono finiti per ipotesi; allora $K(\alpha,\beta)$ è una estensione algebrica di $K$, quindi $\alpha+\beta$ ed $\alpha\beta$ sono algebrici su $K$.
+		quindi $K(\alpha,\beta)$ è una estensione algebrica di $K$ (poiché finita), quindi $\alpha+\beta$ ed $\alpha\beta$ sono algebrici su $K$.
 		\item Sia $\alpha$ radice del polinomio
 		\begin{equation*}
 		a_0+\dots+a_nx^n = 0 \ \ a_i \in F
@@ -3157,7 +3167,7 @@ Come possiamo vedere il loro studio è strettamente legato alla teoria dei numer
 	 \begin{equation*}
 	 x^3=(y+i)(y-i)
 	 \end{equation*}
-	 Un divisore $m$ comune ai due divide anche $2i$, e quindi $2$ dato che $i$ è un'unità. Allora $m$ divide $x^3$ dispari ed $m$ divide $2$, ma $x^3$ e $2$ sono coprimi, quindi sono coprimi anche $y+i$ ed $y-i$. Siccome sono in un dominio a fattorizzazione unica e $(y+i)(y-i)$ è un cubo, allora lo sono anche $y+i$ ed $y-i$ per lemma successivo. Ottengo che $y+i$ ha forma $(a+bi)^3$ per certi $a$ e $b$ interi, da cui 
+	 Un divisore $m$ comune a $y-i, y+i$ divide anche $2i$, e quindi $2$ dato che $i$ è un'unità; infatti se $m \mid y-i$ e $m \mid y+i$ allora $m \mid y+i-(y-i) = 2i$. Allora $m$ divide $x^3$ dispari ed $m$ divide $2$, ma $x^3$ e $2$ sono coprimi, quindi sono coprimi anche $y+i$ ed $y-i$. Siccome sono in un dominio a fattorizzazione unica e $(y+i)(y-i)$ è un cubo, allora lo sono anche $y+i$ ed $y-i$ per lemma successivo. Ottengo che $y+i$ ha forma $(a+bi)^3$ per certi $a$ e $b$ interi, da cui 
 	 \begin{equation*}
 	 \begin{cases}
 	 y=a^3-3ab^2\\1=3a^2b-b^3
@@ -3172,9 +3182,9 @@ Come possiamo vedere il loro studio è strettamente legato alla teoria dei numer
 	 \end{equation*}
 	 da cui la tesi.
 \end{proof}
-\begin{teorema}
+\begin{lemma}
 	Sia $R$ un UFD, $a,b\in R$ coprimi. Sia $x\in R$ tale che $ab=x^n$, $n\in\mathbb{N}$. Allora $a$ e $b$ sono potenze $n$-esime.
-\end{teorema}
+\end{lemma}
 \begin{proof}
 	Ovvio, $x=p_1^{e_1}\dots p_r^{e_r}$ e $x^n=p_1^{e_1n}\dots p_r^{e_rn}$
 \end{proof}
@@ -3207,11 +3217,11 @@ Ricordiamo che i campi di numeri sono estensioni finite di $\mathbb{Q}$, ad esem
 
 \subsection{Caratterizzazioni dei campi di numeri}
 \begin{teorema}
-	Sia $F$ un campo numerico, allora esiste un $\alpha\in F$ tale che $F=\mathbb{Q}(\alpha)$, ovvero $F$ è sempre un'estensione semplice.
+	Sia $F$ un campo numerico, allora esiste un $\theta\in F$ tale che $F=\mathbb{Q}(\theta)$, ovvero $F$ è sempre un'estensione semplice.
 \end{teorema}
 \begin{proof}
 	Consideriamo il caso in cui $F=\mathbb{Q}(\alpha,\beta)$, sarà sufficiente, perché da questo potrò procedere per induzione su ogni campo di numeri. La dimostrazione è costruttiva. \\ \\ 
-	Cerchiamo un $\theta$ tale che $\mathbb{Q}(\theta)=\mathbb{Q}(\alpha,\beta)$. \\ Sia $f\in\mathbb{Q}[x]$ il polinomio minimo di $\alpha$ di grado $n$, siano $\alpha_1,\dots,\alpha_n$ le sue radici distinte nel campo complesso, distinte. Sia analogamente $g\in\mathbb{Q}[x]$ il polinomio minimo di $\beta$ di grado $m$ e siano $\beta_1,\dots,\beta_m$ le sue radici complesse, esse sono distinte. Prendiamo queste radici in modo che $\alpha_1=\alpha$ e $\beta_1=\beta$.\\ Prendiamo un $\lambda\in\mathbb{Q}$ tale che 
+	Cerchiamo un $\theta$ tale che $\mathbb{Q}(\theta)=\mathbb{Q}(\alpha,\beta)$. \\ Sia $f\in\mathbb{Q}[x]$ il polinomio minimo di $\alpha$ di grado $n$, siano $\alpha_1,\dots,\alpha_n$ le sue radici distinte nel campo complesso. Sia analogamente $g\in\mathbb{Q}[x]$ il polinomio minimo di $\beta$ di grado $m$ e siano $\beta_1,\dots,\beta_m$ le sue radici complesse distinte. Prendiamo queste radici in modo che $\alpha_1=\alpha$ e $\beta_1=\beta$.\\ Prendiamo un $\lambda\in\mathbb{Q}$ tale che 
 	\begin{equation*}
 	\lambda\neq\frac{\alpha_i-\alpha}{\beta-\beta_j}
 	\end{equation*}
@@ -3227,7 +3237,7 @@ Ricordiamo che i campi di numeri sono estensioni finite di $\mathbb{Q}$, ad esem
 	\begin{equation*}
 	\beta, \beta_2, \dots, \beta_m
 	\end{equation*}
-	con $b_j\neq\frac{\theta-\alpha_i}{\lambda}$, ovvero $\MCD(h,g)=x-\beta$. Siccome $g$ ed $h$ sono polinomi minimi sono anche monici, ed allora $x-\beta\in\mathbb{Q}(\theta)[x]$. Questo equivale a $\beta\in\mathbb{Q}(\theta)$ e quindi anche $\alpha\in\mathbb{Q}(\theta)$.\\ Da questo ottengo $\mathbb{Q}(\theta))\mathbb{Q}(\alpha,\beta)$.
+	con $b_j\neq\frac{\theta-\alpha_i}{\lambda}$, ovvero $\MCD(h,g)=x-\beta$. Siccome $g$ ed $h$ sono polinomi minimi sono anche monici, ed allora $x-\beta\in\mathbb{Q}(\theta)[x]$. Questo equivale a $\beta\in\mathbb{Q}(\theta)$ e quindi anche $\alpha\in\mathbb{Q}(\theta)$.\\ Da questo ottengo $\mathbb{Q}(\theta) = \mathbb{Q}(\alpha,\beta)$.
 \end{proof}
 \begin{esempio}
 	$\mathbb{Q}(\sqrt[3]{3}+\sqrt{7})=\mathbb{Q}(\sqrt[3]{3},\sqrt{7})$ \\ \\ 
@@ -3245,7 +3255,7 @@ Ricordiamo che i campi di numeri sono estensioni finite di $\mathbb{Q}$, ad esem
 \begin{definizione}
 	Ricordiamo che \textbf{l'$n$-esimo polinomio ciclotomico} $\Phi_n(x)$ è il polinomio minimo delle radici primitive $n$-esime primitive dell'unità.
 	\begin{equation*}
-	\Phi_n(x)=\prod_{k}(x-\omega_x)\in\mathbb{Z}[x]
+	\Phi_n(x)=\prod_{k}(x-\omega_k)\in\mathbb{Z}[x]
 	\end{equation*}
 	dove $k$ è indicizzato da $0\leq k\leq n-1, (k,n)=1$. Il grado del polinomio ciclotomico $\Phi_n(x)$ è $\varphi(n)$.
 \end{definizione}
@@ -3257,16 +3267,16 @@ Ricordiamo che i campi di numeri sono estensioni finite di $\mathbb{Q}$, ad esem
 	ed il grado di $\mathbb{Q}(\omega_k)$ su $\mathbb{Q}$ è $\varphi(n)$.
 \end{definizione}
 \begin{teorema}
-	Il polinomio ciclotomico $\phi_n(x)$ è irriducibile in $\mathbb{Q}[x]$.
+	Il polinomio ciclotomico $\Phi_n(x)$ è irriducibile in $\mathbb{Q}[x]$.
 \end{teorema}
 \begin{proof}
 	Sia $g\in\mathbb{Q}[x]$ un fattore irriducibile monico si $\Phi_n(x)$, scriviamo per teorema di Gauss
 	\begin{equation*}
 	x^n-1=g(x)h(z)
 	\end{equation*}
-	con $g,h\in\mathbb{Z}[x]$. Sia $\alpha$ radice complessa di $g$, quindi è radice anche del polinomio $n^n-1$. Sia $p$ primo che non divide $n$, allora $\alpha^p$ è radice di $x^n-1$. Abbiamo due casi:
-	\begin{itemize}
-		\item[($g(\alpha^p)\neq0$)] allora $h(\alpha^p$=0 e $g(x)$ divide $h(x^p)$, questo implica che $g(x)$ divide $h(x)^p$ in $\mathbb{Z}_p[x]$. Sia $f$ un divisore irriducibile di $g$ in $\mathbb{Z}_p[x]$, allora $f$ divide $g$ ed $h$ modulo $p$, ovvero $n^n-1$ ha uno zero doppio modulo $p$; ma non è possibile, perché $nx^{n-1}$ non ha zeri in comune con $x^n-1$ dato che $n\neq0\Mod p$.
+	con $g,h\in\mathbb{Z}[x]$. Sia $\alpha$ radice complessa di $g$, quindi è radice anche del polinomio $x^n-1$. Sia $p$ primo che non divide $n$, allora $\alpha^p$ è radice di $x^n-1$\footnote{Se $\alpha^n-1 = 0$ allora $\alpha^n = 1$ e dunque $\alpha^{pn} - 1 = (\alpha^n)^p - 1 = 0$}. Abbiamo due casi:
+	\begin{itemize} 
+		\item[($g(\alpha^p)\neq0$)] allora $h(\alpha^p)=0$ e $g(x)$ divide $h(x^p)$, questo implica che $g(x)$ divide $h(x)^p$ in $\mathbb{Z}_p[x]$. Sia $f$ un divisore irriducibile di $g$ in $\mathbb{Z}_p[x]$, allora $f$ divide $g$ ed $h$ modulo $p$, ovvero $n^n-1$ ha uno zero doppio modulo $p$; ma non è possibile, perché $nx^{n-1}$ non ha zeri in comune con $x^n-1$ dato che $n\not\equiv0\Mod p$.
 		\item[($g(\alpha^p)=0$)] possiamo dire che per ogni $p$ che non divide $n$, per ogni $\alpha$ complesso radice di $f$, $g(\alpha^p)=0$, ovvero $g(\alpha^k)=0$ per ogni $k$ coprimo con $n$. Questo dimostra che $\Phi_n$ e $g$ hanno gli stessi zeri, ovvero $\Phi_n(x)=g(x)$ irriducibile.
 	\end{itemize}
 \end{proof}
