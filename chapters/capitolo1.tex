@@ -3168,14 +3168,19 @@ Come possiamo vedere il loro studio è strettamente legato alla teoria dei numer
 	 y=a^3-3ab^2\\1=3a^2b-b^3
 	 \end{cases}
 	 \end{equation*}
-	 Abbiamo quindi $b(3a^2-b^2)=1$, ovvero 
-	 \begin{equation*}
-	 \begin{cases}
-	 b=1, 3a^2-1=1, 3a^2=2\\
-	 b=-1, 3a^2-1=-1, 3a^2=0, a=0
-	 \end{cases}
-	 \end{equation*}
-	 da cui la tesi.
+	 Abbiamo quindi $b(3a^2-b^2)=1$, ovvero seguono due casi:
+	 \begin{enumerate}
+	 	\item Se $b = 1$ allora 
+	 		\begin{equation*}
+	 			3a^2-1=1 \implies a=\pm\sqrt{\frac{2}{3}}
+	 		\end{equation*}
+ 			che è impossibile poiché $a\in \mathbb{Z}$.
+ 		\item Se $b = -1$ allora 
+ 			\begin{equation*}
+ 				3a^2-1=-1 \implies a=0
+ 			\end{equation*} 
+ 			ovvero otteniamo la soluzione banale $y = 0$ e $x = 1$.
+	 \end{enumerate}
 \end{proof}
 \begin{lemma}
 	Sia $R$ un UFD, $a,b\in R$ coprimi. Sia $x\in R$ tale che $ab=x^n$, $n\in\mathbb{N}$. Allora $a$ e $b$ sono potenze $n$-esime.
@@ -3318,7 +3323,7 @@ Dato un generico $a\in\mathbb{Q}$, come capisco se $a\in\mathbb{Z}$?
 		\begin{equation*}
 		r_1^m+\dots+a_1r_1+a_0=0
 		\end{equation*}
-		qyubdu $r_i^k$ per $k\geq m$ si esprime come combinazione lineare di $1,r_1,\dots,r_1^{m-1}$ a coefficienti in $A$. Procedo poi per induzione su $n$: siccome $r_n$ intero su $A$ è intero su 
+		quindi $r_1^k$ per $k\geq m$ si esprime come combinazione lineare di $1,r_1,\dots,r_1^{m-1}$ a coefficienti in $A$. Procedo poi per induzione su $n$: siccome $r_n$ intero su $A$ è intero su 
 		\begin{equation*}
 			A[r_1,\dots,r_{n-1}]=C
 		\end{equation*}
