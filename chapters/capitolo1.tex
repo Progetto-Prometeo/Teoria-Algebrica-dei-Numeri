@@ -3001,17 +3001,14 @@ Risulta evidente che posso costruire le classi di resto in modo esattamente anal
 
 \section{Campi di numeri}
 \subsection{Estensioni di campi}
-\label{lezione16}
+\label{lezione15}
 \begin{definizione}
 	Dati $K$ ed $F$ campi, si dice che \textbf{$F$ è estensione di $K$} se $K$ è un sottocampo di $F$; in simboli scriveremo $F/K$.
 \end{definizione}
 \begin{definizione}
-	Un elemento di $F$ è algebrico su $K$ se è radice di un polinomio a coefficienti in $K$, l'estensione si dice \textbf{algebrica} se ogni $\alpha\in F$ è algebrico in $K$.
+	Un elemento di $F$ è algebrico su $K$ se è radice di un polinomio a coefficienti in $K$, l'estensione si dice \textbf{algebrica} se ogni $\alpha\in F$ è algebrico in $K$. \footnote{Chiaramente tutti gli elementi di $K$ sono algebrici su $K$, 
+		basta prendere il polinomio $x-a$ in $K[x]$.}
 \end{definizione}
-
-Chiaramente tutti gli elementi di $K$ sono algebrici su $K$, 
-basta prendere il polinomio $x-a$ in $K[x]$.
-
 \begin{definizione}
 	Sia $F/K$ estensione, $\alpha\in F$.
 	\begin{enumerate}
@@ -3203,7 +3200,8 @@ Come possiamo vedere il loro studio è strettamente legato alla teoria dei numer
 
 
 
-\section{Campi di numeri}
+\chapter{Campi numerici}
+I campi numerici svolgono un ruolo fondamentale nella teoria algebrica dei numeri. Lo scopo di questo corso non è lavorare sui problemi complessi della teoria algebrica dei numeri, ma fornire gli strumenti necessari per approcciarli; iniziamo quindi a studiare gli spazi in cui si svolgerà gran parte del nostro lavoro. Li abbiamo già incontrati in precedenza, ma ora diventeranno predominanti. \\ \\
 Ricordiamo che i campi di numeri sono estensioni finite di $\mathbb{Q}$, ad esempio possiamo notare
 \begin{itemize}
 	\item $\mathbb{Q}(i)$, di grado $[\mathbb{Q}(i):\mathbb{Q}]=2$
@@ -3215,6 +3213,7 @@ Ricordiamo che i campi di numeri sono estensioni finite di $\mathbb{Q}$, ad esem
 
 
 
+\section{Introduzione ai campi numerici}
 \subsection{Caratterizzazioni dei campi di numeri}
 \begin{teorema}
 	Sia $F$ un campo numerico, allora esiste un $\theta\in F$ tale che $F=\mathbb{Q}(\theta)$, ovvero $F$ è sempre un'estensione semplice.
@@ -3283,6 +3282,7 @@ Ricordiamo che i campi di numeri sono estensioni finite di $\mathbb{Q}$, ad esem
 
 
 
+
 \section{Campi algebrici}
 \subsection{Interi algebrici}
 \label{lezione17}
@@ -3304,7 +3304,7 @@ Dato un generico $a\in\mathbb{Q}$, come capisco se $a\in\mathbb{Z}$?
 	Diciamo $O$ l'insieme degli interi algebrici e $\overline{\mathbb{Q}}$ la chiusura algebrica di $\mathbb{Q}$, si può osservare che $\sfrac{\overline{\mathbb{Q}}}{\mathbb{Q}}$ è un'estensione algebrica infinita. Questo perché per ogni $n\leq1$ esiste un polinomio a coefficienti interi $p$ di grado $n$ irriducibile su $\mathbb{Q}$. Ad esepio possiamo costruire $x^n+2$ sfruttando il criterio di Eisenstein. \\ D'altro canto $\mathbb{C}$ ed $\mathbb{R}$ sono estensioni di $\mathbb{Q}$, ma non sono estensioni algebriche - ad esempio $\pi$ è trascendente. \\ \\ L'anello $O$ degli interi algebrici è incluso nella chiusura algebrica di $\mathbb{Q}$.
 \end{osservazione}
 \begin{definizione}
-	Sia $R$ un anello ed $A$ un suo sottoanello, un $r\in R$ si dice \textbf{intero su $A$} se esiste un polinomio monico a coefficienti in $A$ tale che $p(r)=0$. \footnote{Questo mi permette di definire degli \textit{elementi interi} rispetto ad ogni anello.
+	Sia $R$ un anello ed $A$ un suo sottoanello, un $r\in R$ si dice \textbf{intero su $A$} se esiste un polinomio monico a coefficienti in $A$ tale che $p(r)=0$. \footnote{Questo mi permette di definire degli \textit{elementi interi} rispetto ad ogni anello.}
 \end{definizione}
 \begin{proposizione}
 	Sia $R$ un anello ed $A$ un suo sottoanello, dati $r_1,\dots,r_n\in R$ sono equivalenti:
@@ -3483,5 +3483,366 @@ con $b,d$ non-nulli.
 	\left(x-(a+b\sqrt{5})\right)\left(x-(a-b\sqrt{5})\right)&=x^2-2ax+a^2-5b^2\in\mathbb{Z}[x]
 	\end{align*}
 	Tuttavia prendo $\frac{1+3\sqrt{5}}{2}$, questo è un intero algebrico perché ha come polinomio monico $x^2-x-11$ ma non appartiene a $\mathbb{Z}[\sqrt{5}]$
-	
 \end{esempio}
+
+
+
+
+\section{Norma, traccia e discriminante}
+\label{lezione18}
+\subsection{Immersioni in $\mathbb{C}$}
+\begin{definizione}
+	Sia $F$ un campo numerico, si dice essere una sua \textbf{immersione in $\mathbb{C}$} un morfismo iniettivo 
+	\begin{equation*}
+	\varphi: F \longmapsto \mathbb{C}
+	\end{equation*}
+	In particolare l'immersione si dice \textbf{reale} se la sua immagine $\varphi(F)$ è contenuta in $\mathbb{R}$, altrimenti si dice \textbf{complessa}.
+\end{definizione}
+\begin{osservazione}[Immersioni per elementi primitivi]
+	Consideriamo $\mathbb{Q}(\alpha)$, con $\alpha$ elemento primitivo, estensione di grado $n$ su $\mathbb{Q}$. Sia $M_\alpha(x)$ il polinomio minimo di $\alpha$, con radici $\alpha_1,\dots,\alpha_n$ ($\alpha_1=\alpha$). \\ \\ Le immersioni di $\mathbb{Q}(\alpha)$ in $\mathbb{C}$ sono le funzioni definite da 
+	\begin{align*}
+	\sigma_i:\mathbb{Q}(\alpha)&\longrightarrow \overline{\mathbb{Q}}\\
+	\alpha&\longmapsto\alpha_i\\
+	k&\longmapsto k \ \ \text{se $k\in\mathbb{Q}$}
+	\end{align*}
+	Allora possiamo notare che 
+	\begin{enumerate}
+		\item $M_\alpha(x)=\prod_i\left(x-\sigma_i(\alpha)\right)$
+		\item gli $\alpha_2,dots,\alpha_n$ sono coniugati di $\alpha$ %todo: espandi
+	\end{enumerate}
+\end{osservazione}
+\begin{osservazione}[Immersioni per elementi non primitivi]
+	Proviamo a lavorare su $\beta\in\mathbb{Q}(\alpha)$ elemento non primitivo, abbiamo le relazioni di inclusione 
+	\begin{equation*}
+	\mathbb{Q}\subset\mathbb{Q}(\beta)\subset\mathbb{Q}(\alpha)
+	\end{equation*}
+	Sia $m$ il grado di $\mathbb{Q}(\beta)$ su $\mathbb{Q}$, $t$ il grado di $\mathbb{Q}(\alpha)$ su $\mathbb{Q}(\beta)$. 
+	\begin{enumerate}
+		\item per formula dei gradi vale 
+		\begin{align*}
+		\left[\mathbb{Q}(\alpha):\mathbb{Q}\right]&=\left[\mathbb{Q}(\alpha):\mathbb{Q}(\beta)\right]\left[\mathbb{Q}(\beta):\mathbb{Q}\right]\\
+		&=t\cdot m
+		\end{align*}
+		\item allora per proprietà delle estensioni vale anche 
+		\begin{equation*}
+		\left(M_\beta(x)\right)^t=\prod_{i=1}^n\left(x-\sigma_i(\beta)\right)
+		\end{equation*}
+	\end{enumerate}
+	Si noti quindi che se $\alpha$ è primitivo i suoi coniugati sono le radici (distinte) del polinomio minimo, se invece non è primitivo i suoi coniugati sono le radici contate con ripetizione. Lo vedremo in seguito. \\
+	Definiamo l'applicazione 
+	\begin{align*}
+	m_z:\mathbb{Q}(\alpha)&\longrightarrow\mathbb{Q}(\alpha)\\
+	x&\longmapsto zx
+	\end{align*}
+	questo è un endomorfismo di $\mathbb{Q}(\alpha)$ visto come $\mathbb{Q}$-spazio vettoriale. Allora gli posso associare una matrice.
+\end{osservazione}
+\begin{proposizione}
+	Sia $F/\mathbb{Q}$ un campo numerico di grado $n$ su $\mathbb{Q}$, siano $\sigma_i$ le $n$ immersioni di $F$ in $\mathbb{Q}$. Allora per ogni $z\in F$ il polinomio caratteristico di $m_z$ è
+	\begin{equation*}
+	P_z(x)=\prod_i\left(x-\sigma_i(z)\right)
+	\end{equation*}
+\end{proposizione}
+\begin{proof}[Traccia di dimostrazione]
+	Se $z$ è primitivo segue facilmente dalle definizioni. Se invece non è primitivo, allora so che vale la relazione 
+	\begin{equation*}
+	\mathbb{Q}\subset \mathbb{Q}(z)\subset F
+	\end{equation*}
+	Allora prendo $w_1,\dots,w_r$ base di $\mathbb{Q}(z)$ su $\mathbb{Q}$, $v_1,\dots,v_t$ base di $F$ su $\mathbb{Q}(z)$. Una base di $F$ su $\mathbb{Q}$ è l'insieme dei $w_iv_j$, rispetto a questa la matrice di $M_z$ è una matrice diagonale a blocchi dove ogni blocco è dato dalla matrice di $m'_z$ (restrizione a $\mathbb{Q}(z)$ di $m_z$) rispetto alla base dei $w_i$. Da questo ottengo 
+	\begin{equation*}
+	P_z(x)=\left(P'_z(x)\right)^t
+	\end{equation*}
+	dove $P_z'(x)$ è il polinomio caratteristico di $m_z'$.
+\end{proof}
+\begin{osservazione}
+	In generale preso un elemento $z$ in $F/\mathbb{Q}$ i coniugati di $z\in F$ sono le radici del polinomio minimo $M_z(x)$, ognuna ripetuta $[F:\mathbb{Q}(z)]$ volte. \\ Questo è ciò di cui stavamo parlando, possiamo estendere la definizione di coniugato anche agli elementi non primitivi.
+\end{osservazione}
+
+
+
+
+
+
+\subsection{Norma e traccia}
+\begin{definizione}
+	La \textbf{norma di un elemento $z\in F$} è il determinante dell'endomorfismo associato $m_z$, ovvero il prodotto (con eventuali ripetizioni) dei suoi coniugati. 
+	\begin{equation*}
+	\N(z)=\sigma_1(z)\dots\sigma_n(z)
+	\end{equation*}
+	La \textbf{traccia di un elemento $z\in F$} è la traccia dell'endomorfismo associato $m_z$, ovvero la somma (con eventuali ripetizioni) dei suoi coniugati.
+	\begin{equation*}
+	\tr(z)=\sigma_1(z)+\dots+\sigma_n(z)
+	\end{equation*}
+\end{definizione}
+\begin{proposizione}
+	Dato $F/\mathbb{Q}$ campo numerico, se $z\in O_F$ anello degli interi su $F$ allora $m_z(x)\in\mathbb{Z}[x]$; il suo polinomio minimo è a coefficienti interi. In particolare la sua norma e la sua traccia sono numeri interi. \footnote{Sappiamo che è zero di un polinomio monico a coefficienti interi, ma non sappiamo a priori se questo valga anche per il polinomio minimo. Lo dimostreremo.}
+\end{proposizione}
+\begin{proof}
+	Se $z\in O_F$, allora $\sigma_i\in O$. Sia 
+	\begin{equation*}
+	m_z(x)=x^r+\dots+b_1x+b_0 \ \ \ \ b_i\in\mathbb{Q}
+	\end{equation*}
+	I coefficienti $b_i$ sono dati dalle funzioni simmetriche elementari delle radici, è un fatto noto di algebra. In particolare otteniamo
+	\begin{align*}
+	b_{r-1}&=-\left(\sigma_1(z)+\dots+\sigma_r(z)\right)\\
+	&\vdots\\
+	&b_0=(-1)^r\sigma_1(z)\dots\sigma_r(z)
+	\end{align*}
+	e siccome $O$ è un anello, i $b_i$ vi appartengono. Allora 
+	\begin{equation*}
+	b_i\in O\cap\mathbb{Q}=\mathbb{Z}
+	\end{equation*}
+\end{proof}
+
+
+
+
+\subsection{Alcuni esempi}
+\begin{esempio}
+	Cerchiamo le funzioni simmetriche del polinomio di secondo grado e di terzo grado:
+	\begin{equation*}
+	(x-a)(x-b)=x^2-(a+b)+ab
+	\end{equation*}
+	\begin{equation*}
+	(x-a)(x-b)(x-c)=x^3-(a+b+c)x^2+(ab+ac+bc)x-abc
+	\end{equation*}
+	I coefficienti si ottengono mediante funzioni simmetriche elementari delle radici.
+\end{esempio}
+\begin{esempio}
+	Consideriamo il campo di numeri
+	\begin{equation*}
+	\mathbb{Q}(\sqrt{D})=\left\{a+b\sqrt{D}\ \mid \ a,b\in\mathbb{Q}\right\}\simeq \sfrac{\mathbb{Q}[x]}{(x^2-D)}
+	\end{equation*}
+	con $D$ non quadrato. \footnote{Questo equivale a richiedere $x^2-D$ irriducibile in $\mathbb{Q}[x]$.} Facciamo alcune osservazioni:
+	\begin{enumerate}
+		\item il grado di $\mathbb{Q}(\sqrt{D})$ su $\mathbb{Q}$ è 2
+		\item $\sqrt{D}$ è un elemento primitivo di $\mathbb{Q}(\sqrt{D})$
+		\item $-\sqrt{D}$ è il solo coniugato di $\sqrt{D}$, abbiamo due immersioni in $\mathbb{C}$ date da 
+		\begin{equation*}
+		\sigma_1(\sqrt{D})=\sqrt{D}
+		\end{equation*}
+		\begin{equation*}
+		\sigma_2(\sqrt{D})=-\sqrt{D}
+		\end{equation*}
+		ed entrambe sono reali.
+	\end{enumerate}
+	Dato $z=a+b\sqrt{D}\in\mathbb{Q}(\sqrt{D})$, la sua norma è
+	\begin{equation*}
+	\N(z)=(a+b\sqrt{D})(a-b\sqrt{D})=a^2-Db^2
+	\end{equation*}
+	Ad esempio la norma di $1+\sqrt{D}$ è $1-D$, la norma di $\frac{1}{2}$ è $\frac{1}{4}$. Notando che $\mathbb{Q}(\frac{1}{2})=\mathbb{Q}$, il grado di $\mathbb{Q}(\frac{1}{2})$ su $\mathbb{Q}$ è 1. Allora
+	\begin{align*}
+	\left[\mathbb{Q}(\sqrt{D}):\mathbb{Q}\right]&=
+	\left[\mathbb{Q}(\sqrt{D}):\mathbb{Q}(\frac{1}{2})\right]\left[\mathbb{Q}(\frac{1}{2}):\mathbb{Q}\right]\\
+	&=2\cdot1
+	\end{align*}
+	Il polinomio minimo di $\frac{1}{2}$ è $x-\frac{1}{2}$, i suoi coniugati sono $\frac{1}{2}$ ed $\frac{1}{2}$.
+\end{esempio}
+\begin{esempio}
+	Consideriamo il polinomio $x^3-2$, irriducibile in $\mathbb{Q}[x]$.
+	\begin{equation*}
+	\mathbb{Q}(\sqrt[3]{2})=\left\{a+b\sqrt[3]{2}+c\sqrt[3]{4} \ \mid \ a,b,c\in\mathbb{Q}\right\}\simeq\sfrac{\mathbb{Q}[x]}{x^3-2}
+	\end{equation*}
+	Come prima facciamo alcune osservazioni:
+	\begin{enumerate}
+		\item il grado di $\mathbb{Q}(\sqrt[3]{2})$ su $\mathbb{Q}$ è 3
+		\item $\sqrt[3]{2}$ è un elemento primitivo di $\mathbb{Q}(\sqrt[3]{2})$
+		\item i coniugati di $\sqrt[3]{2}$ sono $\sqrt[3]{2},\omega\sqrt[3]{2},\omega^2\sqrt[3]{2}$ con $\omega$ radice terza primitiva dell'unità, in particolare scegliamo
+		\begin{equation*}
+		\omega=e^{\frac{2\pi i}{3}}=-\frac{1}{2}+\frac{\sqrt{3}}{2}i
+		\end{equation*}
+		ed abbiamo le tre immersioni definite da
+		\begin{equation*}
+			\sigma_1(\sqrt[3]{2})=\sqrt[3]{2}
+		\end{equation*}
+		\begin{equation*}
+			\sigma_2(\sqrt[3]{2})=\omega\sqrt[3]{2}
+		\end{equation*}
+		\begin{equation*}
+			\sigma_2(\sqrt[3]{2})=\omega^2\sqrt[3]{2}
+		\end{equation*}
+		dove la prima è reale e le altre sono complesse
+	\end{enumerate}
+		Allora la norma di un generico $z=a+b\sqrt[3]{2}+c\sqrt[3]{4}\in\mathbb{Q}(\sqrt[3]{2})$ è data da 
+		\begin{equation*}
+		\N(z)=
+		\left(a+b\sqrt[3]{2}+c\sqrt[3]{4}\right)
+		\left(a+b\omega\sqrt[3]{2}+c\omega\sqrt[3]{4}\right)
+		\left(a+b\omega\sqrt[3]{2}+c\omega^2\sqrt[3]{4}\right)
+		\end{equation*}
+		Prendiamo ad esempio $\frac{1}{2}$, la sua norma è $\frac{1}{8}$ e come prima $\mathbb{Q}(\frac{1}{2})=\mathbb{Q}$ - perché ovviamente è un suo elemento. In particolare il grado di $\mathbb{Q}(\sqrt[3]{2})$ su $\mathbb{Q}(\frac{1}{2})$ è 3, ed il polinomio minimo di $\frac{1}{2}$ è 
+		\begin{equation*}
+		x-\frac{1}{2}
+		\end{equation*}
+		I coniugati di $\frac{1}{2}$ sono $\frac{1}{2}$, $\frac{1}{2}$ ed $\frac{1}{2}$.
+\end{esempio}
+\begin{esempio}
+		Consideriamo il polinomio $x^4-2$, irriducibile in $\mathbb{Q}[x]$.
+		\begin{equation*}
+		\mathbb{Q}(\sqrt[4]{2})=\left\{a+b\sqrt[4]{2}+c\sqrt[4]{4}+d\sqrt[4]{8} \ \mid \ a,b,c,d\in\mathbb{Q}\right\}\simeq\sfrac{\mathbb{Q}[x]}{x^4-2}
+		\end{equation*}
+		Come prima facciamo alcune osservazioni:
+		\begin{enumerate}
+			\item il grado di $\mathbb{Q}(\sqrt[4]{2})$ su $\mathbb{Q}$ è 4
+			\item $\sqrt{2}=\sqrt[4]{4}$ è un elemento primitivo di $\mathbb{Q}(\sqrt[4]{2})$, ottenuto per $a=b=d=0$ e $c=1$
+			\item i coniugati di $\sqrt[4]{2}$ sono $\sqrt[4]{2},i\sqrt[i]{2},-\sqrt[4]{2},-i\sqrt[4]{2}$ con $i$ radice quarta primitiva dell'unità, abbiamo le quattro immersioni definite da
+			\begin{equation*}
+			\sigma_1(\sqrt[4]{2})=\sqrt[4]{2}
+			\end{equation*}
+			\begin{equation*}
+			\sigma_2(\sqrt[4]{2})=i\sqrt[4]{2}
+			\end{equation*}
+			\begin{equation*}
+			\sigma_2(\sqrt[4]{2})=-\sqrt[4]{2}
+			\end{equation*}
+			\begin{equation*}
+			\sigma_2(\sqrt[4]{2})=-i\sqrt[4]{2}
+			\end{equation*}
+			dove due sono reali e due sono complesse
+		\end{enumerate}
+		Allora la norma di un generico $z\in\mathbb{Q}(\sqrt[3]{2})$ è data da 
+		\begin{align*}
+		\N(z)=&
+		\left(a+b\sqrt[4]{2}+c\sqrt[4]{4}+d\sqrt[4]{8}\right)
+		\left(a+bi\sqrt[4]{2}+ci\sqrt[4]{4}+di\sqrt[4]{8}\right)\\
+		&\ \ \ \ \ \ \ \ \ \left(a-b\sqrt[4]{2}-c\sqrt[4]{4}-d\sqrt[4]{8}\right)
+		\left(a-bi\sqrt[4]{2}-ci\sqrt[4]{4}-di\sqrt[4]{8}\right)
+		%todo: controlla, questa formula l'ho scritta io, potrei aver sbagliato
+		\end{align*}
+		Il polinomio minimo di $\sqrt{2}$ è $x^2-2$, che ha soluzioni $\sqrt{2}$ e $-\sqrt{2}$. I coniugati di $\sqrt{2}$ in $\mathbb{Q}(\sqrt[4]{2})$ sono 
+		\begin{equation*}
+		\sqrt{2},\sqrt{2},-\sqrt{2},-\sqrt{2}
+		\end{equation*}
+		e norma e traccia sono 
+		\begin{equation*}
+		\N(\sqrt{2})=(\sqrt{2})(\sqrt{2})(-\sqrt{2})(-\sqrt{2})
+		\end{equation*}
+		\begin{equation*}
+		\tr(\sqrt{2})=0
+		\end{equation*}
+\end{esempio}
+\begin{esempio}
+	Consideriamo $\omega_p$ radice primitiva $p$-esima primitiva dell'unità, facciamo alcune osservazioni:
+	\begin{enumerate}
+		\item Il suo polinomio minimo è 
+		\begin{equation*}
+		\Phi_p(x)=\frac{x^p-1}{x-1}=x^{p-1}+\dots+x+1
+		\end{equation*}
+		e tramite criterio di Eisenstein di vede che è irriducibile su $\mathbb{Q}$. Infatti una volta scritto
+		\begin{equation*}
+		\frac{(x+1)^p-1}{x}=x^{p-1}+\binom{p}{p-1}x^{p-2}+\dots+\binom{p}{2}x+\binom{p}{1}\in\mathbb{Z}[x]
+		\end{equation*}
+		vediamo che i coefficienti sono tutti divisibili per $p$, ma $p^2$ non divide l'ultimo coefficiente $\binom{p}{1}$.
+		\begin{equation*}
+		\Phi_p(x)=(x-\omega_p)\dots(x-\omega_p^{p-1})
+		\end{equation*}
+		\item Per quanto visto, il grado dell'estensione $\mathbb{Q}[\omega_p]$ su $\mathbb{Q}$ è $p-1$.
+		\item Si vede facilmente che
+		\begin{equation*}
+		\N(1-\omega_p)=(1-\omega_p)\dots(1-\omega_p^{p-1})=\Phi_p(1)=p
+		\end{equation*}
+	\end{enumerate}
+	Vogliamo far vedere che 
+	\begin{align*}
+	O_{\mathbb{Q}[\omega_p]}&=\mathbb{Z}[\omega_p]\\
+	&=\left\{a_0+\dots+a_{p-2}\omega_p^{p-2} \ \mid \ a_i\in\mathbb{Z}\right\}
+	\end{align*}
+	Consideriamo allora $\alpha\in O_{\mathbb{Q}[\omega_p]}$, e siano $\alpha_1,\dots,\alpha_{p-1}$ i suoi coniugati - eventualmente non tutti distinti. Diamoci ad alcune osservazioni:
+	\begin{itemize}
+		\item facendo i calcoli della traccia di $\alpha(1-\omega_p)$ vediamo che 
+		\begin{equation*}
+		\tr\left(\alpha(1-\omega_p)\right)=\alpha(1-\omega_p)+\dots+\alpha_2(1-\omega_p^2)+\dots\alpha_{p-1}(1-\omega_p^{p-1})
+		\end{equation*}
+		\begin{equation*}
+		\tr\left(\alpha(1-\omega_p)\right)\in(1-\omega_p)O_{\mathbb{Q}[\omega_p]}\cap\mathbb{Z}
+		\end{equation*}
+		\item $1-\omega_p$ divide $1-\omega_p^j$ in $O_{\mathbb{Q}[\omega_p]}$ per $j=1,\dots,p-2$
+		\item $(1-\omega_p)O_{\mathbb{Q}[\omega_p]}\cap\mathbb{Z}=p\mathbb{Z}$, infatti
+		\begin{equation*}
+		\N(1-\omega_p)=p\implies1-\omega_p\mid p \ \ \text{in $\mathbb{Q}[\omega_p]$}
+		\end{equation*}
+		ed allora otteniamo la serie di inclusioni 
+		\begin{equation*}
+		p\mathbb{Z}\subset pO_{\mathbb{Q}[\omega_p]}\cap\mathbb{Z}\subset(1-\omega_p)O_{\mathbb{Q}[\omega_p]}\cap\mathbb{Z}
+		\end{equation*}
+		inoltre essendo $p\mathbb{Z}$ massimale valgono le uguaglianze; se non valessero, $1-\omega_p$ dividerebbe 1 e dalle norme si avrebbe $p$ divide $1$ in $\mathbb{Z}$.
+		\item $\tr(\omega_p^j)=-1$, $\tr(1)=p-1$.
+	\end{itemize}
+	Allora sia $a=a_0+\dots+a_{p-2}\omega_p^{p-2}$ con gli $a_i$ in $\mathbb{Q}$,
+	\begin{align*}
+	\tr\left(\alpha(1-\omega_p)\right)
+	&=a_0\tr(1-\omega_p)+\dots+a_{p-2}\tr(\omega_p^{p-2}-\omega_p^{p-1})\\
+	&=pa_0
+	\end{align*}
+	ma dato che $\tr\left(\alpha(1-\omega_p)\right)\in p\mathbb{Z}$, otteniamo che $a_0\in\mathbb{Z}$. \\ \\ Consideriamo stavolta $\frac{\alpha-a_0}{\omega_p}\in O_{\mathbb{Q}[\omega_p]}$, con lo stesso ragionamento si ottiene $a_1\in\mathbb{Z}$. Possiamo proseguire, %todo: scrivere come in modo esplicito?
+	ottenendo $\alpha\in\mathbb{Z}[\omega_p]$.
+	\begin{equation*}
+	O_{\mathbb{Q}[\omega_p]}=\mathbb{Z}[\omega_p]
+	\end{equation*}
+\end{esempio}
+
+
+
+
+\subsection{Il discriminante}
+\begin{definizione}[Discriminante]
+	Siano $x_1,\dots,x_n\in F$ con $F$ campo numerico di dimensione $n$ su $\mathbb{Q}$, associamo a questi elementi un valore detto \textbf{discriminante}.
+	\begin{equation*}
+	\disc(x_1,\dots,x_n)=(\det A)^2\in\mathbb{Q}
+	\end{equation*}
+	dove $A=\left(\sigma_i(x_j)\right)_{ij}$.
+\end{definizione}
+\begin{proposizione}[Proprietà del discriminante]\
+	\begin{enumerate}
+		\item $\disc(x_1,\dots,x_n)\neq0$ se e solo se gli $x_i$ sono linearmente indipendenti su $\mathbb{Q}$
+		\item se $x_i\in O_F$, allora il loro discriminante è un numero intero
+		\item contenendo un quadrato, il discriminante non dipende dall'ordine in cui scelgo gli $x_i$ ed i $\sigma_j$
+	\end{enumerate}
+\end{proposizione}
+\begin{proposizione}
+	Siano $x_1,\dots,x_n\in F$ e $T$ la matrice con entrata $(i,j)$-esima $(x_ix_j)$, allora
+	\begin{equation*}
+	\disc(x_1,\dots,x_n)=\tr(T)
+	\end{equation*}
+	%todo: verifica enunciato
+\end{proposizione}
+\begin{proof}
+	La dimostrazione è lasciata per esercizio al lettore. Eh, sì.
+	% sappiamo entrambi che non lo farò
+\end{proof}
+\begin{osservazione}
+	Se $\alpha\in F$ è un elemento primitivo, allora posso trovare una base di $F$ come spazio vettoriale su $\mathbb{Q}$:
+	\begin{equation*}
+	1,\alpha,\dots,\alpha^{n-1}
+	\end{equation*}
+	ed in particolare posso scrivere
+	\begin{align*}
+	\disc(x_1,\dots,x_n)
+	&=\left[\det
+	\begin{pmatrix}
+	1 & \alpha_1 & \alpha_1^2 & \dots & \alpha_1^{n-1}\\
+	1 & \alpha_2 & \alpha_2^2 & \dots & \alpha_2^{n-1}\\
+	\vdots&\vdots&\vdots&\vdots&\vdots\\
+	1 & \alpha_n & \alpha_n^2 & \dots & \alpha_n^{n-1}
+	\end{pmatrix}
+	\right]^2\\
+	&=\prod_{i\leq j}(\alpha_i-\alpha_j)^2\neq0
+	\end{align*}
+\end{osservazione}
+\begin{proposizione}
+	Il discriminante di $x_1,\dots,x_n$ è non-zero se e solo se $x_1,\dots,x_n$ è una base di $F$ su $\mathbb{Q}$.
+\end{proposizione}
+\begin{proof}
+	Se gli $x_i$ sono una base, la tesi segue da quanto osservato sopra.
+	\\ \\ Per l'altra implicazione: supponiamo per assurdo che gli $x_i$ siano linearmente dipendenti, ovvero che esistano dei $c_i$ razionali (non tutti nulli) tali che la combinazione lineare 
+	\begin{equation*}
+	c1x_1+\dots+c_nx_n
+	\end{equation*}
+	sia nulla. Sappiamo che 
+	\begin{align*}
+	\sigma_i\left(c1x_1+\dots+c_nx_n\right)
+	&=c_1\sigma_1(x_1)+\dots+c_n\sigma_1(x_n)\\
+	&=0
+	\end{align*}
+	quindi i vettori colonna della matrice $A=\sigma_i(x_j)_{ij}$ sono dipendenti. Allora il determinante di $A$ è zero, e per la formula osservata anche il discriminante è nullo.
+\end{proof}
+
