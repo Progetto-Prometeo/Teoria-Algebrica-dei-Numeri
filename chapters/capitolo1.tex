@@ -3423,7 +3423,7 @@ con $b,d$ non-nulli.
 	\end{equation*}
 	da cui moltiplicando per $a_n^{n-1}$ ottengo
 	\begin{equation*}
-	(a_nz)^n+a_{n-1}(a_nz)^{n-1}+\dots+a_1a_n^{n-2}(a_nz)+a_na_{n-1}=0
+	(a_nz)^n+a_{n-1}(a_nz)^{n-1}+\dots+a_1a_n^{n-2}(a_nz)+a_n^{n-1}a_{n-1}=0
 	\end{equation*}
 	ovvero $a_nz\in O$ in quanto radice del polinomio monico in $\mathbb{Z}[x]$
 	\begin{equation*}
@@ -3434,7 +3434,7 @@ con $b,d$ non-nulli.
 \begin{osservazione}
 	Proprio come $\mathbb{Z}\subset\mathbb{Q}$, con $\mathbb{Q}$ campo delle frazioni di $\mathbb{Z}$, si ha $O\subset\overline{\mathbb{Q}}$, con $\overline{\mathbb{Q}}$ campo delle frazioni di $O$. \\ \\ Dato un campo di numeri $K$ posso inoltre porre 
 	\begin{equation*}
-	O_k=K\cap O
+	O_K=K\cap O
 	\end{equation*}
 	In questo modo $O_k$ è un dominio il cui campo delle frazioni è $K$ ed è l'anello degli interi di $K$.
 \end{osservazione}
@@ -3445,6 +3445,7 @@ con $b,d$ non-nulli.
 		\item $\frac{1}{\sqrt{2}}$ non è un intero algebrico, è radice di $2x^2-1$
 		\item $i$ è un intero algebrico, $x^2+1$
 		\item $\phi=\frac{1+\sqrt{5}}{2}$ è un intero algebrico, radice di $x^2-x-1$
+		\item La radice di un qualsiasi polinomio ciclotomico è un intero algebrico
 	\end{itemize}
 \end{esempio}
 \begin{esempio}
@@ -3455,18 +3456,18 @@ con $b,d$ non-nulli.
 	\end{equation*}
 	Per l'altra implicazione invece prendo uno $z\in\mathbb{Q}[i]$ intero algebrico, ovvero $z\in O$. Allora $z\in O_{\mathbb{Q}[i]}$. Voglio mostrare che $a$ e $b$ sono interi. Prendo $\overline{z}$, che è ancora un intero algebrico per ipotesi; anche $\overline{z}\in O_{\mathbb{Q}[i]}$. Siccome $O$ è un anello
 	\begin{equation*}
-	z+\overline{Z}=2a\in O
+	z+\overline{z}=2a\in O
 	\end{equation*}
 	\begin{equation*}
-	z+\overline{Z}\in O \cap \mathbb{Q} = \mathbb{Z}
+	z+\overline{z}\in O \cap \mathbb{Q} = \mathbb{Z}
 	\end{equation*}
 	Facciamo qualcosa di analogo con $-iz$, che appartiene ancora agli interi algebrici. Allora anche $-iz+i\overline{Z}$ è un intero algebrico, e 
 	\begin{equation*}
-	-iz+i\overline{Z}=2b \in \mathbb{Q}\cap\mathbb{Q}=\mathbb{Z}
+	-iz+i\overline{z}=2b \in O\cap\mathbb{Q}=\mathbb{Z}
 	\end{equation*}
-	Abbiamo ottenuto che $2a=m$ e $2b=n$ per certi $m$ ed $n$ interi; devo dimostrare che sono pari. \\ $z\cdot\overline{z}\in\mathbb{Q}\cap 0 =\mathbb{Z}$, quindi
+	Abbiamo ottenuto che $2a=m$ e $2b=n$ per certi $m$ ed $n$ interi; devo dimostrare che sono pari. \\ $z\cdot\overline{z}\in\mathbb{Q}\cap O =\mathbb{Z}$, quindi
 	\begin{equation*}
-	z\cdot\overline{Z}=a^2+b^2=\frac{m^2+n^2}{4}\in\mathbb{Z}
+	z\cdot\overline{z}=a^2+b^2=\frac{m^2+n^2}{4}\in\mathbb{Z}
 	\end{equation*}
 	ovvero $m^2+n^2\equiv0\Mod4$; $m^2$ ed $n^2$ sono 0 oppure 1 in modulo 4, ma perché la loro somma sia zero devono essere entrambi zero. Allora sono pari. \\ \\ Allora $\mathbb{Z}[i]$, anello degli interi di Gauss, è anello degli interi di $\mathbb{Q}[i]$.
 \end{esempio}
@@ -3506,7 +3507,7 @@ con $b,d$ non-nulli.
 	Allora possiamo notare che 
 	\begin{enumerate}
 		\item $M_\alpha(x)=\prod_i\left(x-\sigma_i(\alpha)\right)$
-		\item gli $\alpha_2,dots,\alpha_n$ sono coniugati di $\alpha$ %todo: espandi
+		\item gli $\alpha_2,\dots,\alpha_n$ si definiscono coniugati di $\alpha$ 
 	\end{enumerate}
 \end{osservazione}
 \begin{osservazione}[Immersioni per elementi non primitivi]
@@ -3580,11 +3581,13 @@ con $b,d$ non-nulli.
 	m_z(x)=x^r+\dots+b_1x+b_0 \ \ \ \ b_i\in\mathbb{Q}
 	\end{equation*}
 	I coefficienti $b_i$ sono dati dalle funzioni simmetriche elementari delle radici, è un fatto noto di algebra. In particolare otteniamo
-	\begin{align*}
-	b_{r-1}&=-\left(\sigma_1(z)+\dots+\sigma_r(z)\right)\\
-	&\vdots\\
-	&b_0=(-1)^r\sigma_1(z)\dots\sigma_r(z)
-	\end{align*}
+	\begin{equation*}
+		\begin{array}{rl}
+			b_{r-1}&=-\left(\sigma_1(z)+\dots+\sigma_r(z)\right)\\
+			&\;\vdots\\
+			b_0&=(-1)^r\sigma_1(z)\cdots\sigma_r(z)
+		\end{array}
+	\end{equation*}
 	e siccome $O$ è un anello, i $b_i$ vi appartengono. Allora 
 	\begin{equation*}
 	b_i\in O\cap\mathbb{Q}=\mathbb{Z}
@@ -3630,7 +3633,7 @@ con $b,d$ non-nulli.
 	Ad esempio la norma di $1+\sqrt{D}$ è $1-D$, la norma di $\frac{1}{2}$ è $\frac{1}{4}$. Notando che $\mathbb{Q}(\frac{1}{2})=\mathbb{Q}$, il grado di $\mathbb{Q}(\frac{1}{2})$ su $\mathbb{Q}$ è 1. Allora
 	\begin{align*}
 	\left[\mathbb{Q}(\sqrt{D}):\mathbb{Q}\right]&=
-	\left[\mathbb{Q}(\sqrt{D}):\mathbb{Q}(\frac{1}{2})\right]\left[\mathbb{Q}(\frac{1}{2}):\mathbb{Q}\right]\\
+	\left[\mathbb{Q}(\sqrt{D}):\mathbb{Q}\left(\frac{1}{2}\right)\right]\left[\mathbb{Q}\left(\frac{1}{2}\right):\mathbb{Q}\right]\\
 	&=2\cdot1
 	\end{align*}
 	Il polinomio minimo di $\frac{1}{2}$ è $x-\frac{1}{2}$, i suoi coniugati sono $\frac{1}{2}$ ed $\frac{1}{2}$.
@@ -3690,10 +3693,10 @@ con $b,d$ non-nulli.
 			\sigma_2(\sqrt[4]{2})=i\sqrt[4]{2}
 			\end{equation*}
 			\begin{equation*}
-			\sigma_2(\sqrt[4]{2})=-\sqrt[4]{2}
+			\sigma_3(\sqrt[4]{2})=-\sqrt[4]{2}
 			\end{equation*}
 			\begin{equation*}
-			\sigma_2(\sqrt[4]{2})=-i\sqrt[4]{2}
+			\sigma_4(\sqrt[4]{2})=-i\sqrt[4]{2}
 			\end{equation*}
 			dove due sono reali e due sono complesse
 		\end{enumerate}
@@ -3731,12 +3734,12 @@ con $b,d$ non-nulli.
 		\end{equation*}
 		vediamo che i coefficienti sono tutti divisibili per $p$, ma $p^2$ non divide l'ultimo coefficiente $\binom{p}{1}$.
 		\begin{equation*}
-		\Phi_p(x)=(x-\omega_p)\dots(x-\omega_p^{p-1})
+		\Phi_p(x)=(x-\omega_p)\cdots(x-\omega_p^{p-1})
 		\end{equation*}
 		\item Per quanto visto, il grado dell'estensione $\mathbb{Q}[\omega_p]$ su $\mathbb{Q}$ è $p-1$.
 		\item Si vede facilmente che
 		\begin{equation*}
-		\N(1-\omega_p)=(1-\omega_p)\dots(1-\omega_p^{p-1})=\Phi_p(1)=p
+		\N(1-\omega_p)=(1-\omega_p)\cdots(1-\omega_p^{p-1})=\Phi_p(1)=p
 		\end{equation*}
 	\end{enumerate}
 	Vogliamo far vedere che 
@@ -3805,7 +3808,6 @@ con $b,d$ non-nulli.
 \end{proposizione}
 \begin{proof}
 	La dimostrazione è lasciata per esercizio al lettore. Eh, sì.
-	% sappiamo entrambi che non lo farò
 \end{proof}
 \begin{osservazione}
 	Se $\alpha\in F$ è un elemento primitivo, allora posso trovare una base di $F$ come spazio vettoriale su $\mathbb{Q}$:
@@ -3833,14 +3835,13 @@ con $b,d$ non-nulli.
 	Se gli $x_i$ sono una base, la tesi segue da quanto osservato sopra.
 	\\ \\ Per l'altra implicazione: supponiamo per assurdo che gli $x_i$ siano linearmente dipendenti, ovvero che esistano dei $c_i$ razionali (non tutti nulli) tali che la combinazione lineare 
 	\begin{equation*}
-	c1x_1+\dots+c_nx_n
+	c_1x_1+\dots+c_nx_n
 	\end{equation*}
 	sia nulla. Sappiamo che 
-	\begin{align*}
+	\begin{equation*}
 	\sigma_i\left(c1x_1+\dots+c_nx_n\right)
-	&=c_1\sigma_1(x_1)+\dots+c_n\sigma_1(x_n)\\
-	&=0
-	\end{align*}
+	=c_1\sigma_1(x_1)+\dots+c_n\sigma_1(x_n)=0
+	\end{equation*}
 	quindi i vettori colonna della matrice $A=\sigma_i(x_j)_{ij}$ sono dipendenti. Allora il determinante di $A$ è zero, e per la formula osservata anche il discriminante è nullo.
 \end{proof}
 
