@@ -3199,7 +3199,7 @@ Come possiamo vedere il loro studio è strettamente legato alla teoria dei numer
 
 
 \chapter{Campi numerici}
-I campi numerici svolgono un ruolo fondamentale nella teoria algebrica dei numeri. Lo scopo di questo corso non è lavorare sui problemi complessi della teoria algebrica dei numeri, ma fornire gli strumenti necessari per approcciarli; iniziamo quindi a studiare gli spazi in cui si svolgerà gran parte del nostro lavoro. Li abbiamo già incontrati in precedenza, ma ora diventeranno predominanti. \\ \\
+I campi numerici svolgono un ruolo fondamentale nella teoria algebrica dei numeri. Lo scopo di questo corso non è lavorare sui problemi complessi della teoria algebrica dei numeri, ma fornire gli strumenti necessari per approcciarli; iniziamo quindi a studiare gli spazi in cui si svolgerà gran parte del nostro lavoro. Li abbiamo già incontrati in precedenza, ma ora diventeranno predominanti. Per una trattazione più approfondita si veda \cite[Capitolo~2]{milneANT}. \\ \\
 Ricordiamo che i campi di numeri sono estensioni finite di $\mathbb{Q}$, ad esempio possiamo notare
 \begin{itemize}
 	\item $\mathbb{Q}(i)$, di grado $[\mathbb{Q}(i):\mathbb{Q}]=2$
@@ -3565,7 +3565,7 @@ con $b,d$ non-nulli.
 \begin{definizione}
 	La \textbf{norma di un elemento $z\in F$} è il determinante dell'endomorfismo associato $m_z$, ovvero il prodotto (con eventuali ripetizioni) dei suoi coniugati. 
 	\begin{equation*}
-	\N(z)=\sigma_1(z)\dots\sigma_n(z)
+	\N(z)=\sigma_1(z)\cdots\sigma_n(z)
 	\end{equation*}
 	La \textbf{traccia di un elemento $z\in F$} è la traccia dell'endomorfismo associato $m_z$, ovvero la somma (con eventuali ripetizioni) dei suoi coniugati.
 	\begin{equation*}
@@ -3812,14 +3812,14 @@ con $b,d$ non-nulli.
 		\begin{array}{llll}
 			\sigma_1(x_1) & \sigma_2(x_1) & \dots & \sigma_n(x_1) \\
 			\sigma_1(x_2) & \sigma_2(x_2)  & \dots & \sigma_n(x_2) \\
-			\vdots & \vdots & \ddots & \vdots \\
+			\quad\ \vdots & \quad\ \vdots & \ddots & \quad\ \vdots \\
 			\sigma_1(x_n) & \sigma_2(x_n) & \dots & \sigma_n(x_n)
 		\end{array}
 		\right)\left(
 		\begin{array}{llll}
 			\sigma_1(x_1) & \sigma_1(x_2) & \dots & \sigma_1(x_n) \\
 			\sigma_2(x_1) & \sigma_2(x_2)  & \dots & \sigma_2(x_n) \\
-			\vdots & \vdots & \ddots & \vdots \\
+			\quad\ \vdots & \quad\ \vdots & \ddots & \quad\ \vdots \\
 			\sigma_n(x_1) & \sigma_n(x_2) & \dots & \sigma_n(x_n)
 		\end{array}
 		\right)\\
@@ -3828,7 +3828,7 @@ con $b,d$ non-nulli.
 		\begin{array}{lll}
 			\sum_{k=1}^n\sigma_k(x_1x_1) & \dots & \sum_{k=1}^n \sigma_k(x_1x_n) \\
 			\sum_{k=1}^n\sigma_k(x_2x_1) & \dots & \sum_{k=1}^n\sigma_k(x_2x_n)  \\
-			\vdots & \ddots &  \vdots \\
+			\quad\ \vdots & \ddots & \quad\ \vdots \\
 			\sum_{k=1}^n\sigma_k(x_nx_1) & \dots & \sum_{k=1}^n\sigma_k(x_nx_n) 
 		\end{array}
 		\right)
