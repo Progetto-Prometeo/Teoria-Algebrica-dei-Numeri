@@ -3800,14 +3800,45 @@ con $b,d$ non-nulli.
 	\end{enumerate}
 \end{proposizione}
 \begin{proposizione}
-	Siano $x_1,\dots,x_n\in F$ e $T$ la matrice con entrata $(i,j)$-esima $(x_ix_j)$, allora
+	Siano $x_1,\dots,x_n\in F$ e $T$ la matrice con entrata $(i,j)$-esima $\tr(x_ix_j)$, allora
 	\begin{equation*}
-	\disc(x_1,\dots,x_n)=\tr(T)
+	\disc(x_1,\dots,x_n)=\det(T)
 	\end{equation*}
-	%todo: verifica enunciato
 \end{proposizione}
 \begin{proof}
-	La dimostrazione è lasciata per esercizio al lettore. Eh, sì.
+	Sia $A$ la matrice usata per determinare il $\disc(x_1,\dots,x_n)$, allora 
+	\begin{align*}
+		A^t A & = \left(
+		\begin{array}{llll}
+			\sigma_1(x_1) & \sigma_2(x_1) & \dots & \sigma_n(x_1) \\
+			\sigma_1(x_2) & \sigma_2(x_2)  & \dots & \sigma_n(x_2) \\
+			\vdots & \vdots & \ddots & \vdots \\
+			\sigma_1(x_n) & \sigma_2(x_n) & \dots & \sigma_n(x_n)
+		\end{array}
+		\right)\left(
+		\begin{array}{llll}
+			\sigma_1(x_1) & \sigma_1(x_2) & \dots & \sigma_1(x_n) \\
+			\sigma_2(x_1) & \sigma_2(x_2)  & \dots & \sigma_2(x_n) \\
+			\vdots & \vdots & \ddots & \vdots \\
+			\sigma_n(x_1) & \sigma_n(x_2) & \dots & \sigma_n(x_n)
+		\end{array}
+		\right)\\
+		& = 
+		\left(
+		\begin{array}{lll}
+			\sum_{k=1}^n\sigma_k(x_1x_1) & \dots & \sum_{k=1}^n \sigma_k(x_1x_n) \\
+			\sum_{k=1}^n\sigma_k(x_2x_1) & \dots & \sum_{k=1}^n\sigma_k(x_2x_n)  \\
+			\vdots & \ddots &  \vdots \\
+			\sum_{k=1}^n\sigma_k(x_nx_1) & \dots & \sum_{k=1}^n\sigma_k(x_nx_n) 
+		\end{array}
+		\right)
+	\end{align*}
+	da cui basta osservare che ogni entrata è proprio l'entrata corrispondente della
+	matrice $T$. Per la formula di Binet vale
+	\begin{equation*}
+		\det(T) = \det(A^tA) = \det(A^t)\det(A) = \det(A)^2 = \disc(x_1,\dots,x_n) 
+	\end{equation*}
+ 	ovvero la tesi.
 \end{proof}
 \begin{osservazione}
 	Se $\alpha\in F$ è un elemento primitivo, allora posso trovare una base di $F$ come spazio vettoriale su $\mathbb{Q}$:
