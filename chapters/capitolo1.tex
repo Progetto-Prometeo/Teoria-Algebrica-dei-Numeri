@@ -2002,7 +2002,7 @@ Sfruttando il test di primalità di Lucas - che non affronteremo nel corso - com
 I \textbf{numeri di Carmichael} sono numeri composti che sono pseudoprimi di Fermat per ogni base $a$. Nel 1994 Pomeranz e Granville dimostrano che esistono infiniti numeri di Carmichael.
 \end{osservazione}
 \begin{teorema}[Teorema di Korselt]
-	$n$ è un numero di Carmichael se e solo se $n$ è libero da quadrati e per ogni $p$ primo che divide $n$ si ha
+	Sia $n\in \mathbb{N}$, è un numero di Carmichael se e solo se $n$ è libero da quadrati e per ogni $p$ primo che divide $n$ si ha
 	\begin{equation*}
 	p-1 \, \mid \, n-1
 	\end{equation*}
@@ -2086,7 +2086,7 @@ I \textbf{numeri di Carmichael} sono numeri composti che sono pseudoprimi di Fer
 	\begin{align*}
 	&\text{per Fermat} \ \ \ \ \ \ \ \ \ \ \ \ \ 341,561,645,1105,1387,1729,\dots\\
 	&\text{per Eulero} \ \ \ \ \ \ \ \ \ \ \ \ \ \  341,561,1105,1729,\dots\\
-	&\text{per Eulero-Jacobi} \ \ \ \ \ 561,1105,1729,\dots\\
+	&\text{per Eulero-Jacobi} \ \ \ \ \ 561,1105,1729,\dots
 	\end{align*}
 	Il test di Eulero-Jacobi è il più efficiente dei tre, molti meno pseudoprimi sono in grado di passarlo rispetto agli altri due.
 \end{osservazione}
@@ -2094,7 +2094,7 @@ I \textbf{numeri di Carmichael} sono numeri composti che sono pseudoprimi di Fer
 
 
 
-\subsection{Il test di Solvay-Strassen}
+\subsection{Il test di Solovay-Strassen}
 \begin{osservazione}
 	Sia dato l'insieme
 	\begin{equation*}
@@ -2159,7 +2159,7 @@ I \textbf{numeri di Carmichael} sono numeri composti che sono pseudoprimi di Fer
 	\end{equation*}
 	per $n$ non primo e non di Carmichael.
 \end{proof}
-\begin{teorema}[Test di Solvay-Strassen]
+\begin{teorema}[Test di Solovay-Strassen]
 	Dato $n$ numero da testare, eseguo il test di Eulero-Jacobi per $k$ basi diverse. In questo modo la probabilità che un numero composto superi il test è maggiorata da $\sfrac{1}{2^k}$, si dimostra grazie al corollario appena visto.
 \end{teorema}
 \begin{definizione}
@@ -2190,9 +2190,9 @@ I \textbf{numeri di Carmichael} sono numeri composti che sono pseudoprimi di Fer
 
 
 \subsection{Il test di Rabin-Miller}
-Il test di Rabin-Miller viene usato in molte funzioni di valutazione della primalità di linguaggi di programmazione \enquote{matematici}, come ad esempio Python. Si tratta a tutti gli effetti di uno dei due test di primalità più usati al mondo, e quindi di un risultato decisamente importante. Sotto l'ipotesi di Riemann diventa inoltre un criterio di primalità efficiente; allora condizionato all'ipotesi che sia vera assume un carattere ancora più forte. \\ L'altro test più usato è il \textit{test di Bayle}, che combina il test di Lucas a Fermat fortificato.
+Il test di Rabin-Miller viene usato in molte funzioni di valutazione della primalità di linguaggi di programmazione, come ad esempio Python. Si tratta a tutti gli effetti di uno dei due test di primalità più usati al mondo, e quindi di un risultato decisamente importante. Sotto l'ipotesi di Riemann diventa inoltre un \emph{criterio} di primalità efficiente; allora condizionato all'ipotesi che sia vera assume un carattere ancora più forte. \\ L'altro test più usato è il \textit{test di Bayle}, che combina il test di Lucas a Fermat fortificato.
 \begin{teorema}[Test di Rabin-Miller]
-	Sia $n$ numero da valutare, itero $k$ volte il test di Solvay-Strassen. La probabilità che un numero composto superi il test è maggiorata da $\sfrac{1}{4^k}$, ho ottenuto un test più \enquote{potente}.
+	Sia $n$ numero da valutare, itero $k$ volte il test di Solovay-Strassen. La probabilità che un numero composto superi il test è maggiorata da $\sfrac{1}{4^k}$, ho ottenuto un test più \enquote{potente}.
 \end{teorema}
 \begin{osservazione}
 	Se condizionato all'ipotesi di Riemann questo test diventa \textit{deterministico}, cioè garantisce con totale sicurezza la primalità di $n=2^km+1$, ed efficiente. Per dimostrare quanto abbiamo appena detto ci serve definire alcuni insiemi e fornire alcuni lemmi intermedi. \footnote{notiamo che non è restrittivo restringersi a questo caso, tutti i primi hanno questa forma.}
@@ -2213,7 +2213,38 @@ Il test di Rabin-Miller viene usato in molte funzioni di valutazione della prima
 	Vale che $M_n\subset B$.
 \end{lemma}
 \begin{proof}
-	%todo: rivedi quella corretta appena esce, è sbagliata sul pdf originale
+	Sia $a \in M_n$ allora abbiamo i seguenti casi
+	\begin{enumerate}
+		\item Sia $a$ tale che 
+			\begin{equation*}
+				a^m \equiv 1 \mod n 
+			\end{equation*}
+    		e quindi possiamo concludere che $a \in B$ dato che 
+    		\begin{equation*}
+    			a^{2^{s-1}m} \equiv (a^m)^{2^{s-1}} \equiv 1^{2^{s-1}} \equiv 1 \mod n
+    		\end{equation*}
+    \item Altrimenti dev'essere che
+	    \begin{equation*}
+			a^{m2^{j}} \equiv -1 \mod n \quad\ \forall j \in \mathbb{N}.\, 0 \le j \le k-1
+	    \end{equation*} 
+    	con $j$ preso minimo possibile da soddisfare l'equazione; quindi vale anche
+    	\begin{equation*}
+    		a^{m2^{j+1}} \equiv (a^{m2^j})^2 \equiv (-1)^2 \equiv 1 \mod n
+    	\end{equation*}
+    	ovvero per ogni $p \mid n$ primo vale che 
+    	\begin{equation*}
+    		a^{m2^{j+1}} \equiv 1 \mod p
+    	\end{equation*}
+    	Osserviamo infine che $2^{j+1}$ dev'essere l'ordine di $a^m$ e quindi $2^{j+1} \mid p-1$ 
+    	per ogni $p \mid n$ primo. Per definizione di $s$, dev'essere che $j+1 \le s$ per ogni 
+    	primo $p$. Quindi
+    	\begin{equation*}
+    		a^{m2^{s-1}} \equiv (a^{m2^{j}})^v \equiv (-1)^v \mod p
+    	\end{equation*}
+    	dove $v = s - (j+1)$. Per cui dev'essere che $a^{m2^{s-1}} \equiv \pm 1 \mod n$; ovvero 
+    	$a \in B$.
+	\end{enumerate}
+	Possiamo finalmente concludere che $M_n \subset B$.
 \end{proof}
 \begin{lemma}
 	Sia $G$ gruppo ciclico di ordine $n$, ogni equazione del tipo $x^t=1$ ha un numero di soluzioni pari al massimo comune divisore di $t$ ed $n$.
