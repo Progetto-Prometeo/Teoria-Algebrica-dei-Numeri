@@ -3204,8 +3204,6 @@ Risulta evidente che posso costruire le classi di resto in modo esattamente anal
 	\end{equation*}
 \end{osservazione}
 
-% TODO: nel caso si volesse inserire una generalizzazione di questo teorema nel caso di domini e A-algebre, si potrebbe inserire il capitolo 4 del Miles Reid.
-
 \begin{teorema}
 	Si consideri un'estensione $E/K$ e sia $F$ l'insieme degli $\alpha\in E$ algebrici su $K$. Allora
 	\begin{enumerate}
@@ -3286,14 +3284,19 @@ Come possiamo vedere il loro studio è strettamente legato alla teoria dei numer
 	 y=a^3-3ab^2\\1=3a^2b-b^3
 	 \end{cases}
 	 \end{equation*}
-	 Abbiamo quindi $b(3a^2-b^2)=1$, ovvero 
-	 \begin{equation*}
-	 \begin{cases}
-	 b=1, 3a^2-1=1, 3a^2=2\\
-	 b=-1, 3a^2-1=-1, 3a^2=0, a=0
-	 \end{cases}
-	 \end{equation*}
-	 da cui la tesi.
+	 Abbiamo quindi $b(3a^2-b^2)=1$, ovvero seguono due casi:
+	 \begin{enumerate}
+	 	\item Se $b = 1$ allora 
+	 		\begin{equation*}
+	 			3a^2-1=1 \implies a=\pm\sqrt{\frac{2}{3}}
+	 		\end{equation*}
+ 			che è impossibile poiché $a\in \mathbb{Z}$.
+ 		\item Se $b = -1$ allora 
+ 			\begin{equation*}
+ 				3a^2-1=-1 \implies a=0
+ 			\end{equation*} 
+ 			ovvero otteniamo la soluzione banale $y = 0$ e $x = 1$.
+	 \end{enumerate}
 \end{proof}
 \begin{lemma}
 	Sia $R$ un UFD, $a,b\in R$ coprimi. Sia $x\in R$ tale che $ab=x^n$, $n\in\mathbb{N}$. Allora $a$ e $b$ sono potenze $n$-esime.
@@ -3317,7 +3320,7 @@ Come possiamo vedere il loro studio è strettamente legato alla teoria dei numer
 
 
 \chapter{Campi numerici}
-I campi numerici svolgono un ruolo fondamentale nella teoria algebrica dei numeri. Lo scopo di questo corso non è lavorare sui problemi complessi della teoria algebrica dei numeri, ma fornire gli strumenti necessari per approcciarli; iniziamo quindi a studiare gli spazi in cui si svolgerà gran parte del nostro lavoro. Li abbiamo già incontrati in precedenza, ma ora diventeranno predominanti. \\ \\
+I campi numerici svolgono un ruolo fondamentale nella teoria algebrica dei numeri. Lo scopo di questo corso non è lavorare sui problemi complessi della teoria algebrica dei numeri, ma fornire gli strumenti necessari per approcciarli; iniziamo quindi a studiare gli spazi in cui si svolgerà gran parte del nostro lavoro. Li abbiamo già incontrati in precedenza, ma ora diventeranno predominanti. Per una trattazione più approfondita si veda \cite[Capitolo~2]{milneANT}. \\ \\
 Ricordiamo che i campi di numeri sono estensioni finite di $\mathbb{Q}$, ad esempio possiamo notare
 \begin{itemize}
 	\item $\mathbb{Q}(i)$, di grado $[\mathbb{Q}(i):\mathbb{Q}]=2$
@@ -3436,7 +3439,7 @@ Dato un generico $a\in\mathbb{Q}$, come capisco se $a\in\mathbb{Z}$?
 		\begin{equation*}
 		r_1^m+\dots+a_1r_1+a_0=0
 		\end{equation*}
-		qyubdu $r_i^k$ per $k\geq m$ si esprime come combinazione lineare di $1,r_1,\dots,r_1^{m-1}$ a coefficienti in $A$. Procedo poi per induzione su $n$: siccome $r_n$ intero su $A$ è intero su 
+		quindi $r_1^k$ per $k\geq m$ si esprime come combinazione lineare di $1,r_1,\dots,r_1^{m-1}$ a coefficienti in $A$. Procedo poi per induzione su $n$: siccome $r_n$ intero su $A$ è intero su 
 		\begin{equation*}
 			A[r_1,\dots,r_{n-1}]=C
 		\end{equation*}
@@ -3541,7 +3544,7 @@ con $b,d$ non-nulli.
 	\end{equation*}
 	da cui moltiplicando per $a_n^{n-1}$ ottengo
 	\begin{equation*}
-	(a_nz)^n+a_{n-1}(a_nz)^{n-1}+\dots+a_1a_n^{n-2}(a_nz)+a_na_{n-1}=0
+	(a_nz)^n+a_{n-1}(a_nz)^{n-1}+\dots+a_1a_n^{n-2}(a_nz)+a_n^{n-1}a_{n-1}=0
 	\end{equation*}
 	ovvero $a_nz\in O$ in quanto radice del polinomio monico in $\mathbb{Z}[x]$
 	\begin{equation*}
@@ -3552,7 +3555,7 @@ con $b,d$ non-nulli.
 \begin{osservazione}
 	Proprio come $\mathbb{Z}\subset\mathbb{Q}$, con $\mathbb{Q}$ campo delle frazioni di $\mathbb{Z}$, si ha $O\subset\overline{\mathbb{Q}}$, con $\overline{\mathbb{Q}}$ campo delle frazioni di $O$. \\ \\ Dato un campo di numeri $K$ posso inoltre porre 
 	\begin{equation*}
-	O_k=K\cap O
+	O_K=K\cap O
 	\end{equation*}
 	In questo modo $O_k$ è un dominio il cui campo delle frazioni è $K$ ed è l'anello degli interi di $K$.
 \end{osservazione}
@@ -3563,6 +3566,7 @@ con $b,d$ non-nulli.
 		\item $\frac{1}{\sqrt{2}}$ non è un intero algebrico, è radice di $2x^2-1$
 		\item $i$ è un intero algebrico, $x^2+1$
 		\item $\phi=\frac{1+\sqrt{5}}{2}$ è un intero algebrico, radice di $x^2-x-1$
+		\item La radice di un qualsiasi polinomio ciclotomico è un intero algebrico
 	\end{itemize}
 \end{esempio}
 \begin{esempio}
@@ -3573,18 +3577,18 @@ con $b,d$ non-nulli.
 	\end{equation*}
 	Per l'altra implicazione invece prendo uno $z\in\mathbb{Q}[i]$ intero algebrico, ovvero $z\in O$. Allora $z\in O_{\mathbb{Q}[i]}$. Voglio mostrare che $a$ e $b$ sono interi. Prendo $\overline{z}$, che è ancora un intero algebrico per ipotesi; anche $\overline{z}\in O_{\mathbb{Q}[i]}$. Siccome $O$ è un anello
 	\begin{equation*}
-	z+\overline{Z}=2a\in O
+	z+\overline{z}=2a\in O
 	\end{equation*}
 	\begin{equation*}
-	z+\overline{Z}\in O \cap \mathbb{Q} = \mathbb{Z}
+	z+\overline{z}\in O \cap \mathbb{Q} = \mathbb{Z}
 	\end{equation*}
 	Facciamo qualcosa di analogo con $-iz$, che appartiene ancora agli interi algebrici. Allora anche $-iz+i\overline{Z}$ è un intero algebrico, e 
 	\begin{equation*}
-	-iz+i\overline{Z}=2b \in \mathbb{Q}\cap\mathbb{Q}=\mathbb{Z}
+	-iz+i\overline{z}=2b \in O\cap\mathbb{Q}=\mathbb{Z}
 	\end{equation*}
-	Abbiamo ottenuto che $2a=m$ e $2b=n$ per certi $m$ ed $n$ interi; devo dimostrare che sono pari. \\ $z\cdot\overline{z}\in\mathbb{Q}\cap 0 =\mathbb{Z}$, quindi
+	Abbiamo ottenuto che $2a=m$ e $2b=n$ per certi $m$ ed $n$ interi; devo dimostrare che sono pari. \\ $z\cdot\overline{z}\in\mathbb{Q}\cap O =\mathbb{Z}$, quindi
 	\begin{equation*}
-	z\cdot\overline{Z}=a^2+b^2=\frac{m^2+n^2}{4}\in\mathbb{Z}
+	z\cdot\overline{z}=a^2+b^2=\frac{m^2+n^2}{4}\in\mathbb{Z}
 	\end{equation*}
 	ovvero $m^2+n^2\equiv0\Mod4$; $m^2$ ed $n^2$ sono 0 oppure 1 in modulo 4, ma perché la loro somma sia zero devono essere entrambi zero. Allora sono pari. \\ \\ Allora $\mathbb{Z}[i]$, anello degli interi di Gauss, è anello degli interi di $\mathbb{Q}[i]$.
 \end{esempio}
@@ -3624,7 +3628,7 @@ con $b,d$ non-nulli.
 	Allora possiamo notare che 
 	\begin{enumerate}
 		\item $M_\alpha(x)=\prod_i\left(x-\sigma_i(\alpha)\right)$
-		\item gli $\alpha_2,dots,\alpha_n$ sono coniugati di $\alpha$ %todo: espandi
+		\item gli $\alpha_2,\dots,\alpha_n$ si definiscono coniugati di $\alpha$ 
 	\end{enumerate}
 \end{osservazione}
 \begin{osservazione}[Immersioni per elementi non primitivi]
@@ -3682,7 +3686,7 @@ con $b,d$ non-nulli.
 \begin{definizione}
 	La \textbf{norma di un elemento $z\in F$} è il determinante dell'endomorfismo associato $m_z$, ovvero il prodotto (con eventuali ripetizioni) dei suoi coniugati. 
 	\begin{equation*}
-	\N(z)=\sigma_1(z)\dots\sigma_n(z)
+	\N(z)=\sigma_1(z)\cdots\sigma_n(z)
 	\end{equation*}
 	La \textbf{traccia di un elemento $z\in F$} è la traccia dell'endomorfismo associato $m_z$, ovvero la somma (con eventuali ripetizioni) dei suoi coniugati.
 	\begin{equation*}
@@ -3698,11 +3702,13 @@ con $b,d$ non-nulli.
 	m_z(x)=x^r+\dots+b_1x+b_0 \ \ \ \ b_i\in\mathbb{Q}
 	\end{equation*}
 	I coefficienti $b_i$ sono dati dalle funzioni simmetriche elementari delle radici, è un fatto noto di algebra. In particolare otteniamo
-	\begin{align*}
-	b_{r-1}&=-\left(\sigma_1(z)+\dots+\sigma_r(z)\right)\\
-	&\vdots\\
-	&b_0=(-1)^r\sigma_1(z)\dots\sigma_r(z)
-	\end{align*}
+	\begin{equation*}
+		\begin{array}{rl}
+			b_{r-1}&=-\left(\sigma_1(z)+\dots+\sigma_r(z)\right)\\
+			&\;\vdots\\
+			b_0&=(-1)^r\sigma_1(z)\cdots\sigma_r(z)
+		\end{array}
+	\end{equation*}
 	e siccome $O$ è un anello, i $b_i$ vi appartengono. Allora 
 	\begin{equation*}
 	b_i\in O\cap\mathbb{Q}=\mathbb{Z}
@@ -3748,7 +3754,7 @@ con $b,d$ non-nulli.
 	Ad esempio la norma di $1+\sqrt{D}$ è $1-D$, la norma di $\frac{1}{2}$ è $\frac{1}{4}$. Notando che $\mathbb{Q}(\frac{1}{2})=\mathbb{Q}$, il grado di $\mathbb{Q}(\frac{1}{2})$ su $\mathbb{Q}$ è 1. Allora
 	\begin{align*}
 	\left[\mathbb{Q}(\sqrt{D}):\mathbb{Q}\right]&=
-	\left[\mathbb{Q}(\sqrt{D}):\mathbb{Q}(\frac{1}{2})\right]\left[\mathbb{Q}(\frac{1}{2}):\mathbb{Q}\right]\\
+	\left[\mathbb{Q}(\sqrt{D}):\mathbb{Q}\left(\frac{1}{2}\right)\right]\left[\mathbb{Q}\left(\frac{1}{2}\right):\mathbb{Q}\right]\\
 	&=2\cdot1
 	\end{align*}
 	Il polinomio minimo di $\frac{1}{2}$ è $x-\frac{1}{2}$, i suoi coniugati sono $\frac{1}{2}$ ed $\frac{1}{2}$.
@@ -3808,10 +3814,10 @@ con $b,d$ non-nulli.
 			\sigma_2(\sqrt[4]{2})=i\sqrt[4]{2}
 			\end{equation*}
 			\begin{equation*}
-			\sigma_2(\sqrt[4]{2})=-\sqrt[4]{2}
+			\sigma_3(\sqrt[4]{2})=-\sqrt[4]{2}
 			\end{equation*}
 			\begin{equation*}
-			\sigma_2(\sqrt[4]{2})=-i\sqrt[4]{2}
+			\sigma_4(\sqrt[4]{2})=-i\sqrt[4]{2}
 			\end{equation*}
 			dove due sono reali e due sono complesse
 		\end{enumerate}
@@ -3849,12 +3855,12 @@ con $b,d$ non-nulli.
 		\end{equation*}
 		vediamo che i coefficienti sono tutti divisibili per $p$, ma $p^2$ non divide l'ultimo coefficiente $\binom{p}{1}$.
 		\begin{equation*}
-		\Phi_p(x)=(x-\omega_p)\dots(x-\omega_p^{p-1})
+		\Phi_p(x)=(x-\omega_p)\cdots(x-\omega_p^{p-1})
 		\end{equation*}
 		\item Per quanto visto, il grado dell'estensione $\mathbb{Q}[\omega_p]$ su $\mathbb{Q}$ è $p-1$.
 		\item Si vede facilmente che
 		\begin{equation*}
-		\N(1-\omega_p)=(1-\omega_p)\dots(1-\omega_p^{p-1})=\Phi_p(1)=p
+		\N(1-\omega_p)=(1-\omega_p)\cdots(1-\omega_p^{p-1})=\Phi_p(1)=p
 		\end{equation*}
 	\end{enumerate}
 	Vogliamo far vedere che 
@@ -3915,15 +3921,45 @@ con $b,d$ non-nulli.
 	\end{enumerate}
 \end{proposizione}
 \begin{proposizione}
-	Siano $x_1,\dots,x_n\in F$ e $T$ la matrice con entrata $(i,j)$-esima $(x_ix_j)$, allora
+	Siano $x_1,\dots,x_n\in F$ e $T$ la matrice con entrata $(i,j)$-esima $\tr(x_ix_j)$, allora
 	\begin{equation*}
-	\disc(x_1,\dots,x_n)=\tr(T)
+	\disc(x_1,\dots,x_n)=\det(T)
 	\end{equation*}
-	%todo: verifica enunciato
 \end{proposizione}
 \begin{proof}
-	La dimostrazione è lasciata per esercizio al lettore. Eh, sì.
-	% sappiamo entrambi che non lo farò
+	Sia $A$ la matrice usata per determinare il $\disc(x_1,\dots,x_n)$, allora 
+	\begin{align*}
+		A^t A & = \left(
+		\begin{array}{llll}
+			\sigma_1(x_1) & \sigma_2(x_1) & \dots & \sigma_n(x_1) \\
+			\sigma_1(x_2) & \sigma_2(x_2)  & \dots & \sigma_n(x_2) \\
+			\quad\ \vdots & \quad\ \vdots & \ddots & \quad\ \vdots \\
+			\sigma_1(x_n) & \sigma_2(x_n) & \dots & \sigma_n(x_n)
+		\end{array}
+		\right)\left(
+		\begin{array}{llll}
+			\sigma_1(x_1) & \sigma_1(x_2) & \dots & \sigma_1(x_n) \\
+			\sigma_2(x_1) & \sigma_2(x_2)  & \dots & \sigma_2(x_n) \\
+			\quad\ \vdots & \quad\ \vdots & \ddots & \quad\ \vdots \\
+			\sigma_n(x_1) & \sigma_n(x_2) & \dots & \sigma_n(x_n)
+		\end{array}
+		\right)\\
+		& = 
+		\left(
+		\begin{array}{lll}
+			\sum_{k=1}^n\sigma_k(x_1x_1) & \dots & \sum_{k=1}^n \sigma_k(x_1x_n) \\
+			\sum_{k=1}^n\sigma_k(x_2x_1) & \dots & \sum_{k=1}^n\sigma_k(x_2x_n)  \\
+			\quad\ \vdots & \ddots & \quad\ \vdots \\
+			\sum_{k=1}^n\sigma_k(x_nx_1) & \dots & \sum_{k=1}^n\sigma_k(x_nx_n) 
+		\end{array}
+		\right)
+	\end{align*}
+	da cui basta osservare che ogni entrata è proprio l'entrata corrispondente della
+	matrice $T$. Per la formula di Binet vale
+	\begin{equation*}
+		\det(T) = \det(A^tA) = \det(A^t)\det(A) = \det(A)^2 = \disc(x_1,\dots,x_n) 
+	\end{equation*}
+ 	ovvero la tesi.
 \end{proof}
 \begin{osservazione}
 	Se $\alpha\in F$ è un elemento primitivo, allora posso trovare una base di $F$ come spazio vettoriale su $\mathbb{Q}$:
@@ -3951,14 +3987,13 @@ con $b,d$ non-nulli.
 	Se gli $x_i$ sono una base, la tesi segue da quanto osservato sopra.
 	\\ \\ Per l'altra implicazione: supponiamo per assurdo che gli $x_i$ siano linearmente dipendenti, ovvero che esistano dei $c_i$ razionali (non tutti nulli) tali che la combinazione lineare 
 	\begin{equation*}
-	c1x_1+\dots+c_nx_n
+	c_1x_1+\dots+c_nx_n
 	\end{equation*}
 	sia nulla. Sappiamo che 
-	\begin{align*}
+	\begin{equation*}
 	\sigma_i\left(c1x_1+\dots+c_nx_n\right)
-	&=c_1\sigma_1(x_1)+\dots+c_n\sigma_1(x_n)\\
-	&=0
-	\end{align*}
+	=c_1\sigma_1(x_1)+\dots+c_n\sigma_1(x_n)=0
+	\end{equation*}
 	quindi i vettori colonna della matrice $A=\sigma_i(x_j)_{ij}$ sono dipendenti. Allora il determinante di $A$ è zero, e per la formula osservata anche il discriminante è nullo.
 \end{proof}
 
