@@ -651,7 +651,7 @@ Come abbiamo preannunciato all'inizio dello scorso capitolo, inizieremo a genera
 		Se l'ideale è primo prendiamo $ab \in (p)$, questo vuol dire che $ab=kp$; inoltre per ipotesi se $ab\in(p)$ questo vuol dire che $a\in(p)$ oppure $b\in(p)$.
 		Ma vediamo che queste due ipotesi sono $a=k_ap$ e $b=k_bp$, che sono esattamente quanto volevo dimostrare. \\ L'implicazione opposta è banalmente la stessa dimostrazione ma ripercorsa al contrario.
 	\end{enumerate}
-	Si noti infine che quanto definiamo \textit{unità} non è l'unità intesa quando si definisce un \textit{anello commutativo con unità 1}; i primi sono gli invertibili rispetto al prodotto, la seconda è la classica \textit{identità moltiplicativa} - che indicheremo in notazione con 1. Chiaramente l'identità moltiplicativa è per sua definizione una unità, ma per l'identità moltiplicativa abbiamo delle buone proprietà, l'unicità (è facile dimostrarlo), che come si è visto non vale per le unità. \\ Per questo motivo nella Definizione \ref{an_commut} abbiamo scritto \textit{anello commutativo con identità}.
+	Si noti infine che quanto definiamo \textit{unità} non è l'unità intesa quando si definisce un \textit{anello commutativo con unità 1}; i primi sono gli invertibili rispetto al prodotto, la seconda è la classica \textit{identità moltiplicativa} - che indicheremo in notazione con 1. Chiaramente l'identità moltiplicativa è per sua definizione una unità, ma per l'identità moltiplicativa abbiamo delle buone proprietà, ad esempio l'unicità (è facile dimostrarlo), che come si è visto non vale per le unità. \\ Per questo motivo nella Definizione \ref{an_commut} abbiamo scritto \textit{anello commutativo con identità}.
 \end{osservazione}
 \begin{esempio}\
 	\begin{enumerate}
@@ -2132,7 +2132,7 @@ Sfruttando il test di primalità di Lucas - che non affronteremo nel corso - com
 I \textbf{numeri di Carmichael} sono numeri composti che sono pseudoprimi di Fermat per ogni base $a$. Nel 1994 Pomeranz e Granville dimostrano che esistono infiniti numeri di Carmichael.
 \end{osservazione}
 \begin{teorema}[Teorema di Korselt]
-	$n$ è un numero di Carmichael se e solo se $n$ è libero da quadrati e per ogni $p$ primo che divide $n$ si ha
+	Sia $n\in \mathbb{N}$, è un numero di Carmichael se e solo se $n$ è libero da quadrati e per ogni $p$ primo che divide $n$ si ha
 	\begin{equation*}
 	p-1 \, \mid \, n-1
 	\end{equation*}
@@ -2224,7 +2224,7 @@ I \textbf{numeri di Carmichael} sono numeri composti che sono pseudoprimi di Fer
 
 
 
-\subsection{Il test di Solvay-Strassen}
+\subsection{Il test di Solovay-Strassen}
 \begin{osservazione}
 	Sia dato l'insieme
 	\begin{equation*}
@@ -2320,7 +2320,7 @@ I \textbf{numeri di Carmichael} sono numeri composti che sono pseudoprimi di Fer
 
 
 \subsection{Il test di Rabin-Miller}
-Il test di Rabin-Miller viene usato in molte funzioni di valutazione della primalità di linguaggi di programmazione \enquote{matematici}, come ad esempio Python. Si tratta a tutti gli effetti di uno dei due test di primalità più usati al mondo, e quindi di un risultato decisamente importante. Sotto l'ipotesi di Riemann diventa inoltre un criterio di primalità efficiente; in altre parole, se condizionato all'ipotesi che sia vera assume un carattere ancora più forte: diventa un test \textit{deterministico}. \\ L'altro test più usato è il \textit{test di Bayle}, che combina il test di Lucas a Fermat fortificato, ma non ce ne occuperemo in questo corso.
+Il test di Rabin-Miller viene usato in molte funzioni di valutazione della primalità di linguaggi di programmazione, come ad esempio Python. Si tratta a tutti gli effetti di uno dei due test di primalità più usati al mondo, e quindi di un risultato decisamente importante. Sotto l'ipotesi di Riemann diventa inoltre un \emph{criterio} di primalità efficiente; allora condizionato all'ipotesi che sia vera assume un carattere ancora più forte. \\ L'altro test più usato è il \textit{test di Bayle}, che combina il test di Lucas a Fermat fortificato, ma non ce ne occuperemo in questo corso.
 \begin{teorema}[Test di Rabin-Miller]
 	Sia $n$ numero da valutare, itero $k$ volte test per gli pseudoprimi forti. In altre parole, itero $k$ volte il test
 	\begin{equation*}
@@ -2363,7 +2363,6 @@ Il test di Rabin-Miller viene usato in molte funzioni di valutazione della prima
 	&\iff ty\equiv0\Mod n
 	\end{align*}
 	che ha chiaramente il numero di soluzioni richiesto. \\ Ad esempio l'equazione $3y\equiv0\Mod15$ ha soluzioni $0,5,10$. \\ \\ Notiamo che $y$ è necessariamente un intero, abbiamo utilizzato il \textit{logaritmo discreto}; si basa sul fatto che $g$ sia un generatore.
-	%todo: spiega il logaritmo intero
 \end{proof}
 \begin{lemma}
 	La cardinalità di $B$ è 
@@ -2393,7 +2392,7 @@ Il test di Rabin-Miller viene usato in molte funzioni di valutazione della prima
 	&=\MCD\left(a^{2^{s-1}m},p-1\right)\\
 	&=2^{s-1}\MCD(m,p-1)
 	\end{align*}
-	Questo perché se $p$ divide $n$ e $m$ divide $n-1$ abbiamo che $\MCD(p,m)=1$ ed il massimo comune divisore tra $2^{s-1}m$ e $p^{\alpha_p-1}$ è 1. Nell'ultima uguaglianza ho usato la definizione di $s$ come massima potenza di 2 che divide tutti i $p-1$. Allora 
+	Questo perché se $p$ divide $n$ e $m$ divide $n-1$ abbiamo che $\MCD(p,m)=1$ ed infine che il massimo comune divisore tra $2^{s-1}m$ e $p^{\alpha_p-1}$ è 1. Nell'ultima uguaglianza ho usato la definizione di $s$ come massima potenza di 2 che divide tutti i $p-1$. Allora 
 	\begin{equation*}
 	\left|B\right|=2\left|B'\right|=2\prod_{p\mid n}\left|B_p\right|
 	\end{equation*}
@@ -2434,7 +2433,7 @@ Il test di Rabin-Miller viene usato in molte funzioni di valutazione della prima
 	\begin{equation*}
 	2>\frac{p_1-1}{2^s\MCD(m,p_1-1)}\frac{p_2-1}{2^s\MCD(m,p_2-1)}
 	\end{equation*}
-	Le frazioni sono due numeri interi perché $p-1$ diviso $2^s$ è un dispari, e viene diviso per un suo divisore. Perché la disuguaglianza continui a valere allora deve necessariamente essere
+	Le frazioni sono due numeri interi perché $p-1$ diviso $2^s$ è un dispari, e viene diviso per un dispari. Perché continui a valere la disuguaglianza allora deve necessariamente essere
 	\begin{equation*}
 	p_1-1=2^s\MCD(m,p_1-1)=2^sD_1, \ p_2-1=2^s\MCD(m,p_2-1)=2^sD_2
 	\end{equation*}
@@ -3973,15 +3972,54 @@ con $b,d$ non-nulli.
 	\end{enumerate}
 \end{proposizione}
 \begin{proposizione}
+	Siano $x_1,\dots,x_n\in F$ e $T$ la matrice con entrata $(i,j)$-esima $\tr(x_ix_j)$, allora
 	Siano $x_1,\dots,x_n\in F$ e $T$ la matrice con entrata $(i,j)$-esima $(x_ix_j)$, allora
 	\begin{equation*}
+	\begin{equation*}
+	\disc(x_1,\dots,x_n)=\det(T)
 	\disc(x_1,\dots,x_n)=\tr(T)
+	\end{equation*}
 	\end{equation*}
 	%todo: verifica enunciato
 \end{proposizione}
+\end{proposizione}
 \begin{proof}
+\begin{proof}
+	Sia $A$ la matrice usata per determinare il $\disc(x_1,\dots,x_n)$, allora 
 	La dimostrazione è lasciata per esercizio al lettore. Eh, sì.
+	\begin{align*}
 	% sappiamo entrambi che non lo farò
+		A^t A & = \left(
+		\begin{array}{llll}
+			\sigma_1(x_1) & \sigma_2(x_1) & \dots & \sigma_n(x_1) \\
+			\sigma_1(x_2) & \sigma_2(x_2)  & \dots & \sigma_n(x_2) \\
+			\quad\ \vdots & \quad\ \vdots & \ddots & \quad\ \vdots \\
+			\sigma_1(x_n) & \sigma_2(x_n) & \dots & \sigma_n(x_n)
+		\end{array}
+		\right)\left(
+		\begin{array}{llll}
+			\sigma_1(x_1) & \sigma_1(x_2) & \dots & \sigma_1(x_n) \\
+			\sigma_2(x_1) & \sigma_2(x_2)  & \dots & \sigma_2(x_n) \\
+			\quad\ \vdots & \quad\ \vdots & \ddots & \quad\ \vdots \\
+			\sigma_n(x_1) & \sigma_n(x_2) & \dots & \sigma_n(x_n)
+		\end{array}
+		\right)\\
+		& = 
+		\left(
+		\begin{array}{lll}
+			\sum_{k=1}^n\sigma_k(x_1x_1) & \dots & \sum_{k=1}^n \sigma_k(x_1x_n) \\
+			\sum_{k=1}^n\sigma_k(x_2x_1) & \dots & \sum_{k=1}^n\sigma_k(x_2x_n)  \\
+			\quad\ \vdots & \ddots & \quad\ \vdots \\
+			\sum_{k=1}^n\sigma_k(x_nx_1) & \dots & \sum_{k=1}^n\sigma_k(x_nx_n) 
+		\end{array}
+		\right)
+	\end{align*}
+	da cui basta osservare che ogni entrata è proprio l'entrata corrispondente della
+	matrice $T$. Per la formula di Binet vale
+	\begin{equation*}
+		\det(T) = \det(A^tA) = \det(A^t)\det(A) = \det(A)^2 = \disc(x_1,\dots,x_n) 
+	\end{equation*}
+ 	ovvero la tesi.
 \end{proof}
 \begin{osservazione}
 	Se $\alpha\in F$ è un elemento primitivo, allora posso trovare una base di $F$ come spazio vettoriale su $\mathbb{Q}$:
@@ -4009,7 +4047,7 @@ con $b,d$ non-nulli.
 	Se gli $x_i$ sono una base, la tesi segue da quanto osservato sopra.
 	\\ \\ Per l'altra implicazione: supponiamo per assurdo che gli $x_i$ siano linearmente dipendenti, ovvero che esistano dei $c_i$ razionali (non tutti nulli) tali che la combinazione lineare 
 	\begin{equation*}
-	c1x_1+\dots+c_nx_n
+	c_1x_1+\dots+c_nx_n
 	\end{equation*}
 	sia nulla. Sappiamo che 
 	\begin{align*}
