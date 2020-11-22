@@ -2348,7 +2348,38 @@ Il test di Rabin-Miller viene usato in molte funzioni di valutazione della prima
 	Vale che $M_n\subset B$.
 \end{lemma}
 \begin{proof}
-	%todo: rivedi quella corretta appena esce, è sbagliata sul pdf originale
+	Sia $a \in M_n$ allora abbiamo i seguenti casi
+	\begin{enumerate}
+		\item Sia $a$ tale che 
+		\begin{equation*}
+			a^m \equiv 1 \mod n 
+		\end{equation*}
+		e quindi possiamo concludere che $a \in B$ dato che 
+		\begin{equation*}
+			a^{2^{s-1}m} \equiv (a^m)^{2^{s-1}} \equiv 1^{2^{s-1}} \equiv 1 \mod n
+		\end{equation*}
+		\item Altrimenti dev'essere che
+		\begin{equation*}
+			a^{m2^{j}} \equiv -1 \mod n \quad\ \forall j \in \mathbb{N}.\, 0 \le j \le k-1
+		\end{equation*} 
+		con $j$ preso minimo possibile da soddisfare l'equazione; quindi vale anche
+		\begin{equation*}
+			a^{m2^{j+1}} \equiv (a^{m2^j})^2 \equiv (-1)^2 \equiv 1 \mod n
+		\end{equation*}
+		ovvero per ogni $p \mid n$ primo vale che 
+		\begin{equation*}
+			a^{m2^{j+1}} \equiv 1 \mod p
+		\end{equation*}
+		Osserviamo infine che $2^{j+1}$ dev'essere l'ordine di $a^m$ e quindi $2^{j+1} \mid p-1$ 
+		per ogni $p \mid n$ primo. Per definizione di $s$, dev'essere che $j+1 \le s$ per ogni 
+		primo $p$. Quindi
+		\begin{equation*}
+			a^{m2^{s-1}} \equiv (a^{m2^{j}})^v \equiv (-1)^v \mod p
+		\end{equation*}
+		dove $v = s - (j+1)$. Per cui dev'essere che $a^{m2^{s-1}} \equiv \pm 1 \mod n$; ovvero 
+		$a \in B$.
+	\end{enumerate}
+	Possiamo finalmente concludere che $M_n \subset B$.
 \end{proof}
 \begin{lemma}
 	Sia $G$ gruppo ciclico di ordine $n$, ogni equazione del tipo $x^t=1$ ha un numero di soluzioni pari al massimo comune divisore di $t$ ed $n$.
@@ -3754,11 +3785,13 @@ con $b,d$ non-nulli.
 	m_z(x)=x^r+\dots+b_1x+b_0 \ \ \ \ b_i\in\mathbb{Q}
 	\end{equation*}
 	I coefficienti $b_i$ sono dati dalle funzioni simmetriche elementari delle radici, è un fatto noto di algebra. In particolare otteniamo
-	\begin{align*}
-	b_{r-1}&=-\left(\sigma_1(z)+\dots+\sigma_r(z)\right)\\
-	&\vdots\\
-	&b_0=(-1)^r\sigma_1(z)\dots\sigma_r(z)
-	\end{align*}
+	\begin{equation*}
+		\begin{array}{ll}
+			b_{r-1}&=-\left(\sigma_1(z)+\dots+\sigma_r(z)\right)\\
+			&\,\vdots\\
+			b_0&=(-1)^r\sigma_1(z)\dots\sigma_r(z)
+		\end{array}
+	\end{equation*}
 	e siccome $\mathcal{O}$ è un anello, i $b_i$ vi appartengono. Allora 
 	\begin{equation*}
 	b_i\in \mathcal{O}\cap\mathbb{Q}=\mathbb{Z}
@@ -3858,27 +3891,66 @@ con $b,d$ non-nulli.
 			\item $\sqrt{2}=\sqrt[4]{4}$ è un elemento primitivo di $\mathbb{Q}(\sqrt[4]{2})$, ottenuto per $a=b=d=0$ e $c=1$
 			\item i coniugati di $\sqrt[4]{2}$ sono $\sqrt[4]{2},i\sqrt[i]{2},-\sqrt[4]{2},-i\sqrt[4]{2}$ con $i$ radice quarta primitiva dell'unità, abbiamo le quattro immersioni definite da
 			\begin{equation*}
-			\sigma_1(\sqrt[4]{2})=\sqrt[4]{2}
-			\end{equation*}
-			\begin{equation*}
-			\sigma_2(\sqrt[4]{2})=i\sqrt[4]{2}
-			\end{equation*}
-			\begin{equation*}
-			\sigma_2(\sqrt[4]{2})=-\sqrt[4]{2}
-			\end{equation*}
-			\begin{equation*}
-			\sigma_2(\sqrt[4]{2})=-i\sqrt[4]{2}
+				\arraycolsep=1.4pt
+				\begin{array}{ll}
+				\sigma_1(\sqrt[4]{2})&=\sqrt[4]{2}\\
+				\sigma_2(\sqrt[4]{2})&=i\sqrt[4]{2}\\
+				\sigma_3(\sqrt[4]{2})&=-\sqrt[4]{2}\\
+				\sigma_4(\sqrt[4]{2})&=-i\sqrt[4]{2}\\
+				\end{array}
 			\end{equation*}
 			dove due sono reali e due sono complesse
 		\end{enumerate}
-		Allora la norma di un generico $z\in\mathbb{Q}(\sqrt[3]{2})$ è data da 
+		Allora la norma di un generico $z\in\mathbb{Q}(\sqrt[4]{2})$ è data da 
+		% L'ho corretta, visto che era completamente sbagliata - S
 		\begin{align*}
 		\N(z)=&
-		\left(a+b\sqrt[4]{2}+c\sqrt[4]{4}+d\sqrt[4]{8}\right)
-		\left(a+bi\sqrt[4]{2}+ci\sqrt[4]{4}+di\sqrt[4]{8}\right)\\
-		&\ \ \ \ \ \ \ \ \ \left(a-b\sqrt[4]{2}-c\sqrt[4]{4}-d\sqrt[4]{8}\right)
-		\left(a-bi\sqrt[4]{2}-ci\sqrt[4]{4}-di\sqrt[4]{8}\right)
-		%todo: controlla, questa formula l'ho scritta io, potrei aver sbagliato
+		\left(a
+		+
+		b
+		\sqrt[4]{2}
+		+
+		c
+		\sqrt[4]{4}
+		+
+		d
+		\sqrt[4]{8}
+		\right)
+		\left(
+		a
+		+
+		bi
+		\sqrt[4]{2}
+		-
+		c
+		\sqrt[4]{4}-
+		di
+		\sqrt[4]{8}
+		\right)\\
+		&\ \ \ \ \ \ \ \ \ 
+		\left(
+		a
+		-
+		b
+		\sqrt[4]{2}
+		+
+		c\sqrt[4]{4}
+		-
+		d
+		\sqrt[4]{8}
+		\right)
+		\left(
+		a
+		-
+		bi
+		\sqrt[4]{2}
+		-
+		c
+		\sqrt[4]{4}
+		+
+		di
+		\sqrt[4]{8}
+		\right)
 		\end{align*}
 		Il polinomio minimo di $\sqrt{2}$ è $x^2-2$, che ha soluzioni $\sqrt{2}$ e $-\sqrt{2}$. I coniugati di $\sqrt{2}$ in $\mathbb{Q}(\sqrt[4]{2})$ sono 
 		\begin{equation*}
@@ -3915,10 +3987,9 @@ con $b,d$ non-nulli.
 		\end{equation*}
 	\end{enumerate}
 	Vogliamo far vedere che 
-	\begin{align*}
-	\mathcal{O}_{\mathbb{Q}[\omega_p]}&=\mathbb{Z}[\omega_p]\\
-	&=\left\{a_0+\dots+a_{p-2}\omega_p^{p-2} \ \mid \ a_i\in\mathbb{Z}\right\}
-	\end{align*}
+	\begin{equation*}
+	\mathcal{O}_{\mathbb{Q}[\omega_p]} =\mathbb{Z}[\omega_p]=\left\{a_0+\dots+a_{p-2}\omega_p^{p-2} \ \mid \ a_i\in\mathbb{Z}\right\}
+	\end{equation*}
 	Consideriamo allora $\alpha\in \mathcal{O}_{\mathbb{Q}[\omega_p]}$, e siano $\alpha_1,\dots,\alpha_{p-1}$ i suoi coniugati - eventualmente non tutti distinti. Diamoci ad alcune osservazioni:
 	\begin{itemize}
 		\item facendo i calcoli della traccia di $\alpha(1-\omega_p)$ vediamo che 
@@ -3941,11 +4012,9 @@ con $b,d$ non-nulli.
 		\item $\tr(\omega_p^j)=-1$, $\tr(1)=p-1$.
 	\end{itemize}
 	Allora sia $\alpha=a_0+\dots+a_{p-2}\omega_p^{p-2}$ con gli $a_i$ in $\mathbb{Q}$,
-	\begin{align*}
-	\tr\left(\alpha(1-\omega_p)\right)
-	&=a_0\tr(1-\omega_p)+\dots+a_{p-2}\tr(\omega_p^{p-2}-\omega_p^{p-1})\\
-	&=pa_0
-	\end{align*}
+	\begin{equation*}
+	\tr\left(\alpha(1-\omega_p)\right)=a_0\tr(1-\omega_p)+\dots+a_{p-2}\tr(\omega_p^{p-2}-\omega_p^{p-1})=pa_0
+	\end{equation*}
 	ma dato che $\tr\left(\alpha(1-\omega_p)\right)\in p\mathbb{Z}$, otteniamo che $a_0\in\mathbb{Z}$. \\ \\ Consideriamo stavolta $\frac{\alpha-a_0}{\omega_p}\in \mathcal{O}_{\mathbb{Q}[\omega_p]}$, con lo stesso ragionamento si ottiene $a_1\in\mathbb{Z}$. Possiamo proseguire, %todo: scrivere come in modo esplicito?
 	ottenendo $\alpha\in\mathbb{Z}[\omega_p]$.
 	\begin{equation*}
@@ -3979,9 +4048,7 @@ con $b,d$ non-nulli.
 \end{proposizione}
 \begin{proof}
 	Sia $A$ la matrice usata per determinare il $\disc(x_1,\dots,x_n)$, allora 
-	La dimostrazione è lasciata per esercizio al lettore. Eh, sì.
 	\begin{align*}
-	% sappiamo entrambi che non lo farò
 		A^t A & = \left(
 		\begin{array}{llll}
 			\sigma_1(x_1) & \sigma_2(x_1) & \dots & \sigma_n(x_1) \\
@@ -4043,11 +4110,9 @@ con $b,d$ non-nulli.
 	c_1x_1+\dots+c_nx_n
 	\end{equation*}
 	sia nulla. Sappiamo che 
-	\begin{align*}
-	\sigma_i\left(c_1x_1+\dots+c_nx_n\right)
-	&=c_1\sigma_1(x_1)+\dots+c_n\sigma_1(x_n)\\
-	&=0
-	\end{align*}
+	\begin{equation*}
+	\sigma_i\left(c_1x_1+\dots+c_nx_n\right) = c_1\sigma_1(x_1)+\dots+c_n\sigma_1(x_n) = 0
+	\end{equation*}
 	quindi i vettori colonna della matrice $A=\sigma_i(x_j)_{ij}$ sono dipendenti. Allora il determinante di $A$ è zero, e per la formula osservata anche il discriminante è nullo.
 \end{proof}
 
@@ -4138,7 +4203,25 @@ In questa sezione faremo vedere che l'anello degli interi di un campo numerico �
 		(b_1-k)^2=\frac{\disc(\beta,\gamma_2,\dots,\gamma_n)}{\disc(\gamma_1,\gamma_2,\dots,\gamma_n)}
 		\end{equation*}
 		Siccome $b_1-k<1$, dall'ultima equazione ottengo un assurdo sulla minimalità del discriminante di $\gamma_1,\gamma_2,\dots,\gamma_n$.
-		\item Per esercizio.
+		\item 
+			Siano $\alpha_1, \dots, \alpha_n$, $\beta_1, \dots, \beta_n$ due basi interi dell'ideale $I$.
+			Sappiamo che esiste una matrice $M \in \operatorname{GL}_{n}(\mathbb{Z})$ tale che 
+			$M(\alpha_i) = \beta_i$. Per cui vale anche che per ogni immersione $\sigma_j$
+			\begin{equation*}
+				M(\sigma_j(\alpha_i)) = \sigma_j(\beta_i)
+			\end{equation*}
+			Calcoliamo il discriminante indicando con $A = (\sigma_j(\alpha_i))_{ij}$ e 
+			$B = (\sigma_j(\beta_i))_{ij}$,
+			\begin{align*}
+				\disc(\alpha_1, \dots, \alpha_n) & = \det(A)^2 \\
+												 & = \det(M B)^2 \\
+												 & = \det(M)^2 \disc(\beta_1, \dots, \beta_n) 
+			\end{align*} 
+			Ricordiamo che $M$ è invertibile se e solo se il determinante è un invertibile. Sappiamo 
+			che $\det M \in \mathbb{Z}$ per cui $\det M = \pm 1$, per cui 
+			\begin{equation*}
+				\disc(\alpha_1, \dots, \alpha_n) = \disc(\beta_1, \dots, \beta_n)
+			\end{equation*} 
 	\end{enumerate}
 \end{proof}
 \begin{corollario}
@@ -4156,7 +4239,12 @@ In questa sezione faremo vedere che l'anello degli interi di un campo numerico �
 
 \section{Anello degli interi dei campi quadratici}
 \subsection{Struttura degli interi quadratici}
-Sia $F$ un campo quadratico, ovvero una estensione finita di grado 2 su $\mathbb{Q}$. Un qualunque elemento $\alpha$ preso in $F\setminus\mathbb{Q}$ è \textit{primitivo}, ovvero 
+Sia $F$ un campo quadratico, ovvero una estensione finita di grado 2 su $\mathbb{Q}$. Un qualunque elemento $\alpha$ preso in $F\setminus\mathbb{Q}$ è \textit{primitivo}
+\footnote{È ovvio che ogni elemento sia primitivo dato che se $\alpha \notin \mathbb{Q}$ 
+	allora avrà polinomio minimo di grado almeno $2$. 
+	Gli unici sottocampi di $F$ sono $F, \mathbb{Q}$ dato che gli unici divisori di 
+	$|F \colon \mathbb{Q}| = 2$ sono $1,2$. Ovviamente $\mathbb{Q}(\alpha) \neq \mathbb{Q}$ 
+	da cui segue che dev'essere $\mathbb{Q}(\alpha) = F$.}, ovvero 
 \begin{equation*}
 F=\mathbb{Q}(\alpha)
 \end{equation*}
@@ -4248,8 +4336,8 @@ Ogni suo elemento è primitivo se e solo se $s\neq0$, e questo è ovvio. \\ Se $
 	\end{equation*}
 	Se invece $d\equiv1\Mod4$, ho come base intera di $\mathcal{O}_F$ $1$ e $\frac{1+\sqrt{d}}{2}$. In particolare
 	\begin{equation*}
-	\mathcal{O}_F=\mathbb{Z}[\frac{a+b\sqrt{d}}{2}]
-		\end{equation*}
+		\mathcal{O}_F=\mathbb{Z}\left[\frac{a+b\sqrt{d}}{2}\right]
+	\end{equation*}
 \end{corollario}
 \begin{proof}
 	La dimostrazione è banale.
@@ -4497,17 +4585,21 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 
 
 \subsection{Gli anelli di Dedekind}
+
 \begin{definizione}[Anello di Dedekind]
-	Sia $A$ un anello, viene detto \textbf{anello di Dedekind} de
+	Sia $A$ un anello, viene detto \textbf{anello di Dedekind} se
 	\begin{enumerate}
-		\item è integralmente chiuso
+		\item è integralmente chiuso rispetto al campo delle frazioni
 		\item è Noetheriano
 		\item ogni ideale primo non nullo è massimale
 	\end{enumerate}
 \end{definizione}
+
 \begin{esempio}
-	$\mathbb{Z}$ è un anello di Dedekind. In seguito lavoreremo per mostrare che $\mathcal{O}_F$ è un anello di Dedekind per $F$ campo numerico.
+	$\mathbb{Z}$ è un anello di Dedekind. 
+	In seguito lavoreremo per mostrare che $\mathcal{O}_F$ è un anello di Dedekind per $F$ campo numerico, infatti l'insieme degli interi algebrici è integralmente chiuso su $\mathbb{C}$.
 \end{esempio}
+
 \begin{proposizione}\
 	\begin{enumerate}
 		\item Siano $A, B, C$ tre anelli con $A\subset B\subset C$, se $C$ è intero su $B$ e $B$ è intero su $A$ allora $C$ è intero su $A$.
@@ -4523,7 +4615,22 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 \end{proposizione}
 \begin{proof}\
 	\begin{enumerate}
-		\item Sia $c\in C$; siccome $C$ è intero su $B$, $B[c]$ è un $B$-modulo finitamente generato. Siccome $B$ è intero su $A$, $B[c]$ è finitamente generato come $A$-modulo. In conclusione $A[c]\subset B[c]\subset C$, quindi per caratterizzazioni viste in precedenza $c$ è intero su $A$.
+		\item Sia $c\in C$; siccome $C$ è intero su $B$ esiste un polinomio monico
+		\begin{equation*}
+			0 = f(c) = c^n + b_{n-1}c^{n-1} + \dots + b_0
+		\end{equation*}
+		Con $b_0, \dots, b_{n-1}\in B$. Per ipotesi $B$ è un estensione intersa su $A$, quindi 
+		ogni $A[b_i]$ è finitamente generato come $A$-modulo. In particolare si può dimostrare
+		per induzione che $A[b_0, \dots, b_{n-1}]$ è finitamente generato come $A$-modulo. 
+		Per cui otteniamo che 
+		\begin{equation*}
+			A \subseteq A[b_0, \dots, b_{n-1}] \subseteq A[b_0, \dots, b_{n-1}, c]
+		\end{equation*} 
+		sappiamo che $A[b_0, \dots, b_{n-1},c]$ è finitamente generato come $A[b_0, \dots, b_{n-1}]$
+		modulo per l'esistenza di $f$. Per cui l'estensione $A \subseteq A[b_0, \dots, b_{n-1},c]$ è 
+		finitamente generata come $A$-modulo. Sappiamo quindi che 
+		$A \subseteq A[b_0, \dots, b_{n-1},c]$ è un estensione finita contenuta in $C$, per cui $c$ 
+		dev'essere intero su $A$.
 		\item Sia $\alpha\in F$ intero su $\mathcal{O}_F$. Siccome $\mathcal{O}_F$ è intero su $\mathbb{Z}$, $\alpha$ è intero su $\mathbb{Z}$. Allora $\alpha\in O\cap F=\mathcal{O}_F$.
 		\item Sia $I$ sottoanello di $\mathcal{O}_F$, allora $I$ è generato da un numero di elementi pari al grado di $F$ su $\mathbb{Q}$ (vedendolo come $\mathbb{Z}$-modulo). In particolare è finitamente generato.
 		\item Vediamo le dimostrazioni:
@@ -4552,11 +4659,12 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 		\end{enumerate}
 	\end{enumerate}
 \end{proof}
+
 \begin{teorema}
 	Dato $\mathcal{O}_F$ anello degli interi di un campo numerico $F$, $\mathcal{O}_F$ è anche un anello di Dedekind.
 \end{teorema}
 \begin{proof}
-	I punto della definizione sono dimostrati dalle proposizioni.
+	I punti della definizione sono dimostrati dalla proposizione precedente.
 \end{proof}
 
 
