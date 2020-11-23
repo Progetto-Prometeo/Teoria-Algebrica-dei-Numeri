@@ -4128,8 +4128,12 @@ In questa sezione faremo vedere che l'anello degli interi di un campo numerico �
 	Dato $F$ campo numerico, il suo anello degli interi $\mathcal{O}_F$ è uno $\mathbb{Z}$-modulo.
 \end{teorema}
 \begin{proof}
-	Devo provare prima di tutto che $\mathcal{O}_F$ sia un gruppo commutativo rispetto alla somma, con elemento neutro 0. Ma questo è abbastanza ovvio, intuitivamente posso costruire il polinomio minimo (monico) con la procedura vista in precedenza. \\
-	Il resto della definizione è banale per le proprietà di $\mathbb{Z}$.
+	Devo provare prima di tutto che $\mathcal{O}_F$ sia un gruppo commutativo rispetto alla somma, con elemento neutro 0. 
+	Poiché $\mathcal{O}_F$ è un sotto-anello di $\mathcal{C}$ segue che l'addizione è commutativa. \\
+	Sappiamo che $\mathbb{Z} \subset \mathcal{O}_F$ e che $\mathcal{O}_F$ è un anello, 
+	per cui vale anche la quasi distributività del prodotto 
+	$a(b+c) = ab + ac$, $(a+d)b = ab + db$ per ogni 
+	$a,d \in \mathbb{Z}$ e $b,c \in \mathbb{O}_F$.
 \end{proof}
 \begin{definizione}
 	Dato $\mathcal{O}_F$ anello degli interi di un campo numerico $F$, si dice \textbf{base intera di $\mathcal{O}_F$} la sua base come $\mathbb{Z}$-modulo. \\ Analogamente, dati $\alpha_1,\dots,\alpha_n$ in $\mathcal{O}_F$ questi si dicono \textbf{base intera} se ogni $\beta$ in $\mathcal{O}_F$ si scrive in modo unico come combinazione lineare degli $\alpha_i$ a coefficienti interi.
@@ -4158,7 +4162,19 @@ In questa sezione faremo vedere che l'anello degli interi di un campo numerico �
 		M_\alpha(x)=x^m+\dots+b_1x+b_0\in\mathbb{Z}[x]
 		\end{equation*}
 		allora è evidente che $\alpha^m+\dots+b_1\alpha+b_0=0$, in particolare per proprietà degli ideali ottengo che $b_0\in I$, ed è non-nullo perché il polinomio è irriducibile.
-		\item Prendo $\omega_1,\dots,\omega_n$ base dello $\mathbb{Q}$-spazio vettoriale $F$, abbiamo visto che il suo discriminante è non-nullo. Scelgo questi $\omega_i$ perché si trovino in $\mathcal{O}_F$, ad esempio detto $F=\mathbb{Q}(k)$ potrei prendere $1,\dots,k^{n-1}$. Inoltre sappiamo che esiste un $c$ non-nullo appartenente ad $I\cap\mathbb{Z}$. Poniamo $\alpha_i=c\omega_i\in I$, siccome 
+		\item Prendo $\omega_1,\dots,\omega_n$ base dello $\mathbb{Q}$-spazio vettoriale $F$, abbiamo visto che il suo discriminante è non-nullo. Scelgo questi $\omega_i$ perché si trovino in $\mathcal{O}_F$, questa non è un restrizione. Infatti se $\omega_i \in F$ allora esiste un polinomio in $\mathbb{Q}$ tale che 
+		\begin{equation*}
+			0 = f(\omega_i) = \omega_i^n + \frac{a_{n-1}}{b_{n-1}}\omega_i^{n-1} + \dots \frac{a_0}{b_0}
+		\end{equation*}
+		ma allora possiamo moltiplicare per $\gamma = \operatorname{lcm}(b_{n-1}, \dots, b_0)$ e ottenere un polinomio non monico in $\mathbb{Z}$, ovvero 
+		\begin{equation*}
+			0 = g(\omega_i) = \gamma \omega_i^n + \gamma \frac{a_{n-1}}{b_{n-1}} \omega_i^{n-1} + \dots + \gamma \frac{a_0}{b_0} 
+		\end{equation*}
+		dove i $\gamma \frac{a_{k}}{b_{k}} \in \mathbb{Z}$. Moltiplicando per $\gamma^{n-1}$ il polinomio si ottiene che 
+		\begin{equation*}
+			0 = \gamma^{n-1}g(\omega_i) = (\gamma\omega_i)^n + \gamma \frac{a_{n-1}}{b_{n-1}}(\gamma\omega_i)^{n-1} + \dots + \gamma^n \frac{a_0}{b_0}
+		\end{equation*}
+		quindi abbiamo trovato un polinomio a coefficienti interi tale da avere come radice $\gamma \omega_i$; questi formano ancora una base. Inoltre sappiamo che esiste un $c$ non-nullo appartenente ad $I\cap\mathbb{Z}$. Poniamo $\alpha_i=c\omega_i\in I$, siccome 
 		\begin{equation*}
 		c\omega_1,\dots,c\omega_n
 		\end{equation*}
@@ -4186,7 +4202,7 @@ In questa sezione faremo vedere che l'anello degli interi di un campo numerico �
 		\begin{equation*}
 		\begin{cases}
 		\sigma_1(\beta)=(b_1-k)\sigma_1(\gamma_1)+\dots+b_n\sigma_1(\gamma_n)\\
-		\dots\\
+		\vdots\\
 		\sigma_n(\beta)=(b_1-k)\sigma_n(\gamma_1)+\dots+b_n\sigma_n(\gamma_n)
 		\end{cases}
 		\end{equation*}
@@ -4399,7 +4415,7 @@ Un modo per trovare questa unità fondamentale è con le \textit{frazioni contin
 	%todo: estendi proof
 \end{proof}
 \begin{proposizione}
-	Lo sviluppo in frazione continua di $\alpha_0$ è continuo se e solo se $\alpha_0$ è una irrazionalità quadratica, ovvero soluzione irrazionale di una equazione di secondo grado. \footnote{Ad esempio per $\alpha_0=\sqrt{2}$ abbiamo una espressione periodica tramite frazione continua; questo è fondamentale per poter \enquote{possedere} veramente il numero, cioè per poterlo ricostruire partendo da informazioni elementari, quindi nel nostro caso non dicendo \enquote{è soluzione positiva di $x^2-2$} e nemmeno \enquote{è radice di 2}. Per le irrazionalità cubiche e di grado superiore il problema è ancora aperto, Jacobi ha provato a risolverlo ma soddisfacendo solo una implicazione.}
+	Lo sviluppo in frazione continua di $\alpha_0$ è continuo se e solo se $\alpha_0$ è una irrazionalità quadratica, ovvero soluzione irrazionale di una equazione di secondo grado. \footnote{Ad esempio per $\alpha_0=\sqrt{2}$ abbiamo una espressione periodica tramite frazione continua; questo è fondamentale per poterlo ricostruire partendo da informazioni elementari, quindi nel nostro caso non dicendo \enquote{è soluzione positiva di $x^2-2$} e nemmeno \enquote{è radice di 2}. Per le irrazionalità cubiche e di grado superiore il problema è ancora aperto, Jacobi ha provato a risolverlo ma soddisfacendo solo una implicazione.}
 \end{proposizione}
 \begin{esempio}
 	Lavoriamo su $\sqrt{2}$.
