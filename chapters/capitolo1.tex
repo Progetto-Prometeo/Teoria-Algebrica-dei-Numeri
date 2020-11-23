@@ -3,7 +3,7 @@
 
 
 
-\chapter{Aritmetica sui numeri interi}
+\chapter{Aritmetica sui numeri interi}l
 \label{lezione1}
 \epigraph{\textit{\enquote{La matematica è la regina delle scienze e la teoria dei numeri è la regina della matematica. \\ Non è la conoscenza ma l'atto di imparare, non il possesso ma l'arrivarci, che danno la gioia maggiore.}}}{Carl Friedrich Gauss}
 Questa parte viene detta \enquote{elementare} non per la semplicità degli argomenti che tratta, quanto invece per la relativa semplicità degli strumenti matematici che utilizza. Come vedremo, questa caratteristica non influirà minimamente sull'importanza dei risultati ottenuti - anzi, concluderemo in bellezza dimostrando il teorema che ha portato Gauss ad affermare quanto riportato ad inizio capitolo. \\ \\
@@ -1536,15 +1536,15 @@ Ovviamente prenderemo come $p$ un primo di $\mathbb{Z}$.
 \end{proposizione}
 \begin{proof}
 	Sia $g\in G$ l'elemento di ordine $n$ massimo e sia $h\in G$ di ordine $m$ generico. Supponiamo per assurdo che $m$ non divida $n$.\\ \\
-	Se $m$ ed $n$ fossero coprimi allora $gh\in G$ avrebbe ordine $mn$, ma questo è in contraddizione con la scelta di $n$. Allora non sono coprimi. Definiamo $\nu_p(x)$ come la valutazione $p$-adica di $x$, ovvero la massima potenza di $p$ che divide $x$; l'idea è avere un primo che divida entrambi con potenze diverse. Sia allora $p$ primo con $\nu_p(m)=e$, $\nu_p(n)=f$, evidentemente $0<e<f$. Consideriamo l'elemento $g^{pf}$, verifichiamo facilmente che ha ordine $\frac{n}{pf}$. 
+	Se $m$ ed $n$ fossero coprimi allora $gh\in G$ avrebbe ordine $mn$, ma questo è in contraddizione con la scelta di $n$. Allora non sono coprimi. Definiamo $\nu_p(x)$ come la valutazione $p$-adica di $x$, ovvero la massima potenza di $p$ che divide $x$; l'idea è avere un primo che divida entrambi con potenze diverse. Sia allora $p$ primo con $\nu_p(m)=e$, $\nu_p(n)=f$, evidentemente $0<f<e$. Consideriamo l'elemento $g^{p^f}$, verifichiamo facilmente che ha ordine $\frac{n}{p^f}$. 
 	\begin{equation*}
-	\left(g^{pf}\right)^{\sfrac{n}{pf}}=g^n=1
+	\left(g^{p^f}\right)^{\sfrac{n}{p^f}}=g^n=1
 	\end{equation*}
 	Analogamente $h^{\sfrac{m}{p^e}}$ ha ordine $p^e$.
 	\begin{equation*}
 	\left(h^{\sfrac{m}{p^e}}\right)^{p^e}=h^m=1
 	\end{equation*}
-	Siccome questi due ordini sono coprimi, $\left(g^{pf}\right)(h^{\sfrac{m}{p^e}})$ appartiene a $G$ - perché è un gruppo - ed ha ordine $\frac{n}{pf}p^e=p^{e-f}n>n$; questo contraddice di nuovo la scelta di $n$.
+	Siccome questi due ordini sono coprimi, $\left(g^{p^f}\right)(h^{\sfrac{m}{p^e}})$ appartiene a $G$ - perché è un gruppo - ed ha ordine $\frac{n}{p^f}p^e=p^{e-f}n>n$; questo contraddice di nuovo la scelta di $n$.
 \end{proof}
 \begin{teorema}
 	Sia $f\in\mathbb{Z}_p[x]$ polinomio non costante e di grado $d$ (nella variabile $x$), allora ha al più $d$ radici in $\mathbb{Z}_p$.
@@ -1601,13 +1601,13 @@ Come possiamo caratterizzare gli $n$ per cui otteniamo un $\left(\mathbb{Z}_n^*,
 	\end{itemize}
 \end{esempio}
 \begin{proposizione}
-	Per $n$ pari e per $a\in\mathbb{Z}_n^*$, posto $k>2$ e $n=2^k$, si ha 
+	Per $n=2^k$ pari con $k>2$ e per $a\in\mathbb{Z}_n^*$ si ha 
 	\begin{equation*}
 	a^{2^{k-2}}\equiv1\Mod\left(2^k\right)
 	\end{equation*} 
 \end{proposizione}
 \begin{proof}
-	Procediamolo per induzione su $k$, l'ipotesi induttiva è 
+	Procediamo per induzione su $k$, l'ipotesi induttiva è 
 	\begin{equation*}
 	a^{2^{k-2}}\equiv1\Mod2^k \iff a^{\displaystyle2^{k-2}}=1+t2^k \ \ \ \ \ t \in \mathbb{Z}
 	\end{equation*}
