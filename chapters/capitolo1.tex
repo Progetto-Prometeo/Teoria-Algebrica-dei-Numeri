@@ -4505,10 +4505,10 @@ Un modo per trovare questa unità fondamentale è con le \textit{frazioni contin
 	\end{equation*}
 	per alcuni $\overline{x}$ ed $\overline{y}$ interi.
 	\begin{align*}
-	m_1m_2=
-	&\N\left(x_1+y_1\sqrt{-2}\right)\N\left(x_2+y_2\sqrt{-2}\right)\\
-	&\N\left((x_1+y_1\sqrt{-2})(x_2+y_2\sqrt{-2})\right)\\
-	&\N\left(x_1x_2+(x_1y_2+x_2y_1)\sqrt{-2}-2y_1y_2\right)
+	m_1m_2
+	&=\N\left(x_1+y_1\sqrt{-2}\right)\N\left(x_2+y_2\sqrt{-2}\right)\\
+	&=\N\left((x_1+y_1\sqrt{-2})(x_2+y_2\sqrt{-2})\right)\\
+	&=\N\left(x_1x_2+(x_1y_2+x_2y_1)\sqrt{-2}-2y_1y_2\right)
 	\end{align*}
 	Analogamente definiamo
 	\begin{equation*}
@@ -4518,18 +4518,16 @@ Un modo per trovare questa unità fondamentale è con le \textit{frazioni contin
 	\begin{align*}
 	\mathbb{Q}\left(\sqrt{-2},\sqrt{-5}\right)
 	&=\mathbb{Q}\left(\sqrt{-2}+\sqrt{-5}\right)\\
-	&\left\{x+y\sqrt{-2}+z\sqrt{-5}+w\sqrt{10}\ \mid \ x,y,z,w\in\mathbb{Q}\right\}
+	&=\left\{x+y\sqrt{-2}+z\sqrt{-5}+w\sqrt{10}\ \mid \ x,y,z,w\in\mathbb{Q}\right\}
 	\end{align*}
 	e prendiamo i due elementi $a+b\sqrt{-2}$ e $c+d\sqrt{-5}$ per $a,b,c,d$ interi generici, che ora appartengono allo stesso campo numerico. Facciamo alcune osservazioni:
 	\begin{enumerate}
 		\item $\mathbb{Q}\left(\sqrt{-2}+\sqrt{-5}\right)=\mathbb{Q}\left(\sqrt{-2},\sqrt{-5}\right)$, il polinomio minimo di $\sqrt{-2}+\sqrt{-5}$ per la teoria vista è
 		\begin{align*}
-		\left(x-\left(\sqrt{-2}+\sqrt{-5}\right)\right)&\left(x-\left(-\sqrt{-2}+\sqrt{-5}\right)\right)\dots\\
-		& \ \ \ \ \ \ \ \ \ \ \dots \left(x-\left(\sqrt{-2}-\sqrt{-5}\right)\right)\left(x-\left(-\sqrt{-2}-\sqrt{-5}\right)\right)
+		N(x+1(\sqrt{-2}+\sqrt{-5})) & = \left(x-\left(\sqrt{-2}+\sqrt{-5}\right)\right) \left(x-\left(-\sqrt{-2}+\sqrt{-5}\right)\right)\dots\\
+		& \ \ \ \ \dots \left(x-\left(\sqrt{-2}-\sqrt{-5}\right)\right)\left(x-\left(-\sqrt{-2}-\sqrt{-5}\right)\right) \\
+		&= x^4+14x^2+9
 		\end{align*}
-		\begin{equation*}
-		x^4+14x^2+9
-		\end{equation*}
 		Allora il grado di questa estensione è 4.
 		\item Il grado di $\mathbb{Q}\left(\sqrt{-2}\right)$ su $\mathbb{Q}$ è uguale al grado di $\mathbb{Q}\left(\sqrt{-5}\right)$ su $\mathbb{Q}$. Allora i coniugati di $\sqrt{-2}$ sono 
 		\begin{equation*}
@@ -4671,7 +4669,18 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 			\mathcal{O}_F=\omega_1\mathbb{Z}+\dots+\omega_n\mathbb{Z}\simeq\mathbb{Z}^n
 			\end{equation*}
 			in particolare $\mathcal{O}_F/c\mathcal{O}_F\simeq\left(\mathbb{Z}/c\mathbb{Z}\right)^n$ e $\left|\mathcal{O}_F/I\right|$ finita.
-			\item Se $I$ è primo, $\mathcal{O}_F/I$ è un dominio di integrità. Siccome ogni dominio di integrità finito è un campo, $\mathcal{O}_F/I$ è un campo. Allora $I$ è massimale.
+			\item Se $I$ è primo, $\mathcal{O}_F/I$ è un dominio di integrità. Siccome ogni dominio di integrità finito è un campo\footnote{
+				Una possibile dimostrazione: 
+				sia $|D| = n$ dominio finito. 
+				Supponiamo per assurdo esista $0 \neq d \in D$ 
+				tale che per ogni $a \in D$ valga $da \neq 1$. 
+				Allora $|dD| \le |D|-1$, per cui esistono 
+				$0 \neq \beta, \gamma \in D$ e $\beta \neq \gamma$ 
+				tali che $d\gamma = d\beta \in D$. 
+				Allora $d(\gamma-\beta) = 0$ poiché è un dominio 
+				dev'essere che $\gamma = \beta$ contro l'ipotesi 
+				che $\beta \neq \gamma$, da cui l'assurdo; 
+				dev'essere che anche $d$ ammette un inverso.}, $\mathcal{O}_F/I$ è un campo. Allora $I$ è massimale.
 		\end{enumerate}
 	\end{enumerate}
 \end{proof}
