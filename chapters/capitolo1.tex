@@ -3,7 +3,6 @@
 
 
 
-
 \chapter{Aritmetica sui numeri interi}
 \label{lezione1}
 \epigraph{\textit{\enquote{La matematica è la regina delle scienze e la teoria dei numeri è la regina della matematica. \\ Non è la conoscenza ma l'atto di imparare, non il possesso ma l'arrivarci, che danno la gioia maggiore.}}}{Carl Friedrich Gauss}
@@ -1537,15 +1536,15 @@ Ovviamente prenderemo come $p$ un primo di $\mathbb{Z}$.
 \end{proposizione}
 \begin{proof}
 	Sia $g\in G$ l'elemento di ordine $n$ massimo e sia $h\in G$ di ordine $m$ generico. Supponiamo per assurdo che $m$ non divida $n$.\\ \\
-	Se $m$ ed $n$ fossero coprimi allora $gh\in G$ avrebbe ordine $mn$, ma questo è in contraddizione con la scelta di $n$. Allora non sono coprimi. Definiamo $\nu_p(x)$ come la valutazione $p$-adica di $x$, ovvero la massima potenza di $p$ che divide $x$; l'idea è avere un primo che divida entrambi con potenze diverse. Sia allora $p$ primo con $\nu_p(m)=e$, $\nu_p(n)=f$, evidentemente $0<e<f$. Consideriamo l'elemento $g^{pf}$, verifichiamo facilmente che ha ordine $\frac{n}{pf}$. 
+	Se $m$ ed $n$ fossero coprimi allora $gh\in G$ avrebbe ordine $mn$, ma questo è in contraddizione con la scelta di $n$. Allora non sono coprimi. Definiamo $\nu_p(x)$ come la valutazione $p$-adica di $x$, ovvero la massima potenza di $p$ che divide $x$; l'idea è avere un primo che divida entrambi con potenze diverse. Sia allora $p$ primo con $\nu_p(m)=e$, $\nu_p(n)=f$, evidentemente $0<f<e$. Consideriamo l'elemento $g^{p^f}$, verifichiamo facilmente che ha ordine $\frac{n}{p^f}$. 
 	\begin{equation*}
-	\left(g^{pf}\right)^{\sfrac{n}{pf}}=g^n=1
+	\left(g^{p^f}\right)^{\sfrac{n}{p^f}}=g^n=1
 	\end{equation*}
 	Analogamente $h^{\sfrac{m}{p^e}}$ ha ordine $p^e$.
 	\begin{equation*}
 	\left(h^{\sfrac{m}{p^e}}\right)^{p^e}=h^m=1
 	\end{equation*}
-	Siccome questi due ordini sono coprimi, $\left(g^{pf}\right)(h^{\sfrac{m}{p^e}})$ appartiene a $G$ - perché è un gruppo - ed ha ordine $\frac{n}{pf}p^e=p^{e-f}n>n$; questo contraddice di nuovo la scelta di $n$.
+	Siccome questi due ordini sono coprimi, $\left(g^{p^f}\right)(h^{\sfrac{m}{p^e}})$ appartiene a $G$ - perché è un gruppo - ed ha ordine $\frac{n}{p^f}p^e=p^{e-f}n>n$; questo contraddice di nuovo la scelta di $n$.
 \end{proof}
 \begin{teorema}
 	Sia $f\in\mathbb{Z}_p[x]$ polinomio non costante e di grado $d$ (nella variabile $x$), allora ha al più $d$ radici in $\mathbb{Z}_p$.
@@ -1602,15 +1601,15 @@ Come possiamo caratterizzare gli $n$ per cui otteniamo un $\left(\mathbb{Z}_n^*,
 	\end{itemize}
 \end{esempio}
 \begin{proposizione}
-	Per $n$ pari e per $a\in\mathbb{Z}_n^*$, posto $k>2$ e $n=2^k$, si ha 
+	Per $n=2^k$ pari con $k>2$ e per $a\in\mathbb{Z}_n^*$ si ha 
 	\begin{equation*}
 	a^{2^{k-2}}\equiv1\Mod\left(2^k\right)
 	\end{equation*} 
 \end{proposizione}
 \begin{proof}
-	Procediamolo per induzione su $k$, l'ipotesi induttiva è 
+	Procediamo per induzione su $k$, l'ipotesi induttiva è 
 	\begin{equation*}
-	a^{2^{k-2}}\equiv1\Mod2^k \iff a^{\displaystyle2^{k-2}}=1+t2^k \ \ \ \ \ t \in \mathbb{Z}
+	a^{2^{k-2}}\equiv1\Mod2^k \iff a^{2^{k-2}}=1+t2^k \ \ \ \ \ t \in \mathbb{Z}
 	\end{equation*}
 	Per provarlo bastano pochi calcoli.
 	\begin{align*}
@@ -3974,17 +3973,10 @@ con $b,d$ non-nulli.
 \end{proposizione}
 \begin{proposizione}
 	Siano $x_1,\dots,x_n\in F$ e $T$ la matrice con entrata $(i,j)$-esima $\tr(x_ix_j)$, allora
-	Siano $x_1,\dots,x_n\in F$ e $T$ la matrice con entrata $(i,j)$-esima $(x_ix_j)$, allora
-	\begin{equation*}
 	\begin{equation*}
 	\disc(x_1,\dots,x_n)=\det(T)
-	\disc(x_1,\dots,x_n)=\tr(T)
 	\end{equation*}
-	\end{equation*}
-	%todo: verifica enunciato
 \end{proposizione}
-\end{proposizione}
-\begin{proof}
 \begin{proof}
 	Sia $A$ la matrice usata per determinare il $\disc(x_1,\dots,x_n)$, allora 
 	La dimostrazione è lasciata per esercizio al lettore. Eh, sì.
@@ -4497,14 +4489,13 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 	21=(3)(7)=\left(4+i\sqrt{-5}\right)\left(4-i\sqrt{-5}\right)
 	\end{equation*}
 \end{esempio}
-\begin{teorema}[Teorema di Dedekind]
+\begin{teorema}[Teorema di Dedekind, scrittura intuitiva]
 	Ogni ideale $I$ contenuto in $\mathcal{O}_F$, per $F$ campo numerico, si scrive in modo unico come prodotto di ideali primi.\footnote{Possiamo estendere questo risultato ad una classe di anelli detta degli \textit{anelli di Dedekind}.}
 \end{teorema}
 
 
 
-
-\subsection{Gli anelli di Dedekind}
+\subsection{Il teorema di fattorizzazione di Dedekind}
 \begin{definizione}[Anello di Dedekind]
 	Sia $A$ un anello, viene detto \textbf{anello di Dedekind} de
 	\begin{enumerate}
@@ -4564,14 +4555,86 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 	Dato $\mathcal{O}_F$ anello degli interi di un campo numerico $F$, $\mathcal{O}_F$ è anche un anello di Dedekind.
 \end{teorema}
 \begin{proof}
-	I punto della definizione sono dimostrati dalle proposizioni.
+	I punti della definizione sono dimostrati dalle proposizioni.
 \end{proof}
-
-
-
-
-
-
-
-
-
+\label{lezione21}
+\begin{proposizione}
+	Sia $A$ un dominio noetheriano, $I$ un suo ideale non-nullo. Allora esistono $P_1,\dots,P_n$ ideali primi tali che $P_1\dots P_n\subset I$.
+\end{proposizione}
+\begin{proof}
+	Supponiamo che questo non sia vero, cioè esistano $J_1,J_2,\dots$ ideali che non contengono un tale prodotto. Siccome $A$ è noetheriano posso prendere $J$ il più grande di questi elementi rispetto all'inclusione, ed in questo caso non è primo (altrimenti soddisferebbe le ipotesi del lemma). Allora esistono $x,y\in A$ tali che $xy$ appartiene a $J$ ma né $x$ nè $y$ vi appartengono. Abbiamo  
+	\begin{equation*}
+	J\subset J+(x), \ J \subset J+(y)
+	\end{equation*}
+	e quindi che $J+(x)$ e $J+(y)$ essendo più grandi (sempre secondo l'inclusione) contengono un prodotto di ideali primi. Ma $xy$ appartiene a $J$, quindi il prodotto di questi due ideali primi è contenuto in $J$.
+\end{proof}
+\begin{proposizione}
+	Sia $A$ un anello di Dedekind, $P$ un suo ideale primo. Detto $K$ il campo delle frazioni di $A$, definisco \footnote{Intuitivamente stiamo definendo l'insieme degli elementi del campo delle frazioni con un elemento di $P$ come \enquote{denominatore}.k}
+	\begin{equation*}
+	P^{-1}=\left\{x\in K\ \mid \ xP\subset A\right\}
+	\end{equation*}
+	Allora per ogni ideale $I$ di $A$ si ha 
+	\begin{equation*}
+	IP^{-1}=\left\{\sum_i a_ix_i\ \mid \ a_i\in I, x_i\in P^{-1}\subset A\right\}\neq I
+	\end{equation*}
+\end{proposizione}
+\begin{proof}
+	Iniziamo con il vedere che $P^{-1}\neq A$. Sia $a\in P$ non-nullo, per il lemma precedente $(a)$ contiene un prodotto di ideali primi $P_1,\dots,P_n$. Possiamo dimostrare che esiste un $i$ tale che $P_i\subset P$, e siccome ci troviamo in un anello di Dedekind $P_i$ è massimale e vale che $P_i=P$. Allora $P_1=P$ e 
+	\begin{equation*}
+	P_2\dots P_n\nsubset (a)
+	\end{equation*}
+	ed esiste un $b$ appartenente a $P_2\dots P_n$ che non appartiene ad $aA$, quindi $a^{-1}b\notin A$. Abbiamo che $bP\subset (a)$ perché $PP_2\dots P_n \subset (a)$, quindi $a^{-1}bP\subset A$, cioè $a^{-1}b\in P^{-1}$ ed $a^{-1}b\notin A$. \\ \\ 
+	Consideriamo ora $\alpha_1,\dots,\alpha_m$ generatori dell'ideale $I$, se fosse $IP^{-1}=P$ allora per ogni $x$ elemento di $P^{-1}$ varrebbe
+	\begin{equation*}
+	x\alpha_i=\sum_i\a{ij}\alpha_j \ \ \ a_{ij}\in A
+	\end{equation*}
+	Sia dunque $M$ la matrice con entrata $ij$-esima il valore $\delta_{ij}x-a_{ij}$, varrebbe che 
+	\begin{enumerate}
+		\item $M\begin{pmatrix}
+		\alpha_1\\\vdots\\\alpha_m
+		\end{pmatrix}=0$
+		\item $\det(M\alpha_i)=0$ per ogni $i$, quindi $\det(M)=0$
+		\item $x$ è radice del polinomio caratteristico di $M$, ovvero è intero su $A$ (ed appartiene ad $A$)
+	\end{enumerate}
+	Seguirebbe quindi $P^{-1}\subset A$ ed $A\subset P^{-1}$, perciò $P^{-1}=A$.
+\end{proof}
+\begin{definizione}
+	Siano $I,J$ ideali di un anello $A$, scriviamo $I\mid J$ se esiste un ideale $M$ tale che $J=IM$.
+\end{definizione}
+\begin{proposizione}
+	Sia $P$ un ideale primo di $A$ anello di Dedekind, si ha $A=P^{-1}P$. Inoltre se $I$ è un ideale di $A$, 
+	\begin{enumerate}
+		\item $P\mid I$ se e solo se $I$ è contenuto in $P$
+		\item$P\mid IJ$ se e solo se $P\mid I$ oppure $P\mid J$
+	\end{enumerate}
+\end{proposizione}
+\begin{proof}
+	Per definizione $A$ è contenuto in $P^{-1}$, inoltre $P\subset PP^{-1}\subset A$. Siccome siamo in un anello di Dedekind $P$ è massimale e $P\neq PP^{-1}$ abbiamo $PP^{-1}=A$. \\ \\ 
+	Se $P \mid I$, cioè se esiste un ideale $J$ tale che $PJ=I$, da $PJ\subset P$ abbiamo $I\subset P$. Viceversa se $I\subset P$ allora $P^{-1}I\subset P^{-1}P=A$, quindi $J=P^{-1}I$ è un ideale e vale 
+	\begin{equation*}
+	PJ=PP^{-1}I=AI=I
+	\end{equation*}
+	quindi $P\mid I$. \\ \\
+	Se $P\mid IJ$, allora $IJ\subset P$ implica che $I\subset P$ oppure $J\subset P$. Intuitivamente questo significa che gli ideali primi \enquote{si comportano come i numeri primi}. L'altra implicazione è ovvia.
+\end{proof}
+\begin{teorema}[Teorema di Dedekind]
+	Sia $A$ un anello di Dedekind, allora ogni suo ideale non-nullo si scrive in modo unico come prodotto di ideali primi.
+\end{teorema}
+\begin{proof}
+	Definiamo
+	\begin{equation*}
+	\mathcal{M}=\left\{I\subset A \text{ ideali non-nulli non prodotto di ideali primi}\right\}
+	\end{equation*}
+	Sia $J$ l'elemento più grande rispetto all'inclusione; si noti che posso trovarlo usando il lemma di Zorn. Allora esiste un $P$ tale che $J$ è contenuto in $P$, inoltre
+	\begin{equation*}
+	J\subset JP^{-1}, \ JP^{-1}\neq A
+	\end{equation*}
+	Ne segue che 
+	\begin{equation*}
+	JP^{-1}=P_1\dots P_n
+	\end{equation*}
+	\begin{equation*}
+	J=JP^{-1}P=P_1\dots P_nP
+	\end{equation*}
+	L'unicità segue dalla proposizione precedente ed è simile alla dimostrazione dell'unicità della fattorizzazione in $\mathbb{Z}$.
+\end{proof}
