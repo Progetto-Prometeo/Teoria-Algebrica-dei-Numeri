@@ -3,7 +3,6 @@
 
 
 
-
 \chapter{Aritmetica sui numeri interi}
 \label{lezione1}
 \epigraph{\textit{\enquote{La matematica è la regina delle scienze e la teoria dei numeri è la regina della matematica. \\ Non è la conoscenza ma l'atto di imparare, non il possesso ma l'arrivarci, che danno la gioia maggiore.}}}{Carl Friedrich Gauss}
@@ -2349,38 +2348,7 @@ Il test di Rabin-Miller viene usato in molte funzioni di valutazione della prima
 	Vale che $M_n\subset B$.
 \end{lemma}
 \begin{proof}
-	Sia $a \in M_n$ allora abbiamo i seguenti casi
-	\begin{enumerate}
-		\item Sia $a$ tale che 
-		\begin{equation*}
-			a^m \equiv 1 \mod n 
-		\end{equation*}
-		e quindi possiamo concludere che $a \in B$ dato che 
-		\begin{equation*}
-			a^{2^{s-1}m} \equiv (a^m)^{2^{s-1}} \equiv 1^{2^{s-1}} \equiv 1 \mod n
-		\end{equation*}
-		\item Altrimenti dev'essere che
-		\begin{equation*}
-			a^{m2^{j}} \equiv -1 \mod n \quad\ \forall j \in \mathbb{N}.\, 0 \le j \le k-1
-		\end{equation*} 
-		con $j$ preso minimo possibile da soddisfare l'equazione; quindi vale anche
-		\begin{equation*}
-			a^{m2^{j+1}} \equiv (a^{m2^j})^2 \equiv (-1)^2 \equiv 1 \mod n
-		\end{equation*}
-		ovvero per ogni $p \mid n$ primo vale che 
-		\begin{equation*}
-			a^{m2^{j+1}} \equiv 1 \mod p
-		\end{equation*}
-		Osserviamo infine che $2^{j+1}$ dev'essere l'ordine di $a^m$ e quindi $2^{j+1} \mid p-1$ 
-		per ogni $p \mid n$ primo. Per definizione di $s$, dev'essere che $j+1 \le s$ per ogni 
-		primo $p$. Quindi
-		\begin{equation*}
-			a^{m2^{s-1}} \equiv (a^{m2^{j}})^v \equiv (-1)^v \mod p
-		\end{equation*}
-		dove $v = s - (j+1)$. Per cui dev'essere che $a^{m2^{s-1}} \equiv \pm 1 \mod n$; ovvero 
-		$a \in B$.
-	\end{enumerate}
-	Possiamo finalmente concludere che $M_n \subset B$.
+	%todo: rivedi quella corretta appena esce, è sbagliata sul pdf originale
 \end{proof}
 \begin{lemma}
 	Sia $G$ gruppo ciclico di ordine $n$, ogni equazione del tipo $x^t=1$ ha un numero di soluzioni pari al massimo comune divisore di $t$ ed $n$.
@@ -3786,13 +3754,11 @@ con $b,d$ non-nulli.
 	m_z(x)=x^r+\dots+b_1x+b_0 \ \ \ \ b_i\in\mathbb{Q}
 	\end{equation*}
 	I coefficienti $b_i$ sono dati dalle funzioni simmetriche elementari delle radici, è un fatto noto di algebra. In particolare otteniamo
-	\begin{equation*}
-		\begin{array}{ll}
-			b_{r-1}&=-\left(\sigma_1(z)+\dots+\sigma_r(z)\right)\\
-			&\,\vdots\\
-			b_0&=(-1)^r\sigma_1(z)\dots\sigma_r(z)
-		\end{array}
-	\end{equation*}
+	\begin{align*}
+	b_{r-1}&=-\left(\sigma_1(z)+\dots+\sigma_r(z)\right)\\
+	&\vdots\\
+	&b_0=(-1)^r\sigma_1(z)\dots\sigma_r(z)
+	\end{align*}
 	e siccome $\mathcal{O}$ è un anello, i $b_i$ vi appartengono. Allora 
 	\begin{equation*}
 	b_i\in \mathcal{O}\cap\mathbb{Q}=\mathbb{Z}
@@ -3892,66 +3858,27 @@ con $b,d$ non-nulli.
 			\item $\sqrt{2}=\sqrt[4]{4}$ è un elemento primitivo di $\mathbb{Q}(\sqrt[4]{2})$, ottenuto per $a=b=d=0$ e $c=1$
 			\item i coniugati di $\sqrt[4]{2}$ sono $\sqrt[4]{2},i\sqrt[i]{2},-\sqrt[4]{2},-i\sqrt[4]{2}$ con $i$ radice quarta primitiva dell'unità, abbiamo le quattro immersioni definite da
 			\begin{equation*}
-				\arraycolsep=1.4pt
-				\begin{array}{ll}
-				\sigma_1(\sqrt[4]{2})&=\sqrt[4]{2}\\
-				\sigma_2(\sqrt[4]{2})&=i\sqrt[4]{2}\\
-				\sigma_3(\sqrt[4]{2})&=-\sqrt[4]{2}\\
-				\sigma_4(\sqrt[4]{2})&=-i\sqrt[4]{2}\\
-				\end{array}
+			\sigma_1(\sqrt[4]{2})=\sqrt[4]{2}
+			\end{equation*}
+			\begin{equation*}
+			\sigma_2(\sqrt[4]{2})=i\sqrt[4]{2}
+			\end{equation*}
+			\begin{equation*}
+			\sigma_2(\sqrt[4]{2})=-\sqrt[4]{2}
+			\end{equation*}
+			\begin{equation*}
+			\sigma_2(\sqrt[4]{2})=-i\sqrt[4]{2}
 			\end{equation*}
 			dove due sono reali e due sono complesse
 		\end{enumerate}
-		Allora la norma di un generico $z\in\mathbb{Q}(\sqrt[4]{2})$ è data da 
-		% L'ho corretta, visto che era completamente sbagliata - S
+		Allora la norma di un generico $z\in\mathbb{Q}(\sqrt[3]{2})$ è data da 
 		\begin{align*}
 		\N(z)=&
-		\left(a
-		+
-		b
-		\sqrt[4]{2}
-		+
-		c
-		\sqrt[4]{4}
-		+
-		d
-		\sqrt[4]{8}
-		\right)
-		\left(
-		a
-		+
-		bi
-		\sqrt[4]{2}
-		-
-		c
-		\sqrt[4]{4}-
-		di
-		\sqrt[4]{8}
-		\right)\\
-		&\ \ \ \ \ \ \ \ \ 
-		\left(
-		a
-		-
-		b
-		\sqrt[4]{2}
-		+
-		c\sqrt[4]{4}
-		-
-		d
-		\sqrt[4]{8}
-		\right)
-		\left(
-		a
-		-
-		bi
-		\sqrt[4]{2}
-		-
-		c
-		\sqrt[4]{4}
-		+
-		di
-		\sqrt[4]{8}
-		\right)
+		\left(a+b\sqrt[4]{2}+c\sqrt[4]{4}+d\sqrt[4]{8}\right)
+		\left(a+bi\sqrt[4]{2}+ci\sqrt[4]{4}+di\sqrt[4]{8}\right)\\
+		&\ \ \ \ \ \ \ \ \ \left(a-b\sqrt[4]{2}-c\sqrt[4]{4}-d\sqrt[4]{8}\right)
+		\left(a-bi\sqrt[4]{2}-ci\sqrt[4]{4}-di\sqrt[4]{8}\right)
+		%todo: controlla, questa formula l'ho scritta io, potrei aver sbagliato
 		\end{align*}
 		Il polinomio minimo di $\sqrt{2}$ è $x^2-2$, che ha soluzioni $\sqrt{2}$ e $-\sqrt{2}$. I coniugati di $\sqrt{2}$ in $\mathbb{Q}(\sqrt[4]{2})$ sono 
 		\begin{equation*}
@@ -3988,9 +3915,10 @@ con $b,d$ non-nulli.
 		\end{equation*}
 	\end{enumerate}
 	Vogliamo far vedere che 
-	\begin{equation*}
-	\mathcal{O}_{\mathbb{Q}[\omega_p]} =\mathbb{Z}[\omega_p]=\left\{a_0+\dots+a_{p-2}\omega_p^{p-2} \ \mid \ a_i\in\mathbb{Z}\right\}
-	\end{equation*}
+	\begin{align*}
+	\mathcal{O}_{\mathbb{Q}[\omega_p]}&=\mathbb{Z}[\omega_p]\\
+	&=\left\{a_0+\dots+a_{p-2}\omega_p^{p-2} \ \mid \ a_i\in\mathbb{Z}\right\}
+	\end{align*}
 	Consideriamo allora $\alpha\in \mathcal{O}_{\mathbb{Q}[\omega_p]}$, e siano $\alpha_1,\dots,\alpha_{p-1}$ i suoi coniugati - eventualmente non tutti distinti. Diamoci ad alcune osservazioni:
 	\begin{itemize}
 		\item facendo i calcoli della traccia di $\alpha(1-\omega_p)$ vediamo che 
@@ -4013,9 +3941,11 @@ con $b,d$ non-nulli.
 		\item $\tr(\omega_p^j)=-1$, $\tr(1)=p-1$.
 	\end{itemize}
 	Allora sia $\alpha=a_0+\dots+a_{p-2}\omega_p^{p-2}$ con gli $a_i$ in $\mathbb{Q}$,
-	\begin{equation*}
-	\tr\left(\alpha(1-\omega_p)\right)=a_0\tr(1-\omega_p)+\dots+a_{p-2}\tr(\omega_p^{p-2}-\omega_p^{p-1})=pa_0
-	\end{equation*}
+	\begin{align*}
+	\tr\left(\alpha(1-\omega_p)\right)
+	&=a_0\tr(1-\omega_p)+\dots+a_{p-2}\tr(\omega_p^{p-2}-\omega_p^{p-1})\\
+	&=pa_0
+	\end{align*}
 	ma dato che $\tr\left(\alpha(1-\omega_p)\right)\in p\mathbb{Z}$, otteniamo che $a_0\in\mathbb{Z}$. \\ \\ Consideriamo stavolta $\frac{\alpha-a_0}{\omega_p}\in \mathcal{O}_{\mathbb{Q}[\omega_p]}$, con lo stesso ragionamento si ottiene $a_1\in\mathbb{Z}$. Possiamo proseguire, %todo: scrivere come in modo esplicito?
 	ottenendo $\alpha\in\mathbb{Z}[\omega_p]$.
 	\begin{equation*}
@@ -4049,7 +3979,9 @@ con $b,d$ non-nulli.
 \end{proposizione}
 \begin{proof}
 	Sia $A$ la matrice usata per determinare il $\disc(x_1,\dots,x_n)$, allora 
+	La dimostrazione è lasciata per esercizio al lettore. Eh, sì.
 	\begin{align*}
+	% sappiamo entrambi che non lo farò
 		A^t A & = \left(
 		\begin{array}{llll}
 			\sigma_1(x_1) & \sigma_2(x_1) & \dots & \sigma_n(x_1) \\
@@ -4111,9 +4043,11 @@ con $b,d$ non-nulli.
 	c_1x_1+\dots+c_nx_n
 	\end{equation*}
 	sia nulla. Sappiamo che 
-	\begin{equation*}
-	\sigma_i\left(c_1x_1+\dots+c_nx_n\right) = c_1\sigma_1(x_1)+\dots+c_n\sigma_1(x_n) = 0
-	\end{equation*}
+	\begin{align*}
+	\sigma_i\left(c_1x_1+\dots+c_nx_n\right)
+	&=c_1\sigma_1(x_1)+\dots+c_n\sigma_1(x_n)\\
+	&=0
+	\end{align*}
 	quindi i vettori colonna della matrice $A=\sigma_i(x_j)_{ij}$ sono dipendenti. Allora il determinante di $A$ è zero, e per la formula osservata anche il discriminante è nullo.
 \end{proof}
 
@@ -4129,12 +4063,8 @@ In questa sezione faremo vedere che l'anello degli interi di un campo numerico �
 	Dato $F$ campo numerico, il suo anello degli interi $\mathcal{O}_F$ è uno $\mathbb{Z}$-modulo.
 \end{teorema}
 \begin{proof}
-	Devo provare prima di tutto che $\mathcal{O}_F$ sia un gruppo commutativo rispetto alla somma, con elemento neutro 0. 
-	Poiché $\mathcal{O}_F$ è un sotto-anello di $\mathcal{C}$ segue che l'addizione è commutativa. \\
-	Sappiamo che $\mathbb{Z} \subset \mathcal{O}_F$ e che $\mathcal{O}_F$ è un anello, 
-	per cui vale anche la quasi distributività del prodotto 
-	$a(b+c) = ab + ac$, $(a+d)b = ab + db$ per ogni 
-	$a,d \in \mathbb{Z}$ e $b,c \in \mathbb{O}_F$.
+	Devo provare prima di tutto che $\mathcal{O}_F$ sia un gruppo commutativo rispetto alla somma, con elemento neutro 0. Ma questo è abbastanza ovvio, intuitivamente posso costruire il polinomio minimo (monico) con la procedura vista in precedenza. \\
+	Il resto della definizione è banale per le proprietà di $\mathbb{Z}$.
 \end{proof}
 \begin{definizione}
 	Dato $\mathcal{O}_F$ anello degli interi di un campo numerico $F$, si dice \textbf{base intera di $\mathcal{O}_F$} la sua base come $\mathbb{Z}$-modulo. \\ Analogamente, dati $\alpha_1,\dots,\alpha_n$ in $\mathcal{O}_F$ questi si dicono \textbf{base intera} se ogni $\beta$ in $\mathcal{O}_F$ si scrive in modo unico come combinazione lineare degli $\alpha_i$ a coefficienti interi.
@@ -4163,19 +4093,7 @@ In questa sezione faremo vedere che l'anello degli interi di un campo numerico �
 		M_\alpha(x)=x^m+\dots+b_1x+b_0\in\mathbb{Z}[x]
 		\end{equation*}
 		allora è evidente che $\alpha^m+\dots+b_1\alpha+b_0=0$, in particolare per proprietà degli ideali ottengo che $b_0\in I$, ed è non-nullo perché il polinomio è irriducibile.
-		\item Prendo $\omega_1,\dots,\omega_n$ base dello $\mathbb{Q}$-spazio vettoriale $F$, abbiamo visto che il suo discriminante è non-nullo. Scelgo questi $\omega_i$ perché si trovino in $\mathcal{O}_F$, questa non è un restrizione. Infatti se $\omega_i \in F$ allora esiste un polinomio in $\mathbb{Q}$ tale che 
-		\begin{equation*}
-			0 = f(\omega_i) = \omega_i^n + \frac{a_{n-1}}{b_{n-1}}\omega_i^{n-1} + \dots \frac{a_0}{b_0}
-		\end{equation*}
-		ma allora possiamo moltiplicare per $\gamma = \operatorname{lcm}(b_{n-1}, \dots, b_0)$ e ottenere un polinomio non monico in $\mathbb{Z}$, ovvero 
-		\begin{equation*}
-			0 = g(\omega_i) = \gamma \omega_i^n + \gamma \frac{a_{n-1}}{b_{n-1}} \omega_i^{n-1} + \dots + \gamma \frac{a_0}{b_0} 
-		\end{equation*}
-		dove i $\gamma \frac{a_{k}}{b_{k}} \in \mathbb{Z}$. Moltiplicando per $\gamma^{n-1}$ il polinomio si ottiene che 
-		\begin{equation*}
-			0 = \gamma^{n-1}g(\omega_i) = (\gamma\omega_i)^n + \gamma \frac{a_{n-1}}{b_{n-1}}(\gamma\omega_i)^{n-1} + \dots + \gamma^n \frac{a_0}{b_0}
-		\end{equation*}
-		quindi abbiamo trovato un polinomio a coefficienti interi tale da avere come radice $\gamma \omega_i$; questi formano ancora una base. Inoltre sappiamo che esiste un $c$ non-nullo appartenente ad $I\cap\mathbb{Z}$. Poniamo $\alpha_i=c\omega_i\in I$, siccome 
+		\item Prendo $\omega_1,\dots,\omega_n$ base dello $\mathbb{Q}$-spazio vettoriale $F$, abbiamo visto che il suo discriminante è non-nullo. Scelgo questi $\omega_i$ perché si trovino in $\mathcal{O}_F$, ad esempio detto $F=\mathbb{Q}(k)$ potrei prendere $1,\dots,k^{n-1}$. Inoltre sappiamo che esiste un $c$ non-nullo appartenente ad $I\cap\mathbb{Z}$. Poniamo $\alpha_i=c\omega_i\in I$, siccome 
 		\begin{equation*}
 		c\omega_1,\dots,c\omega_n
 		\end{equation*}
@@ -4203,7 +4121,7 @@ In questa sezione faremo vedere che l'anello degli interi di un campo numerico �
 		\begin{equation*}
 		\begin{cases}
 		\sigma_1(\beta)=(b_1-k)\sigma_1(\gamma_1)+\dots+b_n\sigma_1(\gamma_n)\\
-		\vdots\\
+		\dots\\
 		\sigma_n(\beta)=(b_1-k)\sigma_n(\gamma_1)+\dots+b_n\sigma_n(\gamma_n)
 		\end{cases}
 		\end{equation*}
@@ -4220,25 +4138,7 @@ In questa sezione faremo vedere che l'anello degli interi di un campo numerico �
 		(b_1-k)^2=\frac{\disc(\beta,\gamma_2,\dots,\gamma_n)}{\disc(\gamma_1,\gamma_2,\dots,\gamma_n)}
 		\end{equation*}
 		Siccome $b_1-k<1$, dall'ultima equazione ottengo un assurdo sulla minimalità del discriminante di $\gamma_1,\gamma_2,\dots,\gamma_n$.
-		\item 
-			Siano $\alpha_1, \dots, \alpha_n$, $\beta_1, \dots, \beta_n$ due basi interi dell'ideale $I$.
-			Sappiamo che esiste una matrice $M \in \operatorname{GL}_{n}(\mathbb{Z})$ tale che 
-			$M(\alpha_i) = \beta_i$. Per cui vale anche che per ogni immersione $\sigma_j$
-			\begin{equation*}
-				M(\sigma_j(\alpha_i)) = \sigma_j(\beta_i)
-			\end{equation*}
-			Calcoliamo il discriminante indicando con $A = (\sigma_j(\alpha_i))_{ij}$ e 
-			$B = (\sigma_j(\beta_i))_{ij}$,
-			\begin{align*}
-				\disc(\alpha_1, \dots, \alpha_n) & = \det(A)^2 \\
-												 & = \det(M B)^2 \\
-												 & = \det(M)^2 \disc(\beta_1, \dots, \beta_n) 
-			\end{align*} 
-			Ricordiamo che $M$ è invertibile se e solo se il determinante è un invertibile. Sappiamo 
-			che $\det M \in \mathbb{Z}$ per cui $\det M = \pm 1$, per cui 
-			\begin{equation*}
-				\disc(\alpha_1, \dots, \alpha_n) = \disc(\beta_1, \dots, \beta_n)
-			\end{equation*} 
+		\item Per esercizio.
 	\end{enumerate}
 \end{proof}
 \begin{corollario}
@@ -4256,12 +4156,7 @@ In questa sezione faremo vedere che l'anello degli interi di un campo numerico �
 
 \section{Anello degli interi dei campi quadratici}
 \subsection{Struttura degli interi quadratici}
-Sia $F$ un campo quadratico, ovvero una estensione finita di grado 2 su $\mathbb{Q}$. Un qualunque elemento $\alpha$ preso in $F\setminus\mathbb{Q}$ è \textit{primitivo}
-\footnote{È ovvio che ogni elemento sia primitivo dato che se $\alpha \notin \mathbb{Q}$ 
-	allora avrà polinomio minimo di grado almeno $2$. 
-	Gli unici sottocampi di $F$ sono $F, \mathbb{Q}$ dato che gli unici divisori di 
-	$|F \colon \mathbb{Q}| = 2$ sono $1,2$. Ovviamente $\mathbb{Q}(\alpha) \neq \mathbb{Q}$ 
-	da cui segue che dev'essere $\mathbb{Q}(\alpha) = F$.}, ovvero 
+Sia $F$ un campo quadratico, ovvero una estensione finita di grado 2 su $\mathbb{Q}$. Un qualunque elemento $\alpha$ preso in $F\setminus\mathbb{Q}$ è \textit{primitivo}, ovvero 
 \begin{equation*}
 F=\mathbb{Q}(\alpha)
 \end{equation*}
@@ -4353,8 +4248,8 @@ Ogni suo elemento è primitivo se e solo se $s\neq0$, e questo è ovvio. \\ Se $
 	\end{equation*}
 	Se invece $d\equiv1\Mod4$, ho come base intera di $\mathcal{O}_F$ $1$ e $\frac{1+\sqrt{d}}{2}$. In particolare
 	\begin{equation*}
-		\mathcal{O}_F=\mathbb{Z}\left[\frac{a+b\sqrt{d}}{2}\right]
-	\end{equation*}
+	\mathcal{O}_F=\mathbb{Z}[\frac{a+b\sqrt{d}}{2}]
+		\end{equation*}
 \end{corollario}
 \begin{proof}
 	La dimostrazione è banale.
@@ -4416,7 +4311,7 @@ Un modo per trovare questa unità fondamentale è con le \textit{frazioni contin
 	%todo: estendi proof
 \end{proof}
 \begin{proposizione}
-	Lo sviluppo in frazione continua di $\alpha_0$ è continuo se e solo se $\alpha_0$ è una irrazionalità quadratica, ovvero soluzione irrazionale di una equazione di secondo grado. \footnote{Ad esempio per $\alpha_0=\sqrt{2}$ abbiamo una espressione periodica tramite frazione continua; questo è fondamentale per poterlo ricostruire partendo da informazioni elementari, quindi nel nostro caso non dicendo \enquote{è soluzione positiva di $x^2-2$} e nemmeno \enquote{è radice di 2}. Per le irrazionalità cubiche e di grado superiore il problema è ancora aperto, Jacobi ha provato a risolverlo ma soddisfacendo solo una implicazione.}
+	Lo sviluppo in frazione continua di $\alpha_0$ è continuo se e solo se $\alpha_0$ è una irrazionalità quadratica, ovvero soluzione irrazionale di una equazione di secondo grado. \footnote{Ad esempio per $\alpha_0=\sqrt{2}$ abbiamo una espressione periodica tramite frazione continua; questo è fondamentale per poter \enquote{possedere} veramente il numero, cioè per poterlo ricostruire partendo da informazioni elementari, quindi nel nostro caso non dicendo \enquote{è soluzione positiva di $x^2-2$} e nemmeno \enquote{è radice di 2}. Per le irrazionalità cubiche e di grado superiore il problema è ancora aperto, Jacobi ha provato a risolverlo ma soddisfacendo solo una implicazione.}
 \end{proposizione}
 \begin{esempio}
 	Lavoriamo su $\sqrt{2}$.
@@ -4506,10 +4401,10 @@ Un modo per trovare questa unità fondamentale è con le \textit{frazioni contin
 	\end{equation*}
 	per alcuni $\overline{x}$ ed $\overline{y}$ interi.
 	\begin{align*}
-	m_1m_2
-	&=\N\left(x_1+y_1\sqrt{-2}\right)\N\left(x_2+y_2\sqrt{-2}\right)\\
-	&=\N\left((x_1+y_1\sqrt{-2})(x_2+y_2\sqrt{-2})\right)\\
-	&=\N\left(x_1x_2+(x_1y_2+x_2y_1)\sqrt{-2}-2y_1y_2\right)
+	m_1m_2=
+	&\N\left(x_1+y_1\sqrt{-2}\right)\N\left(x_2+y_2\sqrt{-2}\right)\\
+	&\N\left((x_1+y_1\sqrt{-2})(x_2+y_2\sqrt{-2})\right)\\
+	&\N\left(x_1x_2+(x_1y_2+x_2y_1)\sqrt{-2}-2y_1y_2\right)
 	\end{align*}
 	Analogamente definiamo
 	\begin{equation*}
@@ -4519,16 +4414,18 @@ Un modo per trovare questa unità fondamentale è con le \textit{frazioni contin
 	\begin{align*}
 	\mathbb{Q}\left(\sqrt{-2},\sqrt{-5}\right)
 	&=\mathbb{Q}\left(\sqrt{-2}+\sqrt{-5}\right)\\
-	&=\left\{x+y\sqrt{-2}+z\sqrt{-5}+w\sqrt{10}\ \mid \ x,y,z,w\in\mathbb{Q}\right\}
+	&\left\{x+y\sqrt{-2}+z\sqrt{-5}+w\sqrt{10}\ \mid \ x,y,z,w\in\mathbb{Q}\right\}
 	\end{align*}
 	e prendiamo i due elementi $a+b\sqrt{-2}$ e $c+d\sqrt{-5}$ per $a,b,c,d$ interi generici, che ora appartengono allo stesso campo numerico. Facciamo alcune osservazioni:
 	\begin{enumerate}
 		\item $\mathbb{Q}\left(\sqrt{-2}+\sqrt{-5}\right)=\mathbb{Q}\left(\sqrt{-2},\sqrt{-5}\right)$, il polinomio minimo di $\sqrt{-2}+\sqrt{-5}$ per la teoria vista è
 		\begin{align*}
-		N(x+1(\sqrt{-2}+\sqrt{-5})) & = \left(x-\left(\sqrt{-2}+\sqrt{-5}\right)\right) \left(x-\left(-\sqrt{-2}+\sqrt{-5}\right)\right)\dots\\
-		& \ \ \ \ \dots \left(x-\left(\sqrt{-2}-\sqrt{-5}\right)\right)\left(x-\left(-\sqrt{-2}-\sqrt{-5}\right)\right) \\
-		&= x^4+14x^2+9
+		\left(x-\left(\sqrt{-2}+\sqrt{-5}\right)\right)&\left(x-\left(-\sqrt{-2}+\sqrt{-5}\right)\right)\dots\\
+		& \ \ \ \ \ \ \ \ \ \ \dots \left(x-\left(\sqrt{-2}-\sqrt{-5}\right)\right)\left(x-\left(-\sqrt{-2}-\sqrt{-5}\right)\right)
 		\end{align*}
+		\begin{equation*}
+		x^4+14x^2+9
+		\end{equation*}
 		Allora il grado di questa estensione è 4.
 		\item Il grado di $\mathbb{Q}\left(\sqrt{-2}\right)$ su $\mathbb{Q}$ è uguale al grado di $\mathbb{Q}\left(\sqrt{-5}\right)$ su $\mathbb{Q}$. Allora i coniugati di $\sqrt{-2}$ sono 
 		\begin{equation*}
@@ -4592,29 +4489,24 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 	21=(3)(7)=\left(4+i\sqrt{-5}\right)\left(4-i\sqrt{-5}\right)
 	\end{equation*}
 \end{esempio}
-\begin{teorema}[Teorema di Dedekind]
+\begin{teorema}[Teorema di Dedekind, scrittura intuitiva]
 	Ogni ideale $I$ contenuto in $\mathcal{O}_F$, per $F$ campo numerico, si scrive in modo unico come prodotto di ideali primi.\footnote{Possiamo estendere questo risultato ad una classe di anelli detta degli \textit{anelli di Dedekind}.}
 \end{teorema}
 
 
 
-
-\subsection{Gli anelli di Dedekind}
-
+\subsection{Il teorema di fattorizzazione di Dedekind}
 \begin{definizione}[Anello di Dedekind]
-	Sia $A$ un anello, viene detto \textbf{anello di Dedekind} se
+	Sia $A$ un anello, viene detto \textbf{anello di Dedekind} de
 	\begin{enumerate}
-		\item è integralmente chiuso rispetto al campo delle frazioni
+		\item è integralmente chiuso
 		\item è Noetheriano
 		\item ogni ideale primo non nullo è massimale
 	\end{enumerate}
 \end{definizione}
-
 \begin{esempio}
-	$\mathbb{Z}$ è un anello di Dedekind. 
-	In seguito lavoreremo per mostrare che $\mathcal{O}_F$ è un anello di Dedekind per $F$ campo numerico, infatti l'insieme degli interi algebrici è integralmente chiuso su $\mathbb{C}$.
+	$\mathbb{Z}$ è un anello di Dedekind. In seguito lavoreremo per mostrare che $\mathcal{O}_F$ è un anello di Dedekind per $F$ campo numerico.
 \end{esempio}
-
 \begin{proposizione}\
 	\begin{enumerate}
 		\item Siano $A, B, C$ tre anelli con $A\subset B\subset C$, se $C$ è intero su $B$ e $B$ è intero su $A$ allora $C$ è intero su $A$.
@@ -4630,22 +4522,7 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 \end{proposizione}
 \begin{proof}\
 	\begin{enumerate}
-		\item Sia $c\in C$; siccome $C$ è intero su $B$ esiste un polinomio monico
-		\begin{equation*}
-			0 = f(c) = c^n + b_{n-1}c^{n-1} + \dots + b_0
-		\end{equation*}
-		Con $b_0, \dots, b_{n-1}\in B$. Per ipotesi $B$ è un estensione intersa su $A$, quindi 
-		ogni $A[b_i]$ è finitamente generato come $A$-modulo. In particolare si può dimostrare
-		per induzione che $A[b_0, \dots, b_{n-1}]$ è finitamente generato come $A$-modulo. 
-		Per cui otteniamo che 
-		\begin{equation*}
-			A \subseteq A[b_0, \dots, b_{n-1}] \subseteq A[b_0, \dots, b_{n-1}, c]
-		\end{equation*} 
-		sappiamo che $A[b_0, \dots, b_{n-1},c]$ è finitamente generato come $A[b_0, \dots, b_{n-1}]$
-		modulo per l'esistenza di $f$. Per cui l'estensione $A \subseteq A[b_0, \dots, b_{n-1},c]$ è 
-		finitamente generata come $A$-modulo. Sappiamo quindi che 
-		$A \subseteq A[b_0, \dots, b_{n-1},c]$ è un estensione finita contenuta in $C$, per cui $c$ 
-		dev'essere intero su $A$.
+		\item Sia $c\in C$; siccome $C$ è intero su $B$, $B[c]$ è un $B$-modulo finitamente generato. Siccome $B$ è intero su $A$, $B[c]$ è finitamente generato come $A$-modulo. In conclusione $A[c]\subset B[c]\subset C$, quindi per caratterizzazioni viste in precedenza $c$ è intero su $A$.
 		\item Sia $\alpha\in F$ intero su $\mathcal{O}_F$. Siccome $\mathcal{O}_F$ è intero su $\mathbb{Z}$, $\alpha$ è intero su $\mathbb{Z}$. Allora $\alpha\in O\cap F=\mathcal{O}_F$.
 		\item Sia $I$ sottoanello di $\mathcal{O}_F$, allora $I$ è generato da un numero di elementi pari al grado di $F$ su $\mathbb{Q}$ (vedendolo come $\mathbb{Z}$-modulo). In particolare è finitamente generato.
 		\item Vediamo le dimostrazioni:
@@ -4670,34 +4547,94 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 			\mathcal{O}_F=\omega_1\mathbb{Z}+\dots+\omega_n\mathbb{Z}\simeq\mathbb{Z}^n
 			\end{equation*}
 			in particolare $\mathcal{O}_F/c\mathcal{O}_F\simeq\left(\mathbb{Z}/c\mathbb{Z}\right)^n$ e $\left|\mathcal{O}_F/I\right|$ finita.
-			\item Se $I$ è primo, $\mathcal{O}_F/I$ è un dominio di integrità. Siccome ogni dominio di integrità finito è un campo\footnote{
-				Una possibile dimostrazione: 
-				sia $|D| = n$ dominio finito. 
-				Supponiamo per assurdo esista $0 \neq d \in D$ 
-				tale che per ogni $a \in D$ valga $da \neq 1$. 
-				Allora $|dD| \le |D|-1$, per cui esistono 
-				$0 \neq \beta, \gamma \in D$ e $\beta \neq \gamma$ 
-				tali che $d\gamma = d\beta \in D$. 
-				Allora $d(\gamma-\beta) = 0$ poiché è un dominio 
-				dev'essere che $\gamma = \beta$ contro l'ipotesi 
-				che $\beta \neq \gamma$, da cui l'assurdo; 
-				dev'essere che anche $d$ ammette un inverso.}, $\mathcal{O}_F/I$ è un campo. Allora $I$ è massimale.
+			\item Se $I$ è primo, $\mathcal{O}_F/I$ è un dominio di integrità. Siccome ogni dominio di integrità finito è un campo, $\mathcal{O}_F/I$ è un campo. Allora $I$ è massimale.
 		\end{enumerate}
 	\end{enumerate}
 \end{proof}
-
 \begin{teorema}
 	Dato $\mathcal{O}_F$ anello degli interi di un campo numerico $F$, $\mathcal{O}_F$ è anche un anello di Dedekind.
 \end{teorema}
 \begin{proof}
-	I punti della definizione sono dimostrati dalla proposizione precedente.
+	I punti della definizione sono dimostrati dalle proposizioni.
 \end{proof}
-
-
-
-
-
-
-
-
-
+\label{lezione21}
+\begin{proposizione}
+	Sia $A$ un dominio noetheriano, $I$ un suo ideale non-nullo. Allora esistono $P_1,\dots,P_n$ ideali primi tali che $P_1\dots P_n\subset I$.
+\end{proposizione}
+\begin{proof}
+	Supponiamo che questo non sia vero, cioè esistano $J_1,J_2,\dots$ ideali che non contengono un tale prodotto. Siccome $A$ è noetheriano posso prendere $J$ il più grande di questi elementi rispetto all'inclusione, ed in questo caso non è primo (altrimenti soddisferebbe le ipotesi del lemma). Allora esistono $x,y\in A$ tali che $xy$ appartiene a $J$ ma né $x$ nè $y$ vi appartengono. Abbiamo  
+	\begin{equation*}
+	J\subset J+(x), \ J \subset J+(y)
+	\end{equation*}
+	e quindi che $J+(x)$ e $J+(y)$ essendo più grandi (sempre secondo l'inclusione) contengono un prodotto di ideali primi. Ma $xy$ appartiene a $J$, quindi il prodotto di questi due ideali primi è contenuto in $J$.
+\end{proof}
+\begin{proposizione}
+	Sia $A$ un anello di Dedekind, $P$ un suo ideale primo. Detto $K$ il campo delle frazioni di $A$, definisco \footnote{Intuitivamente stiamo definendo l'insieme degli elementi del campo delle frazioni con un elemento di $P$ come \enquote{denominatore}.k}
+	\begin{equation*}
+	P^{-1}=\left\{x\in K\ \mid \ xP\subset A\right\}
+	\end{equation*}
+	Allora per ogni ideale $I$ di $A$ si ha 
+	\begin{equation*}
+	IP^{-1}=\left\{\sum_i a_ix_i\ \mid \ a_i\in I, x_i\in P^{-1}\subset A\right\}\neq I
+	\end{equation*}
+\end{proposizione}
+\begin{proof}
+	Iniziamo con il vedere che $P^{-1}\neq A$. Sia $a\in P$ non-nullo, per il lemma precedente $(a)$ contiene un prodotto di ideali primi $P_1,\dots,P_n$. Possiamo dimostrare che esiste un $i$ tale che $P_i\subset P$, e siccome ci troviamo in un anello di Dedekind $P_i$ è massimale e vale che $P_i=P$. Allora $P_1=P$ e 
+	\begin{equation*}
+	P_2\dots P_n\nsubset (a)
+	\end{equation*}
+	ed esiste un $b$ appartenente a $P_2\dots P_n$ che non appartiene ad $aA$, quindi $a^{-1}b\notin A$. Abbiamo che $bP\subset (a)$ perché $PP_2\dots P_n \subset (a)$, quindi $a^{-1}bP\subset A$, cioè $a^{-1}b\in P^{-1}$ ed $a^{-1}b\notin A$. \\ \\ 
+	Consideriamo ora $\alpha_1,\dots,\alpha_m$ generatori dell'ideale $I$, se fosse $IP^{-1}=P$ allora per ogni $x$ elemento di $P^{-1}$ varrebbe
+	\begin{equation*}
+	x\alpha_i=\sum_i\a{ij}\alpha_j \ \ \ a_{ij}\in A
+	\end{equation*}
+	Sia dunque $M$ la matrice con entrata $ij$-esima il valore $\delta_{ij}x-a_{ij}$, varrebbe che 
+	\begin{enumerate}
+		\item $M\begin{pmatrix}
+		\alpha_1\\\vdots\\\alpha_m
+		\end{pmatrix}=0$
+		\item $\det(M\alpha_i)=0$ per ogni $i$, quindi $\det(M)=0$
+		\item $x$ è radice del polinomio caratteristico di $M$, ovvero è intero su $A$ (ed appartiene ad $A$)
+	\end{enumerate}
+	Seguirebbe quindi $P^{-1}\subset A$ ed $A\subset P^{-1}$, perciò $P^{-1}=A$.
+\end{proof}
+\begin{definizione}
+	Siano $I,J$ ideali di un anello $A$, scriviamo $I\mid J$ se esiste un ideale $M$ tale che $J=IM$.
+\end{definizione}
+\begin{proposizione}
+	Sia $P$ un ideale primo di $A$ anello di Dedekind, si ha $A=P^{-1}P$. Inoltre se $I$ è un ideale di $A$, 
+	\begin{enumerate}
+		\item $P\mid I$ se e solo se $I$ è contenuto in $P$
+		\item$P\mid IJ$ se e solo se $P\mid I$ oppure $P\mid J$
+	\end{enumerate}
+\end{proposizione}
+\begin{proof}
+	Per definizione $A$ è contenuto in $P^{-1}$, inoltre $P\subset PP^{-1}\subset A$. Siccome siamo in un anello di Dedekind $P$ è massimale e $P\neq PP^{-1}$ abbiamo $PP^{-1}=A$. \\ \\ 
+	Se $P \mid I$, cioè se esiste un ideale $J$ tale che $PJ=I$, da $PJ\subset P$ abbiamo $I\subset P$. Viceversa se $I\subset P$ allora $P^{-1}I\subset P^{-1}P=A$, quindi $J=P^{-1}I$ è un ideale e vale 
+	\begin{equation*}
+	PJ=PP^{-1}I=AI=I
+	\end{equation*}
+	quindi $P\mid I$. \\ \\
+	Se $P\mid IJ$, allora $IJ\subset P$ implica che $I\subset P$ oppure $J\subset P$. Intuitivamente questo significa che gli ideali primi \enquote{si comportano come i numeri primi}. L'altra implicazione è ovvia.
+\end{proof}
+\begin{teorema}[Teorema di Dedekind]
+	Sia $A$ un anello di Dedekind, allora ogni suo ideale non-nullo si scrive in modo unico come prodotto di ideali primi.
+\end{teorema}
+\begin{proof}
+	Definiamo
+	\begin{equation*}
+	\mathcal{M}=\left\{I\subset A \text{ ideali non-nulli non prodotto di ideali primi}\right\}
+	\end{equation*}
+	Sia $J$ l'elemento più grande rispetto all'inclusione; si noti che posso trovarlo usando il lemma di Zorn. Allora esiste un $P$ tale che $J$ è contenuto in $P$, inoltre
+	\begin{equation*}
+	J\subset JP^{-1}, \ JP^{-1}\neq A
+	\end{equation*}
+	Ne segue che 
+	\begin{equation*}
+	JP^{-1}=P_1\dots P_n
+	\end{equation*}
+	\begin{equation*}
+	J=JP^{-1}P=P_1\dots P_nP
+	\end{equation*}
+	L'unicità segue dalla proposizione precedente ed è simile alla dimostrazione dell'unicità della fattorizzazione in $\mathbb{Z}$.
+\end{proof}
