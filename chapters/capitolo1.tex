@@ -78,7 +78,7 @@ Vediamo adesso alcuni brevi richiami di algebra; dovrebbero essere tutti fatti n
 \begin{proof}
 	Dimostriamo che $q$ ed $r$ esistono. \\ Supponiamo $a\geq 0$ e $b>0$ senza perdita di generalità; se $a=0$ basta prendere $q=r=0$. Possiamo quindi fissare $b$ e procedere per induzione $a$. L'ipotesi induttiva è che tali $r$ e $q$ esistano per ogni coppia $(n,b)$ con $n<a$; voglio mostrare che esistono anche per la coppia $(a,b)$.
 	\begin{itemize}
-		\item Se $a<b$ basta prendere $q=0$ ed $r=q$, senza necessità di induzione.
+		\item Se $a<b$ basta prendere $q=0$ ed $r=a$, senza necessità di induzione.
 		\item Se $a\geq b$ allora $a-b=c$ per un certo $c\geq 0$; posso usare l'ipotesi induttiva su $c$, quindi esistono $q'$ ed $r'$ tali che 
 		\begin{equation*}
 		c = q'b + r' \ \text{e vale che} \ 0 \leq r' \leq |b|
@@ -202,7 +202,7 @@ Posso avere però lo stesso risultato tramite una formalizzazione più algebrica
 	\begin{enumerate}
 		\item Siano $a$ e $b$ in $\mathbb{Z}$ non entrambi nulli, allora 
 		\begin{equation*}
-		I \eqqcolon \left\{na+mb \ \middle| \ n,m \in \mathbb{Z}\right\}
+		I \coloneqq \left\{na+mb \ \middle| \ n,m \in \mathbb{Z}\right\}
 		\end{equation*}
 		è un ideale di $\mathbb{Z}$.
 		\item Sia $I = (d)$, allora $d$ è il massimo comune divisore tra $a$ e $b$. \footnote{in algebra commutativa $I=(d)$ indica che \textbf{$d$ genera l'ideale $I$}, ovvero che ogni $i \in I$ ha forma $kd$ per un $k$ in $\mathbb{Z}$. Stiamo usando il fatto che $\mathbb{Z}$ sia un dominio ad ideali principali.}
@@ -260,7 +260,7 @@ Posso avere però lo stesso risultato tramite una formalizzazione più algebrica
 \end{teorema}
 \begin{proof}\
 	\begin{itemize}
-		\item[$\implies$] Devo dimostrare che $n$ è primo, supponiamo che $n\mid ab$; devo dimostrare che $n\mid a$ oppure $n\mid b$. Cerchiamo di dimostrare ad esempio che se $n$ non divide $a$ divide $b$.
+		\item[$\implies$] Devo dimostrare che $n$ è primo, supponiamo che $n\mid ab$; devo dimostrare che $n\mid a$ oppure $n\mid b$. Cerchiamo di dimostrare ad esempio che se $n$ non divide $a$ allora necessariamente divide $b$.
 		\begin{equation*}
 		n\mid ab \implies ab=kn \ \ \ k \in \mathbb{Z}
 		\end{equation*}
@@ -379,7 +379,7 @@ Se la risposta è \textit{nessuna}, siamo ancora in tempo per rimediare.
 	per un certo $m$ intero. \\ In sintesi se i primi fossero solo $s$ ogni elemento non nullo sarebbe invertibile; quindi se fosse vero $\mathbb{N}$ sarebbe un campo, cosa che non è vera (ad esempio non è nemmeno un anello commutativo con unità perché l'abeliano $(\mathbb{N}^*,\cdot)$ non ha un inverso moltiplicativo, oppure perché $(\mathbb{N},+)$ non ha un inverso additivo).
 \end{proof}
 \begin{proof}[Dimostrazione di Hermite]
-	Comunque scelgo un numero $n$ intero positivo, esiste un primo $P$ maggiore di $n$. Infatti fisso $n$, considero $n!+1$. Questo non può essere 1 perché $n\leq0$, ma come nella dimostrazione di Euclide possiamo vedere che $n!+1$ ha tutti i fattori primi maggiori di $n$. La dimostrazione è relativamente analoga.
+	Comunque scelgo un numero $n$ intero positivo, esiste un primo $P$ maggiore di $n$. Infatti fisso $n$, considero $n!+1$. Questo non può essere 1 perché $n\geq0$, ma come nella dimostrazione di Euclide possiamo vedere che $n!+1$ ha tutti i fattori primi maggiori di $n$. La dimostrazione è relativamente analoga.
 \end{proof}
 
 
@@ -523,19 +523,14 @@ La proprietà descritta è palese; vediamo qualche esempio.
 	\sum_{d\mid n}\mu\left(\frac{n}{d}\right)f(d)&=\sum_{e\cdot d=n}\mu(e)f(d)=\sum_{e\mid n}\mu(e)f\left(\frac{n}{e}\right)\\
 	&=\sum_{d\mid n}\mu(d)f\left(\frac{n}{d}\right)
 	\end{align*}
-	dato che $e$ è divisore di $n$.
+	dato che $e$ è divisore di $n$. Allora proseguiamo dimostrando la tesi.
 	\begin{align*}
-	\sum_{d\mid n}\mu\left(\frac{n}{d}\right)f(d)&=\sum_{d\mid n}\mu\left(\frac{n}{d}\right)\sum_{d'\mid d}g(d')=\sum_{d'\mid d\mid n}g(d')\mu\left(\frac{n}{d}\right)\\
-	&=\sum_{d'\mid \frac{n}{m}\mid n}g(d')\mu\left(m\right)
+	\sum_{d\mid n}\mu\left(\frac{n}{d}\right)f(d)
+	&=\sum_{d\mid n}\mu\left(\frac{n}{d}\right)\sum_{e\mid d}g(e)=\sum_{e\mid n}\sum_{d\mid e}g(e)\mu\left(\frac{n}{d}\right)\\
+	&=\sum_{e\mid n}g(e)\sum_{d\mid e}\mu\left(\frac{n}{d}\right)=\sum_{e\mid n}g(e)\mathds{1}(e=n)\\
+	&=g(n)
 	\end{align*}
-	%todo: notazione strana, rivedi meglio la dimostrazione
-	dove abbiamo usato le seguenti osservazioni:
-	\begin{enumerate}
-		\item ho definito $m=\frac{n}{d}$
-		\item se $d$ e $d'$ sono divisori di $n$, allora $d'\mid d$ vale se e solo se $\frac{n}{d}\mid \frac{n}{d'}$
-		\item se $d'$ ed $\frac{n}{m}$ sono divisori di $n$, allora $d'\mid \frac{n}{m}$ vale se e solo se $m\mid \frac{n}{d'}$
-	\end{enumerate}
-	Per la proposizione \ref{somma_moebius} sappiamo che nella sommatoria sopravvivono elementi solo per $d'=n$, quindi otteniamo la tesi.
+	Infatti per la proposizione \ref{somma_moebius} sappiamo che nella sommatoria sopravvivono elementi solo per $e=n$.
 \end{proof}
 \paragraph{Funzioni dei divisori}
 \begin{equation*}
@@ -607,7 +602,7 @@ Come abbiamo preannunciato all'inizio dello scorso capitolo, inizieremo a genera
 		\begin{equation*}
 		\forall a,b \ \text{con} \ q=ab, \ \text{$a$ oppure $b$ sono un'unità}
 		\end{equation*}
-		\item Un $p \in A$ si dice \textbf{primo} se $p\mid ab \implies $ $p\mid a$ oppure $p\mid b$. \footnote{nella definizione compare un \textit{vel}, un \textit{aut inclusivo}; possono essere vere entrambe. Si pensi ad esempio alla situazione $p\mid p\cdot p$.}
+		\item Un $p \in A$ si dice \textbf{primo} se ogni volta che $p\mid ab$ allora $p\mid a$ oppure $p\mid b$. \footnote{Nella definizione compare un \textit{vel}, un \textit{aut inclusivo}; possono essere vere entrambe. Si pensi ad esempio alla situazione $p\mid p\cdot p$.}
 	\end{enumerate}
 \end{definizione}
 \begin{definizione}[Ideale]
@@ -673,7 +668,7 @@ Come abbiamo preannunciato all'inizio dello scorso capitolo, inizieremo a genera
 	Sia $A$ un dominio.
 	\begin{enumerate}
 		\item $A$ si dice \textbf{dominio ad ideali principali (PID)} se ogni suo ideale è principale.
-		\item $A$ si dice \textbf{dominio a fattorizzazione unica (UFD)} se ogni suo elemento non invertibile e non nullo ammette una fattorizzazione in elementi riducibili, unica a meno di riordinamento e di elementi associati (\textit{fattorizzazione essenzialmente unica}).
+		\item $A$ si dice \textbf{dominio a fattorizzazione unica (UFD)} se ogni suo elemento non invertibile e non nullo ammette una fattorizzazione in elementi irriducibili, unica a meno di riordinamento e di elementi associati (\textit{fattorizzazione essenzialmente unica}).
 		\item $A$ si dice \textbf{euclideo} se esiste una funzione 
 		\begin{equation*}
 		f: A^*\longrightarrow \mathbb{N}
@@ -694,6 +689,15 @@ Come abbiamo preannunciato all'inizio dello scorso capitolo, inizieremo a genera
 	p=nq+r \ \ \ \text{ con } \deg(r)<\deg(q) \ \text{ oppure } r=0
 	\end{equation*}
 \end{esempio}
+\begin{osservazione}
+	Si noti che $p$ e $q$ non devono necessariamente essere unici in un dominio euclideo: difatti si pensi alla divisione tra $i+1$ e $2i+2$ in $\mathbb{Z}[i]$, questo può essere scritto come
+	\begin{equation*}
+	1+i=(2+2i)(0)+(i+1)
+	\end{equation*}
+	\begin{equation*}
+	1+i=(2+2i)(1)+(-1-i)
+	\end{equation*}
+\end{osservazione}
 
 
 
@@ -708,29 +712,29 @@ Come abbiamo preannunciato all'inizio dello scorso capitolo, inizieremo a genera
 \begin{proof}
 	Se $a$ fosse irriducibile avremmo già ottenuto la fattorizzazione. Sia allora $a$ riducibile, $a=xy$ per certi $x$ ed $y$ in $A$. Costruiamo una catena con il seguente algoritmo, poi potremo usare l'ipotesi di noetherianità; notiamo che se anche $x$ ed $y$ fossero irriducibili avrei già finito, poniamo che almeno uno dei due non lo sia.
 	\begin{itemize}
-		\item se $x$ non è irriducibile allora $x=a_1d_1$ con $a_1 \neq 0$ ed $a_1,d_1$ non unità:
+		\item se $x$ non è irriducibile allora $x=x_1d_1$ con $a_1 \neq 0$ ed $x_1,d_1$ non unità:
 		\begin{equation*}
-		a_1\mid x \mid a \implies (a)\subset(x)\subset(a_1)
+		x_1\mid x \mid a \implies (a)\subset(x)\subset(x_1)
 		\end{equation*}
 		(se invece fosse irriducibile mi fermerei, avrei già una catena stazionaria)
-		\item se $a_1$ non è irriducibile allora $x=a_2d_2$ con $a_2 \neq 0$ ed $a_2,d_2$ non unità:
+		\item se $x_1$ non è irriducibile allora $x_1=x_2d_2$ con $x_2 \neq 0$ ed $x_2,d_2$ non unità:
 		\begin{equation*}
-		(a)\subset(x)\subset(a_1)\subset(a_2)
+		(a)\subset(x)\subset(x_1)\subset(x_2)
 		\end{equation*}
 		\item e così via, ottenendo
 		\begin{equation*}
-		(a)\subset(x)\subset(a_1)\subset(a_2)\subset(a_3)\subset\dots
+		(a)\subset(x)\subset(x_1)\subset(x_2)\subset(x_3)\subset\dots
 		\end{equation*}
 	\end{itemize}
-	Per ipotesi esiste un $n$ tale che $(a_n)=(a_{n+1})$, ovvero $a_{n}$ ed $a_{n+1}$ sono associati:
+	Per ipotesi esiste un $n$ tale che $(x_n)=(x_{n+1})$, ovvero $x_{n}$ ed $x_{n+1}$ sono associati:
 	\begin{equation*}
-	a_{n}=ua_{n+1} \ \ \ \ \text{ con $u$ unità}
+	x_{n}=ux_{n+1} \ \ \ \ \text{ con $u$ unità}
 	\end{equation*}
-	ed inoltre da costruzione abbiamo $a_{n}=d_{n+1}a_{n+1}$ non unità e quindi
+	ed inoltre da costruzione abbiamo $x_{n}=d_{n+1}x_{n+1}$ non unità e quindi
 	\begin{equation*}
-	a_{n+1}(d_{n+1}-u)=0 \implies d_{n+1}=u
+	x_{n+1}(d_{n+1}-u)=0 \implies d_{n+1}=u
 	\end{equation*}
-	che implica $a_n$ irriducibile. Ripetendo il ragionamento per $y$ ottengo la tesi. \\ Abbiamo infatti dimostrato che $a$ si scrive tramite prodotto di un fattore irriducibile (quello che abbiamo trovato) ed \enquote{altro}, ma possiamo fattorizzare la parte non irriducibile, per ipotesi di noetherianità ci dovremo fermare ottenendo un prodotto in irriducibili, essenzialmente unico. \\ \\ Notiamo che la definizione di principalmente noetheriano svolge la funzione del \textit{principio del minimo} sui numeri naturali, equivalente al principio di induzione.\footnote{questo vale per la costruzione dei naturali tramite gli \textit{assiomi di Peano}.} Ci siamo ricondotti elegantemente ad una situazione analoga a quella studiata nella fattorizzazione unica degli interi.
+	che implica $x_n$ irriducibile. Ripetendo il ragionamento per $y$ ottengo la tesi. \\ Abbiamo infatti dimostrato che $a$ si scrive tramite prodotto di un fattore irriducibile (quello che abbiamo trovato) ed \enquote{altro}, ma possiamo fattorizzare la parte non irriducibile, per ipotesi di noetherianità ci dovremo fermare ottenendo un prodotto in irriducibili, essenzialmente unico. \\ \\ Notiamo che la definizione di principalmente noetheriano svolge la funzione del \textit{principio del minimo} sui numeri naturali, equivalente al principio di induzione.\footnote{questo vale per la costruzione dei naturali tramite gli \textit{assiomi di Peano}.} Ci siamo ricondotti elegantemente ad una situazione analoga a quella studiata nella fattorizzazione unica degli interi.
 \end{proof}
 	\label{lezione4}
 \begin{teorema}[Unicità della fattorizzazione]
@@ -750,7 +754,7 @@ Come abbiamo preannunciato all'inizio dello scorso capitolo, inizieremo a genera
 			\end{equation*}
 			allora $p_1\mid q_1 \dots q_s$, che a sua volta implica $p_1\mid q_1$. Essendo irriducibili sono associati, quindi $p_1=\xi_1 q_1$ con $\xi_1$ unità. Procedendo in questo modo per $r$ volte ottengo
 			\begin{equation*}
-			1=\xi_1\dots\xi_r q_{r+1}\dots r_s
+			1=\xi_1\dots\xi_r q_{r+1}\dots q_s
 			\end{equation*}
 			e quindi $r=s$. Infatti se non lo fosse tutti i primi a destra sarebbero invertibili. La fattorizzazione è unica a meno di associati.
 		\item[$(3 \implies 1)$] Dimostriamo prima di tutto che ogni irriducibile è primo. \\ Sia $q\mid ab$, ovvero $ab=qd$.
@@ -773,7 +777,7 @@ Come abbiamo preannunciato all'inizio dello scorso capitolo, inizieremo a genera
 	\end{itemize}
 \end{proof}
 \begin{osservazione}
-	Siamo arrivati al risultato che cercavamo, abbiamo ottenuto condizioni sotto cui vale la fattorizzazione unica. Queste condizioni però non sono \enquote{soddisfacenti}, infatti la principale noetherianità non è sempre semplice da verificare. Proviamo a costruire ulteriori relazioni tra i tipi di domini che abbiamo identificato. \\ Ad esempio potremmo caratterizzare i domini in cui gli irriducibili sono anche primi.
+	Siamo arrivati al risultato che cercavamo, abbiamo ottenuto condizioni sotto cui vale la fattorizzazione unica. Queste condizioni però non sono \enquote{soddisfacenti}, infatti la principale noetherianità non è sempre semplice da verificare. Proviamo a costruire ulteriori relazioni tra i tipi di domini che abbiamo identificato. Ad esempio potremmo caratterizzare i domini in cui gli irriducibili sono anche primi.
 \end{osservazione}
 \begin{teorema}[Caratterizzazione dei PID]
 	Se $A$ è un dominio ad ideali principali (PID), per $p\in A$ le seguenti sono equivalenti.
@@ -871,7 +875,6 @@ Come abbiamo preannunciato all'inizio dello scorso capitolo, inizieremo a genera
 \draw (250.2,50.6) node [anchor=north west][inner sep=0.75pt]  [font=\scriptsize,color={rgb, 255:red, 126; green, 211; blue, 33 }  ,opacity=1 ]  {$fattorizzazione\ in\ irriducibili$};
 \end{tikzpicture}
 \end{equation*}
-
 
 
 \section{L'anello degli interi di Gauss}
