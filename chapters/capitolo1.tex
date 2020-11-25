@@ -4522,9 +4522,9 @@ Un modo per trovare questa unità fondamentale è con le \textit{frazioni contin
 	\end{align*}
 	e prendiamo i due elementi $a+b\sqrt{-2}$ e $c+d\sqrt{-5}$ per $a,b,c,d$ interi generici, che ora appartengono allo stesso campo numerico. Facciamo alcune osservazioni:
 	\begin{enumerate}
-		\item $\mathbb{Q}\left(\sqrt{-2}+\sqrt{-5}\right)=\mathbb{Q}\left(\sqrt{-2},\sqrt{-5}\right)$, il polinomio minimo di $\sqrt{-2}+\sqrt{-5}$ per la teoria vista è
+		\item $\mathbb{Q}\left(\sqrt{-2}+\sqrt{-5}\right)=\mathbb{Q}\left(\sqrt{-2},\sqrt{-5}\right)$, il polinomio minimo di $\sqrt{-2}+\sqrt{-5}$ per la teoria vista si ricava come
 		\begin{align*}
-		N(x+1(\sqrt{-2}+\sqrt{-5})) & = \left(x-\left(\sqrt{-2}+\sqrt{-5}\right)\right) \left(x-\left(-\sqrt{-2}+\sqrt{-5}\right)\right)\dots\\
+		\N(x+1(\sqrt{-2}+\sqrt{-5})) & = \left(x-\left(\sqrt{-2}+\sqrt{-5}\right)\right) \left(x-\left(-\sqrt{-2}+\sqrt{-5}\right)\right)\dots\\
 		& \ \ \ \ \dots \left(x-\left(\sqrt{-2}-\sqrt{-5}\right)\right)\left(x-\left(-\sqrt{-2}-\sqrt{-5}\right)\right) \\
 		&= x^4+14x^2+9
 		\end{align*}
@@ -4741,11 +4741,11 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 	
 	Se $n = 1$ allora $(a) = P$ e dunque è ovvio che $\frac{1}{a} \in P^{-1}$, ma $\frac{1}{a} \notin A$.\ 
 	
-	Supponiamo $n > 1$ allora dev'essere \footnote{Supponiamo che $P_2 \cdots P_n \subset (a)$, allora avremmo che $P_2 \cdots P_n$ è minimale rispetto a $P_1 \cdots P_n$ contro quanto era stato assunto.} 
+	Supponiamo $n > 1$, allora dev'essere \footnote{Supponiamo che $P_2 \cdots P_n \subset (a)$, allora avremmo che $P_2 \cdots P_n$ è minimale rispetto a $P_1 \cdots P_n$ contro quanto era stato assunto.} 
 	\begin{equation*}
 		P_2\cdots P_n\nsubset (a)
 	\end{equation*}
-	ed esiste un $b \in P_2\cdots P_n$ e tale che $b \notin (a)$. Ma allora quindi $\frac{b}{a}\notin A$, ma $bP\subset (a)$ perché $PP_2\cdots P_n \subset (a)$, quindi $\frac{b}{a}P\subset A$, cioè $\frac{b}{a}\in P^{-1}$. Abbiamo finalmente trovato un elemento che sta in $P^{-1}$ ma non in $A$. \\
+	ed esiste un $b \in P_2\cdots P_n$ e tale che $b \notin (a)$. Ma allora $\frac{b}{a}\notin A$, ma $bP\subset (a)$ perché $PP_2\cdots P_n \subset (a)$, quindi $\frac{b}{a}P\subset A$, cioè $\frac{b}{a}\in P^{-1}$. Abbiamo finalmente trovato un elemento che sta in $P^{-1}$ ma non in $A$. \\
 	 
 	Consideriamo ora $\alpha_1,\dots,\alpha_m$ generatori dell'ideale $I$ sappiamo che è finitamente generato poiché siamo in un anello noetheriano. Se fosse $IP^{-1}=I$ allora per ogni $x$ elemento di $P^{-1}$ varrebbe
 	\begin{equation*}
