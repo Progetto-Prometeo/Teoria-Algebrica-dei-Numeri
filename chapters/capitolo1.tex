@@ -805,12 +805,11 @@ Come abbiamo preannunciato all'inizio dello scorso capitolo, inizieremo a genera
 	Se $A$ è un PID, allora è un dominio a fattorizzazione unica (UFD).
 \end{teorema}
 \begin{proof}
-	Dimostriamo che in un PID ogni ideale è finitamente generato. \\ Consideriamo una catena di ideali $I_1\subset I_2 \subset \dots$, allora $I=\bigcup_{n=1}^{+\infty}I_n$ è un ideale. Normalmente sarebbe problematico approcciarsi ad un oggetto simile (ha senso scrivere una unione infinita? è ancora un ideale? come scrivo i suoi generatori?), ma sappiamo che $A$ è un dominio ad ideali principali! Allora  
+	Dimostriamo che in un PID ogni ideale è finitamente generato. \\ Consideriamo una catena di ideali $I_1\subset I_2 \subset \dots$, allora $I=\bigcup_{n=1}^{+\infty}I_n$ è un ideale. Normalmente sarebbe problematico approcciarsi ad un oggetto simile (ha senso scrivere una unione infinita? è ancora un ideale? come scrivo i suoi generatori?), ma sappiamo che $A$ è un dominio ad ideali finitamente generati! Allora  
 	\begin{equation*}
 	I = (a_1, \dots, a_m)
-	%todo: come fa ad essere principale se ha m elementi?
 	\end{equation*}
-	 e quindi esiste $N>0$ tale che $I_N$ contenga i generatori di $I$, questo vale necessariamente per come ho costruito $I$, per come ho scelto gli ideali e per proprietà di $A$. Ho appena ottenuto che $I \subset I_N$, quindi evidentemente $I_n=I_N$ per ogni $n\geq N$. \\ Allora $A$ è principalmente noetheriano, e siccome è ad ideali principali ogni elemento irriducibile è primo. Allora è un dominio a fattorizzazione unica.
+	 e quindi esiste $N>0$ tale che $I_N$ contenga i generatori di $I$: questo vale necessariamente per come ho costruito $I$, per come ho scelto gli ideali e per proprietà di $A$. Ho appena ottenuto che $I \subset I_N$, quindi evidentemente $I_n=I_N$ per ogni $n\geq N$. Allora $A$ è principalmente noetheriano, e siccome è ad ideali principali ogni elemento irriducibile è primo. Allora è un dominio a fattorizzazione unica.
 \end{proof}
 \begin{teorema}[Caratterizzazione degli euclidei] 
 	Se $A$ è un dominio euclideo, allora è un dominio ad ideali principali (PID).
@@ -820,7 +819,7 @@ Come abbiamo preannunciato all'inizio dello scorso capitolo, inizieremo a genera
 	\begin{equation*}
 	X \coloneqq \left\{f(a) \ \middle| \ a\in I, a \neq 0\right\}\subset \mathbb{N}
 	\end{equation*}
-	Chiaramente $X$ è non vuoto, ammette un minimo ed un massimo in $\mathbb{N}$. \\ Sia $n_0$ il minimo, sia $a_0 \in I$ tale che $f(a_0)=n_0$. Ora prendo un $b \in I$ con $b=a_0q+r$ per certi $q$ ed $r$ con $q,r\in A$. Ottengo $r=b-a_0q\in I$, quindi $r=0$ per scelta di $a_0$ come minimo di $X$ per gli $a\in I$ non-nulli; allora $b=a_0q$. Per generalità di $b$ ottengo la tesi, $I=(a_0)$.
+	Chiaramente $X$ è non vuoto, ammette un minimo ed un massimo in $\mathbb{N}$. \\ Sia $n_0$ il minimo, sia $a_0 \in I$ tale che $f(a_0)=n_0$. Ora prendo un $b \in I$ con $b=a_0q+r$ per certi $q$ ed $r$ con $q,r\in A$. Ottengo $r=b-a_0q\in I$, quindi $r=0$ per scelta di $a_0$ come minimo di $X$ per gli $a\in I$ non-nulli; allora $b=a_0q$ ed ottengo $I\subset(a_0)$ per generalità di $b$. Siccome l'altra inclusione è banalmente vera - essendo $a_0$ elemento di $I$ ideale - ottengo la tesi, $I=(a_0)$.
 \end{proof}
 \begin{esempio}
 	Possiamo usare i potenti strumenti che abbiamo appena costruito per studiare il caso \enquote{banale} di $\mathbb{Z}$ con facilità, ed addirittura espanderci a casi ben più complessi.
@@ -4279,7 +4278,7 @@ Ogni suo elemento è primitivo se e solo se $s\neq0$, e questo è ovvio. \\ Se $
 \begin{lemma}
 	Sia $\alpha$ primitivo in $F$, allora il suo polinomio minimo è 
 	\begin{equation*}
-	x^2-tr(\alpha)+\N(\alpha)
+	x^2-\tr(\alpha)+\N(\alpha)
 	\end{equation*}
 \end{lemma}
 \begin{proof}
@@ -4355,7 +4354,7 @@ Ogni suo elemento è primitivo se e solo se $s\neq0$, e questo è ovvio. \\ Se $
 	\end{equation*}
 	Se invece $d\equiv1\Mod4$, ho come base intera di $\mathcal{O}_F$ $1$ e $\frac{1+\sqrt{d}}{2}$. In particolare
 	\begin{equation*}
-		\mathcal{O}_F=\mathbb{Z}\left[\frac{a+b\sqrt{d}}{2}\right]
+		\mathcal{O}_F=\mathbb{Z}\left[\frac{1+\sqrt{d}}{2}\right]
 	\end{equation*}
 \end{corollario}
 \begin{proof}
@@ -4372,7 +4371,7 @@ x^2-dy^2=1
 \end{equation*}
 Possiamo quindi studiare il problema come fosse una equazione diofantina. \\ \\ Il teorema di Dirichlet afferma che tutte le unità di $\mathbb{Z}[\sqrt{d}]$ possono essere espresse come potenza di un'unità \enquote{fondamentale}. Diciamo tale unità $x_1+y_1\sqrt{d}$, allora le soluzioni dell'equazione di Pell sono tali che 
 \begin{equation*}
-x_ny_n\sqrt{d}=\left(x_1+y_1\sqrt{d}\right)^2
+x_n+y_n\sqrt{d}=\left(x_1+y_1\sqrt{d}\right)^n
 \end{equation*}
 Un modo per trovare questa unità fondamentale è con le \textit{frazioni continue}. Una volta trovata basta costruirne le potenze ed ottengo tutte le soluzioni.
 \begin{definizione}
@@ -4504,7 +4503,7 @@ Un modo per trovare questa unità fondamentale è con le \textit{frazioni contin
 	\end{equation*}
 	Siccome la norma è moltiplicativa, sappiamo che deve valere 
 	\begin{equation*}
-	m_1m_2=\overline{x}^2+2\overline{y}
+	m_1m_2=\overline{x}^2+2\overline{y}^2
 	\end{equation*}
 	per alcuni $\overline{x}$ ed $\overline{y}$ interi.
 	\begin{align*}
