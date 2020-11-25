@@ -4692,7 +4692,7 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 \end{proof}
 \label{lezione21}
 \begin{proposizione}
-	Sia $A$ un dominio noetheriano, $I$ un suo ideale non-nullo. Allora esistono $P_1,\dots,P_n$ ideali primi tali che $P_1\dots P_n\subset I$.
+	Sia $A$ un dominio noetheriano, $I$ un suo ideale non-nullo. Allora esistono $P_1,\dots,P_n$ ideali primi tali che $P_1\cdots P_n\subset I$.
 \end{proposizione}
 \begin{proof}
 	Supponiamo che questo non sia vero, cioè esistano $J_1,J_2,\dots$ ideali che non contengono un tale prodotto. Siccome $A$ è noetheriano posso prendere $J$ il più grande di questi elementi rispetto all'inclusione, ed in questo caso non è primo (altrimenti soddisferebbe le ipotesi del lemma). Allora esistono $x,y\in A$ tali che $xy$ appartiene a $J$ ma né $x$ nè $y$ vi appartengono. Abbiamo  
@@ -4702,7 +4702,7 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 	e quindi che $J+(x)$ e $J+(y)$ essendo più grandi (sempre secondo l'inclusione) contengono un prodotto di ideali primi. Ma $xy$ appartiene a $J$, quindi il prodotto di questi due ideali primi è contenuto in $J$.
 \end{proof}
 \begin{proposizione}
-	Sia $A$ un anello di Dedekind, $P$ un suo ideale primo. Detto $K$ il campo delle frazioni di $A$, definisco \footnote{Intuitivamente stiamo definendo l'insieme degli elementi del campo delle frazioni con un elemento di $P$ come \enquote{denominatore}.k}
+	Sia $A$ un anello di Dedekind, $P$ un suo ideale primo. Detto $K$ il campo delle frazioni di $A$, definisco \footnote{Intuitivamente stiamo definendo l'insieme degli elementi del campo delle frazioni con un elemento di $P$ come \enquote{denominatore}.}
 	\begin{equation*}
 	P^{-1}=\left\{x\in K\ \mid \ xP\subset A\right\}
 	\end{equation*}
@@ -4712,24 +4712,82 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 	\end{equation*}
 \end{proposizione}
 \begin{proof}
-	Iniziamo con il vedere che $P^{-1}\neq A$. Sia $a\in P$ non-nullo, per il lemma precedente $(a)$ contiene un prodotto di ideali primi $P_1,\dots,P_n$. Possiamo dimostrare che esiste un $i$ tale che $P_i\subset P$, e siccome ci troviamo in un anello di Dedekind $P_i$ è massimale e vale che $P_i=P$. Allora $P_1=P$ e 
+	% TODO: Una possibile dimostrazione diretta?
+	% Supponiamo $I\neq A$, se $A = I$ è ovvio che $AP^{-1} = P^{-1} \neq A$.
+	% Allora se $P\setminus I \neq \varnothing$ allora esiste $x \in P \setminus I $ 
+	% e $i \in I$, segue che $\frac{1}{x} \in P^{-1}$.
+	
+	% NOTE: I did not use the noetherian propriety so, it must be used somewhere to get that 
+	% i/x \in IP^{-1} but \notin I.  
+	
+	% Per cui $\frac{i}{x} \in IP^{-1}$, ma $\frac{i}{x} \notin A$ poiché se fosse in $A$
+	% allora $i - ax = 0$ da cui $ax = i$, ma questo vorrebbe dire che $i \in (x)$ che 
+	% è impossibile dato che se no avrei che $(x) \subset I$. 
+	
+	% NOTE not sure about it, there are some small tweaks that have to be done.
+	
+	% Se $P \setminus I = \varnothing$ allora dev'essere che $P \subset I$, ma $P$ massimale
+	% poiché primo, allora $P=I$ poiché $I \neq A$. Ma allora
+	% $\frac{p}{p} \in PP^{-1}$ e dunque $P \neq PP^{-1}$ poiché $1 \in PP^{-1}$. 
+	Vogliamo mostrare che $A \subsetneq P^{-1}$.
+	Iniziamo con il vedere che $A \subset P^{-1}$. Sia $0 \neq a\in P$, per il lemma precedente $(a)$ contiene un prodotto di ideali primi $P_1,\dots,P_n$ (scelti con il minor $n$ possibile, 
+	questo è ovviamente possibile dato che $n \in \mathbb{N}$). 
+	Possiamo dimostrare che esiste un $i$ tale che $P_i\subset P$.
+	\footnote{Sia $x_i \in P_i$ e $x_i \notin P$ 
+			per ogni $i \in 1,\dots, n$ allora $x_1 \cdots x_n \in P_1 \cdots P_n$ 
+			ma poiche $P$ primo allora $x_1 \cdots x_n \notin P$.}
+	Siccome ci troviamo in un anello di Dedekind $P_i$ è massimale e vale che $P_i=P$. Allora pongo, 
+	senza perdità di generalità, che $i=1$ da cui $P_1=P$. \
+	
+	Se $n = 1$ allora $(a) = P$ e dunque è ovvio che $\frac{1}{a} \in P^{-1}$, ma $\frac{1}{a} \notin A$.\ 
+	
+	Supponiamo $n > 1$ allora dev'essere \footnote{Supponiamo che $P_2 \cdots P_n \subset (a)$, allora avremmo che $P_2 \cdots P_n$ è minimale rispetto a $P_1 \cdots P_n$ contro quanto era stato assunto.} 
 	\begin{equation*}
-	P_2\dots P_n\nsubset (a)
+		P_2\cdots P_n\nsubset (a)
 	\end{equation*}
-	ed esiste un $b$ appartenente a $P_2\dots P_n$ che non appartiene ad $aA$, quindi $a^{-1}b\notin A$. Abbiamo che $bP\subset (a)$ perché $PP_2\dots P_n \subset (a)$, quindi $a^{-1}bP\subset A$, cioè $a^{-1}b\in P^{-1}$ ed $a^{-1}b\notin A$. \\ \\ 
-	Consideriamo ora $\alpha_1,\dots,\alpha_m$ generatori dell'ideale $I$, se fosse $IP^{-1}=P$ allora per ogni $x$ elemento di $P^{-1}$ varrebbe
+	ed esiste un $b \in P_2\cdots P_n$ e tale che $b \notin (a)$. Ma allora quindi $\frac{b}{a}\notin A$, ma $bP\subset (a)$ perché $PP_2\cdots P_n \subset (a)$, quindi $\frac{b}{a}P\subset A$, cioè $\frac{b}{a}\in P^{-1}$. Abbiamo finalmente trovato un elemento che sta in $P^{-1}$ ma non in $A$. \\
+	 
+	Consideriamo ora $\alpha_1,\dots,\alpha_m$ generatori dell'ideale $I$ sappiamo che è finitamente generato poiché siamo in un anello noetheriano. Se fosse $IP^{-1}=I$ allora per ogni $x$ elemento di $P^{-1}$ varrebbe
 	\begin{equation*}
-	x\alpha_i=\sum_i\a{ij}\alpha_j \ \ \ a_{ij}\in A
+	\alpha_i x=\sum_{j=1}^m a_{ij}\alpha_j \ \ \ a_{ij}\in A
 	\end{equation*}
-	Sia dunque $M$ la matrice con entrata $ij$-esima il valore $\delta_{ij}x-a_{ij}$, varrebbe che 
-	\begin{enumerate}
-		\item $M\begin{pmatrix}
-		\alpha_1\\\vdots\\\alpha_m
-		\end{pmatrix}=0$
-		\item $\det(M\alpha_i)=0$ per ogni $i$, quindi $\det(M)=0$
-		\item $x$ è radice del polinomio caratteristico di $M$, ovvero è intero su $A$ (ed appartiene ad $A$)
-	\end{enumerate}
-	Seguirebbe quindi $P^{-1}\subset A$ ed $A\subset P^{-1}$, perciò $P^{-1}=A$.
+	Possiamo riscrivere in forma matriciale come
+	\begin{equation*}
+		\left(
+		\begin{array}{ccc}
+			x-a_{11} & \cdots & -a_{1m} \\
+			\vdots 	 & \ddots & \vdots \\
+			-a_{m1}  & \cdots & x-a_{mm}
+		\end{array}
+		\right)
+		\left(
+		\begin{array}{c}
+			\alpha_1 \\
+			\vdots \\
+			\alpha_m 
+		\end{array}
+		\right) 
+		= 
+		\left(\begin{array}{c}
+			0\\
+			\vdots\\
+			0
+		\end{array}\right)
+	\end{equation*}
+	Quindi se denotiamo con $M$ la matrice di entrate $(\delta_{ij}x-a_{ij})_{ij}$ definita sopra, 
+	possiamo utilizzare il trucchetto del determinante: 
+	Sappiamo per Cramer che $\alpha_i \det(M) = \det(M_i)$ con $M_i$ la matrice $M$ a cui 
+	la colonna $i$-esima è stata sostituita con il vettore $(0,\dots, 0)^t$. Quindi per ogni
+	$\alpha_i$ vale che $\alpha_i \det(M) = 0$, per cui o $\det M = 0$ o $\alpha_i = 0$ per ogni $i$ 
+	(siamo in un dominio dopotutto). 
+	Ovviamente dev'essere che gli $\alpha_i \neq 0$ per ogni $i$ quindi $\det(M) = 0$. 
+	Espandendo il determinante di $M$ avremo 
+	\begin{equation*}
+		x^m + b_{m-1}x^{m-1} + \cdots + b_1 = 0 \quad\ \text{con}\ b_i \in A
+	\end{equation*} 
+	quindi $x$ è intero su $A$ e poiché integralmente chiuso sul campo delle frazioni, segue che $x \in A$.
+	Quindi $P^{-1} \subset A$ e abbiamo già visto che $A \subset P^{-1}$ per cui $P^{-1} = A$, ma questo 
+	è impossibile per quanto visto nella prima parte della dimostrazione. Segue che $IP^{-1} \neq I$.
 \end{proof}
 \begin{definizione}
 	Siano $I,J$ ideali di un anello $A$, scriviamo $I\mid J$ se esiste un ideale $M$ tale che $J=IM$.
@@ -4742,13 +4800,19 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 	\end{enumerate}
 \end{proposizione}
 \begin{proof}
-	Per definizione $A$ è contenuto in $P^{-1}$, inoltre $P\subset PP^{-1}\subset A$. Siccome siamo in un anello di Dedekind $P$ è massimale e $P\neq PP^{-1}$ abbiamo $PP^{-1}=A$. \\ \\ 
+	Per definizione $A$ è contenuto in $P^{-1}$, inoltre $P\subset PP^{-1}\subset A$. Siccome siamo in un anello di Dedekind $P$ è massimale e $P\neq PP^{-1}$ per la proposizione precedente, abbiamo $PP^{-1}=A$. \\ 
+	
 	Se $P \mid I$, cioè se esiste un ideale $J$ tale che $PJ=I$, da $PJ\subset P$ abbiamo $I\subset P$. Viceversa se $I\subset P$ allora $P^{-1}I\subset P^{-1}P=A$, quindi $J=P^{-1}I$ è un ideale e vale 
 	\begin{equation*}
-	PJ=PP^{-1}I=AI=I
+		PJ=PP^{-1}I=AI=I
 	\end{equation*}
-	quindi $P\mid I$. \\ \\
-	Se $P\mid IJ$, allora $IJ\subset P$ implica che $I\subset P$ oppure $J\subset P$. Intuitivamente questo significa che gli ideali primi \enquote{si comportano come i numeri primi}. L'altra implicazione è ovvia.
+	quindi $P\mid I$. \\
+	
+	Se $P\mid IJ$, allora $IJ\subset P$ implica che $I\subset P$ oppure $J\subset P$.
+		\footnote{Sia $IJ \subset P$. Supponiamo che $I \not\subset P$ allora 
+			che $i \notin P$ per qualche $i \in I$. Ma $ij \in P$ per ogni $j \in J$ 
+			per primalità di $P$ segue che $j \in P$ per ogni $j \in J$ ovvero $J \subset P$.}
+	Intuitivamente questo significa che gli ideali primi \enquote{si comportano come i numeri primi}. L'altra implicazione è ovvia.
 \end{proof}
 \begin{teorema}[Teorema di Dedekind]
 	Sia $A$ un anello di Dedekind, allora ogni suo ideale non-nullo si scrive in modo unico come prodotto di ideali primi.
@@ -4756,7 +4820,7 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 \begin{proof}
 	Definiamo
 	\begin{equation*}
-	\mathcal{M}=\left\{I\subset A \text{ ideali non-nulli non prodotto di ideali primi}\right\}
+		\mathcal{M}=\left\{I\subset A\ \text{ideali non-nulli non prodotto di ideali primi}\right\}
 	\end{equation*}
 	Sia $J$ l'elemento più grande rispetto all'inclusione; si noti che posso trovarlo usando il lemma di Zorn. Allora esiste un $P$ tale che $J$ è contenuto in $P$, inoltre
 	\begin{equation*}
@@ -4769,5 +4833,18 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 	\begin{equation*}
 	J=JP^{-1}P=P_1\dots P_nP
 	\end{equation*}
-	L'unicità segue dalla proposizione precedente ed è simile alla dimostrazione dell'unicità della fattorizzazione in $\mathbb{Z}$.
+
+	Per l'unicità supponiamo che 
+	\begin{equation*}
+		J = P_1 \cdots P_n = Q_1 \cdots Q_m
+	\end{equation*}
+	Allora dev'essere che $Q_1 \cdots Q_m \subset P_1$ per cui $P_1 \mid Q_1 \cdots Q_m$ per cui esiste un $Q_i$ tale che 
+	$Q_i \subset P_1$. Ma dev'essere che $P_1 = Q_i$ poiché entrambi ideali massimali. 
+	Se $n = m$ abbiamo finito, basta ripetere la procedura sopra. \\
+	Supponiamo $n < m$ e ripetendo la procedura per ogni ideale $P_i$ con $1 \le i \le n$ si ottiene che 
+	\begin{equation*}
+		J = P_1 \cdots P_n = P_1 \cdots P_n Q_{n+1} \cdots Q_m
+	\end{equation*} 
+    con $Q_k \neq P_i$ per ogni $k > n$ e $1\le i \le n$. Ma per primalità di $Q_k$ segue che esiste $P_i$ 
+    tale che $P_i \subset Q_{k}$ e dunque $Q_k = P_i$ contraddicendo l'ipotesi, segue che $n = m$.
 \end{proof}
