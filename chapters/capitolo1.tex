@@ -920,7 +920,7 @@ per $k$ un naturale positivo. Spesso lo indicheremo come $\mathbb{Z}[\omega]$, $
 		\item Le unità sono $\pm i$ e $\pm 1$.
 		\item Essendo sottoanello di un dominio di integrità (ovvio), $\mathbb{Z}[i]$ è banalmente un dominio di integrità.
 	\end{enumerate}
-	Posso ottenere in modo più algebrico lo stesso risultato?
+	Posso ottenere in modo più rigoroso e generale lo stesso risultato?
 \end{osservazione}
 \begin{definizione}
 	Sia $z=a+b\omega\in\mathbb{Z}[\omega]$, $\omega=\sqrt{-k}$ per un $k$ intero positivo; definisco la \textbf{norma di $z$} come 
@@ -953,8 +953,8 @@ per $k$ un naturale positivo. Spesso lo indicheremo come $\mathbb{Z}[\omega]$, $
 \begin{osservazione}
 	Sia $z=a+b\omega$ un elemento in $\mathbb{Z}[\omega]$ di norma unitaria, quindi un invertibile, per $\omega=\sqrt{-k}$. Questo vuol dire che:
 	\begin{itemize}
-		\item[$(k>1)$] $b=0$ ed $a=\pm1$
 		\item[$(k=1)$] caso degli interi di Gauss
+		\item[$(k>1)$] $b=0$ ed $a=\pm1$
 	\end{itemize}
 \end{osservazione}
 
@@ -1008,18 +1008,22 @@ per $k$ un naturale positivo. Spesso lo indicheremo come $\mathbb{Z}[\omega]$, $
 	\begin{equation*}
 	\frac{z}{w}=x+y\omega \ \ \ \ x,y\in\mathbb{R}
 	\end{equation*}
-	ma questo può non appartenere a $\mathbb{Z}[\omega]$. \\ Prendo $v=a+b\omega$ elemento più vicino alla frazione, visto come punto nel piano di Gauss. Allora posso stimare che 
+	ma questo può non appartenere a $\mathbb{Z}[\omega]$. \\ Prendo $q=a+b\omega$ elemento più vicino alla frazione, visto come punto nel piano di Gauss. Allora posso stimare che 
 	\begin{equation*}
 	|x-a|\leq\frac{1}{2} \ \ \ \ \ \ |y-b|\leq\frac{1}{2}
 	\end{equation*}
 	\begin{equation*}
-	\operatorname{d\left(\frac{z}{w},v\right)}=\sqrt{(x-a)^2+(y-b)^2k}\leq\frac{\sqrt{1+k}}{2}<1
+	\operatorname{d\left(\frac{z}{w},q\right)}=\sqrt{(x-a)^2+(y-b)^2k}\leq\frac{\sqrt{1+k}}{2}<1
 	\end{equation*}
-	dove ho usato il fatto che $k<3$. \\ Pongo $t=(x-a)+(y-b)\omega$, questo elemento ha norma minore di 1 per quanto appena osservato. Posso prendere $q=v$ ed $r=z-wq$, posso mostrare che ho appena costruito la divisione con resto. Infatti
+	dove ho usato il fatto che $k<3$. \\ Posso prendere $r=z-wq$, devo però mostrare che ho appena costruito la divisione con resto. Infatti
 	\begin{align*}
-	N(r)&=N(z-wq)=N\left(w(t+q)-qw\right)\\
-	&=N(tw)=N(t)N(w)<N(w)
+	N(r)
+	&=N(z-wq)=N\left(w(w+y\omega)-qw\right)\\
+	&=N\left(w(x+y\omega-q)\right)\\
+	&=N\left(w(x+y\omega-a-b\omega)\right)\\
+	&=N(x+y\omega-a-b\omega)N(w)<N(w)
 	\end{align*}
+	dove nell'ultimo passaggio ho sfruttato il calcolo della norma appena svolto.
 \end{proof}
 
 
@@ -1228,7 +1232,7 @@ Il \textbf{sistema canonico di rappresentanti} di $\mathbb{Z}_n$ è
 	& \mathbb{Z}_b \arrow[ru, hook] &                               
 	\end{tikzcd}
 	\end{equation*}
-	Siccome $a$ e $b$ dividono $x$, per quanto appena dimostrato $\phi_a$ e $\phi_b$ sono morfismi suriettivi, in quanto composizione di morfismi - tra cui l'inclusione - anche $\phi$ è un morfismo.
+	Siccome $a$ e $b$ dividono $x$, per quanto appena dimostrato $\phi_a$ e $\phi_b$ sono morfismi suriettivi, ed in quanto composizione di morfismi - tra cui l'inclusione - anche $\phi$ è un morfismo.
 	\begin{itemize}
 		\item[(iniettiva)] Studiamo il suo nucleo.
 		\begin{align*}
@@ -1267,7 +1271,7 @@ Il \textbf{sistema canonico di rappresentanti} di $\mathbb{Z}_n$ è
 	\begin{equation*}
 	ax\equiv1\Mod(n)
 	\end{equation*}
-	Invece $\MCD(a,b)=d>1$ equivale a dire $a=dk_a$, $n=dk_n$ per $k_a,k_b\in\mathbb{Z}$ e $k_n\neq0$. Dunque 
+	Invece $\MCD(a,n)=d>1$ equivale a dire $a=dk_a$, $n=dk_n$ per $k_a,k_b\in\mathbb{Z}$ e $k_n\neq0$. Dunque 
 	\begin{equation*}
 	ak_n=(dk_a)k_n=k_an\equiv0\Mod(n)
 	\end{equation*}
@@ -1306,7 +1310,7 @@ Il \textbf{sistema canonico di rappresentanti} di $\mathbb{Z}_n$ è
 \begin{proposizione}\
 	\begin{enumerate}
 		\item La funzione di Eulero è una funzione aritmetica moltiplicativa.
-		\item Per $p$ primo $\phi(p)=p-1$.
+		\item Per $p$ primo $\varphi(p)=p-1$.
 		\item $\varphi(p^e)=p^{e-1}(p-1)$ per $p$ primo.
 	\end{enumerate}
 	Allora nota la fattorizzazione di un $n$ intero posso calcolare il valore di $\phi(n)$; il problema sarà proprio fattorizzare $n$.
@@ -1368,6 +1372,7 @@ Il \textbf{sistema canonico di rappresentanti} di $\mathbb{Z}_n$ è
 	%todo: dimostrazione combinatorica, vedi materiali extra
 \end{proof}
 \begin{teorema}[Teorema di Eulero]
+	\label{eulero}
 	Per ogni $a\in\mathbb{Z}_n^*$ vale la seguente formula.
 	\begin{equation*}
 	a^{\varphi(n)}\equiv 1 \Mod(n)
@@ -1422,14 +1427,21 @@ ma stavolta non è sufficiente a garantire l'esistenza di una soluzione.
 		x\equiv 1\Mod(2)
 	\end{cases}
 	\end{equation*}
-	La prima ci dice che $x = 4k + 2$ e quindi ha come soluzioni numeri pari; la seconda invece dice che $x = 2k + 1$, ovvero ha soluzioni dispari. Un numero intero non può essere sia pari che dispari: la soluzione non esiste. \\ \\ Questo è evidentemente un caso comune; ogni equazione di per sé ha (sempre) un insieme di soluzioni e nulla mi vieta di mettere a sistema due equazioni che non abbiano alcuna soluzione in comune.
+	La prima ci dice che $x = 4k + 2$ e quindi ha come soluzioni numeri pari; la seconda invece dice che $x = 2k + 1$, ovvero ha soluzioni dispari. Un numero intero non può essere sia pari che dispari: la soluzione non esiste. \\ \\ Questo è evidentemente un caso non raro; ogni equazione di per sé ha (sempre) un insieme di soluzioni e nulla mi vieta di mettere a sistema due equazioni che non abbiano alcuna soluzione in comune.
 \end{controesempio}
+\begin{esempio}
+	Proviamo a lavorare sulla congruenza lineare
+	\begin{equation*}
+	3x\equiv5\Mod6
+	\end{equation*}
+	dove $a$ ed $n$ non sono coprimi. Siccome il loro massimo comune divisore 3 non divide $b$ ci troviamo in un caso dove non esiste soluzione. Potremmo confermare ulteriormente la cosa prendendo tutti gli interi nella classe di resto $\mathbb{Z}_6$ e provando a moltiplicarli per 3, nessuno dei possibili prodotti darà mai come risultato la classe di 5.
+\end{esempio}
 \begin{osservazione}
 	Consideriamo ad esempio il sistema di due equazioni
 	\begin{equation*}
 	\begin{cases}
 	a_1x\equiv b_1\Mod(n_1)\\
-	a_2x\equiv b_2\mod(n_2)
+	a_2x\equiv b_2\Mod(n_2)
 	\end{cases}
 	\end{equation*}
 	che sotto le condizioni viste può essere riscritto come 
@@ -1467,7 +1479,7 @@ ma stavolta non è sufficiente a garantire l'esistenza di una soluzione.
 	\varphi:\mathbb{Z}&\longrightarrow\mathbb{Z}_m\times\mathbb{Z}_n\\
 	x&\longmapsto\left([x]_m,[x]_n\right)
 	\end{align*}
-	Se è suriettiva ottengo subito che esiste un $x\in\mathbb{Z}$ tale che $\phi(x)=\left([a]_m,[b]_n\right)$, e questa è la soluzione del sistema.
+	Se è suriettiva ottengo subito che esiste un $x\in\mathbb{Z}$ tale che $\varphi(x)=\left([a]_m,[b]_n\right)$, e questa è la soluzione del sistema.
 	\begin{itemize}
 		\item[(ben definita)] Già visto.
 		\item[(omomorfismo)] Ovvio.
@@ -1477,6 +1489,7 @@ ma stavolta non è sufficiente a garantire l'esistenza di una soluzione.
 		&=\left\{x\in\mathbb{Z} \, \middle| \, \text{$mn$ divide $x$}\right\}\\
 		&=(mn)\mathbb{Z}
 		\end{align*}
+		Si noti che in questo punto stiamo usando l'ipotesi $m$ ed $n$ coprimi.
 		\item[(suriettiva)]
 		La funzione è palesemente suriettiva per costruzione, tutto lo spazio di arrivo viene coperto.
 	\end{itemize}
@@ -1512,7 +1525,7 @@ ma stavolta non è sufficiente a garantire l'esistenza di una soluzione.
 	x&\longmapsto\left([x]_{\alpha},\dots,[x]_{\omega}\right)
 	\end{align*}
 	e dimostrando che è isomorfismo.
-	%todo: proof lunga
+	%todo: proof lunga?
 \end{proof}
 \begin{teorema}[Teorema cinese del resto, generale]
 	Siano $n_1,\dots,n_k\in\mathbb{Z}$ due a due coprimi ed $a_1,\dots,a_k\in\mathbb{Z}$. Allora il sistema 
@@ -1644,21 +1657,17 @@ Come possiamo caratterizzare gli $n$ per cui otteniamo un $\left(\mathbb{Z}_n^*,
 	\begin{equation*}
 	a^{2^{k-2}}\equiv1\Mod2^k
 	\end{equation*}
-	e palesemente il gruppo non può essere ciclico. Ad esempio per la non esistenza di un elemento di ordine $\varphi(2^k)$, cioè di ordine $2^{k-1}$. Infatti un elemento $g$ di tale ordine avrebbe 
-	\begin{equation*}
-	g^{2^{k-1}}=1
-	\end{equation*}
-	ma per quanto appena osservato
+	e palesemente il gruppo non può essere ciclico. Ad esempio per la non esistenza di un elemento di ordine $\varphi(2^k)$, cioè di ordine $2^{k-1}$. Infatti supponiamo che esista un elemento $g$ di tale ordine, questo avrebbe 
 	\begin{align*}
 	g^{2^{k-1}}
-	&=g^{2^{k-2}}g^{2}\\
-	&=1g^{2}=g^{2}\neq1
+	&=g^{2^{k-2}2}=\left(g^{2^{k-2}}\right)^2\\
+	&=\left(1\right)^2=1
 	\end{align*}
-	Infatti se fosse $g^2=1$ avrei che l'ordine dell'elemento $g$ è $2$, ma $\varphi(2^k)=2^{k-1}$ vale $2$ se e solo se $k=2$.
+	Ma nel calcolo abbiamo svolto un passaggio interessante; sfruttando la suddetta relazione si dimostra che elevato alla $2^{k-2}$ restituisce 1, e per richiesta di minimalità nella definizione di ordine questo è un assurdo.
 \end{proof}
-\begin{teorema}
+\begin{proposizione}
 	Sia $g$ generatore di $\mathbb{Z}_p^*$, allora $g$ o $g+p$ è un generatore di $\mathbb{Z}_{p^2}^*$.
-\end{teorema}
+\end{proposizione}
 \begin{proof}
 	Sia $m$ l'ordine di $g$ in $\mathbb{Z}_{p^2}^*$, abbiamo che
 	\begin{enumerate}
@@ -1672,13 +1681,13 @@ Come possiamo caratterizzare gli $n$ per cui otteniamo un $\left(\mathbb{Z}_n^*,
 		(g+p)^{p-1}&\equiv g^{p-1}+(p-1)pg^{p-2}\Mod p^2\\ 
 		&\equiv 1-pg^{p-2}\Mod p^2 \nequiv 1\Mod p^2
 		\end{align*}
-		e quindi $p^2$ non divide $pg^{p-2}$, $n\neq p-1$.
+		e quindi $p^2$ non divide $pg^{p-2}$, non può essere che $n\neq p-1$.
 		\item[($m=p(p-1)$)] Caso ovvio, $g$ genera $\mathbb{Z}_{p^2}^*$.
 	\end{itemize}
 \end{proof}
-\begin{corollario}
-	Un generatore di $\mathbb{Z}_{p^2}^*$ è un generatore di $\mathbb{Z}_{p^e}^*$,  per $p > 2$ primo e $e\geq2$.
-\end{corollario}
+\begin{teorema}
+	Un generatore di $\mathbb{Z}_{p^2}^*$ è anche un generatore di $\mathbb{Z}_{p^e}^*$,  per $p > 2$ primo e $e\geq2$. In particolare possiamo dire che $\mathbb{Z}_{p^k}^*$ è ciclico per ogni $k$ (positivo).
+\end{teorema}
 \begin{proof}
 	Siano $e\geq2$ e $g$ generatore di $\mathbb{Z}_{p^e}^*$, voglio mostrare che è generatore anche di $\mathbb{Z}_{p^{e+1}}^*$. \\ \\ Sia $d$ l'ordine di $g$ in $\mathbb{Z}_{p^{e+1}}^*$, come prima notiamo che 
 	\begin{itemize}
@@ -1686,17 +1695,16 @@ Come possiamo caratterizzare gli $n$ per cui otteniamo un $\left(\mathbb{Z}_n^*,
 		\item $d$ divide $p^{e-1}(p-1)$
 		\item $p^e(p-1)=p^{e-1}p(p-1)$
 	\end{itemize}
-Allora $d=p^{e-1}(p-1)$ oppure $d=p^e(p-1)$. Vogliamo vedere che $g^{p^{e-1}(p-1)}$ non equivale ad $1\Mod p^{e+1}$. \\ Sappiamo che:
-\begin{itemize}
-	\item $g^{p^{e-2}(p-1)}$ non equivale ad $1\Mod p^e$
-	\item $g^{p^{e-2}(p-1)}$ equivale ad $1\Mod p^{e-1}$
-\end{itemize}
-quindi $g^{p^{e-2}(p-1)}=1+kp^{e-1}$ e $p$ non divide $k$.
+Allora $d=p^{e-1}(p-1)$ oppure $d=p^e(p-1)$. Vogliamo vedere che $g^{p^{e-1}(p-1)}$ non equivale ad $1\Mod p^{e+1}$. Sappiamo che per il teorema di Eulero (Teorema \ref{eulero})
+\begin{equation*}
+	g^{p^{e-2}(p-1)}\equiv1\Mod p^{e-1}
+\end{equation*}
+quindi $g^{p^{e-2}(p-1)}=1+kp^{e-1}$, $p$ ovviamente non divide $k$.
 \begin{align*}
 g^{p^{e-1}(p-1)}&=\left(1+kp^{e-1}\right)^p\equiv 1+kp^e+\frac{1}{2}k^2p^{2e-1}(p-1)\Mod p^{e+1}\\
 &\equiv 1+kp^e\Mod p^{e+1}\nequiv1\Mod p^{e+1}
 \end{align*}
-Nell'ultimo passaggio ho usato il fatto che $p$ non divide $k$.
+Nell'ultimo passaggio ho usato il fatto che $p$ non divide $k$. Allora necessariamente $d=p^e(p-1)$ ed avendo trovato un generatore ho dimostrato la tesi, la ciclicità del gruppo moltiplicativo segue subito.
 \end{proof}
 \begin{corollario}
 	$\left(\mathbb{Z}_{2p^k}^*,\cdot\right)$ è ciclico.
@@ -1717,7 +1725,7 @@ Nell'ultimo passaggio ho usato il fatto che $p$ non divide $k$.
 	\begin{equation*}
 	\mathbb{Z}_n^*\simeq\mathbb{Z}_{p_1^{e_1}}^*\times\dots\times\mathbb{Z}_{p_r^{e_r}}^*
 	\end{equation*}
-	e possiamo sfruttare il fatto che $\left|\mathbb{Z}_{p_j^{e_j}}^*\right|=\varphi\left(p_j^{e_j}\right)$, sempre pari tranne per $p_i=2$ ed $e_i=1$. Ci basta mostrare che se $G$ ed $H$ sono gruppi ciclici di ordine pari, allora $G\times H$ non è ciclico. Sia $2a$ l'ordine di $G$, $2b$ quello di $H$. \\ Sia $(x,y)\in G\times H$, allora
+	e possiamo sfruttare il fatto che $\left|\mathbb{Z}_{p_j^{e_j}}^*\right|=\varphi\left(p_j^{e_j}\right)$ sia sempre pari (tranne per $p_i=2$ ed $e_i=1$). Ci basta mostrare che se $G$ ed $H$ sono gruppi ciclici di ordine pari $G\times H$ non può essere ciclico, difatti questo risultato invaliderebbe automaticamente tutti i casi non elencati. Per vedere che questa affermazione vale basti pensare al fatto che tutti i nostri casi si possono riassumere in $n$ primo, potenza di primo, potenza di primo moltiplicata per due e $2^k$ per $k=1,2$. Ogni altro tentativo di costruire un gruppo ciclico di ordine $n$ non tra quelli elencati genererebbe un gruppo di ordine pari prodotto di gruppi di ordine pari \\ \\ Verifichiamo allora questo risultato intermedio. Sia $2a$ l'ordine di $G$, $2b$ quello di $H$. Sia $(x,y)\in G\times H$, vediamo subito che
 	\begin{equation*}
 	(x,y)^{2ab}=(x^{2ab},y^{2ab})=(1,1)
 	\end{equation*}
@@ -1755,7 +1763,7 @@ Nell'ultimo passaggio ho usato il fatto che $p$ non divide $k$.
 		111  &= 7 \cdot 16 - 1 \\
 		16   &= -16\cdot -1 + 0
 	\end{align*}	
-    Dove è stato usato il trucco di $-\lfloor b/2\rfloor < r \le\lfloor{b/2}\rfloor$ per ridurre il numero di passi. Adesso possiamo trovare gli $x,y$ dell'identità di Bezout:
+    Si noti che abbiamo usato il trucco di $-\lfloor b/2\rfloor < r \le\lfloor{b/2}\rfloor$ per ridurre il numero di passi. Adesso possiamo trovare gli $x,y$ dell'identità di Bezout:
     \begin{align*}
     	-1 &= 111 - 7 \cdot 16 \\
     	-1 &= 111 - 7 \cdot (127 - 111) \\
@@ -1775,11 +1783,11 @@ Nell'ultimo passaggio ho usato il fatto che $p$ non divide $k$.
 	\begin{equation*}
 	x\equiv3^{-1}\cdot4\Mod(17)\equiv7\Mod17
 	\end{equation*}
-	Allora $x$ equivale a $7\Mod17$, ho come soluzione tutti gli interi
+	Allora $x$ equivale a $7\Mod17$, ho come possibili soluzioni tutti gli interi
 	\begin{equation*}
 	7,24,41,58,\dots
 	\end{equation*}
-	In particolare in $\mathbb{Z}_{51}$ ho come soluzioni $7,24,41$.
+	In particolare in $\mathbb{Z}_{51}$ ho come soluzioni $7,24,41,\dots$
 \end{esercizio}
 \begin{esercizio}
 	Determinare le due cifre finali di $17^{894283}$. \\ \\ Facciamo due osservazioni preliminari:
@@ -1793,7 +1801,13 @@ Nell'ultimo passaggio ho usato il fatto che $p$ non divide $k$.
 	\begin{equation*}
 	17^{894283}=17^{22357\cdot40+3}=\left(17^{40}\right)^{22357}\cdot17^3\equiv17^3\Mod100
 	\end{equation*}
-	Svolgendo i calcoli otteniamo $13\mod100$. Si noti che nel secondo passaggio ho usato il teorema di Eulero, per ogni $a$ vale $a^{\varphi(n)}\equiv1\Mod(n)$.
+	Svolgendo i calcoli otteniamo $13\mod100$. Si noti che nel secondo passaggio ho usato il Teorema \ref{eulero} di Eulero: per ogni $a$ vale $a^{\varphi(n)}\equiv1\Mod(n)$, quindi in generale basterà ricondursi alla forma 
+	\begin{align*}
+		a^{k}
+		&\equiv a^{\varphi(n)+q}\Mod(n)\\
+		&\equiv a^{\varphi(n)}a^{r}\Mod(n)\\
+		&\equiv a^r \Mod(n)
+	\end{align*}
 \end{esercizio}
 \begin{esercizio} Risolvere il sistema:
 	\begin{equation*}
@@ -1822,7 +1836,7 @@ Nell'ultimo passaggio ho usato il fatto che $p$ non divide $k$.
 	\begin{equation*}
 		3^{12007}+5^{36184}
 	\end{equation*}
-	Siccome 3 e 27 non sono coprimi $3\notin\mathbb{Z}_{27}^*$ e non posso usare il teorema di Eulero. Tuttavia notiamo che
+	Siccome 3 e 27 non sono coprimi $3\notin\mathbb{Z}_{27}^*$ e per questo addendo non posso usare il teorema di Eulero. Tuttavia notiamo che
 	\begin{align*}
 	3^0&=1\\
 	3^1&=3\\
@@ -1834,9 +1848,9 @@ Nell'ultimo passaggio ho usato il fatto che $p$ non divide $k$.
 	\varphi(27)=\varphi(3^3)=18
 	\end{equation*}
 	\begin{equation*}
-	36184\equiv4\Mod18
+	36184\equiv(2010)(18)+4\Mod18\equiv4\Mod18
 	\end{equation*}
-	quindi $5^{36184}\equiv5^4\Mod27\equiv4\Mod27$. Possiamo concludere che 
+	quindi per il teorema di Eulero applicato al secondo addendo ottengo $5^{36184}\equiv5^4\Mod27\equiv4\Mod27$. Possiamo concludere che 
 	\begin{equation*}
 	3^{12007}+5^{36184}\equiv0+4\Mod27\equiv4\Mod27
 	\end{equation*}
