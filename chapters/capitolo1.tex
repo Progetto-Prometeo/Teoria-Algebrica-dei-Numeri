@@ -2872,6 +2872,34 @@ Sicuramente non basta usare il criterio di Eulero, ci sono infiniti primi da con
 	\end{equation*}
 	e da questo infine la tesi.
 \end{proof}
+\begin{proof}[Un'altra dimostrazione del secondo complemento]
+	Osserviamo che basta applicare il Lemma di Gauss ricordando che $S$ è quell'insieme tale che
+	\begin{equation*}
+		2k \in S \iff 2k > \frac{p}{2} \land k < \frac{p-1}{2} \iff k > \left\lfloor \frac{p}{4}\right\rfloor \land k < \frac{p-1}{2}	
+	\end{equation*}
+ 	È dunque evidente che $|S| = \frac{p-1}{2} - \left\lfloor\frac{p}{4} \right\rfloor$.
+	Ora verifichiamo i risultati modulo $8$.
+	\begin{enumerate}
+		\item[$p \equiv 1 \mod 8$] Calcoliamo $|S|$
+		\begin{equation*}
+			|S| \equiv \frac{p-1}{2} - \left\lfloor\frac{p}{4}\right\rfloor  \equiv 0 - 0 \equiv 0 \mod 2
+		\end{equation*}
+		\item[$p \equiv 3 \mod 8$] Calcoliamo $|S|$
+		\begin{equation*}
+			|S| \equiv \frac{p-1}{2} - \left\lfloor\frac{p}{4} \right\rfloor \equiv 1 - 0 \equiv 1 \mod 2	
+		\end{equation*}
+		\item[$p \equiv 5 \mod 8$] Calcoliamo $|S|$
+		\begin{equation*}
+			|S| \equiv \frac{p-1}{2} - \left\lfloor\frac{p}{4}\right\rfloor  \equiv 0 - 1 \equiv 1 \mod 2
+		\end{equation*}
+		\item[$p \equiv 7 \mod 8$] Calcoliamo $|S|$
+		\begin{equation*}
+			|S| \equiv \frac{p-1}{2} - \left\lfloor\frac{p}{4}\right\rfloor  \equiv 1 - 1 \equiv 0 \mod 2
+		\end{equation*}
+	\end{enumerate}
+	Da cui la tesi.
+\end{proof}
+
 \begin{proof}
 	\label{lezione13}
 	Dimostriamo la legge di reciprocità quadratica. \\ \\ Prima di tutto dimostriamo che se $a\in\mathbb{Z}_p^*$ è dispari allora vale
