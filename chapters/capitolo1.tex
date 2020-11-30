@@ -2862,6 +2862,8 @@ Sicuramente non basta usare il criterio di Eulero, ci sono infiniti primi da con
 	\end{equation*}
 \end{corollario}
 \begin{proof}
+	Ricordiamo il caso banale in cui $p = 2$ in questo caso $(\frac{2}{2}) = 0$.
+	Altrimenti cerchiamo di calcolare $|S| = n$ relativo al Lemma di Gauss
 	\begin{equation*}
 	ka=\left[\frac{ka}{p}\right]p+t_k
 	\end{equation*}
@@ -2880,9 +2882,9 @@ Sicuramente non basta usare il criterio di Eulero, ci sono infiniti primi da con
 	Per $a=2$ la terza osservazione diventa 
 	%todo: forse non dovrebbe esserci p dopo le quadre, controllare
 	\begin{equation*}
-	\sum_{k=1}^{\frac{p-1}{2}}k\equiv-n\Mod2\equiv n\Mod2
+	\sum_{k=1}^{\frac{p-1}{2}}k\equiv-n\equiv n\Mod2
 	\end{equation*}
-	Utilizzando $\sum_{k=1}^{\frac{p-1}{2}}k=\frac{p-1}{2}\left(\frac{p-1}{2}+1\right)\frac{1}{2}^\frac{p^2-1}{8} $ ed il lemma di Gauss otteniamo
+	Utilizzando $\sum_{k=1}^{\frac{p-1}{2}}k=\frac{p-1}{2}\left(\frac{p-1}{2}+1\right)\frac{1}{2}$ ed il lemma di Gauss otteniamo
 	\begin{equation*}
 	\leg{2}{p}=(-1)^n=(-1)^{\sum_{k=1}^{\frac{p-1}{2}}k}=(-1)^{\frac{p^2-1}{8}}
 	\end{equation*}
@@ -2892,9 +2894,9 @@ Sicuramente non basta usare il criterio di Eulero, ci sono infiniti primi da con
 	\label{lezione13}
 	Dimostriamo la legge di reciprocità quadratica. \\ \\ Prima di tutto dimostriamo che se $a\in\mathbb{Z}_p^*$ è dispari allora vale
 	\begin{equation*}
-	n\equiv\sum_{k=1}^{2}\left[\frac{ka}{p}\right]\Mod2
+	n\equiv\sum_{k=1}^{\frac{p-1}{2}}\left[\frac{ka}{p}\right]\Mod2
 	\end{equation*}
-	dove $n$ è preso dal lemma di Gauss. Questo implicherà $\leg{a}{p}=(-1)^{\sum_{k=1}^{2}\left[\frac{ka}{p}\right]}$. Esattamente come fatto nella dimostrazione del secondo complemento scrivo $ka=\left[\frac{ka}{p}\right]p+t$ e riscrivo le sommatorie viste, ma per $a$ dispari.
+	dove $n$ è preso dal lemma di Gauss. Questo implicherà $\leg{a}{p}=(-1)^{\sum_{k=1}^{\frac{p-1}{2}}\left[\frac{ka}{p}\right]}$. Esattamente come fatto nella dimostrazione del secondo complemento scrivo $ka=\left[\frac{ka}{p}\right]p+t_k$ e riscrivo le sommatorie viste, ma per $a$ dispari.
 	\begin{equation*}
 	0\equiv\sum_{k=1}^{\frac{p-1}{2}}\left[\frac{ka}{p}\right]-n \ \Mod2
 	\end{equation*}
