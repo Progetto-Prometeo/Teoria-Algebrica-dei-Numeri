@@ -3147,6 +3147,31 @@ Risulta evidente che posso costruire le classi di resto in modo esattamente anal
 	\label{gauss_pol}
 	Sia $f(x)\in\mathbb{Z}[x]$, se $f$ si fattorizza nel prodotto di due polinomi in $\mathbb{Q}[x]$ allora si fattorizza anche nel prodotto di due polinomi in $\mathbb{Z}[x]$.
 \end{teorema}
+\begin{proof}
+	Possiamo dimostrarlo nel caso più generale in cui $A$ è un UFD e $K$ campo delle frazioni di $A$. 
+	Quindi osserviamo che ci basta dimostrare nel caso di due polinomi $f,g \in A[x]$ che 
+	$\operatorname{cont}(fg) = \operatorname{cont}(f)\operatorname{cont}(g)$. 
+	Vediamo che possiamo ridurci al caso in cui $f,g$ primitivi, ovvero $\operatorname{cont}(f),\operatorname{cont}(g) = 1$.
+	Infatti supponendo che valga in quel caso, e non fossero primitivi valrebbe 
+	che $f = \operatorname{cont}(f)f'$ per un qualche $f' \in A[x]$ primitivo. Dunque
+	\begin{equation*}
+		\operatorname{cont}(fg) = \operatorname{cont}(\operatorname{cont}(f)f'\operatorname{cont}(g)g') = \operatorname{cont}(f)\operatorname{cont}(g)
+	\end{equation*}
+	Quindi siano $f,g$ primitivi allora osserviamo che $A/P$ per un qualsiasi ideale primo, induce un omomorfismo 
+	$\varphi \colon A[x] \to A/P[x]$. Ma essendo che $f,g$ primitivi e $\varphi$ omomorfismo dev'essere che 
+	$\varphi(f),\varphi(g) \not\equiv 0$. Inoltre $A/P[x]$ è un dominio quindi $\varphi(f)\varphi(g) \not\equiv 0$.
+	Per proprietà di omomorfismo vale $\varphi(fg) = \varphi(f)\varphi(g)$ segue che 
+	$\varphi(fg) \neq 0$ per ogni primo $P$. Ovvero $\operatorname{cont}(fg) = 1$.\\
+	
+	In particolare se $f$ si fattorizza in prodotto di due polinomi in $K[x]$, dati $g,h \in K[x]$
+	\begin{equation*}
+		f(x) = g(x)h(x)
+	\end{equation*}
+	allora sia $g = \operatorname{cont}(g)g'$ con $g' \in A[x]$ e analogamente per $h$. 
+	Pertanto $f(x) = \operatorname{cont}(g)\operatorname{cont}(h)g'(x)h'(x)$ ma 
+	$\operatorname{cont}(g)\operatorname{cont}(h) = \operatorname{cont}(f) \in A$ e dunque 
+	abbiamo trovato una fattorizzazione in $A[x]$ per $f$. 
+\end{proof}
 \begin{teorema}
 	Sia $f(x)=a_nx^n+\dots+a_1x+a_0\in\mathbb{Z}[x]$ con $a_n\neq0$, se $f$ ha radici in $\mathbb{Q}[x]$ allora ne ho una nella forma $\frac{p}{q}$ dove $p$ divide $a_0$ e $q$ divide $a_n$, $p$ e $q$ coprimi.
 \end{teorema}
