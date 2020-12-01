@@ -93,7 +93,89 @@
 \end{esercizio}
 
 \begin{esercizio}
+	Trovare per quali $p$ primi ammette soluzioni non banali la seguente equazione
+	\begin{equation*}
+		x^2 - 5y^2 \equiv 0 \mod p
+	\end{equation*}
 	
+	È ovvio che ammette soluzioni se e solo se $a^2 \equiv 5 \mod p$ dato che i 
+	quadrati sono un gruppo rispetto al prodotto in un campo. Pertanto studiamo
+	attraverso i potenti mezzi della reciprocità quadratica quando $5$ risulta essere 
+	un quadrato. Per reciprocità quadratica
+	\begin{equation*}
+		 \left(\frac{5}{p}\right) \left(\frac{p}{5}\right) = (-1)^{\frac{p-1}{2}}
+	\end{equation*}
+	dunque abbiamo due casi 
+	\begin{equation*}
+		\begin{cases}
+			\left(\frac{p}{5}\right) = 1 \iff p \equiv  1, 4 \mod 5 \\
+			\left(\frac{p}{5}\right) = -1 \iff p \equiv 2, 3 \mod 5 \\	
+		\end{cases}
+	\end{equation*}
+	dato che $p$ è primo la classe di resto $0$ non può essere considerata.
+	\begin{enumerate}
+		\item Sia $p \equiv 1 \mod 5$ allora 
+			\begin{equation*}
+				\left(\frac{5}{p}\right) = (-1)^{\frac{p-1}{2}}
+			\end{equation*}
+			a questo punto dobbiamo ulteriormente suddividere nei due casi 
+			$p \equiv 1 \mod 4$ e $p \equiv 3 \mod 4$. Allora otteniamo che
+			l'unico modo per cui  $(-1)^{\frac{p-1}{2}}= 1$ dev'essere per
+			$p \equiv 1 \mod 4$. Attraverso il TCR otteniamo la soluzione
+			\begin{equation*}
+				\begin{cases}
+					p \equiv 1 \mod 5 \\
+					p \equiv 1 \mod 4
+				\end{cases}
+			\end{equation*}
+			ovvero $p = 20n + 1$.
+		\item Sia $p \equiv 4 \mod 5$ allora 
+			\begin{equation*}
+				\left(\frac{5}{p}\right) = (-1)^{\frac{p-1}{2}}
+			\end{equation*}
+			a questo punto dobbiamo ulteriormente suddividere nei due casi 
+			$p \equiv 1 \mod 4$ e $p \equiv 3 \mod 4$. Allora otteniamo che
+			l'unico modo per cui  $(-1)^{\frac{p-1}{2}}= 1$ dev'essere per
+			$p \equiv 1 \mod 4$. Attraverso il TCR otteniamo la soluzione
+			\begin{equation*}
+				\begin{cases}
+					p \equiv 4 \mod 5 \\
+					p \equiv 1 \mod 4
+				\end{cases}
+			\end{equation*}
+			ovvero $p = 20n + 9$.
+		\item Sia $p \equiv 2 \mod 5$ allora 
+			\begin{equation*}
+				\left(\frac{5}{p}\right) = -(-1)^{\frac{p-1}{2}}
+			\end{equation*}
+			a questo punto dobbiamo ulteriormente suddividere nei due casi 
+			$p \equiv 1 \mod 4$ e $p \equiv 3 \mod 4$. Allora otteniamo che
+			l'unico modo per cui  $-(-1)^{\frac{p-1}{2}}= 1$ dev'essere per
+			$p \equiv 3 \mod 4$. Attraverso il TCR otteniamo la soluzione
+			\begin{equation*}
+				\begin{cases}
+					p \equiv 2 \mod 5 \\
+					p \equiv 3 \mod 4
+				\end{cases}
+			\end{equation*}
+			ovvero $p = 20n + 7$.
+		\item Sia $p \equiv 3 \mod 5$ allora 
+			\begin{equation*}
+				\left(\frac{5}{p}\right) = -(-1)^{\frac{p-1}{2}}
+			\end{equation*}
+			a questo punto dobbiamo ulteriormente suddividere nei due casi 
+			$p \equiv 1 \mod 4$ e $p \equiv 3 \mod 4$. Allora otteniamo che
+			l'unico modo per cui  $-(-1)^{\frac{p-1}{2}}= 1$ dev'essere per
+			$p \equiv 3 \mod 4$. Attraverso il TCR otteniamo la soluzione
+			\begin{equation*}
+				\begin{cases}
+					p \equiv 3 \mod 5 \\
+					p \equiv 3 \mod 4
+				\end{cases}
+			\end{equation*}
+			ovvero $p = 20n + 3$.
+	\end{enumerate}
+	Per cui alcuni esempi sono per $p = 3, 7, 23, 29, \dots$.
 \end{esercizio}
 
 \begin{esercizio}
