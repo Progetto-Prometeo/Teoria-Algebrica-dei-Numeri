@@ -384,6 +384,35 @@ Se la risposta è \textit{nessuna}, siamo ancora in tempo per rimediare.
 
 
 
+\begin{osservazione}
+	L'infinità dei numeri primi non è cosa banale. Seppur richiede l'uso di qualche notazione non banale 
+	scrivo qui un possibile esempio di un anello a fattorizzazione unica (che non sia un campo) e che ha 
+	esattamente $n$ numeri primi.\
+	
+	Consideriamo la successione dei numeri primi $\{p_k\}_{k \ge 0}$ con $p_k \in \mathbb{Z}$ primo positivo.
+	Sia $S = \mathbb{Z} \setminus \bigcup_{k\ge0}^{n-1} (p_k)$, allora definiamo con $S^{-1}\mathbb{Z}$ la
+	localizzazione di $\mathbb{Z}$ rispetto a $S$. Per un noto teorema di algebra commutativa un ideale è primo
+	nella localizzazione $S^{-1}P \in \operatorname{Spec}(S^{-1}\mathbb{Z})$ se e solo se $P \in 
+	\operatorname{Spec}(\mathbb{Z})$, ovvero è primo, e $S \cap P = \varnothing$. Allora si vede che gli
+	unici ideali primi di $\mathbb{Z}$ aventi intersezione banale con $S$ sono proprio gli ideali $(p_k)$ per 
+	$0 \le k \le n-1$, questi corrisponderanno a degli ideali primi $S^{-1}P \subset S^{-1}\mathbb{Z}$.
+	Pertanto l'anello può avere solo $n$ primi.\
+	 
+	Vediamo che $S^{-1}\mathbb{Z}$ è un dominio a ideali principali. Infatti sia $I$ un ideale, allora
+	sarà della forma
+	\begin{equation*}
+		I = \left\{ \frac{i}{s} \in S^{-1}\mathbb{Z}\, \middle|\, i \in J \subset \mathbb{Z}, s \in S \right\}
+	\end{equation*}	
+	quindi la parte fondamentale di $I$ è data da un ideale $J \subset \mathbb{Z}$ (infatti il denominatore è
+	formato da invertibili e un ideale è chiuso per prodotto di elementi dell'anello); ma $J$ è un ideale 
+	principale poiché vive in $\mathbb{Z}$, dunque anche $I$ lo è. Per cui $S^{-1}\mathbb{Z}$ è un 
+	\textit{principal ideal domain} e di conseguenza un dominio a fattorizzazione unica.\ 
+	
+	Riassumendo: abbiamo trovato un anello a fattorizzazione unica, con cardinalità più che numerabile che 
+	ha un numero finito ($\ge 1$) di fattori primi. 
+\end{osservazione}
+
+
 \section{Le funzioni aritmetiche su $\mathbb{N}$}
 \subsection{Definizioni e proprietà}
 Da adesso in poi useremo per comodità la notazione $(n,m)$ per indicare il massimo comune divisore tra $m$ ed $n$.\\ Nel caso dovesse essere ambigua (ad esempio in presenza del generatore di un ideale) torneremo alla notazione meno compatta.
