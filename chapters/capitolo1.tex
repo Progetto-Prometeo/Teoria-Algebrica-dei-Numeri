@@ -352,9 +352,8 @@ Se la risposta è \textit{nessuna}, siamo ancora in tempo per rimediare.
 	allora palesemente $p_i$ non divide $Q_i$ per ogni $i$, ma divide $Q_j$ per ogni $i\neq j$. Sia $S=\sum_{i=1}^nQ_i$, esiste un primo $q$ che divide $S$ (per teorema fondamentale dell'algebra) e non sia nessuno dei $p_i$ (questo per costruzione dei $Q_i$).
 \end{proof}
 \begin{proof}[Dimostrazione di Cerruti] 
-	Consideriamo la \textit{funzione di Legendre}: 
-	%todo: funzione di legendre? wtf? introdurre le nuove funzioni? aggiungere collegamento alla cosa su legendre che ha scritto giorgio
-	% IDEA: Fare un formulario alla fine del libro con cose interessanti di particolari funzioni aritmetiche (?)
+	Consideriamo la \textit{funzione di Legendre}\footnote{Si veda l'appendice dedicata per altre informazioni e curiosità.}:
+	%TODO IDEA: Fare un formulario alla fine del libro con cose interessanti di particolari funzioni aritmetiche (?)
 	\begin{equation*}
 	\phi(x,y)=\left|\left\{n\in \mathbb{N} \, \middle| \, \text{$1\leq n \leq x$, $n$ non ha fattori primi $p\leq y$}  \right\}\right|
 	\end{equation*}
@@ -384,35 +383,6 @@ Se la risposta è \textit{nessuna}, siamo ancora in tempo per rimediare.
 
 
 
-\begin{osservazione}
-	L'infinità dei numeri primi non è cosa banale. Seppur richiede l'uso di qualche notazione non banale 
-	scrivo qui un possibile esempio di un anello a fattorizzazione unica (che non sia un campo) e che ha 
-	esattamente $n$ numeri primi.\
-	
-	Consideriamo la successione dei numeri primi $\{p_k\}_{k \ge 0}$ con $p_k \in \mathbb{Z}$ primo positivo.
-	Sia $S = \mathbb{Z} \setminus \bigcup_{k\ge0}^{n-1} (p_k)$, allora definiamo con $S^{-1}\mathbb{Z}$ la
-	localizzazione di $\mathbb{Z}$ rispetto a $S$. Per un noto teorema di algebra commutativa un ideale è primo
-	nella localizzazione $S^{-1}P \in \operatorname{Spec}(S^{-1}\mathbb{Z})$ se e solo se $P \in 
-	\operatorname{Spec}(\mathbb{Z})$, ovvero è primo, e $S \cap P = \varnothing$. Allora si vede che gli
-	unici ideali primi di $\mathbb{Z}$ aventi intersezione banale con $S$ sono proprio gli ideali $(p_k)$ per 
-	$0 \le k \le n-1$, questi corrisponderanno a degli ideali primi $S^{-1}P \subset S^{-1}\mathbb{Z}$.
-	Pertanto l'anello può avere solo $n$ primi.\
-	 
-	Vediamo che $S^{-1}\mathbb{Z}$ è un dominio a ideali principali. Infatti sia $I$ un ideale, allora
-	sarà della forma
-	\begin{equation*}
-		I = \left\{ \frac{i}{s} \in S^{-1}\mathbb{Z}\, \middle|\, i \in J \subset \mathbb{Z}, s \in S \right\}
-	\end{equation*}	
-	quindi la parte fondamentale di $I$ è data da un ideale $J \subset \mathbb{Z}$ (infatti il denominatore è
-	formato da invertibili e un ideale è chiuso per prodotto di elementi dell'anello); ma $J$ è un ideale 
-	principale poiché vive in $\mathbb{Z}$, dunque anche $I$ lo è. Per cui $S^{-1}\mathbb{Z}$ è un 
-	\textit{principal ideal domain} e di conseguenza un dominio a fattorizzazione unica.\ 
-	
-	Riassumendo: abbiamo trovato un anello a fattorizzazione unica, con cardinalità più che numerabile che 
-	ha un numero finito ($\ge 1$) di fattori primi. 
-\end{osservazione}
-
-
 \section{Le funzioni aritmetiche su $\mathbb{N}$}
 \subsection{Definizioni e proprietà}
 Da adesso in poi useremo per comodità la notazione $(n,m)$ per indicare il massimo comune divisore tra $m$ ed $n$.\\ Nel caso dovesse essere ambigua (ad esempio in presenza del generatore di un ideale) torneremo alla notazione meno compatta.
@@ -422,7 +392,7 @@ Da adesso in poi useremo per comodità la notazione $(n,m)$ per indicare il mass
 	f:\mathbb{N}\longrightarrow\mathbb{C}
 	\end{equation*}
 	\textit{In molti dei casi più importanti $f(n)$ è un intero che descrive una proprietà di $n$ nella teoria dei numeri.}} (\cite[capitolo 8, pagina 143]{J12}) \\ \\
-	\enquote{\textit{Funzioni $f(n)$ sugli interi positivi definite in modo da esprimere una proprietà aritmetica di $n$ sono dette \textbf{funzioni aritmetiche}.}}(\cite[capitolo 16, pagina 133; quarta edizione]{H08})%todo: mette un + a caso nel tag biblio [Har+08]
+	\enquote{\textit{Funzioni $f(n)$ sugli interi positivi definite in modo da esprimere una proprietà aritmetica di $n$ sono dette \textbf{funzioni aritmetiche}.}}(\cite[capitolo 16, pagina 133; quarta edizione]{H08})
 \end{definizione}
 Non sempre è facile definire le funzioni aritmetiche, difatti come abbiamo visto possono essere date definizioni molto diverse ma nello stesso spirito. \\ Per noi una funzione sarà tale solo se avrà valori in $\mathbb{C}$, ma sottintenderemo la sua capacità del rappresentare una proprietà di $n$ (non ci interessa che le funzioni senza tali proprietà siano aritmetiche o meno). 
 \begin{definizione}[Funzione aritmetica]
@@ -565,22 +535,23 @@ La proprietà descritta è palese; vediamo qualche esempio.
 \begin{equation*}
 \sigma_k(n)=\sum_{d\mid n}d^k
 \end{equation*}
-\begin{equation*}
-d(n)=\sum_{d\mid n}1
-\end{equation*}
-Notiamo che $\sigma_0(n)=d(n)$ e $\sigma_1(n)=\sigma(n)$, la funzione somma dei divisori di $n$. \\ Abbastanza evidentemente $d(n)$ restituisce il numero di divisori di $n$. Invece $\sigma_k(n)$ è la somma delle $k$-esime potenze dei divisori di $n$.
+Per $k=0$ diciamo $\sigma_0(n)$ la funzione $d(n)$, che \enquote{conta} i divisori di $n$, e per $k=1$ diciamo $\sigma_1(n)$ essere la funzione $\sigma(n)$, somma dei divisori di $n$. In generale $\sigma_k(n)$ è la somma delle $k$-esime potenze dei divisori di $n$.
 \begin{teorema}
-	Le due funzioni sono moltiplicative.
+	Le funzioni dei divisori sono moltiplicative.
 \end{teorema}
 \begin{proof}
-	Osserviamo che le due funzioni $u(n)=1$ e $\operatorname{id}(n)=n$ sono aritmetiche e moltiplicative. Ma allora
+	Osserviamo per il caso $k=0,1$ che le due funzioni $u(n)=1$ e $\operatorname{id}(n)=n$ sono aritmetiche e moltiplicative. Ma allora
 	\begin{equation*}
 	d(n)=\sum_{d\mid n}1=\sum_{d\mid n}u(d)
 	\end{equation*}
 	\begin{equation*}
 	\sigma(n)=\sum_{d\mid n}d=\sum_{d\mid n}\operatorname{id}(d)
 	\end{equation*}
-	e quindi per la proposizione \ref{somma_moltiplicativa} sono moltiplicative.
+	e quindi per la proposizione \ref{somma_moltiplicativa} sono moltiplicative. In generale posso dimostrare lo stesso risultato per ogni $k$, basta prendere come funzione 
+	\begin{equation*}
+	f_k(n)=n^k
+	\end{equation*}
+	che è palesemente moltiplicativa per ogni $k$.
 \end{proof}
 
 
@@ -642,9 +613,9 @@ Come abbiamo preannunciato all'inizio dello scorso capitolo, inizieremo a genera
 	\end{enumerate}
 	In particolare diciamo che un ideale $I$ è
 	\begin{enumerate}
-		\item \textbf{massimale} se è proprio ($I \neq A$) ed ogni ideale $J$ di $A$ con $I \subset J$ è improprio
+		\item \textbf{massimale} se è proprio ($I \neq A$) ed ogni ideale $J$ di $A$ con $I \subset J$ è improprio oppure è $I$ stesso \footnote{Spesso questa definizione si fornisce escludendo il secondo caso, considerando quindi l'inclusione stretta.}
 		\item \textbf{primo} se è proprio ($I \neq A$) e $\forall a,b \in A$ se $a,b$ non sono in $I$ non vi appartiene neanche il loro prodotto
-		\item\textbf{principale} se è generato da un unico elemento, ovvero $I=(a)$ per un certo $a \in I$
+		\item\textbf{principale} se è generato da un unico elemento, ovvero si può scrivere $I=(a)$ per un certo $a \in I$
 	\end{enumerate}
 \end{definizione}
 \begin{osservazione} 
@@ -763,7 +734,7 @@ Come abbiamo preannunciato all'inizio dello scorso capitolo, inizieremo a genera
 	\begin{equation*}
 	x_{n+1}(d_{n+1}-u)=0 \implies d_{n+1}=u
 	\end{equation*}
-	che implica $x_n$ irriducibile. Ripetendo il ragionamento per $y$ ottengo la tesi. \\ Abbiamo infatti dimostrato che $a$ si scrive tramite prodotto di un fattore irriducibile (quello che abbiamo trovato) ed \enquote{altro}, ma possiamo fattorizzare la parte non irriducibile, per ipotesi di noetherianità ci dovremo fermare ottenendo un prodotto in irriducibili, essenzialmente unico. \\ \\ Notiamo che la definizione di principalmente noetheriano svolge la funzione del \textit{principio del minimo} sui numeri naturali, equivalente al principio di induzione.\footnote{questo vale per la costruzione dei naturali tramite gli \textit{assiomi di Peano}.} Ci siamo ricondotti elegantemente ad una situazione analoga a quella studiata nella fattorizzazione unica degli interi.
+	che implica $x_n$ irriducibile. Ripetendo il ragionamento per ogni catena discendente che incontro ottengo la tesi. \\ Abbiamo infatti dimostrato che $a$ si scrive tramite prodotto di un fattore irriducibile (quello che abbiamo trovato) ed \enquote{altro}, ma possiamo fattorizzare la parte non irriducibile, per ipotesi di noetherianità ci dovremo fermare ottenendo un prodotto in irriducibili, essenzialmente unico. \\ \\ Notiamo che la definizione di principalmente noetheriano svolge la funzione del \textit{principio del minimo} sui numeri naturali, equivalente al principio di induzione.\footnote{questo vale per la costruzione dei naturali tramite gli \textit{assiomi di Peano}.} Ci siamo ricondotti elegantemente ad una situazione analoga a quella studiata nella fattorizzazione unica degli interi.
 \end{proof}
 	\label{lezione4}
 \begin{teorema}[Unicità della fattorizzazione]
@@ -808,15 +779,16 @@ Come abbiamo preannunciato all'inizio dello scorso capitolo, inizieremo a genera
 \begin{osservazione}
 	Siamo arrivati al risultato che cercavamo, abbiamo ottenuto condizioni sotto cui vale la fattorizzazione unica. Queste condizioni però non sono \enquote{soddisfacenti}, infatti la principale noetherianità non è sempre semplice da verificare. Proviamo a costruire ulteriori relazioni tra i tipi di domini che abbiamo identificato. Ad esempio potremmo caratterizzare i domini in cui gli irriducibili sono anche primi.
 \end{osservazione}
-\begin{teorema}[Caratterizzazione dei PID]
-	Se $A$ è un dominio ad ideali principali (PID), per $p\in A$ le seguenti sono equivalenti.
+\begin{teorema}
+	In $A$ dominio ad ideali principali (PID), $p$ è irriducibile se e solo se $p$ è primo. 
+\end{teorema}
+\begin{proof}
+	Lo dimostreremo sfruttando l'equivalenza dei seguenti enunciati:
 	\begin{enumerate}
 		\item $p$ è primo in $A$
 		\item $p$ è irriducibile in $A$
 		\item $(p)$ è massimale in $A$
 	\end{enumerate}
-\end{teorema}
-\begin{proof}\
 	\begin{itemize}
 		\item[$1 \implies 2$] Sia $p=ab$, voglio dimostrare che uno dei due è l'unità. Poiché $p$ è primo, $p\mid a$ oppure $p\mid b$. Scegliamo la prima senza perdita di generalità, allora 
 		\begin{equation*}
@@ -827,7 +799,27 @@ Come abbiamo preannunciato all'inizio dello scorso capitolo, inizieremo a genera
 		k\mid p \implies p=kc \implies k \text{ oppure } c \text{ unità}
 		\end{equation*}
 		Se $k$ è unità allora $(k)=A$ perché conterrebbe 1.\footnote{se un ideale di $A$ contiene 1 è per sua stessa definizione un ideale improprio, cioè $A$; la verifica è banale.} \\ Se invece $c$ fosse unità potrei scrivere $k=c^{-1}p$ per ottenere $(k)=(p)$.
-		\item[$3 \implies 1$] Se $(p)$ è massimale allora è primo, ma abbiamo visto che questo implica $p$ primo.
+		\item[$3 \implies 1$] Se $(p)$ è massimale allora è primo, e questo implica $p$ primo. Dimostriamolo per assurdo, sia $P=(p)$ non primo, allora esistono $a$ e $b$ in $A\setminus P$ tali che $ab\in P$. Definiamo
+		\begin{align*}
+		J
+		&=\left\langle P\cup\left\{a\right\} \right\rangle\\
+		&=\left\{x+ay\ \mid \ x\in P, y\in A\right\}
+		\end{align*}
+		ovviamente $P\subset J$, ma $P\neq J$; per definizione di ideale massimale $J=A$, quindi contiene l'identità 1.
+		\begin{equation*}
+		1=x+ay \ \ \ \ \ x\in P,y\in A
+		\end{equation*}
+		\begin{equation*}
+		b=b\cdot1=b(x+ay)
+		\end{equation*}
+		Concludiamo notando che
+		\begin{equation*}
+		bx\in bP\subset AP=P
+		\end{equation*}
+		\begin{equation*}
+		bay=(ba)y\in Py \subset PA=P
+		\end{equation*}
+		quindi avrei ottenuto $b\in P$ per sua scrittura precedente, il che è un assurdo. In questi ultimi passaggi abbiamo usato $PA=AP=P$, che risulta evidentemente vero scrivendo gli insiemi $PA$ ed $AP$ in forma esplicita.
 	\end{itemize}
 \end{proof}
 \begin{teorema}[Caratterizzazione degli UFD]
@@ -848,7 +840,7 @@ Come abbiamo preannunciato all'inizio dello scorso capitolo, inizieremo a genera
 	\begin{equation*}
 	X \coloneqq \left\{f(a) \ \middle| \ a\in I, a \neq 0\right\}\subset \mathbb{N}
 	\end{equation*}
-	Chiaramente $X$ è non vuoto, ammette un minimo ed un massimo in $\mathbb{N}$. \\ Sia $n_0$ il minimo, sia $a_0 \in I$ tale che $f(a_0)=n_0$. Ora prendo un $b \in I$ con $b=a_0q+r$ per certi $q$ ed $r$ con $q,r\in A$. Ottengo $r=b-a_0q\in I$, quindi $r=0$ per scelta di $a_0$ come minimo di $X$ per gli $a\in I$ non-nulli; allora $b=a_0q$ ed ottengo $I\subset(a_0)$ per generalità di $b$. Siccome l'altra inclusione è banalmente vera - essendo $a_0$ elemento di $I$ ideale - ottengo la tesi, $I=(a_0)$.
+	Chiaramente $X$ è non vuoto, ammette un minimo in $\mathbb{N}$. \\ Sia $n_0$ il minimo, sia $a_0 \in I$ tale che $f(a_0)=n_0$. Ora prendo un $b \in I$ con $b=a_0q+r$ per certi $q$ ed $r$ con $q,r\in A$. Ottengo $r=b-a_0q\in I$, quindi $r=0$ per scelta di $a_0$ come minimo di $X$ per gli $a\in I$ non-nulli; allora $b=a_0q$ ed ottengo $I\subset(a_0)$ per generalità di $b$. Siccome l'altra inclusione è banalmente vera - essendo $a_0$ elemento di $I$ ideale - ottengo la tesi, $I=(a_0)$.
 \end{proof}
 \begin{esempio}
 	Possiamo usare i potenti strumenti che abbiamo appena costruito per studiare il caso \enquote{banale} di $\mathbb{Z}$ con facilità, ed addirittura espanderci a casi ben più complessi.
@@ -1105,7 +1097,6 @@ Lavoriamo in $\mathbb{Z}[\sqrt{-5}]$. \\ Vogliamo verificare che 3 e $4+\omega$ 
 	\end{equation*}
 	da cui $3(x_1-4x_2-7y_2)=1$, che non ha soluzioni intere.
 \end{itemize}
-%todo: quando non vale Bezout? A volte posso fare la divisione euclidea e non avere Bezout? aggiungere discorso che murru ha fatto tempo fa sui domini di bezout
 \end{esercizio}
 \begin{esercizio}[Non unicità di fattorizzazione]
 	Studiamo la fattorizzazione in $\mathbb{Z}[\sqrt{-5}]$ di $z=6$; sappiamo che qui la fattorizzazione non è unica, possiamo ottenere due espressioni differenti di $z$?
@@ -1131,7 +1122,6 @@ Lavoriamo in $\mathbb{Z}[\sqrt{-5}]$. \\ Vogliamo verificare che 3 e $4+\omega$ 
 		\item[(non primo)] 2 divide $6=(1-\omega)(1+\omega)$ ma non i due fattori
 	\end{itemize}
 Osserviamo che l'ideale generato da 2 non è primo in $\mathbb{Z}[\sqrt{-5}]$ (in $\mathbb{Z}$ sì), in particolare $\mathbb{Z}[\sqrt{-5}]/(2)$ non è un dominio di integrità.
-%todo: aggiungere spiegazione del fatto, forse anche come osservazione o esercizio
 \end{esercizio}
 
 
@@ -1375,6 +1365,7 @@ Il \textbf{sistema canonico di rappresentanti} di $\mathbb{Z}_n$ è
 	\end{align*}
 \end{esempio}
 \begin{teorema}[Piccolo teorema di Fermat]
+	\label{piccolo_fermat}
 	Per ogni $a\in\mathbb{Z}_p^*$ con $p$ primo, vale la seguente formula.
 	\begin{equation*}
 	a^{p-1}\equiv1\Mod(p)
@@ -1398,7 +1389,6 @@ Il \textbf{sistema canonico di rappresentanti} di $\mathbb{Z}_n$ è
 \end{proof}
 \begin{proof}[Dimostrazione \enquote{avanzata}] 
 	Si può dimostrare anche come banale conseguenza delle proprietà della funzione di Eulero e della teoria che abbiamo appena visto. \\ Non lo faremo, ma è possibile. 
-	%todo: dimostrazione combinatorica, vedi materiali extra
 \end{proof}
 \begin{teorema}[Teorema di Eulero]
 	\label{eulero}
@@ -1554,7 +1544,6 @@ ma stavolta non è sufficiente a garantire l'esistenza di una soluzione.
 	x&\longmapsto\left([x]_{\alpha},\dots,[x]_{\omega}\right)
 	\end{align*}
 	e dimostrando che è isomorfismo.
-	%todo: proof lunga?
 \end{proof}
 \begin{teorema}[Teorema cinese del resto, generale]
 	Siano $n_1,\dots,n_k\in\mathbb{Z}$ due a due coprimi ed $a_1,\dots,a_k\in\mathbb{Z}$. Allora il sistema 
@@ -1622,7 +1611,6 @@ Ovviamente prenderemo come $p$ un primo di $\mathbb{Z}$.
 	Anche se sappiamo che $\left(\mathbb{Z}_p^*,\cdot\right)$ è ciclico non sempre è facile trovare un suo generatore. 
 	\begin{equation*}
 	\left(\mathbb{Z}_p^*,\cdot\right)\simeq\left(\mathbb{Z}_{p-1},+\right)
-	%todo: controllare se è giusta la formula
 	\end{equation*}
 \end{osservazione}
 
@@ -1721,8 +1709,7 @@ Come possiamo caratterizzare gli $n$ per cui otteniamo un $\left(\mathbb{Z}_n^*,
 	Siano $e\geq2$ e $g$ generatore di $\mathbb{Z}_{p^e}^*$, voglio mostrare che è generatore anche di $\mathbb{Z}_{p^{e+1}}^*$. \\ \\ Sia $d$ l'ordine di $g$ in $\mathbb{Z}_{p^{e+1}}^*$, come prima notiamo che 
 	\begin{itemize}
 		\item $p^{e-1}(p-1)$ divide $d$
-		\item $d$ divide $p^{e-1}(p-1)$
-		\item $p^e(p-1)=p^{e-1}p(p-1)$
+		\item $d$ divide $p^{e}(p-1)=p^{e-1}p(p-1)$
 	\end{itemize}
 Allora $d=p^{e-1}(p-1)$ oppure $d=p^e(p-1)$. Vogliamo vedere che $g^{p^{e-1}(p-1)}$ non equivale ad $1\Mod p^{e+1}$. Sappiamo che per il teorema di Eulero (Teorema \ref{eulero})
 \begin{equation*}
@@ -1921,9 +1908,9 @@ Utilizzeremo gli $\mathbb{Z}_n^*$ perché siamo interessati alla struttura molti
 	\end{equation*}
 \end{definizione}
 \begin{teorema}[Criterio di Eulero] 
-	Sia $a\in\mathbb{Z}$, allora
+	Sia $a\in\mathbb{Z}_p^*$, allora
 	\begin{equation*}
-	a^{\frac{p-1}{2}}=\leg{a}{p}\Mod p
+	a^{\frac{p-1}{2}}\equiv\leg{a}{p}\Mod p
 	\end{equation*}
 \end{teorema}
 \begin{proof}
@@ -1969,9 +1956,9 @@ Utilizzeremo gli $\mathbb{Z}_n^*$ perché siamo interessati alla struttura molti
 		\end{equation*}
 		allora posso usare il primo teorema di isomorfismo per dire che 
 		\begin{equation*}
-		\im(\psi)\simeq\sfrac{\mathbb{Z}_p^*}{\ker(\psi)}
+		\operatorname{im}(\psi)\simeq\sfrac{\mathbb{Z}_p^*}{\ker(\psi)}
 		\end{equation*}
-		e notando che il nucleo di $\psi$ è l'insieme degli $x\in\mathbb{Z}_p^*$ tali che $x^2\equiv1\Mod p$, cioè $\pm1$. Allora la cardinalità della sua immagine è $\frac{p-1}{2}$.
+		Notiamo che il nucleo di $\psi$ è l'insieme degli $x\in\mathbb{Z}_p^*$ tali che $x^2\equiv1\Mod p$, cioè $\pm1$. Allora la cardinalità della sua immagine è $\frac{p-1}{2}$, e l'immagine è esattamente $Q_p$.
 \end{proof}
 \begin{esempio}
 	Prendiamo $\mathbb{Z}_5^*$; per quanto visto sappiamo che i residui quadratici sono due. Per cercarli proviamo tutte le possibili combinazioni:
@@ -2113,7 +2100,7 @@ Utilizzeremo gli $\mathbb{Z}_n^*$ perché siamo interessati alla struttura molti
 	\end{equation*}
 \end{esercizio}
 \begin{osservazione}
-	Il criterio di Eulero permette di caratterizzare i primi $p$ per cui $-1$ potrebbe essere un quadrato in modulo $p$, ad esempio. Infatti osserviamo che in modulo 4 tutti i primi sono congrui a 3 o 1,
+	Il criterio di Eulero permette di caratterizzare i primi $p$ per cui $-1$ potrebbe essere un quadrato in modulo $p$. Infatti osserviamo che in modulo 4 tutti i primi sono congrui a 3 o 1,
 	\begin{itemize}
 		\item Se $p$ è congruo ad 1 allora $(-1)^{\frac{p-1}{2}}=1$ e quindi $\leg{-1}{p}=1$, in questo caso vale.
 		\item Analogamente se $p$ è congruo a 3 $\leg{-1}{p}=-1$, in questo caso non vale.
@@ -2129,7 +2116,7 @@ I test di primalità vengono usati per determinare non se un dato numero sia pri
 	\item \textbf{composto}, in questo caso il numero è sicuramente composto
 	\item \textbf{pseudoprimo}, detto tale perché non è detto che sia primo, potrebbe essere composto nonostante superi il test!
 \end{itemize}
-Non è sufficiente che il numero soddisfi la proprietà del test per essere primo, alcuni numeri composti la possono soddisfare. \\ Ma capiremo meglio con un esempio.
+Non è sufficiente che il numero soddisfi la proprietà che caratterizza il test per essere primo, alcuni numeri composti la possono soddisfare. \\ Ma capiremo meglio introducendone uno.
 
 
 
@@ -2157,17 +2144,21 @@ Non è sufficiente che il numero soddisfi la proprietà del test per essere prim
 	\end{equation*}
 	ottengo $d \, \mid \, 1$, che è un assurdo per scelta di $d$.
 \end{proof}
-\begin{teorema}[Test di Fermat]
-	Per il piccolo teorema di Fermat sappiamo che se $p$ è primo per ogni $a$ in $\mathbb{Z}_p^*$ vale 
+\begin{osservazione}
+	Il test di Wilson è deterministico, tuttavia la sua applicazione non è facile; infatti la presenza del fattoriale lo rende estremamente difficile da calcolare. Vedremo altri test, non deterministici ma molto più facilmente applicabili. \\ \\ Si potrebbe discutere sulla definizione del test di Wilson come \enquote{test} in quanto di natura deterministica, tuttavia speriamo che questa osservazione sia stata abbastanza utile per fare chiarezza.
+\end{osservazione}
+\begin{algoritmo}[Test di Fermat]
+	Se $p$ è primo, per ogni $a$ in $\mathbb{Z}_p^*$ vale 
 	\begin{equation*}
 	a^{p-1}\equiv1\Mod p
 	\end{equation*}
+	questo deriva dal piccolo teorema di Fermat (Teorema \ref{piccolo_fermat}).
 	Allora possiamo costruire il seguente test. \\ Fissato $a$ in $\mathbb{Z}$ e dato $n$ tale che $a$ ed $n$ siano coprimi, si dichiara che $n$ è primo se soddisfa 
 	\begin{equation*}
 	a^{n-1}\equiv1\Mod n
 	\end{equation*}
 	altrimenti $n$ è composto. \footnote{se $a$ ed $n$ non fossero coprimi saprei già che $n$ è composto, ovviamente.}
-\end{teorema}
+\end{algoritmo}
 \begin{osservazione}
 	Si noti che il teorema di Fermat non è una condizione necessaria sufficiente, ammette numeri composti che \enquote{passano} il test. I numeri composti che vengono dichiarati primi dal test di Fermat si dicono \textit{pseudoprimi di Fermat} (rispetto alla base $a$).
 	\begin{itemize}
@@ -2240,22 +2231,22 @@ I \textbf{numeri di Carmichael} sono numeri composti che sono pseudoprimi di Fer
 	\end{equation*}
 \end{proof}
 \label{lezione10}
-\begin{teorema}[Test di Eulero]
-	Dal criterio di Eulero sappiamo che se $p$ è primo allora 
+\begin{algoritmo}[Test di Eulero]
+	Dal criterio di Eulero sappiamo che se $p$ è primo
 	\begin{equation*}
 	a^{\frac{p-1}{2}}\equiv\leg{a}{p}\equiv\pm1\Mod p 
 	\end{equation*}
-	Allora per controllare la primalità di un $n$ intero fissiamo una base $a$ e verifichiamo se 
+	Per controllare la primalità di un $n$ intero, fissiamo una base $a$ e verifichiamo se 
 	\begin{equation*}
 	a^{\frac{n-1}{2}}\equiv\pm1\Mod n 
 	\end{equation*}
-\end{teorema}
-\begin{teorema}[Test di Eulero-Jacobi]
+\end{algoritmo}
+\begin{algoritmo}[Test di Eulero-Jacobi]
 	\begin{equation*}
 	a^{\frac{n-1}{2}}\equiv\leg{a}{n}\Mod n
 	\end{equation*}
 	Sembra un controsenso utilizzare il simbolo di Jacobi - il cui calcolo richiede conoscere la fattorizzazione di $n$ - in un test di primalità, ma esistono algoritmi efficienti per calcolarlo che non utilizzano la fattorizzazione di $n$. Non li vedremo nel corso.
-\end{teorema}
+\end{algoritmo}
 \begin{osservazione}
 	Sia $n$ pseudoprimo di Eulero-Jacobi, allora vediamo che è anche pseudoprimo di Eulero. Inoltre uno pseudoprimo di Eulero è pseudoprimo di Fermat, perché
 	\begin{equation*}
@@ -2279,6 +2270,7 @@ I \textbf{numeri di Carmichael} sono numeri composti che sono pseudoprimi di Fer
 	\begin{equation*}
 	F_n=\left\{a\in\mathbb{Z}_n^* \, \mid \, a^{n-1}\equiv1\Mod n\right\}
 	\end{equation*}
+	cioè l'insieme delle basi esponenziali $a$ che per $n$ fissato permettono di caratterizzarlo come primo secondo il test di Fermat.
 	si vede che se $n$ è primo allora $F_n=\mathbb{Z}_n^*$. Se invece $n$ non è primo la cardinalità di $F_n$ è in generale minore o uguale rispetto a quella di $\mathbb{Z}_n^*$; tuttavia per i numeri di Carmichael sussiste l'uguaglianza, e questo è uno dei problemi generato dagli pseudoprimi.
 \end{osservazione}
 \begin{teorema}
@@ -2372,7 +2364,7 @@ I \textbf{numeri di Carmichael} sono numeri composti che sono pseudoprimi di Fer
 \subsection{Il test di Rabin-Miller}
 Il test di Rabin-Miller viene usato in molte funzioni di valutazione della primalità di linguaggi di programmazione, come ad esempio Python. Si tratta a tutti gli effetti di uno dei due test di primalità più usati al mondo, e quindi di un risultato decisamente importante. Sotto l'ipotesi di Riemann diventa inoltre un \emph{criterio} di primalità efficiente; allora condizionato all'ipotesi che sia vera assume un carattere ancora più forte. \\ L'altro test più usato è il \textit{test di Bayle}, che combina il test di Lucas a Fermat fortificato, ma non ce ne occuperemo in questo corso.
 \begin{teorema}[Test di Rabin-Miller]
-	Sia $n$ numero da valutare, itero $k$ volte test per gli pseudoprimi forti. In altre parole, itero $k$ volte il test
+	Sia $n$ numero da valutare, itero $k$ volte il test per gli pseudoprimi forti. In altre parole, itero $k$ volte il test
 	\begin{equation*}
 	a^m\equiv1\Mod p \ \ \ \ \text{ oppure } \ \ \ \ a^{2^jm}\equiv-1\Mod p
 	\end{equation*}
@@ -2382,10 +2374,10 @@ Il test di Rabin-Miller viene usato in molte funzioni di valutazione della prima
 \begin{osservazione}
 	Se condizionato all'ipotesi di Riemann questo test diventa \textit{deterministico}, cioè garantisce con totale sicurezza la primalità di $n=2^km+1$, ed efficiente. Per dimostrare quanto abbiamo appena detto ci serve definire alcuni insiemi e fornire alcuni lemmi intermedi. 
 	\begin{align*}
-	&M_n=\left\{a\in\mathbb{Z}_n^* \, \mid \, a^n \ \text{oppure} \ a^{2^jm} \ \equiv-1 \ \text{per un $0\leq j\leq k-1$}\right\}\\
+	&M_n=\left\{a\in\mathbb{Z}_n^* \, \mid \, a^m\equiv1 \ \text{oppure} \ a^{2^jm} \ \equiv-1 \ \text{per un $0\leq j\leq k-1$}\right\}\\
 	&B=\left\{a\in\mathbb{Z}_n^* \, \mid \, a^{2^{s-1}m}\equiv\pm1\Mod n\right\}\\
 	&B'=\left\{a\in\mathbb{Z}_n^*\, \mid \,a^{2^{s-1}m}\equiv1\Mod n \right\}\\
-	&B_p=\left\{a\in\mathbb{Z}_{\alpha_p}^*\, \mid \, a^{2^{s-1}m}\equiv1\Mod p^{\alpha_p}\right\}
+	&B_p=\left\{a\in\mathbb{Z}_{p^{\alpha_p}}^*\, \mid \, a^{2^{s-1}m}\equiv1\Mod p^{\alpha_p}\right\}
 	\end{align*}
 	dove abbiamo usato
 	\begin{itemize}
@@ -2492,18 +2484,20 @@ Il test di Rabin-Miller viene usato in molte funzioni di valutazione della prima
 	\begin{equation*}
 	\frac{1}{4}<2\prod_{p\mid n}\frac{2^{s-1}\MCD(m,p-1)}{(p-1)p^{\alpha_p-1}}
 	\end{equation*}
-	Osserviamo che $2^{s-1}\MCD(m,p-1)$ divide $\frac{p-1}{2}$, questo perché 
-	\begin{itemize}
-		\item $2^{s-1}$ divide $\frac{p-1}{2}$ per definizione di $s$
-		\item il massimo comune divisore tra $m$ e $p-1$ divide $p-1$, questo è ovvio
-		\item per $m$ dispari il massimo comune divisore tra $m$ e $p-1$ è un numero dispari, quindi se divide $p-1$ ne divide la parte dispari e quindi divide anche $\frac{p-1}{2}$
-	\end{itemize}
-	Allora $2^{s-1}\MCD(m,p-1)\leq\frac{p-1}{2}$, e tornando alla nostra disuguaglianza
+	Osserviamo che 
+	\begin{enumerate}
+		\item $2^{s-1}\MCD(m,p-1)$ divide $\frac{p-1}{2}$, questo perché per definizione di $s$ abbiamo che $2^{s-1}$ divide $\frac{p-1}{2}$ 
+		\item il massimo comune divisore tra $m$ e $p-1$ divide $p-1$, questo è ovvio; inoltre per $m$ dispari il massimo comune divisore tra $m$ e $p-1$ è un numero dispari, quindi se divide $p-1$ ne divide la parte dispari e quindi divide anche $\frac{p-1}{2}$, abbiamo ottenuto che 
+		\begin{equation*}
+		2^{s-1}\MCD(m,p-1)\leq\frac{p-1}{2}
+		\end{equation*}
+	\end{enumerate}
+	Allora torniamo alla disuguaglianza:
 	\begin{equation*}
 	\frac{1}{4}<2\prod_{p\mid n}\frac{\frac{p-1}{2}}{(p-1)p^{\alpha_p-1}}
 	=2\prod_{p\mid n}\frac{1}{2p^{\alpha_p-1}}\leq2\prod_{p\mid n}\frac{1}{2}=\frac{1}{2^{t-1}}
 	\end{equation*}
-	per $t$ numero di primi che compongono la fattorizzazione di $n$. Perché la disuguaglianza valga $t$ deve essere 1 oppure 2. \\ \\ Se $t=2$ ho due primi $p_1$ e $p_2$, che posso supporre maggiori o uguali di 3. Il caso $p_i=2$ è banale e poco interessante.
+	per $t$ numero di primi che compongono la fattorizzazione di $n$. Perché la disuguaglianza valga $t$ deve essere 1 oppure 2. \\ \\ Se $t$ fosse 1 avrei già dimostrato la tesi, sia allora $t=2$: ho due primi $p_1$ e $p_2$, che posso supporre maggiori o uguali di 3. Il caso $p_i=2$ infatti è banale e poco interessante.
 	\begin{equation*}
 	\frac{1}{4}<2\frac{1}{2p_1^{\alpha_1-1}}\frac{1}{2p_2^{\alpha_2-1}}
 	\end{equation*}
@@ -2516,7 +2510,10 @@ Il test di Rabin-Miller viene usato in molte funzioni di valutazione della prima
 	\end{equation*}
 	Le frazioni sono due numeri interi perché $p-1$ diviso $2^s$ è un dispari, e viene diviso per un dispari. Perché continui a valere la disuguaglianza allora deve necessariamente essere
 	\begin{equation*}
-	p_1-1=2^s\MCD(m,p_1-1)=2^sD_1, \ p_2-1=2^s\MCD(m,p_2-1)=2^sD_2
+	p_1-1=2^s\MCD(m,p_1-1)=2^sD_1
+	\end{equation*}
+	\begin{equation*}
+	p_2-1=2^s\MCD(m,p_2-1)=2^sD_2
 	\end{equation*}
 	Per ipotesi $n=p_1p_2$ ed $n-1=2^km$, quindi $D_1$ divide $m$ (per definizione di massimo comune divisore); ma allora divide anche $p_1p_2-1$, che posso riscrivere come 
 	\begin{equation*}
@@ -2526,8 +2523,10 @@ Il test di Rabin-Miller viene usato in molte funzioni di valutazione della prima
 	\begin{equation*}
 	p_2-1=p_1-1
 	\end{equation*}
-	e quindi $p_2=p_1$, che implica $n$ primo; abbiamo raggiunto un assurdo.
-	%todo: perché implica n primo? forse sono troppo stanco per capirlo
+	e quindi $p_2=p_1$, un assurdo sulla richiesta $t=2$. Allora abbiamo concluso, perché in nessun modo può essere che $\left|B\right|>\frac{1}{4}\left|\mathbb{Z}_n^*\right|$ e ne segue 
+	\begin{equation*}
+	\left|M_n\right|<\left|B\right|<\frac{1}{4}\left|\mathbb{Z}_n^*\right|
+	\end{equation*}
 \end{proof}
 
 
@@ -2624,14 +2623,13 @@ Vogliamo sfruttare il \textit{teorema di Eulero} per caratterizzare questa propr
 	Sia $n$ somma di due quadrati, $p$ primo somma di due quadrati, se $p$ divide $n$ allora $\sfrac{n}{p}$ è somma di due quadrati.
 \end{lemma}
 \begin{proof}
-	%todo: scrivi in forma esplicita p ed n
+	Siano $n=a^2+b^2$ un naturale, $p=c^2+d^2$ primo.
 	Se $p$ divide $n$, allora $p$ divide anche $(ad+bc)(ad-bc)$; si vede immediatamente. Sfruttando l'ipotesi di primalità di $p$ posso procedere con i soliti due casi:
 	\begin{itemize}
 		\item[($p\mid ad-bc$)] Vale $ad-bc=ep$ per un certo $e$ intero, allora 
 		\begin{equation*}
 		np=e^2p^2+(ac+bd)^2
 		\end{equation*}
-		%todo: spiegare meglio come si è giunti alla equation sopra
 		quindi $p$ divide $ac+bd$, ovvero $ac+bd=fp$ per un certo $f$ intero; questo perché abbiamo un'eguaglianza del tipo $x=y+z$ e sappiamo che $p$ divide $x$ ed $y$, la dimostrazione è immediata. Allora posso scrivere 
 		\begin{equation*}
 		np=e^2p^2+f^2p^2\implies\frac{n}{p}=e^2+f^2
@@ -2671,7 +2669,7 @@ Vogliamo sfruttare il \textit{teorema di Eulero} per caratterizzare questa propr
 	\begin{equation*}
 	z=D^2q_1\dots q_s
 	\end{equation*}
-	non può essere scritto come somma di due quadrati, infatti se fosse $z=x^2+y^2$ avremmo $x^2+y^2\equiv0\Mod q_1$ e per le caratterizzazioni viste $x,y\equiv0\Mod q_1$. Allora per proprietà dei divisori le soluzioni banali diventano $x=x_1q_1$, $y=y_1q_1$, da cui
+	non può essere scritto come somma di due quadrati, infatti se fosse $z=x^2+y^2$ avremmo $x^2+y^2\equiv0\Mod q_1$ e per le caratterizzazioni viste unite alle ipotesi sui $q_j$ otteniamo $x,y\equiv0\Mod q_1$. Allora per proprietà dei divisori le soluzioni banali diventano $x=x_1q_1$, $y=y_1q_1$, da cui
 	\begin{equation*}
 	q_1(x_1^2+y_1^2)=z \implies q_1\mid D
 	\end{equation*}
@@ -2703,7 +2701,7 @@ Iniziamo subito notando che se $m$ ed $n$ godono di questa proprietà (ad $a$ fi
 (n)(m)
 &=\left(x_m^2+ay_m^2\right)\left(x_n^2+ay_n^2\right)\\
 &=\left(x_mx_n\right)^2+\left(ay_my_n\right)^2+a\left(\left(x_my_n\right)^2+\left(x_ny_m\right)^2\right)\\
-&=\left(x_mx_n+ay_my_n\right)^2+a\left(x_my_n-x_my_n^2\right)^2
+&=\left(x_mx_n+ay_my_n\right)^2+a\left(x_my_n-x_my_n^2\right)^2\\
 \end{align*}
 Allora, data la \enquote{proprietà moltiplicativa} della forma quadratica, anche in questo caso possiamo solo concentrarci sullo studio della proprietà per i primi. Per porre in modo diverso la questione, per quali $p$ primi l'equazione 
 \begin{equation*}
@@ -2715,8 +2713,7 @@ x^2+ay^2\equiv0\Mod p
 &\iff ay^2\equiv -x^2\Mod p\\
 &\iff -a\equiv \left(xy^{-1}\right)^2\Mod p
 \end{align*}
-questo se $xy$ 
-%todo: non xy^{-1}? No, serve che xy non sia 0, ovvero né x, né y sono 0. Infatti se uno dei due fosse 0 non ammetterebbe inverso
+questo se $xy$ %todo: non xy^{-1}?
 non è congruo a 0 in modulo $p$. In questo caso ci si riduce a studiare il problema: per quali primi $-a$ è un quadrato in modulo $p$?
 \subsection{Enunciato e prime conseguenze}
 Sicuramente non basta usare il criterio di Eulero, ci sono infiniti primi da controllare! Con la legge di reciprocità quadratica riusciamo a dare una risposta - anche se non del tutto generale - al problema in studio. \\ Il teorema mette in relazione il simbolo di Jacobi  $\leg{p}{q}$ con il suo \enquote{reciproco} $\leg{q}{p}$, quindi il fatto di essere (o meno) quadrato in $\Mod q$ dell'intero $p$ con il fatto di essere (o meno) quadrato in $\Mod p$ dell'intero $q$. 
@@ -2797,7 +2794,7 @@ Sicuramente non basta usare il criterio di Eulero, ci sono infiniti primi da con
 	\end{align*}
 	Ad esempio posso iniziare dal caso
 	\begin{equation*}
-	(-1)^{\frac{p-1}{8}}=1 \iff p\equiv\pm1\Mod8
+	(-1)^{\frac{p^2-1}{8}}=1 \iff p\equiv\pm1\Mod8
 	\end{equation*}
 	\begin{equation*}
 	\leg{p}{3}=1 \iff p\equiv1\Mod3
@@ -2825,13 +2822,12 @@ Sicuramente non basta usare il criterio di Eulero, ci sono infiniti primi da con
 	R=\left\{r_j\,\mid\,r_j\in T, \ r_j\leq \frac{p}{2}\right\}
 	\end{equation*}
 	\begin{equation*}
-	S=\left\{s_i\,\mid\,s_i\in T, \ r_j> \frac{p}{2}\right\}
+	S=\left\{s_i\,\mid\,s_i\in T, \ s_j> \frac{p}{2}\right\}
 	\end{equation*}
-	dove abbiamo usato (o useremo subito) che
+	dove abbiamo usato (o useremo subito) 
 	\begin{itemize}
-		\item fisso $m$ come cardinalità di $R$, $n$ quella di $S$ 
-		\item $T$ è l'insieme dei multipli di $a$ per $k$ compreso tra $1$ e $\frac{p-1}{2}$
-		\item $R$ ed $S$ hanno significato immediato
+		\item $m$ come cardinalità di $R$, $n$ quella di $S$ 
+		\item $T$ come l'insieme dei multipli di $a$ per $k$ compreso tra $1$ e $\frac{p-1}{2}$
 	\end{itemize}
 	Allora vale che 
 	\begin{equation*}
@@ -2867,14 +2863,13 @@ Sicuramente non basta usare il criterio di Eulero, ci sono infiniti primi da con
 	\begin{equation*}
 	s_i\equiv ka\Mod p, \ r_j\equiv ha\Mod p
 	\end{equation*}
-	Unendo questi risultati otteniamo $-k\equiv h\Mod p$, quindi $h+k\equiv0\Mod p$ (che equivale a dire $p$ divide $h+k$). Ma $1\leq h\leq\frac{p-1}{2}$, $1\leq k\leq\frac{p-1}{2}$, quindi $h+k<p$; è impossibile che $p$ divida $h+k$. \\ \\ 
-	Allora $T$ è l'unione disgiunta tra $R$ ed $S$. Notiamo che 
+	Unendo questi risultati otteniamo $-k\equiv h\Mod p$, quindi $h+k\equiv0\Mod p$ (che equivale a dire $p$ divide $h+k$). Ma $1\leq h\leq\frac{p-1}{2}$, $1\leq k\leq\frac{p-1}{2}$, quindi $h+k<p$; è impossibile che $p$ divida $h+k$.	Siccome - per sua definizione - $T$ è l'unione disgiunta tra $R$ ed $S$, ed abbiamo appena dimostrato che un elemento di $p-S$ non appartiene ad $R$, allora gli elementi di $p-S$ sono tutti e soli gli elementi di $S$. Notiamo inoltre che 
 	\begin{itemize}
 		\item $|p-S|=|S|=n$
 		\item $|R|=m$
 		\item $|T|=\frac{p-1}{2}=|R|+|S|=m+n$
 	\end{itemize}
-	e svolgendo i calcoli otteniamo 
+	Svolgiamo ora il seguente calcolo:
 	\begin{align*}
 	\left(\frac{p-1}{2}\right)!
 	&=\prod_{k=1}^{\frac{p-1}{2}}k=\left(\prod_{j=1}^{m}r_j\right)\left(\prod_{i=1}^{n}(p-s_i)\right)\\
@@ -2897,8 +2892,6 @@ Sicuramente non basta usare il criterio di Eulero, ci sono infiniti primi da con
 	\end{equation*}
 \end{corollario}
 \begin{proof}
-	Ricordiamo il caso banale in cui $p = 2$ in questo caso $(\frac{2}{2}) = 0$.
-	Altrimenti cerchiamo di calcolare $|S| = n$ relativo al Lemma di Gauss
 	\begin{equation*}
 	ka=\left[\frac{ka}{p}\right]p+t_k
 	\end{equation*}
@@ -2907,19 +2900,20 @@ Sicuramente non basta usare il criterio di Eulero, ci sono infiniti primi da con
 		\item $\displaystyle \sum_{k=1}^{\frac{p-1}{2}}(ka)=\sum_{k=1}^{\frac{p-1}{2}}\left[\frac{ka}{p}\right]p+\sum_{s=1}^{m}r_s+\sum_{i=1}^{n}s_i$
 		\item $\displaystyle\sum_{k=1}^{\frac{p-1}{2}}k=\sum_{s=1}^{m}r_s+\sum_{i=1}^{n}p-s_i $ 
 		\item Unendo quanto appena osservato si ottiene
-		\begin{equation*}
-		\sum_{k=1}^{\frac{p-1}{2}}k(a-1)=\sum_{k=1}^{\frac{p-1}{2}}\left[\frac{ka}{p}\right]p+2\sum_{i=1}^{n}s_i-np
-		\end{equation*}
+		\begin{align*}
+		\sum_{k=1}^{\frac{p-1}{2}}k(a-1)
+		&=\sum_{k=1}^{\frac{p-1}{2}}ka - \sum_{k=1}^{\frac{p-1}{2}}k\\
+		&=\sum_{k=1}^{\frac{p-1}{2}}\left[\frac{ka}{p}\right]p+2\sum_{i=1}^{n}s_i-np
+		\end{align*}
 		\begin{equation*}
 		(a-1)\sum_{k=1}^{\frac{p-1}{2}}k\equiv\sum_{k=1}^{\frac{p-1}{2}}\left[\frac{ka}{p}\right]p-n \ \Mod2
 		\end{equation*}
 	\end{enumerate}
 	Per $a=2$ la terza osservazione diventa 
-	%todo: forse non dovrebbe esserci p dopo le quadre, controllare
 	\begin{equation*}
-	\sum_{k=1}^{\frac{p-1}{2}}k\equiv-n\equiv n\Mod2
+	\sum_{k=1}^{\frac{p-1}{2}}k\equiv-n\Mod2\equiv n\Mod2
 	\end{equation*}
-	Utilizzando $\sum_{k=1}^{\frac{p-1}{2}}k=\frac{p-1}{2}\left(\frac{p-1}{2}+1\right)\frac{1}{2}$ ed il lemma di Gauss otteniamo
+	Utilizzando $\sum_{k=1}^{\frac{p-1}{2}}k=\frac{p-1}{2}\left(\frac{p-1}{2}+1\right)\frac{1}{2}=\frac{p^2-1}{8} $, fatto noto per la somma dei primi $\frac{p-1}{2}$ numeri, ed il lemma di Gauss otteniamo
 	\begin{equation*}
 	\leg{2}{p}=(-1)^n=(-1)^{\sum_{k=1}^{\frac{p-1}{2}}k}=(-1)^{\frac{p^2-1}{8}}
 	\end{equation*}
@@ -2929,9 +2923,9 @@ Sicuramente non basta usare il criterio di Eulero, ci sono infiniti primi da con
 	\label{lezione13}
 	Dimostriamo la legge di reciprocità quadratica. \\ \\ Prima di tutto dimostriamo che se $a\in\mathbb{Z}_p^*$ è dispari allora vale
 	\begin{equation*}
-	n\equiv\sum_{k=1}^{\frac{p-1}{2}}\left[\frac{ka}{p}\right]\Mod2
+	n\equiv\sum_{k=1}^{2}\left[\frac{ka}{p}\right]\Mod2
 	\end{equation*}
-	dove $n$ è preso dal lemma di Gauss. Questo implicherà $\leg{a}{p}=(-1)^{\sum_{k=1}^{\frac{p-1}{2}}\left[\frac{ka}{p}\right]}$. Esattamente come fatto nella dimostrazione del secondo complemento scrivo $ka=\left[\frac{ka}{p}\right]p+t_k$ e riscrivo le sommatorie viste, ma per $a$ dispari.
+	dove $n$ è preso dal lemma di Gauss. Questo implicherà $\leg{a}{p}=(-1)^{\sum_{k=1}^{2}\left[\frac{ka}{p}\right]}$. Esattamente come fatto nella dimostrazione del secondo complemento scrivo $ka=\left[\frac{ka}{p}\right]p+t$ e riscrivo le sommatorie viste, ma per $a$ dispari.
 	\begin{equation*}
 	0\equiv\sum_{k=1}^{\frac{p-1}{2}}\left[\frac{ka}{p}\right]-n \ \Mod2
 	\end{equation*}
@@ -3017,8 +3011,8 @@ Sia $A$ un anello commutativo con unità, sia $A[x]$ l'insieme dei polinomi a co
 	\end{equation*}
 	con $\deg(r)<\deg(g)$ oppure $r=0$. Questo si può vedere facilmente dalla teoria precedente.
 \end{osservazione}
-\begin{esempio}
-	In $\mathbb{Z}_5[x]$ si divida $f(x)=x^3+x^2+x-1$ per $g(x)=2x^2+1$.
+\begin{esercizio}
+	In $\mathbb{Z}_5[x]$ si divida $f(x)=x^3+x^2+x-1$ per $g(x)=2x^2+1$.\\ \\
 	\begin{center}
 		\begin{tabular}{r|r}
 			$x^3+x^2+x-1$ & \multicolumn{1}{l}{$2x^2+1$}  \\ 
@@ -3032,23 +3026,16 @@ Sia $A$ un anello commutativo con unità, sia $A[x]$ l'insieme dei polinomi a co
 		\end{tabular}
 	\end{center}
 	Si può verificare che $f(x)=(3x+3)g(x)+(3x+1)$. Siccome lavoro in un campo, sono sicuro che esiste un inverso per ogni suo elemento.
-\end{esempio}
-\begin{teorema}
-	Sia $\mathbb{F}$ un campo, allora 
-	\begin{enumerate}
-		\item se $\mathbb{F}[x]$ è euclideo, è anche un PID
-		\item se $\mathbb{F}[x]$ è un PID, è anche un UFD
-	\end{enumerate}
-\end{teorema}
-
+\end{esercizio}
 \begin{esercizio}
 	Siano $f$ e $g$ in $\mathbb{Z}_5[x]$ i polinomi 
-	\begin{align*}
-	f(x)&=x^5+2x^3+x^2+4x+3\\
-	g(x)&=x^5+4x^3+x^2+3x+3
-	\end{align*}
+	\begin{equation*}
+	f(x)=x^5+2x^3+x^2+4x+3
+	\end{equation*}
+	\begin{equation*}
+	g(x)=x^5+4x^3+x^2+3x+3
+	\end{equation*}
 	Costruire il massimo comune divisore e la scrittura di Bezout del massimo comune divisore.\\
-	
 	La risoluzione è immediata per algoritmo di divisione euclidea:
 	\begin{center}
 		\begin{tabular}{r|r}
@@ -3072,9 +3059,8 @@ Sia $A$ un anello commutativo con unità, sia $A[x]$ l'insieme dei polinomi a co
 			$x^2+3$ &                      
 		\end{tabular}
 	\end{center}
-	per cui $g(x) = (3x^2+3)(5x^3+x) + x^2+3$ e osserviamo infine che $5x^3+x = (5x)x^2+3$ 
-	e quindi segue che $\gcd(f(x),g(x)) = x^2+3$.\\
-	
+	per cui $g(x) = (3x^2+3)(5x^3+x) + x^2+3$ ed osserviamo infine che $5x^3+x = (5x)x^2+3$, 
+	segue che $\MCD(f(x),g(x)) = x^2+3$.\\
 	Ora dobbiamo trovare i coefficienti per l'identità di Bezout. Prendiamo in considerazione 
 	le seguenti equazioni 
 	\begin{equation*}
@@ -3096,6 +3082,7 @@ Sia $A$ un anello commutativo con unità, sia $A[x]$ l'insieme dei polinomi a co
 	\begin{equation*}
 		(4x^2+4)f(x) + (3x^2+4)g(x) = x^2 + 3
 	\end{equation*}
+	%todo: controlla calcoli, non sono sicuro
 \end{esercizio}
 \begin{teorema}[di Ruffini]
 	Sia $\mathbb{F}$ un campo, $f\in\mathbb{F}[x]$. $\alpha$ è radice di $f$ se e solo se $x-\alpha$ divide $f(x)$.
@@ -3125,19 +3112,27 @@ Sia $A$ un anello commutativo con unità, sia $A[x]$ l'insieme dei polinomi a co
 
 
 \subsection{Quozienti in anelli di polinomi}
-Possiamo caratterizzare i quozienti in anelli di polinomi partendo da un campo $\mathbb{F}$, e quindi dal suo anello di polinomi $\mathbb{F}[x]$. L'anello quoziente ha forma 
-\begin{equation*}
-\sfrac{\mathbb{F}[x]}{I}
-\end{equation*}
-con $I$ ideale di $\mathbb{F}[x]$. Tutti gli ideali di $\mathbb{F}[x]$ sono principali, ovvero nella forma $I=(f)$ per un polinomio $f\in\mathbb{F}[x]$. Prima di tutto possiamo caratterizzare le classi laterali uguali; $(f)+a$ ed $(f)+b$ lo sono se e solo se 
-\begin{equation*}
-a-b\in(f)
-\end{equation*}
-ovvero per $a-b=kf$ multiplo di $f$. In modo equivalente possiamo dire che $a(x)$ e $b(x)$ sono equivalenti rispetto al quoziente per $(f)$ se e solo se
-\begin{equation*}
-a(x)-b(x)=k(x)f(x)
-\end{equation*}
-Risulta evidente che posso costruire le classi di resto in modo esattamente analogo al caso dei numeri interi.
+\begin{lemma}
+	Siano $F$ un campo ed $F[x]$ l'anello dei polinomi su $F$, allora $F[x]$ è un PID.
+\end{lemma}
+\begin{proof}
+	Sicuramente $F[x]$ è euclideo perché posso effettuare la divisione euclidea, basta usare come funzione il grado. In particolare, essendo un dominio euclideo, è anche un PID; questo per le caratterizzazioni viste nei capitoli precedenti.
+\end{proof}
+\begin{osservazione}[Costruire quozienti con i polinomi]
+	Possiamo caratterizzare i quozienti in anelli di polinomi partendo da un campo $\mathbb{F}$, e quindi dal suo anello di polinomi $\mathbb{F}[x]$. L'anello quoziente ha forma 
+	\begin{equation*}
+	\sfrac{\mathbb{F}[x]}{I}
+	\end{equation*}
+	con $I$ ideale di $\mathbb{F}[x]$. Tutti gli ideali di $\mathbb{F}[x]$ sono principali, ovvero nella forma $I=(f)$ per un polinomio $f\in\mathbb{F}[x]$. Prima di tutto possiamo caratterizzare le classi laterali uguali; $(f)+a$ ed $(f)+b$ lo sono se e solo se 
+	\begin{equation*}
+	a-b\in(f)
+	\end{equation*}
+	ovvero per $a-b=kf$ multiplo di $f$. In modo equivalente possiamo dire che $a(x)$ e $b(x)$ sono equivalenti rispetto al quoziente per $(f)$ se e solo se
+	\begin{equation*}
+	a(x)-b(x)=k(x)f(x)
+	\end{equation*}
+	Risulta evidente che posso costruire le classi di resto in modo esattamente analogo al caso dei numeri interi.
+\end{osservazione}
 \begin{proposizione}
 	Sia $\mathbb{F}$ un campo, se $p\in\mathbb{F}[x]$ è irriducibile allora 
 	\begin{equation*}
@@ -3146,7 +3141,7 @@ Risulta evidente che posso costruire le classi di resto in modo esattamente anal
 	è un campo.
 \end{proposizione}
 \begin{proof}
-	Sicuramente è un anello commutativo con identità, è abbastanza evidente; vediamo solo che ogni elemento non nullo ha un inverso. Sia $(p)+a$ un elemento di $\sfrac{\mathbb{F}[x]}{(p)}$ tale che $a$ non appartenga all'ideale generato da $p$ (questo vuol dire che $p$ non divide $a$). La nostra scelta è motivata, infatti $(p)+a=(p)$ se e solo se $a-0\in(p)$: in questo caso $a \equiv 0 \mod (p)$ è un elemento nullo, non di nostro interesse. \\ Allora il massimo comune divisore tra $p$ ed $a$ è 1, e per divisione euclidea posso scrivere 
+	Sicuramente è un anello commutativo con identità, è abbastanza evidente; vediamo solo che ogni elemento non nullo ha un inverso. Sia $(p)+a$ un elemento di $\sfrac{\mathbb{F}[x]}{(p)}$ tale che $a$ non appartenga all'ideale generato da $p$ (questo vuol dire che $p$ non divide $a$). La nostra scelta è motivata, infatti $(p)+a=(p)$ se e solo se $a-0\in(p)$: in questo caso $a \equiv 0 \mod (p)$ è un elemento nullo, non di nostro interesse. Allora il massimo comune divisore tra $p$ ed $a$ è 1, e per divisione euclidea posso scrivere 
 	\begin{equation*}
 	1=r(x)a(x)+s(x)p(x)
 	\end{equation*}
@@ -3159,11 +3154,14 @@ Risulta evidente che posso costruire le classi di resto in modo esattamente anal
 \begin{teorema}[Teorema fondamentale dell'algebra]
 	In $\mathbb{C}[x]$, ogni polinomio di grado almeno 1 ha una radice in $\mathbb{C}$. In particolare, per teorema di Ruffini e per la caratterizzazione vista, sono irriducibili in $\mathbb{C}[x]$ solo i polinomi di grado 1.
 \end{teorema}
+\begin{corollario}
+	Un polinomio di grado $n$ su $\mathbb{C}[x]$ ha $n$ radici in $\mathbb{C}$.
+\end{corollario}
 \begin{teorema}
 	In $\mathbb{R}[x]$, un polinomio è irriducibile se e solo se
 	\begin{enumerate}
 		\item è di primo grado
-		\item oppure è di primo grado con discriminante negativo
+		\item oppure è di secondo grado con discriminante negativo
 	\end{enumerate}
 \end{teorema}
 \begin{teorema}[di Gauss]
@@ -3171,13 +3169,17 @@ Risulta evidente che posso costruire le classi di resto in modo esattamente anal
 	Sia $f(x)\in\mathbb{Z}[x]$, se $f$ si fattorizza nel prodotto di due polinomi in $\mathbb{Q}[x]$ allora si fattorizza anche nel prodotto di due polinomi in $\mathbb{Z}[x]$.
 \end{teorema}
 \begin{teorema}
-	Sia $f(x)=a_nx^n+\dots+a_1x+a_0\in\mathbb{Z}[x]$ con $a_n\neq0$, se $f$ ha radici in $\mathbb{Q}[x]$ allora ne ho una nella forma $\frac{p}{q}$ dove $p$ divide $a_0$ e $q$ divide $a_n$, $p$ e $q$ coprimi.
+	Sia $f(x)=a_nx^n+\dots+a_1x+a_0\in\mathbb{Z}[x]$ con $a_n\neq0$, se $f$ ha radici in $\mathbb{Q}[x]$ allora sono nella forma $\frac{p}{q}$ dove $p$ divide $a_0$ e $q$ divide $a_n$, $p$ e $q$ coprimi.
 \end{teorema}
 \begin{teorema}[Criterio di Eisenstein]
-	Sia dato il polinomio $f(x)= x^n+ a_{n-1}x^{n-1}\dots+a_1x+a_0\in\mathbb{Z}[x]$, se esiste un $p$ primo tale che $p$ divide $a_0,a_1,\dots,a_{n-1}$ e $p^2$ non divide $a_0$, allora $f$ è irriducibile in $\mathbb{Q}[x]$. \\ In particolare è irriducibile anche in $\mathbb{Z}[x]$.
+	Sia dato il polinomio
+	\begin{equation*}
+	f(x)= x^n+ a_{n-1}x^{n-1}\dots+a_1x+a_0\in\mathbb{Z}[x]
+	\end{equation*}
+	se esiste un $p$ primo tale che $p$ divide $a_0,a_1,\dots,a_{n-1}$ e $p^2$ non divide $a_0$, allora $f$ è irriducibile in $\mathbb{Q}[x]$. \\ In particolare è irriducibile anche in $\mathbb{Z}[x]$.
 \end{teorema}
 \begin{esempio}
-	Consideriamo il polinomio $x^2-2$ in $\mathbb{Q}[x]$, tale polinomio è irriducibile, quindi per caratterizzazioni viste $\mathbb{F}=\sfrac{\mathbb{Q}[x]}{(x^2-2)}$ è un campo. \\ Due polinomi in $\mathbb{Q}[x]$ sono equivalenti in $\mathbb{F}$ se hanno lo stesso resto mediante la divisione per $x^2-2$, quindi tutti i polinomi del campo originale sono rappresentati nel quoziente da polinomi di grado 1. Consideriamo ad esempio i due polinomi in $\mathbb{Q}[x]$
+	Consideriamo il polinomio $x^2-2$ in $\mathbb{Q}[x]$, tale polinomio è irriducibile, quindi per le caratterizzazioni viste $\mathbb{F}=\sfrac{\mathbb{Q}[x]}{(x^2-2)}$ è un campo. \\ Due polinomi in $\mathbb{Q}[x]$ sono equivalenti in $\mathbb{F}$ se hanno lo stesso resto mediante la divisione per $x^2-2$, quindi tutti i polinomi del campo originale sono rappresentati nel quoziente da polinomi di grado 1. Consideriamo ad esempio i due polinomi in $\mathbb{Q}[x]$
 	\begin{equation*}
 	a(x)=x^3+2x+1, \quad\ b(x)=x^2-2x-3 
 	\end{equation*}
@@ -3201,7 +3203,7 @@ Risulta evidente che posso costruire le classi di resto in modo esattamente anal
 		\item è un morfismo
 		\item ha come immagine $\mathbb{Q}[\sqrt{2}]$, è suriettiva
 		\item $\varphi\left(a+bx\right)=a+b\sqrt{2}$
-		\item il suo nucleo è l'ideale generato da $x^2-2$, questo perché tutti i polinomi in $\mathbb{Q}[x]$ che hanno $\sqrt{2}$ come radici sono divisibili per $x^2-2$
+		\item il suo nucleo è l'ideale generato da $x^2-2$, questo perché tutti i polinomi in $\mathbb{Q}[x]$ che hanno $\sqrt{2}$ come radici sono divisibili per $x^2-2$; segue da un teorema che non vedremo \footnote{Sia $f$ in $F[x]$ il polinomio minimo di $\alpha$, $g\in F[x]$ un altro polinomio con radice $\alpha$. Allora $f$ divide $g$.} 
 	\end{enumerate}
 	Per il primo teorema di isomorfismo tra anelli, ottengo che $\mathbb{F}$ è isomorfo a $\mathbb{Q}[\sqrt{2}]$. In particolare notiamo che 
 	\begin{equation*}
@@ -3218,8 +3220,14 @@ Risulta evidente che posso costruire le classi di resto in modo esattamente anal
 \begin{esempio}
 	In modo esattamente analogo possiamo vedere che 
 	\begin{equation*}
-	\sfrac{\mathbb{R}[x]}{(x^2+1)}\simeq\mathbb{R}[i]=\mathbb{C}[x]
+	\sfrac{\mathbb{R}[x]}{(x^2+1)}\simeq\mathbb{R}[i]=\mathbb{C}
 	\end{equation*}
+	infatti basta prendere il morfismo
+	\begin{align*}
+	\varphi:\mathbb{R}[x]&\longrightarrow\mathbb{R}[\sqrt{-1}]\\
+	f(x)&\longmapsto f(\sqrt{-1})
+	\end{align*}
+	e mostrare che soddisfa le condizioni del primo teorema di isomorfismo, con nucleo $(x^2+1)$.
 \end{esempio}
 
 
@@ -3256,24 +3264,24 @@ Risulta evidente che posso costruire le classi di resto in modo esattamente anal
 	\varphi: K[x] &\longrightarrow K[\alpha]\\
 	f(x)&\longmapsto f(\alpha)
 	\end{align*}
-	$\alpha$ è algebrico su $K$ se e solo se $\varphi$ non è iniettiva.
+	$\alpha$ è algebrico su $K$ se e solo se $\varphi$ non è iniettivo.
 \end{proposizione}
 \begin{proof}
 	Supponiamo che sia algebrico, allora posso scrivere il nucleo del morfismo come 
 	\begin{equation*}
 	\ker\varphi = \left\{f\in K[x] \ \mid \ f(\alpha)=0\right\}
 	\end{equation*}
-	e notiamo che per ipotesi non è banale. \\ Supponiamo invece che il nucleo sia non banale, allora è un ideale proprio di $K[x]$, otteniamo facilmente che $\alpha$ è algebrico su $K$. Infatti è generato da un certo $M$ polinomio monico irriducibile: se fosse $M(x)=p(x)q(x)$ avremmo $M(\alpha)=p(\alpha)q(\alpha)=0$, quindi almeno uno dei due (supponiamo sia $p$) apparterrebbe al nucleo. Quindi $M \mid p$ perché supponiamo che l'ideale è generato da $M$, ma $p\mid M$ perché $M(x) = p(x)q(x)$. Quindi $M = p$, necessariamente $q$ è costante ed $M$ irriducibile, allora $M$ è il polinomio minimo cercato.
+	e notiamo che per ipotesi non è banale. \\ Supponiamo invece che il nucleo sia non banale, allora è un ideale proprio di $K[x]$, otteniamo facilmente che $\alpha$ è algebrico su $K$. Infatti è generato da un certo $M$ polinomio monico irriducibile: se fosse $M(x)=p(x)q(x)$ avremmo $M(\alpha)=p(\alpha)q(\alpha)=0$, quindi almeno uno dei due (supponiamo sia $p$) apparterrebbe al nucleo. Quindi $M \mid p$ perché supponiamo che l'ideale è generato da $M$, ma $p\mid M$ perché $M(x) = p(x)q(x)$. Quindi $M = p$, necessariamente $q$ è costante ed $M$ è irriducibile. Allora $M$ è il polinomio minimo cercato.
 \end{proof}
 \begin{teorema}
 	$K(\alpha)=K[\alpha]$ se e solo se $\alpha$ è algebrico su $K$.
 \end{teorema}
 \begin{proof}
-	Supponiamo che $\alpha$ sia algebrico; il morfismo $\varphi$ ha $\ker \varphi = (M)$, ma è surgettiva, quindi per teorema di isomorfismo
+	Supponiamo che $\alpha$ sia algebrico; il morfismo $\varphi$ per quanto appena visto ha $\ker \varphi = (M)$, ma è banalmente surgettivo, quindi per il primo teorema di isomorfismo
 	\begin{equation*}
 	K[\alpha]\simeq\sfrac{K[x]}{(M)}
 	\end{equation*}
-	dove $M$ è irriducibile, dunque $K[\alpha]$ è un campo. Questo campo contiene sia $K$ che $\alpha$ quindi $K(\alpha)\subset K[\alpha]$. D'altra parte un generico elemento di $K[\alpha]$ appartiene sicuramente a $K(\alpha)$ per la sua scrittura. \\ \\
+	dove $M$ è irriducibile in quanto polinomio minimo di $\alpha$, dunque $K[\alpha]$ è un campo. Questo campo contiene sia $K$ che $\alpha$ quindi $K(\alpha)\subset K[\alpha]$. D'altra parte un generico elemento di $K[\alpha]$ appartiene sicuramente a $K(\alpha)$ per la sua scrittura. \\ \\
 	Assumiamo che $K(\alpha)=K[\alpha]$, si noti che anche $\alpha^{-1}$ appartiene a $K(\alpha)=K[\alpha]$. Allora per un certo $n$ e per alcuni certi $a_i$ vale
 	\begin{equation*}
 	\alpha^{-1}=a_0+\dots+a_n\alpha^n
@@ -3302,12 +3310,11 @@ Risulta evidente che posso costruire le classi di resto in modo esattamente anal
 	\lambda_0+\dots+\lambda_n\alpha^n=0
 	\end{equation*}
 	per certi $\lambda_i\in K$ non-nulli, ovvero $\alpha$ è algebrico su $K$.
-	%todo: discorso fatto male
 	In generale per $F=K(\alpha)$ si scrive 
 	\begin{equation*}
 	[F:K]=\dim_K F
 	\end{equation*}
-	e vale che ogni estensione finita è algebrica. \\ Si noti che nel caso più generale ancora, quindi con $F$ estensione qualunque, una estensione algebrica potrebbe non essere finita. Per esempio l'estensione dei numeri algebrici su $\mathbb{Q}$ è algebrica, ma non è finita. \\ \\ Inoltre se si hanno tre campi $K\subset F\subset E$ vale la seguente formula:
+	e vale che ogni estensione finita della forma $K[\alpha]$ è algebrica. \\ Si noti che nel caso più generale ancora, quindi con $F$ estensione qualunque, una estensione algebrica potrebbe non essere finita. Per esempio l'estensione dei numeri algebrici su $\mathbb{Q}$ è algebrica, ma non è finita. \\ \\ Inoltre se si hanno tre campi $K\subset F\subset E$ vale la seguente formula:
 	\begin{equation*}
 	[E:K]=[E:F][F:K]
 	\end{equation*}
@@ -3382,7 +3389,7 @@ Come possiamo vedere il loro studio è strettamente legato alla teoria dei numer
 	è $x=1$, $y=0$.
 \end{teorema}
 \begin{proof}
-	Siano $x,y$ soluzioni intere dell'equazione. Se $x$ fosse pari avremmo 
+	Siano $x,y$ le soluzioni intere dell'equazione diofantina. Se $x$ fosse pari avremmo 
 	\begin{equation*}
 	y^2\equiv x^3-1\equiv -1 \Mod 4
 	\end{equation*}
@@ -3431,7 +3438,6 @@ Come possiamo vedere il loro studio è strettamente legato alla teoria dei numer
 \end{osservazione}
 \begin{esercizio}
 	Si verifichi che in $\mathbb{Z}[i]$ tutte le unità sono dei cubi. \\ \\ Si può dimostrare in modo diretto, oppure osservando che le unità formano un gruppo ciclico di ordine 4.
-	Infatti tutte le unità di $\mathbb{Z}[i]$ sono $1,i,-1,-i$ e si può vedere che $i$ genera tutto il gruppo, infatti $i^2 = -1$, $i^3 = -i$ e $i^4 = 1$ e quindi $U(\mathbb{Z}[i]) \simeq (\mathbb{Z}_4, +)$.
 \end{esercizio}
 
 
@@ -3452,18 +3458,21 @@ Ricordiamo che i campi di numeri sono estensioni finite di $\mathbb{Q}$, ad esem
 
 \section{Introduzione ai campi numerici}
 \subsection{Caratterizzazioni dei campi di numeri}
-\begin{teorema}
+\begin{teorema}[Teorema dell'elemento primitivo]
 	Sia $F$ un campo numerico. Allora esiste un $\theta$ elemento di $F$ tale che $F=\mathbb{Q}(\theta)$, ovvero $F$ è sempre un'estensione semplice.
 \end{teorema}
 \begin{proof}
-	Consideriamo il caso in cui $F=\mathbb{Q}(\alpha,\beta)$; sarà sufficiente, perché da questo potrò procedere per induzione su ogni campo di numeri. La dimostrazione è costruttiva. \\ \\ 
+	Consideriamo il caso in cui $F=\mathbb{Q}(\alpha,\beta)$; sarà sufficiente, perché da questo potrò procedere per induzione su ogni campo di numeri. La dimostrazione è costruttiva, quindi ci fornirà una procedura per costruire il polinomio minimo di $\theta$. \\ \\ 
 	Cerchiamo un $\theta$ tale che $\mathbb{Q}(\theta)=\mathbb{Q}(\alpha,\beta)$. \\ Sia $f\in\mathbb{Q}[x]$ il polinomio minimo di $\alpha$ di grado $n$, siano $\alpha_1,\dots,\alpha_n$ le sue radici distinte nel campo complesso. Sia analogamente $g\in\mathbb{Q}[x]$ il polinomio minimo di $\beta$ di grado $m$ e siano $\beta_1,\dots,\beta_m$ le sue radici complesse distinte. Prendiamo queste radici in modo che $\alpha_1=\alpha$ e $\beta_1=\beta$.\\ Prendiamo un $\lambda\in\mathbb{Q}$ tale che 
 	\begin{equation*}
 	\lambda\neq\frac{\alpha_i-\alpha}{\beta-\beta_j}
 	\end{equation*}
-	ovvero tali che $\alpha+\lambda\beta\neq\alpha_i+\lambda\beta_j$, con $1\leq i\leq n$ e $1\leq j\leq m$ . Considero allora i polinomi
+	ovvero tali che $\alpha+\lambda\beta\neq\alpha_i+\lambda\beta_j$, con $1\leq i\leq n$ e $1\leq j\leq m$ . Allora fisso il valore $\theta=\alpha+\lambda\beta$ e considero i polinomi
 	\begin{equation*}
-	h(x)=f\left(\theta-\lambda x\right), \ g(x)\in\mathbb{Q}(\theta)[x]
+	h(x)=f\left(\theta-\lambda x\right)\in\mathbb{Q}(\theta)[x]
+	\end{equation*}
+	\begin{equation*}
+	g(x)\in\mathbb{Q}(\theta)[x]
 	\end{equation*}
 	con $h(\beta)=g(\beta)=0$. Le radici di $h$ sono 
 	\begin{equation*}
@@ -3473,7 +3482,9 @@ Ricordiamo che i campi di numeri sono estensioni finite di $\mathbb{Q}$, ad esem
 	\begin{equation*}
 	\beta, \beta_2, \dots, \beta_m
 	\end{equation*}
-	con $b_j\neq\frac{\theta-\alpha_i}{\lambda}$, ovvero $\MCD(h,g)=x-\beta$. Siccome $g$ ed $h$ sono polinomi minimi sono anche monici, ed allora $x-\beta\in\mathbb{Q}(\theta)[x]$. Questo equivale a $\beta\in\mathbb{Q}(\theta)$ e quindi anche $\alpha\in\mathbb{Q}(\theta)$.\\ Da questo ottengo $\mathbb{Q}(\theta) = \mathbb{Q}(\alpha,\beta)$.
+	con $b_j\neq\frac{\theta-\alpha_i}{\lambda}$, ovvero $\MCD(h,g)=x-\beta$. Siccome $g$ ed $h$ sono polinomi minimi sono anche monici, e vale anche che $x-\beta\in\mathbb{Q}(\theta)[x]$. Questo equivale a $\beta\in\mathbb{Q}(\theta)$. In modo analogo posso ottenere $\alpha\in\mathbb{Q}(\theta)$.
+	Allora ho dimostrato la tesi intermedia: $\mathbb{Q}(\theta) = \mathbb{Q}(\alpha,\beta)$. \\ \\ 
+	Per dimostrare la tesi procedo per induzione sul numero di elementi primitivi che costituiscono la mia estensione.
 \end{proof}
 \begin{esempio}
 	$\mathbb{Q}(\sqrt[3]{3}+\sqrt{7})=\mathbb{Q}(\sqrt[3]{3},\sqrt{7})$ \\ \\ 
@@ -3488,19 +3499,24 @@ Ricordiamo che i campi di numeri sono estensioni finite di $\mathbb{Q}$, ad esem
 	\end{align*}
 	che è un polinomio di grado 6. Allora anche il grado dell'estensione $\mathbb{Q}(\sqrt[3]{3},\sqrt{7})$ su $\mathbb{Q}$ è 6.
 \end{esempio}
+
+
+
+
+\subsection{Il polinomio ciclotomico $n$-esimo}
 \begin{definizione}
-	Ricordiamo che \textbf{l'$n$-esimo polinomio ciclotomico} $\Phi_n(x)$ è il polinomio minimo delle radici primitive $n$-esime primitive dell'unità.
+	Diciamo \textbf{$n$-esimo polinomio ciclotomico} $\Phi_n(x)$ il polinomio minimo delle radici primitive $n$-esime primitive dell'unità.
 	\begin{equation*}
 	\Phi_n(x)=\prod_{k}(x-\omega_k)\in\mathbb{Z}[x]
 	\end{equation*}
 	dove $k$ è indicizzato da $0\leq k\leq n-1, (k,n)=1$. Il grado del polinomio ciclotomico $\Phi_n(x)$ è $\varphi(n)$.
 \end{definizione}
 \begin{definizione}[Campi ciclotomici]
-	I campi ciclotomici sono campi numerici del tipo
+	I campi ciclotomici sono campi numerici generati da una radice primitiva $n$-esima dell'unità, hanno forma $\mathbb{Q}(\omega_k)$ - dove $\omega_k$ è la suddetta radice primitiva. Per la teoria svolta, possiamo anche caratterizzarli come
 	\begin{equation*}
 	\mathbb{Q}(\omega_k)\simeq\sfrac{\mathbb{Q}[x]}{(\Phi_n(x))}
 	\end{equation*}
-	ed il grado di $\mathbb{Q}(\omega_k)$ su $\mathbb{Q}$ è $\varphi(n)$.
+	Il grado di $\mathbb{Q}(\omega_k)$ su $\mathbb{Q}$ è $\varphi(n)$.
 \end{definizione}
 \begin{teorema}
 	Il polinomio ciclotomico $\Phi_n(x)$ è irriducibile in $\mathbb{Q}[x]$.
@@ -3536,7 +3552,7 @@ Dato un generico $a\in\mathbb{Q}$, come capisco se $a\in\mathbb{Z}$?
 	\begin{equation*}
 	f(x)=x^n+a_{n-1}x^{n-1}+\dots+a_0
 	\end{equation*}
-	Allora $a=\frac{p}{q}$, con $p$ divisore di $a_0$ e $q$ divisore di 1. Allora ottengo la tesi.
+	Allora $a=\frac{p}{q}$, con $p$ divisore di $a_0$ e $q$ divisore di 1.
 \end{proof}
 \begin{definizione}
 	Un $z\in\mathbb{C}$ si dice \textbf{intero algebrico} se è radice di un polinomio monico a coefficienti interi.
@@ -3586,7 +3602,7 @@ Dato un generico $a\in\mathbb{Q}$, come capisco se $a\in\mathbb{Z}$?
 		\begin{equation*}
 		 b\cdot b_i = \sum_j a_{ij}b_j \implies \sum_j(\delta_{ij}b-a_{ij})b_j=0
 		\end{equation*}
-		Questo può essere riscritto ponendo $M=(\delta_{ij}b-a_{ij})_{ij}$:
+		Questo può essere riscritto ponendo $M=(\delta_{ij}b-a_{ij})_{ij}$, quindi come sistema lineare omogeneo:
 		\begin{equation*}
 		M
 		\begin{pmatrix}
@@ -3596,9 +3612,10 @@ Dato un generico $a\in\mathbb{Q}$, come capisco se $a\in\mathbb{Z}$?
 		\end{equation*}
 		da cui
 		\begin{equation*}
-		\det(A)\cdot b_i=0 \implies \det(A)=0
+		\det(M)\cdot b_j=0
 		\end{equation*}
-		quindi $b$ soddisfa un polinomio monico.
+		quindi per combinazione lineare dei $b_j$ ottengo $\det(M)=0$; infatti siccome generano il modulo deve esistere una loro combinazione lineare che dia 1 come risultato.
+		Allora $b$ soddisfa un polinomio monico a coefficienti in $A$.
 	\end{itemize}
 \end{proof}
 \begin{corollario}
@@ -3654,7 +3671,7 @@ con $b,d$ non-nulli.
 	\end{equation*}
 \end{definizione}
 \begin{osservazione}[Immersione di $R$ in $F$]
-	La seguente mappa è un morfismo di anelli tra $R$ sottoanello di $F$ ed il più piccolo campo contenente $R$:
+	La seguente mappa è un morfismo di anelli tra $R$ sottoanello di $F$ - dove $F$ è il campo delle frazioni appena definito - ed il più piccolo campo contenente $R$:
 	\begin{align*}
 	\Phi:R&\longrightarrow F\\
 	a&\longmapsto [a,1]
@@ -3683,18 +3700,18 @@ con $b,d$ non-nulli.
 	\begin{equation*}
 	(a_nz)^n+a_{n-1}(a_nz)^{n-1}+\dots+a_1a_n^{n-2}(a_nz)+a_0a_{n-1}=0
 	\end{equation*}
-	ovvero $a_nz\in O$ in quanto radice del polinomio monico in $\mathbb{Z}[x]$
+	ovvero $a_nz\in \mathcal{O}$ in quanto radice del polinomio monico in $\mathbb{Z}[x]$
 	\begin{equation*}
 	x^n+a_{n-1}x^{n-1}+\dots+a_1a_n^{n-1}x+a_0a_{n-1}
 	\end{equation*}
-	Ma allora $z=\frac{a_nz}{a_n}$ con $a_nz,a_n\in O$, ovvero $z\in F$.
+	Ma allora $z=\frac{a_nz}{a_n}$ con $a_nz,a_n\in \mathcal{O}$, ovvero $z\in F$.
 \end{proof}
 \begin{osservazione}
-	Proprio come $\mathbb{Z}\subset\mathbb{Q}$, con $\mathbb{Q}$ campo delle frazioni di $\mathbb{Z}$, si ha $O\subset\overline{\mathbb{Q}}$, con $\overline{\mathbb{Q}}$ campo delle frazioni di $\mathcal{O}$. \\ \\ Dato un campo di numeri $K$ posso inoltre porre 
+	Proprio come $\mathbb{Z}\subset\mathbb{Q}$, con $\mathbb{Q}$ campo delle frazioni di $\mathbb{Z}$, si ha $\mathcal{O}\subset\overline{\mathbb{Q}}$, con $\overline{\mathbb{Q}}$ campo delle frazioni di $\mathcal{O}$. \\ \\ Dato un campo di numeri $K$ posso inoltre porre 
 	\begin{equation*}
-	O_K=K\cap O
+	\mathcal{O}_K=K\cap \mathcal{O}
 	\end{equation*}
-	In questo modo $O_K$ è un dominio il cui campo delle frazioni è $K$ ed è l'anello degli interi di $K$.
+	In questo modo $\mathcal{O}_K$ è un dominio il cui campo delle frazioni è $K$ ed è l'anello degli interi di $K$.
 \end{osservazione}
 \begin{esempio}
 	Alcuni esempi in $\mathbb{Z}$:
@@ -3706,27 +3723,27 @@ con $b,d$ non-nulli.
 	\end{itemize}
 \end{esempio}
 \begin{esempio}
-	$\mathbb{Q}[i]$ è un campo numerico di grado 2, contenente l'anello degli interi di Gauss $\mathbb{Z}[i]$. Vogliamo mostrare che questo è proprio l'anello degli interi di $\mathbb{Q}[i]$, in particolare che dato $z=a+bi\in\mathbb{Q}[i]$ questo è intero algebrico se e solo se $a,b\in\mathbb{Z}$. \\ \\
+	$\mathbb{Q}[i]$ è un campo numerico di grado 2, contenente l'anello degli interi di Gauss $\mathbb{Z}[i]$. Vogliamo mostrare che questo è proprio l'anello degli interi di $\mathbb{Q}[i]$, in particolare che dato $z=a+bi\in\mathbb{Q}[i]$ questo è un suo intero algebrico se e solo se $a,b\in\mathbb{Z}$. \\ \\
 	Se prendo un elemento di $\mathbb{Q}[i]$ i cui $a,b$ appartengono a $\mathbb{Z}$, questo è un intero algebrico, perché è radice del polinomio monico a coefficienti interi
 	\begin{equation*}
 	\left(x-(a+bi)\right)\left(x-(a-bi)\right)\in\mathbb{Z}[x]
 	\end{equation*}
-	Per l'altra implicazione invece prendo uno $z\in\mathbb{Q}[i]$ intero algebrico, ovvero $z\in O$. Allora $z\in O_{\mathbb{Q}[i]}$. Voglio mostrare che $a$ e $b$ sono interi. Prendo $\overline{z}$, che è ancora un intero algebrico per ipotesi; anche $\overline{z}\in O_{\mathbb{Q}[i]}$. Siccome $\mathcal{O}$ è un anello
+	Per l'altra implicazione invece prendo uno $z\in\mathbb{Q}[i]$ intero algebrico, ovvero $z\in O$. Allora $z\in \mathcal{O}_{\mathbb{Q}[i]}$. Voglio mostrare che $a$ e $b$ sono interi. Prendo $\overline{z}$, che è ancora un intero algebrico per ipotesi; anche $\overline{z}\in \mathcal{O}_{\mathbb{Q}[i]}$. Siccome $\mathcal{O}$ è un anello
 	\begin{equation*}
-	z+\overline{z}=2a\in O
+	z+\overline{z}=2a\in \mathcal{O}
 	\end{equation*}
 	\begin{equation*}
-	z+\overline{z}\in O \cap \mathbb{Q} = \mathbb{Z}
+	z+\overline{z}\in \mathcal{O} \cap \mathbb{Q} = \mathbb{Z}
 	\end{equation*}
 	Facciamo qualcosa di analogo con $-iz$, che appartiene ancora agli interi algebrici. Allora anche $-iz+i\overline{z}$ è un intero algebrico, e 
 	\begin{equation*}
-	-iz+i\overline{z}=2b \in O\cap\mathbb{Q}=\mathbb{Z}
+	-iz+i\overline{z}=2b \in \mathcal{O}\cap\mathbb{Q}=\mathbb{Z}
 	\end{equation*}
-	Abbiamo ottenuto che $2a=m$ e $2b=n$ per certi $m$ ed $n$ interi; devo dimostrare che sono pari. \\ $z\cdot\overline{z}\in\mathbb{Q}\cap 0 =\mathbb{Z}$, quindi
+	Abbiamo ottenuto che $2a=m$ e $2b=n$ per certi $m$ ed $n$ interi; devo dimostrare che sono pari. \\ $z\cdot\overline{z}\in\mathbb{Q}\cap \mathcal{O} =\mathbb{Z}$, quindi
 	\begin{equation*}
 	z\cdot\overline{z}=a^2+b^2=\frac{m^2+n^2}{4}\in\mathbb{Z}
 	\end{equation*}
-	ovvero $m^2+n^2\equiv0\Mod4$; $m^2$ ed $n^2$ sono 0 oppure 1 in modulo 4, ma perché la loro somma sia zero devono essere entrambi zero. Allora sono pari. \\ \\ Allora $\mathbb{Z}[i]$, anello degli interi di Gauss, è anello degli interi di $\mathbb{Q}[i]$.
+	ovvero $m^2+n^2\equiv0\Mod4$; perché siano dei residui quadrati $m^2$ ed $n^2$ devono essere 0 oppure 1 in modulo 4, ma per quanto appena osservato la loro somma deve essere congrua a zero. Necessariamente devono essere entrambi zero, in particolare sono pari. \\ \\ Allora $\mathbb{Z}[i]$, anello degli interi di Gauss, è anello degli interi di $\mathbb{Q}[i]$.
 \end{esempio}
 \begin{esempio}
 	Consideriamo
@@ -3734,7 +3751,7 @@ con $b,d$ non-nulli.
 	\mathbb{Q}[\sqrt{5}]=\left\{a+b\sqrt{5} \ \mid \ a,b\in\mathbb{Q}\right\}
 	\end{equation*}
 	un'estensione di grado 2 su $\mathbb{Q}$. Trova il suo anello degli interi. \\ \\
-	In questo caso $\mathbb{Z}[\sqrt{5}]$ non è uguale a $O_{\mathbb{Q}[\sqrt{5}]}$, è solo incluso. Infatti prendo un $a+b\sqrt{5}\in\mathbb{Z}[\sqrt{5}]$, il polinomio monico di cui è radice si calcola facilmente:
+	In questo caso $\mathbb{Z}[\sqrt{5}]$ non è uguale a $\mathcal{O}_{\mathbb{Q}[\sqrt{5}]}$, è solo incluso. Infatti prendo un $a+b\sqrt{5}\in\mathbb{Z}[\sqrt{5}]$, il polinomio monico di cui è radice si calcola facilmente:
 	\begin{align*}
 	\left(x-(a+b\sqrt{5})\right)\left(x-(a-b\sqrt{5})\right)&=x^2-2ax+a^2-5b^2\in\mathbb{Z}[x]
 	\end{align*}
@@ -3781,7 +3798,7 @@ con $b,d$ non-nulli.
 		\end{align*}
 		\item allora per proprietà delle estensioni vale anche 
 		\begin{equation*}
-		\left(M_\beta(x)\right)^t=\prod_{i=1}^n\left(x-\sigma_i(\beta)\right)
+		\left(M_\beta(x)\right)^t=\prod_{i=1}^m\left(x-\sigma_i(\beta)\right)
 		\end{equation*}
 	\end{enumerate}
 	Si noti quindi che se $\alpha$ è primitivo i suoi coniugati sono le radici (distinte) del polinomio minimo, se invece non è primitivo i suoi coniugati sono le radici contate con ripetizione. Lo vedremo in seguito. \\
@@ -3792,8 +3809,6 @@ con $b,d$ non-nulli.
 	\end{align*}
 	questo è un endomorfismo di $\mathbb{Q}(\alpha)$ visto come $\mathbb{Q}$-spazio vettoriale. Allora gli posso associare una matrice.
 \end{osservazione}
-
-
 \begin{proposizione}
 	Sia $F/\mathbb{Q}$ un campo numerico di grado $n$ su $\mathbb{Q}$, siano $\sigma_i$ le $n$ immersioni di $F$ in $\mathbb{Q}$. Allora per ogni $z\in F$ il polinomio caratteristico di $m_z$ è
 	\begin{equation*}
@@ -3811,22 +3826,8 @@ con $b,d$ non-nulli.
 	\end{equation*}
 	dove $P_z'(x)$ è il polinomio caratteristico di $m_z'$.
 \end{proof}
-\begin{esempio}
-	Consideriamo $\mathbb{Q}(\sqrt{7})$ e $z = 1 + \sqrt{7}$ allora la matrice sarà della forma 
-	\begin{equation*}
-		m_z = \left(
-		\begin{array}{cc}
-			1 			& \sqrt{7} \\
-			\sqrt{7}    &  1\\
-		\end{array}
-		\right)
-	\end{equation*}
-	ovvero ha come determinante $\det m_z = 1-7 = -6$ che corrisponde a $(1-\sqrt{7})(1+\sqrt{7}) = -6$.
-	Il polinomio carattersitico si può calcolare nella solita maniera come $\det(Ix - m_z) = x^2 - 2x -6$, ma esso 
-	è uguale a $x^2 - \tr(m_z)x + \N(m_z)$. Osserviamo che in questo caso la traccia e la norma sono interi. 
-\end{esempio}
 \begin{osservazione}
-	In generale, preso un elemento $z$ in $F/\mathbb{Q}$, i coniugati di $z\in F$ sono le radici del polinomio minimo $M_z(x)$, ognuna ripetuta $[F:\mathbb{Q}(z)]$ volte. \\ Questo è ciò di cui stavamo parlando, possiamo estendere la definizione di coniugato anche agli elementi non primitivi.
+	In generale, preso un elemento $z$ in $F/\mathbb{Q}$, i coniugati di $z\in F$ sono le radici del polinomio minimo $M_z(x)$, ognuna ripetuta $[F:\mathbb{Q}(z)]$ volte. Questo è ciò di cui stavamo parlando, possiamo estendere la definizione di coniugato anche agli elementi non primitivi.
 \end{osservazione}
 
 
@@ -3848,7 +3849,7 @@ con $b,d$ non-nulli.
 	Dato $F/\mathbb{Q}$ campo numerico, se $z\in \mathcal{O}_F$ anello degli interi su $F$ allora $m_z(x)\in\mathbb{Z}[x]$; il suo polinomio minimo è a coefficienti interi. In particolare la sua norma e la sua traccia sono numeri interi. \footnote{Sappiamo che è zero di un polinomio monico a coefficienti interi, ma non sappiamo a priori se questo valga anche per il polinomio minimo. Lo dimostreremo.}
 \end{proposizione}
 \begin{proof}
-	Se $z\in \mathcal{O}_F$, allora $\sigma_i\in \mathcal{O}$. Sia 
+	Se $z\in \mathcal{O}_F$, allora $\sigma_i(z)\in \mathcal{O}$. Sia 
 	\begin{equation*}
 	m_z(x)=x^r+\dots+b_1x+b_0 \ \ \ \ b_i\in\mathbb{Q}
 	\end{equation*}
@@ -3905,15 +3906,15 @@ con $b,d$ non-nulli.
 	Ad esempio la norma di $1+\sqrt{D}$ è $1-D$, la norma di $\frac{1}{2}$ è $\frac{1}{4}$. Notando che $\mathbb{Q}\left(\frac{1}{2}\right)=\mathbb{Q}$, il grado di $\mathbb{Q}\left(\frac{1}{2}\right)$ su $\mathbb{Q}$ è 1. Allora
 	\begin{align*}
 	\left[\mathbb{Q}(\sqrt{D}):\mathbb{Q}\right]&=
-	\left[\mathbb{Q}(\sqrt{D}):\mathbb{Q}\left(\frac{1}{2}\right)\right]\left[\mathbb{Q}\left(\frac{1}{2}\right):\mathbb{Q}\right]\\
+	\left[\mathbb{Q}(\sqrt{D}):\mathbb{Q}\left(\frac{1}{2}\right)\right]\left[\mathbb{Q}(\frac{1}{2}):\mathbb{Q}\right]\\
 	&=2\cdot1
 	\end{align*}
-	Il polinomio minimo di $\frac{1}{2}$ è $x-\frac{1}{2}$, i suoi coniugati sono $\frac{1}{2}$ ed $\frac{1}{2}$.
+	Il polinomio minimo di $\frac{1}{2}$ è $x-\frac{1}{2}$, notiamo che non è un elemento primitivo; allora per quanto visto i suoi coniugati in $\mathbb{Q}[\sqrt{D}]$ sono $\frac{1}{2}$ ed $\frac{1}{2}$, cioè le radici del polinomio minimo (in questo caso una sola) prese con molteplicità pari a $\left[\mathbb{Q}(\sqrt{D}):\mathbb{Q}\left(\frac{1}{2}\right)\right]$
 \end{esempio}
 \begin{esempio}
 	Consideriamo il polinomio $x^3-2$, irriducibile in $\mathbb{Q}[x]$.
 	\begin{equation*}
-	\mathbb{Q}(\sqrt[3]{2})=\left\{a+b\sqrt[3]{2}+c\sqrt[3]{4} \ \mid \ a,b,c\in\mathbb{Q}\right\}\simeq\sfrac{\mathbb{Q}[x]}{x^3-2}
+	\mathbb{Q}(\sqrt[3]{2})=\left\{a+b\sqrt[3]{2}+c\sqrt[3]{4} \ \mid \ a,b,c\in\mathbb{Q}\right\}\simeq\sfrac{\mathbb{Q}[x]}{(x^3-2)}
 	\end{equation*}
 	Come prima facciamo alcune osservazioni:
 	\begin{enumerate}
@@ -3946,17 +3947,17 @@ con $b,d$ non-nulli.
 		\begin{equation*}
 		x-\frac{1}{2}
 		\end{equation*}
-		I coniugati di $\frac{1}{2}$ sono $\frac{1}{2}$, $\frac{1}{2}$ ed $\frac{1}{2}$.
+		ed esattamente come prima otteniamo che i coniugati di $\frac{1}{2}$ sono $\frac{1}{2}$, $\frac{1}{2}$ ed $\frac{1}{2}$.
 \end{esempio}
 \begin{esempio}
 		Consideriamo il polinomio $x^4-2$, irriducibile in $\mathbb{Q}[x]$.
 		\begin{equation*}
-		\mathbb{Q}(\sqrt[4]{2})=\left\{a+b\sqrt[4]{2}+c\sqrt[4]{4}+d\sqrt[4]{8} \ \mid \ a,b,c,d\in\mathbb{Q}\right\}\simeq\sfrac{\mathbb{Q}[x]}{x^4-2}
+		\mathbb{Q}(\sqrt[4]{2})=\left\{a+b\sqrt[4]{2}+c\sqrt[4]{4}+d\sqrt[4]{8} \ \mid \ a,b,c,d\in\mathbb{Q}\right\}\simeq\sfrac{\mathbb{Q}[x]}{(x^4-2)}
 		\end{equation*}
 		Come prima facciamo alcune osservazioni:
 		\begin{enumerate}
 			\item il grado di $\mathbb{Q}(\sqrt[4]{2})$ su $\mathbb{Q}$ è 4
-			\item $\sqrt{2}=\sqrt[4]{4}$ è un elemento primitivo di $\mathbb{Q}(\sqrt[4]{2})$, ottenuto per $a=b=d=0$ e $c=1$
+			\item $\sqrt[4]{2}$ è un elemento primitivo di $\mathbb{Q}(\sqrt[4]{2})$, ad esempio posso ottenere $\sqrt{2}$ come $\left(\sqrt[4]{2}\right)^2$
 			\item i coniugati di $\sqrt[4]{2}$ sono $\sqrt[4]{2},i\sqrt[i]{2},-\sqrt[4]{2},-i\sqrt[4]{2}$ con $i$ radice quarta primitiva dell'unità, abbiamo le quattro immersioni definite da
 			\begin{equation*}
 				\arraycolsep=1.4pt
@@ -4060,9 +4061,9 @@ con $b,d$ non-nulli.
 	\end{equation*}
 	Consideriamo allora $\alpha\in \mathcal{O}_{\mathbb{Q}[\omega_p]}$, e siano $\alpha_1,\dots,\alpha_{p-1}$ i suoi coniugati - eventualmente non tutti distinti. Diamoci ad alcune osservazioni:
 	\begin{itemize}
-		\item facendo i calcoli della traccia di $\alpha(1-\omega_p)$ vediamo che 
+		\item svolgendo i calcoli per la traccia di $\alpha(1-\omega_p)$ vediamo che 
 		\begin{equation*}
-		\tr\left(\alpha(1-\omega_p)\right)=\alpha(1-\omega_p)+\dots+\alpha_2(1-\omega_p^2)+\dots\alpha_{p-1}(1-\omega_p^{p-1})
+		\tr\left(\alpha(1-\omega_p)\right)=\alpha(1-\omega_p)+\alpha_2(1-\omega_p^2)+\dots\alpha_{p-1}(1-\omega_p^{p-1})
 		\end{equation*}
 		\begin{equation*}
 		\tr\left(\alpha(1-\omega_p)\right)\in(1-\omega_p)\mathcal{O}_{\mathbb{Q}[\omega_p]}\cap\mathbb{Z}
@@ -4150,7 +4151,7 @@ con $b,d$ non-nulli.
  	ovvero la tesi.
 \end{proof}
 \begin{osservazione}
-	Se $\alpha\in F$ è un elemento primitivo, allora posso trovare una base di $F$ come spazio vettoriale su $\mathbb{Q}$:
+	Se $\alpha\in F$ è un elemento primitivo, allora posso usare come base di $F$ spazio vettoriale su $\mathbb{Q}$
 	\begin{equation*}
 	1,\alpha,\dots,\alpha^{n-1}
 	\end{equation*}
@@ -4179,9 +4180,9 @@ con $b,d$ non-nulli.
 	\end{equation*}
 	sia nulla. Sappiamo che 
 	\begin{equation*}
-	\sigma_i\left(c_1x_1+\dots+c_nx_n\right) = c_1\sigma_1(x_1)+\dots+c_n\sigma_1(x_n) = 0
+	\sigma_i\left(c_1x_1+\dots+c_nx_n\right) = c_1\sigma_i(x_1)+\dots+c_n\sigma_i(x_n) = 0
 	\end{equation*}
-	quindi i vettori colonna della matrice $A=\sigma_i(x_j)_{ij}$ sono dipendenti. Allora il determinante di $A$ è zero, e per la formula osservata anche il discriminante è nullo.
+	quindi i vettori colonna della matrice $A=(\sigma_i(x_j))_{ij}$ sono dipendenti. Allora il determinante di $A$ è zero, e per definizione anche il discriminante è nullo.
 \end{proof}
 
 
@@ -4275,7 +4276,6 @@ In questa sezione faremo vedere che l'anello degli interi di un campo numerico �
 		\end{cases}
 		\end{equation*}
 		Sia $A=\left(\sigma_i(\gamma_j)\right)_{ij}$ ed $A'$ la matrice che si ottiene da $A$ sostituendo la prima colonna con la trasposta di 
-		%todo: forma esplicita delle matrici? quando avrò voglia
 		\begin{equation*}
 		\sigma_1(\beta),\dots,\sigma_n(\beta)
 		\end{equation*}
@@ -4369,7 +4369,7 @@ Ogni suo elemento è primitivo se e solo se $s\neq0$, e questo è ovvio. \\ Se $
 \begin{teorema}[Caratterizzazione degli anelli degli interi]
 	Sia $F=\mathbb{Q}(\sqrt{d})$ con $d$ intero libero da quadrati, allora 
 	\begin{equation*}
-	\mathcal{O}_F=\left\{a+b\sqrt{d}\ \mid \ a,b\in\mathbb{Z}\right\}=\mathbb{Z}(\sqrt{d}) \ \ \ \text{se $d\equiv2,3\Mod4$}
+	\mathcal{O}_F=\left\{a+b\sqrt{d}\ \mid \ a,b\in\mathbb{Z}\right\}=\mathbb{Z}\left(\sqrt{d}\right) \ \ \ \text{se $d\equiv2,3\Mod4$}
 	\end{equation*}
 	\begin{equation*}
 	\mathcal{O}_F=\left\{\frac{a+b\sqrt{d}}{2}\ \mid \ a,b\in\mathbb{Z}, a\equiv b\Mod2\right\} \ \ \ \text{se $d\equiv1\Mod4$}
@@ -4378,7 +4378,7 @@ Ogni suo elemento è primitivo se e solo se $s\neq0$, e questo è ovvio. \\ Se $
 \begin{proof}
 	Sia $\alpha\in \mathcal{O}_F$, possiamo scriverlo come 
 	\begin{equation*}
-	\alpha=\frac{a+b\sqrt{d}}{2}
+	\alpha=\frac{a+b\sqrt{d}}{c}
 	\end{equation*}
 	con $a,b,c\in\mathbb{Z}$ e $\MCD(a,b,c)=1$, assumo $c>0$ senza perdita di generalità. Siccome $\alpha\in \mathcal{O}_F$, per quanto visto prima 
 	\begin{enumerate}
@@ -4404,9 +4404,9 @@ Ogni suo elemento è primitivo se e solo se $s\neq0$, e questo è ovvio. \\ Se $
 		\end{equation*}
 		\item[$(c=1)$] Potrei solo avere $d\equiv1\Mod4$, $d\equiv2\Mod4$ oppure $d\equiv3\Mod4$; non posso avere 0 per lo stesso motivo di prima. In questo caso $c=1$ ed $\alpha=a+b\sqrt{d}$, ovvero
 		\begin{equation*}
-		\mathcal{O}_F=\mathbb{Z}\sqrt{d}\mathbb{Z}
+		\mathcal{O}_F=\mathbb{Z}\left[\sqrt{d}\right]
 		\end{equation*}
-		Se però fosse $d\equiv1\Mod4$ e $c=1$, allora 
+		Notiamo che non ci sono problemi di sovrapposizione dei due casi; difatti a priori potrei avere due definizioni diverse per $d\equiv1\Mod4$, dobbiamo studiare quel caso. Sia quindi $d\equiv1\Mod4$ con $c=1$, allora 
 		\begin{equation*}
 		\alpha=a+b\sqrt{d}=\frac{2a+2b\sqrt{d}}{2}=\frac{a'+b'\sqrt{d}}{2}
 		\end{equation*}
@@ -4479,8 +4479,7 @@ Un modo per trovare questa unità fondamentale è con le \textit{frazioni contin
 	\begin{equation*}
 	\alpha_{i+1}=\frac{1}{a_i-\alpha_i}=\frac{1}{\left[\alpha_i\right]-\alpha_i}
 	\end{equation*}
-	Se parto da un numero razionale l'algoritmo termina necessariamente, inoltre lo sviluppo è periodico 
-	%todo: estendi proof
+	Se parto da un numero razionale l'algoritmo termina necessariamente.
 \end{proof}
 \begin{proposizione}
 	Lo sviluppo in frazione continua di $\alpha_0$ è continuo se e solo se $\alpha_0$ è una irrazionalità quadratica, ovvero soluzione irrazionale di una equazione di secondo grado. \footnote{Ad esempio per $\alpha_0=\sqrt{2}$ abbiamo una espressione periodica tramite frazione continua; questo è fondamentale per poterlo ricostruire partendo da informazioni elementari, quindi nel nostro caso non dicendo \enquote{è soluzione positiva di $x^2-2$} e nemmeno \enquote{è radice di 2}. Per le irrazionalità cubiche e di grado superiore il problema è ancora aperto, Jacobi ha provato a risolverlo ma soddisfacendo solo una implicazione.}
@@ -4496,30 +4495,6 @@ Un modo per trovare questa unità fondamentale è con le \textit{frazioni contin
 	\begin{equation*}
 	\sqrt{2}=1+\frac{1}{2+\frac{1}{2+\frac{1}{2+\dots}}}
 	\end{equation*}
-\end{esempio}
-\begin{esempio}
-	Sia $\varphi = \frac{1 + \sqrt{5}}{2}$ il rapporto aureo. Vogliamo mostrare come compare
-	dalla risoluzione di un equazione a `frazioni continue'. Infatti sia l'equazione
-	\begin{equation*}
-		1 + \left(\frac{1}{1 +\frac{1}{1 + \frac{1}{1 + \dots}}}\right) 
-			= 1 + \frac{1}{1 + \frac{1}{1 + \dots}}
-	\end{equation*}
-	sostituiamo la frazione continua $\varphi = 1+\frac{1}{1 + \frac{1}{1 + \dots}}$ allora 
-	l'equazione sopra diventa 
-	\begin{equation*}
-		1 + \frac{1}{\varphi} = \varphi
-	\end{equation*}
-	A questo punto, sapendo che $\varphi \neq 0$ possiamo moltiplicare ambo i membri per
-	$\varphi$ e ottenere un equazione di secondo grado
-	\begin{equation*}
-		\varphi^2 - \varphi -1 = 0
-	\end{equation*}
-	che ha come soluzioni 
-	\begin{equation*}
-		\varphi_1 = \frac{1 + \sqrt{5}}{2} \quad\ \varphi_2 = \frac{1 - \sqrt{5}}{2}
-	\end{equation*}
-	ovviamente $\varphi_2 < 0$ per cui dev'essere che $\varphi_1$ è proprio il valore
-	della frazione continua cercata.
 \end{esempio}
 \begin{proposizione}
 	In generale lo sviluppo di una irrazionalità quadrata $\sqrt{d}$ per $d$ positivo e non quadrato perfetto, il suo sviluppo in frazione continua ha come pre-periodo solo $a_0$ ed uno sviluppo periodico che termina con l'elemento $2a_0$. Lo sviluppo periodico è di una certa lunghezza $L$, nel senso che copre tutti i valori tra $a_2$ ed $a_{L-1}$.
@@ -4570,7 +4545,7 @@ Un modo per trovare questa unità fondamentale è con le \textit{frazioni contin
 	\left(3+2\sqrt{2}\right)^2=7+12\sqrt{2}
 	\end{equation*}
 	\begin{equation*}
-	\left(3+2\sqrt{2}\right)^3=99+70\sqrt{2}
+	\left(3+2\sqrt{2}\right)^3=17+70\sqrt{2}
 	\end{equation*}
 \end{osservazione}
 
@@ -4626,11 +4601,11 @@ Un modo per trovare questa unità fondamentale è con le \textit{frazioni contin
 		Allora il grado di questa estensione è 4.
 		\item Il grado di $\mathbb{Q}\left(\sqrt{-2}\right)$ su $\mathbb{Q}$ è uguale al grado di $\mathbb{Q}\left(\sqrt{-5}\right)$ su $\mathbb{Q}$. Allora i coniugati di $\sqrt{-2}$ sono 
 		\begin{equation*}
-		\sqrt{-2},\sqrt{-2},-\sqrt{-2},-\sqrt{-2}
+		\sqrt{-2},-\sqrt{-2},-\sqrt{-2}
 		\end{equation*}
 		e quelli di $\sqrt{-5}$ sono 
 		\begin{equation*}
-		\sqrt{-5},\sqrt{-5},-\sqrt{-5},-\sqrt{-5}
+		\sqrt{-5},-\sqrt{-5},-\sqrt{-5}
 		\end{equation*}
 		\item Dai calcoli notiamo subito
 		\begin{align*}
@@ -4708,41 +4683,26 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 	In seguito lavoreremo per mostrare che $\mathcal{O}_F$ è un anello di Dedekind per $F$ campo numerico, infatti l'insieme degli interi algebrici è integralmente chiuso su $\mathbb{C}$.
 \end{esempio}
 
-\begin{esempio}
-	Consideriamo $k$ campo e sia $k[x,y]$ il dominio euleriano dei polinomi in due variabili.
-	Verifichiamo che non sia un dominio di Dedekind. Infatti consideriamo 
-	\begin{equation*}
-		\begin{array}{rl}
-			\varphi \;\colon & k[x,y] \to k[y] \\
-						   & f(x,y) \mapsto f(0,y)  
-		\end{array}
-	\end{equation*}
-	questo ha come nucleo l'ideale $(x) = \ker \varphi$. Inoltre $k[x,y]/(x) \simeq k[y]$ per il 
-	primo teorema di isomorfismo. Ma $k[y]$ è un dominio, non può essere un campo e dunque $(x)$ è un 
-	ideale primo non nullo che non è massimale.
-\end{esempio}
-
-
 \begin{proposizione}\
 	\begin{enumerate}
 		\item Siano $A, B, C$ tre anelli con $A\subset B\subset C$, se $C$ è intero su $B$ e $B$ è intero su $A$ allora $C$ è intero su $A$.
 		\item L'anello degli interi di un campo numerico $F$ è integralmente chiuso.
 		\item L'anello degli interi di un campo numerico $F$ è noetheriano.
-		\item Sia $F$ un campo numerico ed $I$ un ideale di $\mathcal{O}_F$ non nullo, valgono i seguenti fatti:
+		\item Sia $F$ un campo numerico ed $I$ un ideale di $\mathcal{}_F$ non nullo, valgono i seguenti fatti:
 		\begin{enumerate}
 			\item $I\cap\mathbb{Z}\neq\left\{0\right\}$
 			\item $\left|\mathcal{O}_F/I\right|<+\infty$
 			\item se $I$ è primo, allora è massimale
 		\end{enumerate}
 	\end{enumerate}
-\end{proposizione}
+\end{proposizione}[Caratterizzazioni degli anelli degli interi]
 \begin{proof}\
 	\begin{enumerate}
 		\item Sia $c\in C$; siccome $C$ è intero su $B$ esiste un polinomio monico
 		\begin{equation*}
 			0 = f(c) = c^n + b_{n-1}c^{n-1} + \dots + b_0
 		\end{equation*}
-		Con $b_0, \dots, b_{n-1}\in B$. Per ipotesi $B$ è un estensione intersa su $A$, quindi 
+		Con $b_0, \dots, b_{n-1}\in B$. Per ipotesi $B$ è un estensione intera su $A$, quindi 
 		ogni $A[b_i]$ è finitamente generato come $A$-modulo. In particolare si può dimostrare
 		per induzione che $A[b_0, \dots, b_{n-1}]$ è finitamente generato come $A$-modulo. 
 		Per cui otteniamo che 
@@ -4754,7 +4714,7 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 		finitamente generata come $A$-modulo. Sappiamo quindi che 
 		$A \subseteq A[b_0, \dots, b_{n-1},c]$ è un estensione finita contenuta in $C$, per cui $c$ 
 		dev'essere intero su $A$.
-		\item Sia $\alpha\in F$ intero su $\mathcal{O}_F$. Siccome $\mathcal{O}_F$ è intero su $\mathbb{Z}$, $\alpha$ è intero su $\mathbb{Z}$. Allora $\alpha\in O\cap F=\mathcal{O}_F$.
+		\item Sia $\alpha\in F$ intero su $\mathcal{O}_F$. Siccome $\mathcal{O}_F$ è intero su $\mathbb{Z}$, $\alpha$ è intero su $\mathbb{Z}$. Allora $\alpha\in \mathcal{O}\cap F=\mathcal{O}_F$.
 		\item Sia $I$ ideale di $\mathcal{O}_F$, allora $I$ è generato da un numero di elementi pari al grado di $F$ su $\mathbb{Q}$ (vedendolo come $\mathbb{Z}$-modulo). In particolare è finitamente generato.
 		\item Vediamo le dimostrazioni:
 		\begin{enumerate}
@@ -4812,7 +4772,7 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 	e quindi che $J+(x)$ e $J+(y)$ essendo più grandi (sempre secondo l'inclusione) contengono un prodotto di ideali primi. Ma $xy$ appartiene a $J$, quindi il prodotto di questi due ideali primi è contenuto in $J$.
 \end{proof}
 \begin{proposizione}
-	Sia $A$ un anello di Dedekind, $P$ un suo ideale primo. Detto $K$ il campo delle frazioni di $A$, definisco \footnote{Intuitivamente stiamo definendo l'insieme degli elementi del campo delle frazioni con un elemento di $P$ come \enquote{denominatore}.}
+	Sia $A$ un anello di Dedekind, $P$ un suo ideale primo. Detto $K$ il campo delle frazioni di $A$, definisco \footnote{Intuitivamente stiamo definendo l'insieme degli elementi del campo delle frazioni che hanno un elemento di $P$ come \enquote{denominatore}.}
 	\begin{equation*}
 	P^{-1}=\left\{x\in K\ \mid \ xP\subset A\right\}
 	\end{equation*}
@@ -4840,23 +4800,19 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 	% poiché primo, allora $P=I$ poiché $I \neq A$. Ma allora
 	% $\frac{p}{p} \in PP^{-1}$ e dunque $P \neq PP^{-1}$ poiché $1 \in PP^{-1}$. 
 	Vogliamo mostrare che $A \subsetneq P^{-1}$.
-	Iniziamo con il vedere che $A \subset P^{-1}$. Sia $0 \neq a\in P$, per il lemma precedente $(a)$ contiene un prodotto di ideali primi $P_1,\dots,P_n$ (scelti con il minor $n$ possibile, 
-	questo è ovviamente possibile dato che $n \in \mathbb{N}$). 
+	Iniziamo con il vedere che $A \subset P^{-1}$. Sia $0 \neq a\in P$, per il lemma precedente $(a)$ contiene un prodotto di ideali primi $P_1,\dots,P_n$ (scelti con il minor $n$ possibile, questo è fattibile dato che $n \in \mathbb{N}$). 
 	Possiamo dimostrare che esiste un $i$ tale che $P_i\subset P$.
 	\footnote{Sia $x_i \in P_i$ e $x_i \notin P$ 
 			per ogni $i \in 1,\dots, n$ allora $x_1 \cdots x_n \in P_1 \cdots P_n$ 
 			ma poiche $P$ primo allora $x_1 \cdots x_n \notin P$.}
 	Siccome ci troviamo in un anello di Dedekind $P_i$ è massimale e vale che $P_i=P$. Allora pongo, 
-	senza perdità di generalità, che $i=1$ da cui $P_1=P$. \
-	
-	Se $n = 1$ allora $(a) = P$ e dunque è ovvio che $\frac{1}{a} \in P^{-1}$, ma $\frac{1}{a} \notin A$.\ 
-	
+	senza perdità di generalità, che $i=1$ da cui $P_1=P$. 
+	Se $n = 1$ allora $(a) = P$ e dunque è ovvio che $\frac{1}{a} \in P^{-1}$, ma $\frac{1}{a} \notin A$.
 	Supponiamo $n > 1$, allora dev'essere \footnote{Supponiamo che $P_2 \cdots P_n \subset (a)$, allora avremmo che $P_2 \cdots P_n$ è minimale rispetto a $P_1 \cdots P_n$ contro quanto era stato assunto.} 
 	\begin{equation*}
 		P_2\cdots P_n\nsubset (a)
 	\end{equation*}
 	ed esiste un $b \in P_2\cdots P_n$ e tale che $b \notin (a)$. Ma allora $\frac{b}{a}\notin A$, ma $bP\subset (a)$ perché $PP_2\cdots P_n \subset (a)$, quindi $\frac{b}{a}P\subset A$, cioè $\frac{b}{a}\in P^{-1}$. Abbiamo finalmente trovato un elemento che sta in $P^{-1}$ ma non in $A$. \\
-	 
 	Consideriamo ora $\alpha_1,\dots,\alpha_m$ generatori dell'ideale $I$ sappiamo che è finitamente generato poiché siamo in un anello noetheriano. Se fosse $IP^{-1}=I$ allora per ogni $x$ elemento di $P^{-1}$ varrebbe
 	\begin{equation*}
 	\alpha_i x=\sum_{j=1}^m a_{ij}\alpha_j \ \ \ a_{ij}\in A
