@@ -4476,6 +4476,29 @@ Un modo per trovare questa unità fondamentale è con le \textit{frazioni contin
 	\sqrt{2}=1+\frac{1}{2+\frac{1}{2+\frac{1}{2+\dots}}}
 	\end{equation*}
 \end{esempio}
+\begin{esempio}
+	Sia $\varphi = \frac{1 - \sqrt{5}}{2}$ il rapporto aureo. Vogliamo mostrare come compare
+	dalla risoluzione di un equazione a `frazioni continue'. Infatti sia l'equazione
+	\begin{equation*}
+		\frac{1}{1 + \frac{1}{1 + \dots}} = 1 + \frac{1}{\frac{1}{1 + \frac{1}{1 + \dots}}}
+	\end{equation*}
+	sostituiamo la frazione continua $\varphi = \frac{1}{1 + \frac{1}{1 + \dots}}$ allora 
+	l'equazione sopra diventa 
+	\begin{equation*}
+		\varphi = 1  + \frac{1}{\varphi}
+	\end{equation*}
+	A questo punto, sapendo che $\varphi \neq 0$ possiamo moltiplicare ambo i membri per
+	$\varphi$ e ottenere un equazione di secondo grado
+	\begin{equation*}
+		\varphi^2 - \varphi -1 = 0
+	\end{equation*}
+	che ha come soluzioni 
+	\begin{equation*}
+		\varphi_1 = \frac{1 + \sqrt{5}}{2} \quad\ \varphi_2 = \frac{1 - \sqrt{5}}{2}
+	\end{equation*}
+	ovviamente $\varphi_2 < 0$ per cui dev'essere che $\varphi_1$ è proprio il valore
+	della frazione continua cercata.
+\end{esempio}
 \begin{proposizione}
 	In generale lo sviluppo di una irrazionalità quadrata $\sqrt{d}$ per $d$ positivo e non quadrato perfetto, il suo sviluppo in frazione continua ha come pre-periodo solo $a_0$ ed uno sviluppo periodico che termina con l'elemento $2a_0$. Lo sviluppo periodico è di una certa lunghezza $L$, nel senso che copre tutti i valori tra $a_2$ ed $a_{L-1}$.
 \end{proposizione}
@@ -4578,11 +4601,11 @@ Un modo per trovare questa unità fondamentale è con le \textit{frazioni contin
 		Allora il grado di questa estensione è 4.
 		\item Il grado di $\mathbb{Q}\left(\sqrt{-2}\right)$ su $\mathbb{Q}$ è uguale al grado di $\mathbb{Q}\left(\sqrt{-5}\right)$ su $\mathbb{Q}$. Allora i coniugati di $\sqrt{-2}$ sono 
 		\begin{equation*}
-		\sqrt{-2},-\sqrt{-2},-\sqrt{-2}
+		\sqrt{-2},\sqrt{-2},-\sqrt{-2},-\sqrt{-2}
 		\end{equation*}
 		e quelli di $\sqrt{-5}$ sono 
 		\begin{equation*}
-		\sqrt{-5},-\sqrt{-5},-\sqrt{-5}
+		\sqrt{-5},\sqrt{-5},-\sqrt{-5},-\sqrt{-5}
 		\end{equation*}
 		\item Dai calcoli notiamo subito
 		\begin{align*}
@@ -4680,7 +4703,7 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 		\item Siano $A, B, C$ tre anelli con $A\subset B\subset C$, se $C$ è intero su $B$ e $B$ è intero su $A$ allora $C$ è intero su $A$.
 		\item L'anello degli interi di un campo numerico $F$ è integralmente chiuso.
 		\item L'anello degli interi di un campo numerico $F$ è noetheriano.
-		\item Sia $F$ un campo numerico ed $I$ suo ideale non nullo, valgono i seguenti fatti:
+		\item Sia $F$ un campo numerico ed $I$ un ideale di $\mathcal{O}_F$ non nullo, valgono i seguenti fatti:
 		\begin{enumerate}
 			\item $I\cap\mathbb{Z}\neq\left\{0\right\}$
 			\item $\left|\mathcal{O}_F/I\right|<+\infty$
@@ -4707,7 +4730,7 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 		$A \subseteq A[b_0, \dots, b_{n-1},c]$ è un estensione finita contenuta in $C$, per cui $c$ 
 		dev'essere intero su $A$.
 		\item Sia $\alpha\in F$ intero su $\mathcal{O}_F$. Siccome $\mathcal{O}_F$ è intero su $\mathbb{Z}$, $\alpha$ è intero su $\mathbb{Z}$. Allora $\alpha\in O\cap F=\mathcal{O}_F$.
-		\item Sia $I$ sottoanello di $\mathcal{O}_F$, allora $I$ è generato da un numero di elementi pari al grado di $F$ su $\mathbb{Q}$ (vedendolo come $\mathbb{Z}$-modulo). In particolare è finitamente generato.
+		\item Sia $I$ ideale di $\mathcal{O}_F$, allora $I$ è generato da un numero di elementi pari al grado di $F$ su $\mathbb{Q}$ (vedendolo come $\mathbb{Z}$-modulo). In particolare è finitamente generato.
 		\item Vediamo le dimostrazioni:
 		\begin{enumerate}
 			\item Sia $\alpha\in I$ elemento non-nullo, sia dato il suo polinomio minimo (a coefficienti interi)
