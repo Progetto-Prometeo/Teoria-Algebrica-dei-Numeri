@@ -2401,10 +2401,10 @@ Il test di Rabin-Miller viene usato in molte funzioni di valutazione della prima
 \begin{osservazione}
 	Se condizionato all'ipotesi di Riemann questo test diventa \textit{deterministico}, cioè garantisce con totale sicurezza la primalità di $n=2^km+1$, ed efficiente. Per dimostrare quanto abbiamo appena detto ci serve definire alcuni insiemi e fornire alcuni lemmi intermedi. 
 	\begin{align*}
-	&M_n=\left\{a\in\mathbb{Z}_n^* \, \mid \, a^m\equiv1 \ \text{oppure} \ a^{2^jm} \ \equiv-1 \ \text{per un $0\leq j\leq k-1$}\right\}\\
-	&B=\left\{a\in\mathbb{Z}_n^* \, \mid \, a^{2^{s-1}m}\equiv\pm1\Mod n\right\}\\
-	&B'=\left\{a\in\mathbb{Z}_n^*\, \mid \,a^{2^{s-1}m}\equiv1\Mod n \right\}\\
-	&B_p=\left\{a\in\mathbb{Z}_{p^{\alpha_p}}^*\, \mid \, a^{2^{s-1}m}\equiv1\Mod p^{\alpha_p}\right\}
+	&M_n=\left\{a\in\mathbb{Z}_n^* \, \middle| \, a^m\equiv1 \ \text{oppure} \ a^{2^jm} \ \equiv-1 \ \text{per un $0\leq j\leq k-1$}\right\}\\
+	&B=\left\{a\in\mathbb{Z}_n^* \, \middle| \, a^{2^{s-1}m}\equiv\pm1\Mod n\right\}\\
+	&B'=\left\{a\in\mathbb{Z}_n^*\, \middle| \,a^{2^{s-1}m}\equiv1\Mod n \right\}\\
+	&B_p=\left\{a\in\mathbb{Z}_{p^{\alpha_p}}^*\, \middle| \, a^{2^{s-1}m}\equiv1\Mod p^{\alpha_p}\right\}
 	\end{align*}
 	dove abbiamo usato
 	\begin{itemize}
@@ -2462,8 +2462,17 @@ Il test di Rabin-Miller viene usato in molte funzioni di valutazione della prima
 	&\iff t\log_gx\equiv0 \Mod n\\
 	&\iff ty\equiv0\Mod n
 	\end{align*}
-	che ha chiaramente il numero di soluzioni richiesto. \\ Ad esempio l'equazione $3y\equiv0\Mod15$ ha soluzioni $0,5,10$. \\ \\ Notiamo che $y$ è necessariamente un intero, abbiamo utilizzato il \textit{logaritmo discreto}; si basa sul fatto che $g$ sia un generatore.
+	che ha chiaramente il numero di soluzioni richiesto. \\ 
 \end{proof}
+
+\begin{osservazione}
+	Notiamo che $y$ è necessariamente un intero, abbiamo utilizzato il \textit{logaritmo discreto}; si basa sul fatto che $g$ sia un generatore.	
+\end{osservazione}
+
+\begin{esempio}
+	Ad esempio l'equazione $3y\equiv0\Mod15$ ha soluzioni $0,5,10$. 
+\end{esempio}
+
 \begin{lemma}
 	La cardinalità di $B$ è 
 	\begin{equation*}
