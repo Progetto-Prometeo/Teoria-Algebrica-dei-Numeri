@@ -2698,7 +2698,7 @@ Iniziamo subito notando che se $m$ ed $n$ godono di questa proprietà (ad $a$ fi
 (n)(m)
 &=\left(x_m^2+ay_m^2\right)\left(x_n^2+ay_n^2\right)\\
 &=\left(x_mx_n\right)^2+\left(ay_my_n\right)^2+a\left(\left(x_my_n\right)^2+\left(x_ny_m\right)^2\right)\\
-&=\left(x_mx_n+ay_my_n\right)^2+a\left(x_my_n-x_my_n^2\right)^2\\
+&=\left(x_mx_n+ay_my_n\right)^2+a\left(x_my_n-x_my_n^2\right)^2
 \end{align*}
 Allora, data la \enquote{proprietà moltiplicativa} della forma quadratica, anche in questo caso possiamo solo concentrarci sullo studio della proprietà per i primi. Per porre in modo diverso la questione, per quali $p$ primi l'equazione 
 \begin{equation*}
@@ -2710,7 +2710,8 @@ x^2+ay^2\equiv0\Mod p
 &\iff ay^2\equiv -x^2\Mod p\\
 &\iff -a\equiv \left(xy^{-1}\right)^2\Mod p
 \end{align*}
-questo se $xy$ %todo: non xy^{-1}?
+questo se $xy$ 
+%todo: non xy^{-1}? No, serve che xy non sia 0, ovvero né x, né y sono 0. Infatti se uno dei due fosse 0 non ammetterebbe inverso
 non è congruo a 0 in modulo $p$. In questo caso ci si riduce a studiare il problema: per quali primi $-a$ è un quadrato in modulo $p$?
 \subsection{Enunciato e prime conseguenze}
 Sicuramente non basta usare il criterio di Eulero, ci sono infiniti primi da controllare! Con la legge di reciprocità quadratica riusciamo a dare una risposta - anche se non del tutto generale - al problema in studio. \\ Il teorema mette in relazione il simbolo di Jacobi  $\leg{p}{q}$ con il suo \enquote{reciproco} $\leg{q}{p}$, quindi il fatto di essere (o meno) quadrato in $\Mod q$ dell'intero $p$ con il fatto di essere (o meno) quadrato in $\Mod p$ dell'intero $q$. 
@@ -3012,7 +3013,7 @@ Sia $A$ un anello commutativo con unità, sia $A[x]$ l'insieme dei polinomi a co
 	con $\deg(r)<\deg(g)$ oppure $r=0$. Questo si può vedere facilmente dalla teoria precedente.
 \end{osservazione}
 \begin{esempio}
-	In $\mathbb{Z}_5[x]$ si divida $f(x)=x^3+x^2+x-1$ per $g(x)=2x^2+1$.\\ \\
+	In $\mathbb{Z}_5[x]$ si divida $f(x)=x^3+x^2+x-1$ per $g(x)=2x^2+1$.
 	\begin{center}
 		\begin{tabular}{r|r}
 			$x^3+x^2+x-1$ & \multicolumn{1}{l}{$2x^2+1$}  \\ 
@@ -3037,12 +3038,10 @@ Sia $A$ un anello commutativo con unità, sia $A[x]$ l'insieme dei polinomi a co
 
 \begin{esercizio}
 	Siano $f$ e $g$ in $\mathbb{Z}_5[x]$ i polinomi 
-	\begin{equation*}
-	f(x)=x^5+2x^3+x^2+4x+3
-	\end{equation*}
-	\begin{equation*}
-	g(x)=x^5+4x^3+x^2+3x+3
-	\end{equation*}
+	\begin{align*}
+	f(x)&=x^5+2x^3+x^2+4x+3\\
+	g(x)&=x^5+4x^3+x^2+3x+3
+	\end{align*}
 	Costruire il massimo comune divisore e la scrittura di Bezout del massimo comune divisore.\\
 	
 	La risoluzione è immediata per algoritmo di divisione euclidea:
@@ -3427,6 +3426,7 @@ Come possiamo vedere il loro studio è strettamente legato alla teoria dei numer
 \end{osservazione}
 \begin{esercizio}
 	Si verifichi che in $\mathbb{Z}[i]$ tutte le unità sono dei cubi. \\ \\ Si può dimostrare in modo diretto, oppure osservando che le unità formano un gruppo ciclico di ordine 4.
+	Infatti tutte le unità di $\mathbb{Z}[i]$ sono $1,i,-1,-i$ e si può vedere che $i$ genera tutto il gruppo, infatti $i^2 = -1$, $i^3 = -i$ e $i^4 = 1$ e quindi $U(\mathbb{Z}[i]) \simeq (\mathbb{Z}_4, +)$.
 \end{esercizio}
 
 
@@ -3787,6 +3787,8 @@ con $b,d$ non-nulli.
 	\end{align*}
 	questo è un endomorfismo di $\mathbb{Q}(\alpha)$ visto come $\mathbb{Q}$-spazio vettoriale. Allora gli posso associare una matrice.
 \end{osservazione}
+
+
 \begin{proposizione}
 	Sia $F/\mathbb{Q}$ un campo numerico di grado $n$ su $\mathbb{Q}$, siano $\sigma_i$ le $n$ immersioni di $F$ in $\mathbb{Q}$. Allora per ogni $z\in F$ il polinomio caratteristico di $m_z$ è
 	\begin{equation*}
@@ -3804,6 +3806,20 @@ con $b,d$ non-nulli.
 	\end{equation*}
 	dove $P_z'(x)$ è il polinomio caratteristico di $m_z'$.
 \end{proof}
+\begin{esempio}
+	Consideriamo $\mathbb{Q}(\sqrt{7})$ e $z = 1 + \sqrt{7}$ allora la matrice sarà della forma 
+	\begin{equation*}
+		m_z = \left(
+		\begin{array}{cc}
+			1 			& \sqrt{7} \\
+			\sqrt{7}    &  1\\
+		\end{array}
+		\right)
+	\end{equation*}
+	ovvero ha come determinante $\det m_z = 1-7 = -6$ che corrisponde a $(1-\sqrt{7})(1+\sqrt{7}) = -6$.
+	Il polinomio carattersitico si può calcolare nella solita maniera come $\det(Ix - m_z) = x^2 - 2x -6$, ma esso 
+	è uguale a $x^2 - \tr(m_z)x + \N(m_z)$. Osserviamo che in questo caso la traccia e la norma sono interi. 
+\end{esempio}
 \begin{osservazione}
 	In generale, preso un elemento $z$ in $F/\mathbb{Q}$, i coniugati di $z\in F$ sono le radici del polinomio minimo $M_z(x)$, ognuna ripetuta $[F:\mathbb{Q}(z)]$ volte. \\ Questo è ciò di cui stavamo parlando, possiamo estendere la definizione di coniugato anche agli elementi non primitivi.
 \end{osservazione}
@@ -3816,7 +3832,7 @@ con $b,d$ non-nulli.
 \begin{definizione}
 	La \textbf{norma di un elemento $z\in F$} è il determinante dell'endomorfismo associato $m_z$, ovvero il prodotto (con eventuali ripetizioni) dei suoi coniugati. 
 	\begin{equation*}
-	\N(z)=\sigma_1(z)\dots\sigma_n(z)
+	\N(z)=\sigma_1(z)\cdots\sigma_n(z)
 	\end{equation*}
 	La \textbf{traccia di un elemento $z\in F$} è la traccia dell'endomorfismo associato $m_z$, ovvero la somma (con eventuali ripetizioni) dei suoi coniugati.
 	\begin{equation*}
@@ -3884,7 +3900,7 @@ con $b,d$ non-nulli.
 	Ad esempio la norma di $1+\sqrt{D}$ è $1-D$, la norma di $\frac{1}{2}$ è $\frac{1}{4}$. Notando che $\mathbb{Q}\left(\frac{1}{2}\right)=\mathbb{Q}$, il grado di $\mathbb{Q}\left(\frac{1}{2}\right)$ su $\mathbb{Q}$ è 1. Allora
 	\begin{align*}
 	\left[\mathbb{Q}(\sqrt{D}):\mathbb{Q}\right]&=
-	\left[\mathbb{Q}(\sqrt{D}):\mathbb{Q}(\frac{1}{2})\right]\left[\mathbb{Q}(\frac{1}{2}):\mathbb{Q}\right]\\
+	\left[\mathbb{Q}(\sqrt{D}):\mathbb{Q}\left(\frac{1}{2}\right)\right]\left[\mathbb{Q}\left(\frac{1}{2}\right):\mathbb{Q}\right]\\
 	&=2\cdot1
 	\end{align*}
 	Il polinomio minimo di $\frac{1}{2}$ è $x-\frac{1}{2}$, i suoi coniugati sono $\frac{1}{2}$ ed $\frac{1}{2}$.
@@ -4176,7 +4192,7 @@ In questa sezione faremo vedere che l'anello degli interi di un campo numerico �
 \end{teorema}
 \begin{proof}
 	Devo provare prima di tutto che $\mathcal{O}_F$ sia un gruppo commutativo rispetto alla somma, con elemento neutro 0. 
-	Poiché $\mathcal{O}_F$ è un sotto-anello di $\mathcal{C}$ segue che l'addizione è commutativa. \\
+	Poiché $\mathcal{O}_F$ è un sotto-anello di $\mathbb{C}$ segue che l'addizione è commutativa. \\
 	Sappiamo che $\mathbb{Z} \subset \mathcal{O}_F$ e che $\mathcal{O}_F$ è un anello, 
 	per cui vale anche la quasi distributività del prodotto 
 	$a(b+c) = ab + ac$, $(a+d)b = ab + db$ per ogni 
@@ -4477,15 +4493,16 @@ Un modo per trovare questa unità fondamentale è con le \textit{frazioni contin
 	\end{equation*}
 \end{esempio}
 \begin{esempio}
-	Sia $\varphi = \frac{1 - \sqrt{5}}{2}$ il rapporto aureo. Vogliamo mostrare come compare
+	Sia $\varphi = \frac{1 + \sqrt{5}}{2}$ il rapporto aureo. Vogliamo mostrare come compare
 	dalla risoluzione di un equazione a `frazioni continue'. Infatti sia l'equazione
 	\begin{equation*}
-		\frac{1}{1 + \frac{1}{1 + \dots}} = 1 + \frac{1}{\frac{1}{1 + \frac{1}{1 + \dots}}}
+		1 + \left(\frac{1}{1 +\frac{1}{1 + \frac{1}{1 + \dots}}}\right) 
+			= 1 + \frac{1}{1 + \frac{1}{1 + \dots}}
 	\end{equation*}
-	sostituiamo la frazione continua $\varphi = \frac{1}{1 + \frac{1}{1 + \dots}}$ allora 
+	sostituiamo la frazione continua $\varphi = 1+\frac{1}{1 + \frac{1}{1 + \dots}}$ allora 
 	l'equazione sopra diventa 
 	\begin{equation*}
-		\varphi = 1  + \frac{1}{\varphi}
+		1 + \frac{1}{\varphi} = \varphi
 	\end{equation*}
 	A questo punto, sapendo che $\varphi \neq 0$ possiamo moltiplicare ambo i membri per
 	$\varphi$ e ottenere un equazione di secondo grado
@@ -4519,7 +4536,10 @@ Un modo per trovare questa unità fondamentale è con le \textit{frazioni contin
 	\end{equation*}
 \end{definizione}
 \begin{teorema}
-	La fundamental unit $x_1+y_1\sqrt{d}$ di $\mathbb{Z}[\sqrt{d}]$ se $L$ è pari può essere ricavata dallo sviluppo di $\sqrt{2}$ come 
+	Sia $\mathbb{Z}[\sqrt{d}]$ e $L$ la lunghezza dello sviluppo periodico come 
+	frazione continua di $\sqrt{d}$. 
+	Allora la fundamental unit $x_1+y_1\sqrt{d}$ di $\mathbb{Z}[\sqrt{d}]$ se $L$ è 
+	pari può essere ricavata dallo sviluppo di $\sqrt{2}$ come 
 	\begin{equation*}
 	(x_1,y_1)=\left(p_{L-1},q_{L-1}\right)
 	\end{equation*}
