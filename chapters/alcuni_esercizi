@@ -1,0 +1,191 @@
+\begin{esercizio}
+	Quanti zeri terminali ha $2020!$?
+	
+	Essenzialmente dobbiamo trovare $n$ massimo per cui $10^n \mid 2020!$. Per il teorema fondamentale dell'aritmetica segue che 
+	$5^n \mid 2020!$ e $2^n \mid 2020!$. Calcoliamo la potenza massima di $5$ tale per cui divida $2020!$. 
+	Allora la formula è ovviamente 
+	\begin{equation*}
+		n = \left\lfloor \frac{2020}{5} \right\rfloor + \left\lfloor \frac{2020}{5^2} \right\rfloor + \left\lfloor \frac{2020}{5^3} \right\rfloor + \left\lfloor \frac{2020}{5^4} \right\rfloor = 404 + 80 + 16 + 3 = 503
+	\end{equation*}
+    da cui $503$ è il numero di $0$ terminali.
+\end{esercizio}
+
+\begin{esercizio}
+	Dimostrare che per ogni $n > 0$, $682 \mid (n^{31} - n)$.
+	
+	Basta usare il teorema cinese dei resti rispetto a $n^{31} - n \equiv 0 \mod 682$.
+\end{esercizio}
+
+\begin{esercizio}
+	Se $x^4 - x$ e $x^3 - x$ sono interi per un qualche $x \in \mathbb{R}$, allora $x$ è intero.
+	
+	Dato che $\gcd(x^4 - x, x^3 - x) = x^2 - x \in \mathbb{Z}$.
+	Ma 
+	\begin{equation*}
+		\frac{x^3 - x}{x^2 - x} = 1+x \in \mathbb{Z}
+	\end{equation*}
+	dato che è una divisione di interi tale che uno divide l'altro $1+x$ è intero e dunque $x \in \mathbb{Z}$.
+\end{esercizio}
+
+\begin{esercizio}
+	Dimostrare che se $p$, $p^2 + 2$ sono primi allora lo è anche $p^3 +2$.\\
+	
+	Questo esercizio rivela l'utilità di provare a fare i calcoli. 
+	\begin{enumerate}
+		\item Infatti non può essere che $p = 2$, 
+		guardando modulo $2$ si vede che 
+		$p^2 + 2 \equiv 0 \mod 2$, ma $p^2 + 2 > 2$ quindi non è mai primo.
+		\item Se si guarda invece modulo $3$ si ottiene che
+		$p^2 + 2 \equiv 0 + 2 \equiv 2 \mod 3$ e quindi ammette 
+		la soluzione $3, 11, 29$.
+		\item Se invece è un numero primo $p > 3$ allora sarà tale che $p \equiv \pm 1\mod 3$. 
+		Allora $p^2 + 2 \equiv 1 + 2 \equiv 0 \mod 3$ e 
+		dunque $p^2 + 2$ non è mai primo.  
+	\end{enumerate}	 
+\end{esercizio}
+
+
+\begin{esercizio}
+	Se $A$ anello noetheriano allora $A/I$ è noetheriano dove $I$ ideale di $A$.\\
+	
+	Sia $\pi \colon A \to A/I$ l'omomorfismo di proiezione al quoziente.
+	Allora sappiamo che esiste una corrispondenza tra gli ideali $J \subset A$ tali
+	che $I \subset J$ e gli ideali $\pi(J) \subset A/I$. 
+	Quindi sia $K$ ideale di $A/I$ allora esiste $J$ ideale di $A$ tale che 
+	$\pi(J) = K$. A questo punto osserviamo che $K$ dev'essere finitamente generato:
+	sia $a \in K$ allora $a \in \pi(J)$ quindi esiste $b \in J$ tale che $\pi(b) =a$
+	ma sappiamo che $J = (w_1, \dots, w_n)$ ideale finitamente generato poiché $A$ noetheriano. Pertanto 
+	\begin{equation*}
+		\pi(b) = \pi(a_1 w_1 + \dots + a_n w_n) = \pi(a_1) \pi(w_1) + \dots + 
+					\pi(a_n)\pi(w_n) = a
+	\end{equation*}     
+ 	pertanto basta prendere $\pi(w_1), \dots, \pi(w_n)$ come 
+ 	generatori di $K$. 
+\end{esercizio}
+
+\begin{esercizio}
+	Se $A$ anello noetheriano e $B$ è un anello e un $A$-modulo finitamente generato\footnote{In questo caso $B$ diventa una $A$ algebra.} allora $B$ è noetheriano.\\
+	
+	Ricordiamo la definizione di finitamente generato:
+	Un $A$-modulo $B$ si dice finitamente generato se esistono 
+	degli elementi $b_1, \dots, b_n$ tali che per ogni $b \in B$ è possibile trovare $b = f(a_1)b_1 + \dots + f(a_n)b_n$, dove $f \colon A \to B$ è l'omomorfismo che
+	descrive l'azione prodotto di $a\cdot b$ con $a\in A$, $b\in B$.\\
+	
+	Allora possiamo vedere che è equivalente a dire che esiste
+	un omomorfismo suriettivo $\varphi \colon A^r \to B$ per 
+	qualche $r > 0$. Ma per il teorema di primo isomorfismo
+	otteniamo che $A^r/\ker \varphi \cong B$. La noetherianità 
+	si preserva passando al quoziente (si veda es. 
+	precedente). Inoltre viene preservata per isomorfismi di
+	anelli. Per cui $B$ risulta essere noetheriano. 
+\end{esercizio}
+
+\begin{esercizio}
+	Sia $A$ anello integralmente chiuso sul suo campo delle frazioni $K$. Sia $f(x) \in A[x]$ monico. 
+	Dimostrare che se $f$ è riducibile in $K[x]$ allora $f$ riducibile in $A[x]$\\
+	
+	Siccome $f$ è riducibile in $K[x]$ vuol dire che esiste $\alpha \in K$ tale che $(x-\alpha)g(x) = f(\alpha) = 0$. Ma $\alpha \in A$ 
+	dato che è integralmente chiuso, pertanto $f(x) = (x-\alpha)g(x)$ per qualche $g(x) \in A[x]$.\\ 
+	
+	In particolare risulta immediato (per contrapposizione), 
+	che se $f \in A[x]$ monico e $f$ irriducibile in $A[x]$
+	allora è irriducibile anche in $K[x]$. 
+\end{esercizio}
+
+\begin{esercizio}
+	Trovare per quali $p$ primi ammette soluzioni non banali la seguente equazione
+	\begin{equation*}
+		x^2 - 5y^2 \equiv 0 \mod p
+	\end{equation*}
+	
+	È ovvio che ammette soluzioni se e solo se $a^2 \equiv 5 \mod p$ dato che i 
+	quadrati sono un gruppo rispetto al prodotto in un campo. Pertanto studiamo
+	attraverso i potenti mezzi della reciprocità quadratica quando $5$ risulta essere 
+	un quadrato. Per reciprocità quadratica
+	\begin{equation*}
+		 \left(\frac{5}{p}\right) \left(\frac{p}{5}\right) = (-1)^{\frac{p-1}{2}}
+	\end{equation*}
+	dunque abbiamo due casi 
+	\begin{equation*}
+		\begin{cases}
+			\left(\frac{p}{5}\right) = 1 \iff p \equiv  1, 4 \mod 5 \\
+			\left(\frac{p}{5}\right) = -1 \iff p \equiv 2, 3 \mod 5 \\	
+		\end{cases}
+	\end{equation*}
+	dato che $p$ è primo la classe di resto $0$ non può essere considerata.
+	\begin{enumerate}
+		\item Sia $p \equiv 1 \mod 5$ allora 
+			\begin{equation*}
+				\left(\frac{5}{p}\right) = (-1)^{\frac{p-1}{2}}
+			\end{equation*}
+			a questo punto dobbiamo ulteriormente suddividere nei due casi 
+			$p \equiv 1 \mod 4$ e $p \equiv 3 \mod 4$. Allora otteniamo che
+			l'unico modo per cui  $(-1)^{\frac{p-1}{2}}= 1$ dev'essere per
+			$p \equiv 1 \mod 4$. Attraverso il TCR otteniamo la soluzione
+			\begin{equation*}
+				\begin{cases}
+					p \equiv 1 \mod 5 \\
+					p \equiv 1 \mod 4
+				\end{cases}
+			\end{equation*}
+			ovvero $p = 20n + 1$.
+		\item Sia $p \equiv 4 \mod 5$ allora 
+			\begin{equation*}
+				\left(\frac{5}{p}\right) = (-1)^{\frac{p-1}{2}}
+			\end{equation*}
+			a questo punto dobbiamo ulteriormente suddividere nei due casi 
+			$p \equiv 1 \mod 4$ e $p \equiv 3 \mod 4$. Allora otteniamo che
+			l'unico modo per cui  $(-1)^{\frac{p-1}{2}}= 1$ dev'essere per
+			$p \equiv 1 \mod 4$. Attraverso il TCR otteniamo la soluzione
+			\begin{equation*}
+				\begin{cases}
+					p \equiv 4 \mod 5 \\
+					p \equiv 1 \mod 4
+				\end{cases}
+			\end{equation*}
+			ovvero $p = 20n + 9$.
+		\item Sia $p \equiv 2 \mod 5$ allora 
+			\begin{equation*}
+				\left(\frac{5}{p}\right) = -(-1)^{\frac{p-1}{2}}
+			\end{equation*}
+			a questo punto dobbiamo ulteriormente suddividere nei due casi 
+			$p \equiv 1 \mod 4$ e $p \equiv 3 \mod 4$. Allora otteniamo che
+			l'unico modo per cui  $-(-1)^{\frac{p-1}{2}}= 1$ dev'essere per
+			$p \equiv 3 \mod 4$. Attraverso il TCR otteniamo la soluzione
+			\begin{equation*}
+				\begin{cases}
+					p \equiv 2 \mod 5 \\
+					p \equiv 3 \mod 4
+				\end{cases}
+			\end{equation*}
+			ovvero $p = 20n + 7$.
+		\item Sia $p \equiv 3 \mod 5$ allora 
+			\begin{equation*}
+				\left(\frac{5}{p}\right) = -(-1)^{\frac{p-1}{2}}
+			\end{equation*}
+			a questo punto dobbiamo ulteriormente suddividere nei due casi 
+			$p \equiv 1 \mod 4$ e $p \equiv 3 \mod 4$. Allora otteniamo che
+			l'unico modo per cui  $-(-1)^{\frac{p-1}{2}}= 1$ dev'essere per
+			$p \equiv 3 \mod 4$. Attraverso il TCR otteniamo la soluzione
+			\begin{equation*}
+				\begin{cases}
+					p \equiv 3 \mod 5 \\
+					p \equiv 3 \mod 4
+				\end{cases}
+			\end{equation*}
+			ovvero $p = 20n + 3$.
+	\end{enumerate}
+	Per cui alcuni esempi sono per $p = 3, 7, 23, 29, \dots$.
+\end{esercizio}
+
+\begin{esercizio}
+	
+\end{esercizio}
+
+\begin{esercizio}
+	
+\end{esercizio}
+
+\begin{esercizio}
+	
+\end{esercizio}
