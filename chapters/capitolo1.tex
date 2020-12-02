@@ -3479,7 +3479,7 @@ Ricordiamo che i campi di numeri sono estensioni finite di $\mathbb{Q}$, ad esem
 	\end{equation*}
 	con $b_j\neq\frac{\theta-\alpha_i}{\lambda}$, ovvero $\MCD(h,g)=x-\beta$. Siccome $g$ ed $h$ sono polinomi minimi sono anche monici, e vale anche che $x-\beta\in\mathbb{Q}(\theta)[x]$. Questo equivale a $\beta\in\mathbb{Q}(\theta)$. In modo analogo posso ottenere $\alpha\in\mathbb{Q}(\theta)$.
 	Allora ho dimostrato la tesi intermedia: $\mathbb{Q}(\theta) = \mathbb{Q}(\alpha,\beta)$. \\ \\ 
-	Per dimostrare la tesi procedo per induzione sul numero di elementi 
+	Per dimostrare la tesi procedo per induzione sul numero di elementi primitivi che costituiscono la mia estensione.
 \end{proof}
 \begin{esempio}
 	$\mathbb{Q}(\sqrt[3]{3}+\sqrt{7})=\mathbb{Q}(\sqrt[3]{3},\sqrt{7})$ \\ \\ 
@@ -3833,7 +3833,7 @@ con $b,d$ non-nulli.
 \begin{definizione}
 	La \textbf{norma di un elemento $z\in F$} è il determinante dell'endomorfismo associato $m_z$, ovvero il prodotto (con eventuali ripetizioni) dei suoi coniugati. 
 	\begin{equation*}
-	\N(z)=\sigma_1(z)\dots\sigma_n(z)
+	\N(z)=\sigma_1(z)\cdots\sigma_n(z)
 	\end{equation*}
 	La \textbf{traccia di un elemento $z\in F$} è la traccia dell'endomorfismo associato $m_z$, ovvero la somma (con eventuali ripetizioni) dei suoi coniugati.
 	\begin{equation*}
@@ -4511,7 +4511,10 @@ Un modo per trovare questa unità fondamentale è con le \textit{frazioni contin
 	\end{equation*}
 \end{definizione}
 \begin{teorema}
-	La fundamental unit $x_1+y_1\sqrt{d}$ di $\mathbb{Z}[\sqrt{d}]$ se $L$ è pari può essere ricavata dallo sviluppo di $\sqrt{2}$ come 
+	Sia $\mathbb{Z}[\sqrt{d}]$ e $L$ la lunghezza dello sviluppo periodico come 
+	frazione continua di $\sqrt{d}$. 
+	Allora la fundamental unit $x_1+y_1\sqrt{d}$ di $\mathbb{Z}[\sqrt{d}]$ se $L$ è 
+	pari può essere ricavata dallo sviluppo di $\sqrt{2}$ come 
 	\begin{equation*}
 	(x_1,y_1)=\left(p_{L-1},q_{L-1}\right)
 	\end{equation*}
@@ -4680,7 +4683,7 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 		\item Siano $A, B, C$ tre anelli con $A\subset B\subset C$, se $C$ è intero su $B$ e $B$ è intero su $A$ allora $C$ è intero su $A$.
 		\item L'anello degli interi di un campo numerico $F$ è integralmente chiuso.
 		\item L'anello degli interi di un campo numerico $F$ è noetheriano.
-		\item Sia $F$ un campo numerico ed $I$ suo ideale non nullo, valgono i seguenti fatti:
+		\item Sia $F$ un campo numerico ed $I$ un ideale di $\mathcal{}_F$ non nullo, valgono i seguenti fatti:
 		\begin{enumerate}
 			\item $I\cap\mathbb{Z}\neq\left\{0\right\}$
 			\item $\left|\mathcal{O}_F/I\right|<+\infty$
@@ -4707,7 +4710,7 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 		$A \subseteq A[b_0, \dots, b_{n-1},c]$ è un estensione finita contenuta in $C$, per cui $c$ 
 		dev'essere intero su $A$.
 		\item Sia $\alpha\in F$ intero su $\mathcal{O}_F$. Siccome $\mathcal{O}_F$ è intero su $\mathbb{Z}$, $\alpha$ è intero su $\mathbb{Z}$. Allora $\alpha\in \mathcal{O}\cap F=\mathcal{O}_F$.
-		\item Sia $I$ sottoanello di $\mathcal{O}_F$, allora $I$ è generato da un numero di elementi pari al grado di $F$ su $\mathbb{Q}$ (vedendolo come $\mathbb{Z}$-modulo). In particolare è finitamente generato.
+		\item Sia $I$ ideale di $\mathcal{O}_F$, allora $I$ è generato da un numero di elementi pari al grado di $F$ su $\mathbb{Q}$ (vedendolo come $\mathbb{Z}$-modulo). In particolare è finitamente generato.
 		\item Vediamo le dimostrazioni:
 		\begin{enumerate}
 			\item Sia $\alpha\in I$ elemento non-nullo, sia dato il suo polinomio minimo (a coefficienti interi)
