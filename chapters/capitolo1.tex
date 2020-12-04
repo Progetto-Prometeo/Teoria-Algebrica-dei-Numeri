@@ -1679,23 +1679,7 @@ Come possiamo caratterizzare gli $n$ per cui otteniamo un $\left(\mathbb{Z}_n^*,
 		\item $\mathbb{Z}_4^*=\left\{1,3\right\}$, è ciclico; oltretutto $\left(\mathbb{Z}_4^*,\cdot\right)\simeq\left(\mathbb{Z}_{2},+\right)$
 	\end{itemize}
 \end{esempio}
-\begin{proposizione}
-	Per $n=2^k$ pari con $k>2$ e per $a\in\mathbb{Z}_n^*$ si ha 
-	\begin{equation*}
-	a^{2^{k-2}}\equiv1\Mod\left(2^k\right)
-	\end{equation*} 
-\end{proposizione}
-\begin{proof}
-	Procediamo per induzione su $k$, l'ipotesi induttiva è 
-	\begin{equation*}
-	a^{2^{k-2}}\equiv1\Mod2^k \iff a^{2^{k-2}}=1+t2^k \ \ \ \ \ t \in \mathbb{Z}
-	\end{equation*}
-	Per provarlo bastano pochi calcoli.
-	\begin{align*}
-	a^{2^{(k+1)-2}}&=a^{2^{k-2}\cdot2}=\left(a^{2^{k-2}}\right)^2=\left(1+t2^k\right)^2\\
-	&= 1+t2^{k+1}+t^22^{2k}\equiv1\Mod2^{k+1}
-	\end{align*}
-\end{proof}
+
 \begin{controesempio}
 	Se non ponessi $k>2$ avrei palesemente una situazione falsa. Prendiamo ad esempio $k=2$ e lavoriamo in
 	\begin{equation*}
