@@ -1925,7 +1925,7 @@ Utilizzeremo gli $\mathbb{Z}_n^*$ perché siamo interessati alla struttura molti
 	o in altre parole se $a$ è un quadrato in $\mathbb{Z}_p^*$. \\ Da qui in poi definiremo per comodità $Q_p$ come l'insieme dei quadrati in $\mathbb{Z}_p^*$, che si può ovviamente vedere come l'insieme dei residui quadratici modulo $p$.
 \end{definizione}
 \begin{definizione}
-	Definisco il \textbf{simbolo di Legendre}:
+	Sia $a \in \mathbb{Z}$ e $p$ primo. Definisco il \textbf{simbolo di Legendre} come
 	\begin{equation*}
 	\leg{a}{p}= \begin{cases}
 	&1 \ \ \ \ \  \text{se $a\in Q_p$}\\
@@ -1950,12 +1950,16 @@ Utilizzeremo gli $\mathbb{Z}_n^*$ perché siamo interessati alla struttura molti
 	\begin{equation*}
 	mx\equiv a\Mod p
 	\end{equation*}
-	congruenza lineare che ha sicuramente soluzione, e questa soluzione non può essere $m$ per quanto appena osservato. Allora posso scrivere $a^{\frac{p-1}{2}}$ come prodotto di tutti gli elementi di $\mathbb{Z}_p^*$, perché prendo $a$ un numero di volte pari a $\sfrac{p-1}{2}$.
+	congruenza lineare che ha sicuramente soluzione, e questa soluzione non può essere $m$ per quanto appena osservato. Allora posso scrivere $a^{\frac{p-1}{2}}$ come prodotto di tutti gli elementi di $\mathbb{Z}_p^*$, perché posso scrivere $\sfrac{p-1}{2}$ congruenze del tipo
+	\begin{equation*}
+	a\equiv zw \Mod p
+	\end{equation*}
+	per certi $z$ e $w$ diversi tra loro in $\mathbb{Z}_p^*$. Allora per teorema cinese del resto ottengo
 	\begin{align*}
-	a^{\frac{p-1}{2}}&\equiv1\cdot2\cdot\dots\cdot(p-1)\Mod p\\
+	a^{\frac{p-1}{2}}&\equiv1\cdot2\cdots(p-1)\Mod p\\
 	&\equiv p-1\equiv-1 \Mod p
 	\end{align*}
-	questo perché ogni elemento ha inverso unico nella scrittura e nessun elemento è inverso di se stesso se non $1$ e $-1$. Posso vedere l'ultima cosa scrivendo 
+	questo perché ogni elemento ha inverso unico nella scrittura e nessun elemento è inverso di se stesso se non $1$ e $-1$. Posso vedere quest'ultima cosa scrivendo 
 	\begin{equation*}
 	x^2\equiv1\Mod p \ \iff \ (x-1)(x+1)\equiv0\Mod p
 	\end{equation*}
@@ -2023,9 +2027,9 @@ Utilizzeremo gli $\mathbb{Z}_n^*$ perché siamo interessati alla struttura molti
 	Anche questa osservazione tornerà utile in seguito.
 \end{esempio}
 \begin{definizione}
-	Dato $a$ intero ed $n$ naturale dispari con fattorizzazione $n=p_1^{e_1}\dots p_s^{e_s}$, definisco il \textbf{simbolo di Jacobi}
+	Dato $a$ intero ed $n$ naturale dispari con fattorizzazione $n=p_1^{e_1}\cdots p_s^{e_s}$, definisco il \textbf{simbolo di Jacobi}
 	\begin{equation*}
-	\leg{a}{n}=\leg{a}{p_1}^{e_1}\dots\leg{a}{p_s}^{e_s}
+	\leg{a}{n}=\leg{a}{p_1}^{e_1}\cdots\leg{a}{p_s}^{e_s}
 	\end{equation*}
 \end{definizione}
 \begin{osservazione}
@@ -2036,12 +2040,14 @@ Utilizzeremo gli $\mathbb{Z}_n^*$ perché siamo interessati alla struttura molti
 		\item se vale $-1$, allora $a$ non è un residuo quadratico in $\mathbb{Z}_n$
 		\item se vale $1$, \textit{non è detto che $a$ sia un residuo quadratico in $\mathbb{Z}_n$}
 	\end{enumerate}
-	Approfondiamo l'ultimo punto: per il teorema cinese del resto $a$ è un residuo quadratico in $\mathbb{Z}_n$ se è un residuo quadratico in ogni $\mathbb{Z}_{p_i}$ (ovvero ogni equazione $x^2\equiv1\Mod p_i$ ha soluzione). Può quindi capitare che $\leg{a}{n}=1$ ma $\leg{a}{p_i}=-1$ per qualche $p_i$. \\ \\ Si osserva facilmente che $Q_n$ è un sottogruppo di $\mathbb{Z}_n^*$, infatti
-	\begin{itemize}
-		\item $1\in Q_n$ (ovvio)
-		\item $a\in Q_n \implies a^{-1}\in Q_n$ \\ $a^{-1}$ è quell'elemento di $\mathbb{Z}_n^*$ tale che $a^{-1}a=1$, allora devo mostrare che esiste un $b$ tale che $b^2=a^{-1}$. Ma il $b$ cercato è l'inverso del $b$ di $a$! Il fatto è algebricamente ovvio, se serve convincersi meglio si veda l'Esempio \ref{residuo_not_primo}.
-		\item $a,b\in Q_n \implies ab\in Q_n$ \\ Intuitivamente come prima, oppure si fissi l'Esempio \ref{residuo_not_primo} negli occhi fino a quando non ci si è convinti abbastanza.
-	\end{itemize}
+	Approfondiamo l'ultimo punto: per il teorema cinese del resto $a$ è un residuo quadratico in $\mathbb{Z}_n$ se è un residuo quadratico in ogni $\mathbb{Z}_{p_i}$ (ovvero ogni equazione $x^2\equiv1\Mod p_i$ ha soluzione). Può quindi capitare che $\leg{a}{n}=1$ ma $\leg{a}{p_i}=-1$ per qualche $p_i$. \\ \\ Si osserva facilmente che $Q_n$ è un sottogruppo di $\mathbb{Z}_n^*$, infatti è l'immagine dell'endomorfismo di gruppi (che quindi è ancora un sottogruppo) 
+	\begin{equation*}
+	\arraycolsep=1.4pt
+	\begin{array}{lll}
+		\varphi \colon  & \mathbb{Z}^*_n &\longrightarrow \mathbb{Z}^*_n\\
+		& a			& \longmapsto a^2   	
+	\end{array}
+	\end{equation*}
 	Potremmo quasi dire che il simbolo di Jacobi è una \enquote{generalizzazione} del simbolo di Legendre. Purtroppo come abbiamo visto non vale 1 solo sui quadrati, quindi ci si può aspettare il seguente risultato.
 \end{osservazione}
 \begin{proposizione} Valgono i seguenti risultati sul simbolo di Jacobi.
@@ -2257,7 +2263,7 @@ I \textbf{numeri di Carmichael} sono numeri composti che sono pseudoprimi di Fer
 \begin{algoritmo}[Test di Eulero]
 	Dal criterio di Eulero sappiamo che se $p$ è primo
 	\begin{equation*}
-	a^{\frac{p-1}{2}}\equiv\leg{a}{p}\Mod p \equiv\pm1\Mod p 
+	a^{\frac{p-1}{2}}\equiv\leg{a}{p} \equiv\pm1\Mod p 
 	\end{equation*}
 	Per controllare la primalità di un $n$ intero, fissiamo una base $a$ e verifichiamo se 
 	\begin{equation*}
@@ -2396,10 +2402,10 @@ Il test di Rabin-Miller viene usato in molte funzioni di valutazione della prima
 \begin{osservazione}
 	Se condizionato all'ipotesi di Riemann questo test diventa \textit{deterministico}, cioè garantisce con totale sicurezza la primalità di $n=2^km+1$, ed efficiente. Per dimostrare quanto abbiamo appena detto ci serve definire alcuni insiemi e fornire alcuni lemmi intermedi. 
 	\begin{align*}
-	&M_n=\left\{a\in\mathbb{Z}_n^* \, \middle \, a^m\equiv1 \ \text{oppure} \ a^{2^jm} \ \equiv-1 \ \text{per un $0\leq j\leq k-1$}\right\}\\
-	&B=\left\{a\in\mathbb{Z}_n^* \, \middle \, a^{2^{s-1}m}\equiv\pm1\Mod n\right\}\\
-	&B'=\left\{a\in\mathbb{Z}_n^*\, \middle \,a^{2^{s-1}m}\equiv1\Mod n \right\}\\
-	&B_p=\left\{a\in\mathbb{Z}_{p^{\alpha_p}}^*\, \middle \, a^{2^{s-1}m}\equiv1\Mod p^{\alpha_p}\right\}
+	&M_n=\left\{a\in\mathbb{Z}_n^* \, \middle| \, a^m\equiv1 \ \text{oppure} \ a^{2^jm} \ \equiv-1 \ \text{per un $0\leq j\leq k-1$}\right\}\\
+	&B=\left\{a\in\mathbb{Z}_n^* \, \middle| \, a^{2^{s-1}m}\equiv\pm1\Mod n\right\}\\
+	&B'=\left\{a\in\mathbb{Z}_n^*\, \middle| \,a^{2^{s-1}m}\equiv1\Mod n \right\}\\
+	&B_p=\left\{a\in\mathbb{Z}_{p^{\alpha_p}}^*\, \middle| \, a^{2^{s-1}m}\equiv1\Mod p^{\alpha_p}\right\}
 	\end{align*}
 	dove abbiamo usato
 	\begin{itemize}
@@ -4759,7 +4765,7 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 	\begin{equation*}
 	\begin{array}{rl}
 	\varphi \;\colon & k[x,y] \to k[y] \\
-	& f(x,y) \mapsto f(1,y)  
+	& f(x,y) \mapsto f(0,y)  
 	\end{array}
 	\end{equation*}
 	questo ha come nucleo l'ideale $(x) = \ker \varphi$. Inoltre $k[x,y]/(x) \simeq k[y]$ per il 
