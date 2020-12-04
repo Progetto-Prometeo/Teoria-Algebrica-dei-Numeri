@@ -1606,6 +1606,26 @@ Ovviamente prenderemo come $p$ un primo di $\mathbb{Z}$.
 	\end{equation*}
 	Siccome questi due ordini sono coprimi, $\left(g^{p^f}\right)(h^{\sfrac{m}{p^e}})$ appartiene a $G$ - perché è un gruppo - ed ha ordine $\frac{n}{p^f}p^e=p^{e-f}n>n$; questo contraddice di nuovo la scelta di $n$.
 \end{proof}
+\begin{proof}
+	Se uno conosce il Teorema di classifcazione dei gruppi abeliani finiti, sa che se $|G| = p_1^{e_1} \cdots p_k^{e_k}$ allora 
+	\begin{equation*}
+		G \cong P_1 \times \cdots \times P_k
+	\end{equation*}
+	dove $P_1, \cdots, P_k$ sono i $p_i$-sottogruppi di Sylow di $G$.
+	A questo punto dimostriamo che per un $p$-sottogruppo l'ordine massimo di un elemento viene diviso da ogni altro ordine 
+	di ogni altro elemento.
+	Sia $a \in P_i$ elemento avente ordine massimo allora $|a| = p_i^{q}$ con $1 \le q \le e_i$. Allora per il Teorema di 
+	Lagrange sappiamo che ogni altro elemento $b \in P_i$ ha ordine $|b| = p^{l}_i$ con $l < q$ perché abbiamo supposto 
+	che $a$ ha ordine massimo. Quindi $|b| \mid |a|$.\\
+	
+	Questa proprietà vale dunque anche su $G$. Infatti l'elemento di ordine massimo sarà un certo $a = a_1 \cdots a_k$ dove
+	$a_i$ sono tutti gli elementi di ordine massimo nel $p_i$-sottogruppo di Sylow, ovvero $P_i$.
+	Quindi $|a| = |a_1|\cdots|a_k|$ con $|a_i|$ ordine massimo in $P_i$. Se $b \in G$ allora sarà scrivibile come 
+	$b = b_1 \cdots b_k$ e avrà ordine $|b| = |b_1|\cdots |b_k|$ (questo perché le potenze di $|b_i|$ sono di primi distinti
+	e dunque hanno ordini coprimi tra loro). Per l'osservazione fatta sui $p_i$-sottogruppi di Sylow, segue che e
+	$|b| \mid |a|$.
+\end{proof}
+
 \begin{teorema}
 	Sia $f\in\mathbb{Z}_p[x]$ polinomio non costante e di grado $d$ (nella variabile $x$), allora ha al più $d$ radici in $\mathbb{Z}_p$.
 \end{teorema}
