@@ -1021,14 +1021,14 @@ per $k$ un naturale positivo. Spesso lo indicheremo come $\mathbb{Z}[\omega]$, $
 	\begin{equation*}
 		X=\left\{N(z) \, \mid \, z \in S\right\}\subset\mathbb{N}\setminus\left\{0\right\}
 	\end{equation*}
-	Suppongo $X$ non vuoto, allora ammette un elemento minimo; sia $w$ l'elemento di $S$ per cui $X$ ha tale minimo, in simboli $N(w)=\min X$. \\ Essendo non irriducibile posso scrivere $w=xy$ con né $x$ né $y$ unità.
+	Suppongo $S$ non vuoto, allora $X$ ammette un elemento minimo; sia $w$ l'elemento di $S$ per cui $X$ ha tale minimo, in simboli $N(w)=\min X$. \\ Essendo non irriducibile posso scrivere $w=xy$ con né $x$ né $y$ unità.
 	\begin{equation*}
 	N(w)=N(x)N(y) \ \text{con} \ N(x),N(y)>1 
 	\end{equation*}
 	Per scelta di $w$ si vede che $x$ ed $y$ non appartengono ad $S$, ma allora si fattorizzano in prodotto di elementi irriducibili, e di conseguenza anche $w$. \\ Allora l'insieme $S$ è vuoto.
 \end{proof}
 \begin{proposizione}
-	Se $k\geq3$ la fattorizzazione in irriducibili esiste (per teorema visto), ma non è unica.
+	Se $k\geq3$ la fattorizzazione in irriducibili esiste (per il teorema appena visto), ma non è unica.
 \end{proposizione}
 \begin{proof}
 	Basta trovare un elemento irriducibile che non sia primo; infatti in un UFD un elemento è irriducibile se e solo se è un primo. \\
@@ -1681,7 +1681,7 @@ Come possiamo caratterizzare gli $n$ per cui otteniamo un $\left(\mathbb{Z}_n^*,
 	\begin{equation*}
 	\mathbb{Z}_4^*=\left\{1,3\right\}
 	\end{equation*}
-	siamo quindi sotto le ipotesi (\enquote{corrette}) del teorema. Abbiamo chiaramente una tesi falsa, perché
+	siamo quindi sotto le ipotesi (\enquote{modificate}) del teorema. Abbiamo chiaramente una tesi falsa, perché
 	\begin{equation*}
 	3^{2^{2-2}}=3^{1}=3\nequiv1\Mod\left(2^2\right)
 	\end{equation*} 
@@ -1725,7 +1725,7 @@ Come possiamo caratterizzare gli $n$ per cui otteniamo un $\left(\mathbb{Z}_n^*,
 		(g+p)^{p-1}&\equiv g^{p-1}+(p-1)pg^{p-2}\Mod p^2\\ 
 		&\equiv 1-pg^{p-2}\Mod p^2 \nequiv 1\Mod p^2
 		\end{align*}
-		e quindi $p^2$ non divide $pg^{p-2}$, non può essere che $n\neq p-1$.
+		e quindi $p^2$ non divide $pg^{p-2}$, non può essere che $n$ valga $p-1$, deve essere necessariamente $n=p(p-1)$.
 		\item[($m=p(p-1)$)] Caso ovvio, $g$ genera $\mathbb{Z}_{p^2}^*$.
 	\end{itemize}
 \end{proof}
@@ -1925,7 +1925,7 @@ Utilizzeremo gli $\mathbb{Z}_n^*$ perché siamo interessati alla struttura molti
 	o in altre parole se $a$ è un quadrato in $\mathbb{Z}_p^*$. \\ Da qui in poi definiremo per comodità $Q_p$ come l'insieme dei quadrati in $\mathbb{Z}_p^*$, che si può ovviamente vedere come l'insieme dei residui quadratici modulo $p$.
 \end{definizione}
 \begin{definizione}
-	Sia $a \in \mathbb{Z}$ e $p$ primo. Definisco il \textbf{simbolo di Legendre}:
+	Sia $a \in \mathbb{Z}$ e $p$ primo. Definisco il \textbf{simbolo di Legendre} come
 	\begin{equation*}
 	\leg{a}{p}= \begin{cases}
 	&1 \ \ \ \ \  \text{se $a\in Q_p$}\\
@@ -1950,12 +1950,16 @@ Utilizzeremo gli $\mathbb{Z}_n^*$ perché siamo interessati alla struttura molti
 	\begin{equation*}
 	mx\equiv a\Mod p
 	\end{equation*}
-	congruenza lineare che ha sicuramente soluzione, e questa soluzione non può essere $m$ per quanto appena osservato. Allora posso scrivere $a^{\frac{p-1}{2}}$ come prodotto di tutti gli elementi di $\mathbb{Z}_p^*$, perché prendo $a$ un numero di volte pari a $\sfrac{p-1}{2}$.
+	congruenza lineare che ha sicuramente soluzione, e questa soluzione non può essere $m$ per quanto appena osservato. Allora posso scrivere $a^{\frac{p-1}{2}}$ come prodotto di tutti gli elementi di $\mathbb{Z}_p^*$, perché posso scrivere $\sfrac{p-1}{2}$ congruenze del tipo
+	\begin{equation*}
+	a\equiv zw \Mod p
+	\end{equation*}
+	per certi $z$ e $w$ diversi tra loro in $\mathbb{Z}_p^*$. Allora per teorema cinese del resto ottengo
 	\begin{align*}
 	a^{\frac{p-1}{2}}&\equiv1\cdot2\cdots(p-1)\Mod p\\
 	&\equiv p-1\equiv-1 \Mod p
 	\end{align*}
-	questo perché ogni elemento ha inverso unico nella scrittura e nessun elemento è inverso di se stesso se non $1$ e $-1$. Posso vedere l'ultima cosa scrivendo 
+	questo perché ogni elemento ha inverso unico nella scrittura e nessun elemento è inverso di se stesso se non $1$ e $-1$. Posso vedere quest'ultima cosa scrivendo 
 	\begin{equation*}
 	x^2\equiv1\Mod p \ \iff \ (x-1)(x+1)\equiv0\Mod p
 	\end{equation*}
@@ -2038,11 +2042,11 @@ Utilizzeremo gli $\mathbb{Z}_n^*$ perché siamo interessati alla struttura molti
 	\end{enumerate}
 	Approfondiamo l'ultimo punto: per il teorema cinese del resto $a$ è un residuo quadratico in $\mathbb{Z}_n$ se è un residuo quadratico in ogni $\mathbb{Z}_{p_i}$ (ovvero ogni equazione $x^2\equiv1\Mod p_i$ ha soluzione). Può quindi capitare che $\leg{a}{n}=1$ ma $\leg{a}{p_i}=-1$ per qualche $p_i$. \\ \\ Si osserva facilmente che $Q_n$ è un sottogruppo di $\mathbb{Z}_n^*$, infatti è l'immagine dell'endomorfismo di gruppi (che quindi è ancora un sottogruppo) 
 	\begin{equation*}
-		\arraycolsep=1.4pt
-		\begin{array}{lll}
-			\varphi \colon  & \mathbb{Z}^*_n &\longrightarrow \mathbb{Z}^*_n\\
-							& a			& \longmapsto a^2   	
-		\end{array}
+	\arraycolsep=1.4pt
+	\begin{array}{lll}
+		\varphi \colon  & \mathbb{Z}^*_n &\longrightarrow \mathbb{Z}^*_n\\
+		& a			& \longmapsto a^2   	
+	\end{array}
 	\end{equation*}
 	Potremmo quasi dire che il simbolo di Jacobi è una \enquote{generalizzazione} del simbolo di Legendre. Purtroppo come abbiamo visto non vale 1 solo sui quadrati, quindi ci si può aspettare il seguente risultato.
 \end{osservazione}
@@ -2222,9 +2226,7 @@ I \textbf{numeri di Carmichael} sono numeri composti che sono pseudoprimi di Fer
 	\begin{equation*}
 	np-p+1\equiv1\Mod p^2
 	\end{equation*}
-	ma questo è un assurdo, avrei ottenuto $1-p\equiv1\Mod p^2$. Quindi $n$ è libero da quadrati. \
-	
-	Dimostriamo l'altra proprietà, supponiamo che $p$ primo divida $n$. Poiché è libero da quadrati sappiamo che $n$ ed $\frac{n}{p}$ sono coprimi. Sia $b$ generatore di $\mathbb{Z}_p^*$, per teorema cinese del resto esiste un intero $a$ tale che 
+	ma questo è un assurdo, avrei ottenuto $1-p\equiv1\Mod p^2$. $n$ è libero da quadrati. \\ Dimostriamo l'altra proprietà, supponiamo che $p$ primo divida $n$. Poiché è libero da quadrati sappiamo che $n$ ed $\frac{n}{p}$ sono coprimi. Sia $b$ generatore di $\mathbb{Z}_p^*$, per teorema cinese del resto esiste un intero $a$ tale che 
 	\begin{equation*}
 	\begin{cases}
 	a\equiv b\Mod p\\
@@ -2261,7 +2263,7 @@ I \textbf{numeri di Carmichael} sono numeri composti che sono pseudoprimi di Fer
 \begin{algoritmo}[Test di Eulero]
 	Dal criterio di Eulero sappiamo che se $p$ è primo
 	\begin{equation*}
-	a^{\frac{p-1}{2}}\equiv\leg{a}{p}\equiv\pm1\Mod p 
+	a^{\frac{p-1}{2}}\equiv\leg{a}{p} \equiv\pm1\Mod p 
 	\end{equation*}
 	Per controllare la primalità di un $n$ intero, fissiamo una base $a$ e verifichiamo se 
 	\begin{equation*}
@@ -2283,7 +2285,7 @@ I \textbf{numeri di Carmichael} sono numeri composti che sono pseudoprimi di Fer
 	\begin{align*}
 	&\text{per Fermat} \ \ \ \ \ \ \ \ \ \ \ \ \ 341,561,645,1105,1387,1729,\dots\\
 	&\text{per Eulero} \ \ \ \ \ \ \ \ \ \ \ \ \ \  341,561,1105,1729,\dots\\
-	&\text{per Eulero-Jacobi} \ \ \ \ \ 561,1105,1729,\dots
+	&\text{per Eulero-Jacobi} \ \ \ \ \ 561,1105,1729,\dots\\
 	\end{align*}
 	Il test di Eulero-Jacobi è il più efficiente dei tre, molti meno pseudoprimi sono in grado di passarlo rispetto agli altri due.
 \end{osservazione}
@@ -2338,7 +2340,6 @@ I \textbf{numeri di Carmichael} sono numeri composti che sono pseudoprimi di Fer
 	\begin{equation*}
 	\left|\ker(f)\right|=\prod_i\left|\ker(f_i)\right|
 	\end{equation*}
-	Da cui
 	\begin{align*}
 	\frac{\varphi(n)}{2}
 	&=\prod_i\frac{\varphi(p_i)}{2}=\frac{1}{2^t}\prod_i\varphi(p_i)\\
@@ -2354,7 +2355,7 @@ I \textbf{numeri di Carmichael} sono numeri composti che sono pseudoprimi di Fer
 \begin{proof}
 	Dimostriamo che $\left|E_n\right|\leq\frac{\phi(n)}{2}$, il resto è ovvio. Ma anche questo è ovvio, segue direttamente da 
 	\begin{equation*}
-	\left|E_n\right|\leq\frac{\varphi(n)}{2}
+	\left|F_n\right|\leq\frac{\varphi(n)}{2}
 	\end{equation*}
 	per $n$ non primo e non di Carmichael.
 \end{proof}
@@ -2378,7 +2379,7 @@ I \textbf{numeri di Carmichael} sono numeri composti che sono pseudoprimi di Fer
 	\end{align*}
 	Siccome $p$ primo divide $a^{p-1}-1$ deve dividere almeno uno dei fattori, e se divide uno dei fattori otteniamo le due caratterizzazioni.
 	\\
-	I numeri che soddisfano questa condizione sono gli \textit{pseudoprimi forti}. Sono detti tali perché sono molti meno rispetto a quelli di Fermat, ma più \enquote{resilienti}. Ad esempio per $a=2$ abbiamo
+	I numeri composti che soddisfano questa condizione sono gli \textit{pseudoprimi forti}. Sono detti tali perché sono molti meno rispetto a quelli di Fermat, ma più \enquote{resilienti}. Ad esempio per $a=2$ abbiamo
 	\begin{equation*}
 	2047,3277,4033,\dots
 	\end{equation*}
@@ -2462,17 +2463,19 @@ Il test di Rabin-Miller viene usato in molte funzioni di valutazione della prima
 	&\iff t\log_gx\equiv0 \Mod n\\
 	&\iff ty\equiv0\Mod n
 	\end{align*}
-	che ha chiaramente il numero di soluzioni richiesto. \\ 
+	che ha chiaramente il numero di soluzioni richiesto. 
 \end{proof}
-
-\begin{osservazione}
-	Notiamo che $y$ è necessariamente un intero, abbiamo utilizzato il \textit{logaritmo discreto}; si basa sul fatto che $g$ sia un generatore.	
+\begin{osservazione}[Logaritmo discreto]
+	Notiamo che $y$ è necessariamente un intero: abbiamo utilizzato il \textbf{logaritmo discreto}. \\ \\ Il logaritmo discreto può esere visto come l'operazione inversa della potenza \enquote{discreta}, in altre parole è una funzione
+	\begin{align}
+	\log_g:G&\longrightarrow\mathbb{Z}_n\\
+	a=g^k&\longmapsto\log_g(a)=k
+	\end{align}
+	dove $G$ è un gruppo ciclico finito di $n$ elementi. Notiamo che dipende dalla base $g$; l'utilizzo che ne abbiamo fatto si basa sul fatto che $g$ sia un generatore  di $G$, infatti questo ci permette di scrivere come sua potenza ogni elemento di $G$. Questa funzione è un isomorfismo di gruppi.
 \end{osservazione}
-
 \begin{esempio}
 	Ad esempio l'equazione $3y\equiv0\Mod15$ ha soluzioni $0,5,10$. 
 \end{esempio}
-
 \begin{lemma}
 	La cardinalità di $B$ è 
 	\begin{equation*}
@@ -2497,8 +2500,8 @@ Il test di Rabin-Miller viene usato in molte funzioni di valutazione della prima
 	\begin{align*}
 	\left|B_p\right|
 	&=\left|\left\{\text{soluzioni di} \ a^{2^{s-1}m}\equiv1\Mod p^{\alpha_p}\right\}\right|\\
-	&=\MCD\left(a^{2^{s-1}m},\varphi\left(p^{\alpha_p}\right)\right)\\
-	&=\MCD\left(a^{2^{s-1}m},p-1\right)\\
+	&=\MCD\left(2^{s-1}m,\varphi\left(p^{\alpha_p}\right)\right)\\
+	&=\MCD\left(2^{s-1}m,p-1\right)\\
 	&=2^{s-1}\MCD(m,p-1)
 	\end{align*}
 	Questo perché se $p$ divide $n$ e $m$ divide $n-1$ abbiamo che $\MCD(p,m)=1$ ed infine che il massimo comune divisore tra $2^{s-1}m$ e $p^{\alpha_p-1}$ è 1. Nell'ultima uguaglianza ho usato la definizione di $s$ come massima potenza di 2 che divide tutti i $p-1$. Allora 
@@ -2533,13 +2536,13 @@ Il test di Rabin-Miller viene usato in molte funzioni di valutazione della prima
 	\frac{1}{4}<2\prod_{p\mid n}\frac{\frac{p-1}{2}}{(p-1)p^{\alpha_p-1}}
 	=2\prod_{p\mid n}\frac{1}{2p^{\alpha_p-1}}\leq2\prod_{p\mid n}\frac{1}{2}=\frac{1}{2^{t-1}}
 	\end{equation*}
-	per $t$ numero di primi che compongono la fattorizzazione di $n$. Perché la disuguaglianza valga $t$ deve essere 1 oppure 2. \\ \\ Se $t$ fosse 1 avrei già dimostrato la tesi, sia allora $t=2$: ho due primi $p_1$ e $p_2$, che posso supporre maggiori o uguali di 3. Il caso $p_i=2$ infatti è banale e poco interessante.
+	per $t$ numero di primi che compongono la fattorizzazione di $n$. Perché la disuguaglianza valga $t$ deve essere 1 oppure 2. \\ \\ Se $t$ fosse 1 avrei già raggiunto un assurdo sulla richiesta $n$ composto, sia allora $t=2$: ho due primi $p_1$ e $p_2$, che posso supporre maggiori o uguali di 3. Il caso $p_i=2$ infatti è banale e poco interessante.
 	\begin{equation*}
 	\frac{1}{4}<2\frac{1}{2p_1^{\alpha_1-1}}\frac{1}{2p_2^{\alpha_2-1}}
 	\end{equation*}
 	Affinché la disuguaglianza valga gli $\alpha_i$ devono essere l'unità. La disuguaglianza precedente diventa
 	\begin{equation*}
-	\frac{1}{4}<\frac{2^{s-1}\MCD(m,p_1-1)}{p_1-1}\frac{2^{s-1}\MCD(m,p_2-1)}{p_2-1}
+	\frac{1}{4}<2\frac{2^{s-1}\MCD(m,p_1-1)}{p_1-1}\frac{2^{s-1}\MCD(m,p_2-1)}{p_2-1}
 	\end{equation*}
 	\begin{equation*}
 	2>\frac{p_1-1}{2^s\MCD(m,p_1-1)}\frac{p_2-1}{2^s\MCD(m,p_2-1)}
@@ -3700,7 +3703,7 @@ con $b,d$ non-nulli.
 	\end{equation*}
 	i cui elementi si indicano con la frazione $\frac{a}{b}$, sotto le operazioni
 	\begin{equation*}
-	[a_1,b_1]+[a_2,b_2]=[a_1+a_2,b_1+b_2]
+	[a_1,b_1]+[a_2,b_2]=[a_1b_2+a_2b_1,b_1b_2]
 	\end{equation*}
 	\begin{equation*}
 	[a_1,b_1][a_2,b_2]=[a_1a_2,b_1b_2]
@@ -3982,7 +3985,7 @@ con $b,d$ non-nulli.
 			\sigma_2(\sqrt[3]{2})=\omega\sqrt[3]{2}
 		\end{equation*}
 		\begin{equation*}
-			\sigma_2(\sqrt[3]{2})=\omega^2\sqrt[3]{2}
+			\sigma_3(\sqrt[3]{2})=\omega^2\sqrt[3]{2}
 		\end{equation*}
 		dove la prima è reale e le altre sono complesse
 	\end{enumerate}
