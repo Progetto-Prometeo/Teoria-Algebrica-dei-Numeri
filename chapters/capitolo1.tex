@@ -2321,7 +2321,7 @@ I \textbf{numeri di Carmichael} sono numeri composti che sono pseudoprimi di Fer
 	\end{equation*}
 	allora $a^{n-1}\equiv1\Mod n$, quindi $n$ è un numero di Carmichael. Supponiamo che $n$ sia composto, quindi scritto come prodotto di primi 
 	\begin{equation*}
-	n=p_1\dots p_t
+	n=p_1\cdots p_t
 	\end{equation*}
 	tutti di potenza unitaria, perché come abbiamo dimostrato i numeri di Carmichael sono liberi da quadrati, e con $t>1$ (perché lo suppongo composto). Ovviamente voglio arrivare ad un assurdo ed ottenere $t=1$. \\ Sia data la funzione 
 	\begin{align*}
@@ -2379,7 +2379,7 @@ I \textbf{numeri di Carmichael} sono numeri composti che sono pseudoprimi di Fer
 	\begin{align*}
 	a^{p-1}-1
 	&=a^{2^km}-1\\
-	&=\left(a^{2m}-1\right)\left(a^{4m}-1\right)\dots\\
+	&=\left(a^{2m}-1\right)\left(a^{4m}-1\right)\dots \left(a^{2^{k}m} - 1\right)\\
 	&=\left(a^{m}-1\right)\left(a^{m}+1\right)\left(a^{2m}-1\right)\left(a^{2m}+1\right)\dots\left(a^{2^{k-1}m}-1\right)\left(a^{2^{k-1}m}+1\right)
 	\end{align*}
 	Siccome $p$ primo divide $a^{p-1}-1$ deve dividere almeno uno dei fattori, e se divide uno dei fattori otteniamo le due caratterizzazioni.
@@ -4220,7 +4220,7 @@ con $b,d$ non-nulli.
 	\begin{pmatrix}
 	1 & \alpha_1 & \alpha_1^2 & \dots & \alpha_1^{n-1}\\
 	1 & \alpha_2 & \alpha_2^2 & \dots & \alpha_2^{n-1}\\
-	\vdots&\vdots&\vdots&\vdots&\vdots\\
+	\vdots&\vdots&\vdots&\ddots&\vdots\\
 	1 & \alpha_n & \alpha_n^2 & \dots & \alpha_n^{n-1}
 	\end{pmatrix}
 	\right]^2\\
@@ -4327,11 +4327,12 @@ In questa sezione faremo vedere che l'anello degli interi di un campo numerico �
 		\end{equation*}
 		e questo equivale a dire che $(b_1-k,b_2,\dots,b_n)$ sono soluzione del sistema lineare
 		\begin{equation*}
-		\begin{cases}
-		\sigma_1(\beta)=(b_1-k)\sigma_1(\gamma_1)+\dots+b_n\sigma_1(\gamma_n)\\
-		\vdots\\
-		\sigma_n(\beta)=(b_1-k)\sigma_n(\gamma_1)+\dots+b_n\sigma_n(\gamma_n)
-		\end{cases}
+		\arraycolsep=1.4pt
+		\begin{array}{rl}
+		\sigma_1(\beta)&=(b_1-k)\sigma_1(\gamma_1)+\dots+b_n\sigma_1(\gamma_n)\\
+		&\,\vdots\\
+		\sigma_n(\beta)&=(b_1-k)\sigma_n(\gamma_1)+\dots+b_n\sigma_n(\gamma_n)
+		\end{array}
 		\end{equation*}
 		Sia $A=\left(\sigma_i(\gamma_j)\right)_{ij}$ ed $A'$ la matrice che si ottiene da $A$ sostituendo la prima colonna con la trasposta di 
 		\begin{equation*}

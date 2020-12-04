@@ -38,15 +38,11 @@ I vantaggi di questo algoritmo sono l'immediata implementazione e la semplicità
 	Queste tre coppie di valori $(a,b)$ generano la stessa sequenza, quindi non devo preoccuparmi di capire quale sia stata usata inizialmente; ad ogni scelta ottengo la stessa sequenza casuale. \\ \\ Cerchiamo di motivare questo aspetto. In generale se ho $a,b,\alpha,\beta$ tali da soddisfare
 	\begin{equation*}
 	\begin{cases}
-	s_{n+1} =s_na+b\Mod n\\
-	s_{n+2}=s_{n+1}a+b\Mod n
+	s_{n+1} =s_na+b & \Mod n\\
+	s_{n+2}=s_{n+1}a+b & \Mod n\\
+	s_{n+1}=\alpha s_n+\beta & \Mod n\\
+	s_{n+2}=\alpha s_{n+1}+\beta & \Mod n
 	\end{cases}
-	\end{equation*}
-	\begin{equation*}
-	s_{n+1}=\alpha s_n+\beta \Mod n
-	\end{equation*}
-	\begin{equation*}
-	s_{n+2}=\alpha s_{n+1}+\beta \Mod n
 	\end{equation*}
 	allora posso riscrivere le condizioni come
 	\begin{equation*}
