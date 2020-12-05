@@ -558,6 +558,26 @@ La proprietà descritta è palese; vediamo qualche esempio.
 	\end{align*}
 	Infatti per la proposizione \ref{somma_moebius} sappiamo che nella sommatoria sopravvivono elementi solo per $e=n$.
 \end{proof}
+\begin{proof}
+	Consideriamo la funzione aritmetica $N(n) = 1$. Allora
+	osserviamo che $f(n) = g \star N (n)$ e
+	$g(n) = (f \star \mu) (n)$
+	dove $\star$ è il prodotto di convoluzione di Dirichlet.
+	Allora abbiamo osservato che $\mu \star N(n) = 1$ se e 
+	solo se $n = 1$. Il prodotto 
+	di convoluzione di Dirichlet è associativo e commutativo,\footnote{Per l'associatività basta osservare che 
+	\begin{equation*}
+		(f\star g) \star h(n) = 
+		\sum_{cd = n} \sum_{ab = d} f(a)g(b)h(c) = 
+			\sum_{abc = n} f(a)g(b)h(c) = 
+		\sum_{ad= n}\sum_{bc=d}f(a)g(b)h(c) = 
+			f \star (g \star h)(n)\end{equation*}} 
+	per cui 
+	\begin{equation*}
+		f \star \mu = g \star N \star \mu = g \star (N \star \mu) = g 
+	\end{equation*} 
+\end{proof}
+
 \paragraph{Funzioni dei divisori}
 \begin{equation*}
 \sigma_k(n)=\sum_{d\mid n}d^k
