@@ -2379,8 +2379,7 @@ I \textbf{numeri di Carmichael} sono numeri composti che sono pseudoprimi di Fer
 	\begin{align*}
 	a^{p-1}-1
 	&=a^{2^km}-1\\
-	&=\left(a^{2m}-1\right)\left(a^{4m}-1\right)\dots \left(a^{2^{k}m} - 1\right)\\
-	&=\left(a^{m}-1\right)\left(a^{m}+1\right)\left(a^{2m}-1\right)\left(a^{2m}+1\right)\dots\left(a^{2^{k-1}m}-1\right)\left(a^{2^{k-1}m}+1\right)
+	&=(a^m - 1)(a^m + 1)\left(a^{2m}+1\right)\left(a^{4m}+1\right)\dots \left(a^{2^{k-1}m} + 1\right)
 	\end{align*}
 	Siccome $p$ primo divide $a^{p-1}-1$ deve dividere almeno uno dei fattori, e se divide uno dei fattori otteniamo le due caratterizzazioni.
 	\\
@@ -2449,7 +2448,7 @@ Il test di Rabin-Miller viene usato in molte funzioni di valutazione della prima
 		per ogni $p \mid n$ primo. Per definizione di $s$, dev'essere che $j+1 \le s$ per ogni 
 		primo $p$. Quindi
 		\begin{equation*}
-			a^{m2^{s-1}} \equiv (a^{m2^{j}})^v \equiv (-1)^v \mod p
+			a^{m2^{s-1}} \equiv (a^{m2^{j+1}})^{2^v} \equiv (-1)^{2^v} \mod p
 		\end{equation*}
 		dove $v = s - (j+1)$. Per cui dev'essere che $a^{m2^{s-1}} \equiv \pm 1 \mod n$; ovvero 
 		$a \in B$.
@@ -2541,7 +2540,12 @@ Il test di Rabin-Miller viene usato in molte funzioni di valutazione della prima
 	\frac{1}{4}<2\prod_{p\mid n}\frac{\frac{p-1}{2}}{(p-1)p^{\alpha_p-1}}
 	=2\prod_{p\mid n}\frac{1}{2p^{\alpha_p-1}}\leq2\prod_{p\mid n}\frac{1}{2}=\frac{1}{2^{t-1}}
 	\end{equation*}
-	per $t$ numero di primi che compongono la fattorizzazione di $n$. Perché la disuguaglianza valga $t$ deve essere 1 oppure 2. \\ \\ Se $t$ fosse 1 avrei già raggiunto un assurdo sulla richiesta $n$ composto, sia allora $t=2$: ho due primi $p_1$ e $p_2$, che posso supporre maggiori o uguali di 3. Il caso $p_i=2$ infatti è banale e poco interessante.
+	per $t$ numero di primi che compongono la fattorizzazione di $n$. Perché la disuguaglianza valga $t$ deve essere 1 oppure 2. \\ \\ Se $t$ fosse 1 avrei ho che $n = p^{e}$ con $e > 1$, vediamo che dalle stime precedenti
+	\begin{equation*}
+		\frac{1}{4} < \frac{2\frac{(p-1)}{2}}{p^{e-1}(p-1)} = \frac{2}{p^{e-1}(p-1)}
+	\end{equation*}
+	che non vale per ogni $e > 1$ e $p > 3$. Vediamo che neanche per $p = 3$ e $e > 1$ vale da cui si ottiene la tesi.\footnote{Stiamo sempre supponedo $n$ primo composto dispari.} 
+	Sia allora $t=2$: ho due primi $p_1$ e $p_2$, che posso supporre maggiori o uguali di 3. Il caso $p_i=2$ infatti è banale e poco interessante.
 	\begin{equation*}
 	\frac{1}{4}<2\frac{1}{2p_1^{\alpha_1-1}}\frac{1}{2p_2^{\alpha_2-1}}
 	\end{equation*}
@@ -2745,7 +2749,7 @@ Iniziamo subito notando che se $m$ ed $n$ godono di questa proprietà (ad $a$ fi
 (n)(m)
 &=\left(x_m^2+ay_m^2\right)\left(x_n^2+ay_n^2\right)\\
 &=\left(x_mx_n\right)^2+\left(ay_my_n\right)^2+a\left(\left(x_my_n\right)^2+\left(x_ny_m\right)^2\right)\\
-&=\left(x_mx_n+ay_my_n\right)^2+a\left(x_my_n-x_my_n^2\right)^2\\
+&=\left(x_mx_n+ay_my_n\right)^2+a\left(x_my_n-x_my_n^2\right)^2
 \end{align*}
 Allora, data la \enquote{proprietà moltiplicativa} della forma quadratica, anche in questo caso possiamo solo concentrarci sullo studio della proprietà per i primi. Per porre in modo diverso la questione, per quali $p$ primi l'equazione 
 \begin{equation*}
