@@ -1959,6 +1959,18 @@ Utilizzeremo gli $\mathbb{Z}_n^*$ perché siamo interessati alla struttura molti
 	\end{cases}
 	\end{equation*}
 \end{definizione}
+\begin{osservazione}
+	Il simbolo di Legendre è moltiplicativo. Una possibile giustificazione è il fatto che la seguente funzione sia un omeomorfismo:
+	\begin{align*}
+	f:\mathbb{Z}_p^*&\longrightarrow\mathbb{Z}_p^*\\
+	a&\longmapsto a^{\frac{p-1}{2}}
+	\end{align*}
+	La moltiplicatività del simbolo di Legendre implica che 
+	\begin{equation*}
+	\leg{ab}{p}=\leg{a}{p}\leg{b}{p}
+	\end{equation*}
+	Si noti che per convenzione $\leg{a}{1}=1$.
+\end{osservazione}
 \begin{teorema}[Criterio di Eulero] 
 	Sia $a\in\mathbb{Z}_p^*$, allora
 	\begin{equation*}
@@ -2051,21 +2063,22 @@ Utilizzeremo gli $\mathbb{Z}_n^*$ perché siamo interessati alla struttura molti
 	\end{equation*}
 	Anche questa osservazione tornerà utile in seguito.
 \end{esempio}
-\begin{definizione}
-	Dato $a$ intero ed $n$ naturale dispari con fattorizzazione $n=p_1^{e_1}\cdots p_s^{e_s}$, definisco il \textbf{simbolo di Jacobi}
+\begin{definizione}[Simbolo di Jacobi]
+	Sia dato $a$ intero ed $n$ naturale dispari con fattorizzazione $n=p_1^{e_1}\cdots p_s^{e_s}$, definisco il \textbf{simbolo di Jacobi}
 	\begin{equation*}
 	\leg{a}{n}=\leg{a}{p_1}^{e_1}\cdots\leg{a}{p_s}^{e_s}
 	\end{equation*}
 \end{definizione}
-\begin{osservazione}
-	Facciamo alcune osservazioni sul simbolo di Jacobi:
+\begin{osservazione}[Proprietà del simbolo di Jacobi]\
 	\begin{enumerate}
 		\item $\leg{a}{n}=0$ se $a$ ed $n$ non sono coprimi
-		\item $\leg{ab}{n}=\leg{a}{n}\leg{b}{n}$ (moltiplicativo)
+		\item $\leg{ab}{n}=\leg{a}{n}\leg{b}{n}$ 
+		\item $\leg{a}{mn}=\leg{a}{m}\leg{a}{n}$ 
+		\item se $a\equiv b \Mod(n)$, allora $\leg{a}{n}=\leg{b}{n}$
 		\item se vale $-1$, allora $a$ non è un residuo quadratico in $\mathbb{Z}_n$
 		\item se vale $1$, \textit{non è detto che $a$ sia un residuo quadratico in $\mathbb{Z}_n$}
 	\end{enumerate}
-	Approfondiamo l'ultimo punto: per il teorema cinese del resto $a$ è un residuo quadratico in $\mathbb{Z}_n$ se è un residuo quadratico in ogni $\mathbb{Z}_{p_i}$ (ovvero ogni equazione $x^2\equiv1\Mod p_i$ ha soluzione). Può quindi capitare che $\leg{a}{n}=1$ ma $\leg{a}{p_i}=-1$ per qualche $p_i$. \\ \\ Si osserva facilmente che $Q_n$ è un sottogruppo di $\mathbb{Z}_n^*$, infatti è l'immagine dell'endomorfismo di gruppi (che quindi è ancora un sottogruppo) 
+	Approfondiamo l'ultimo punto: per il teorema cinese del resto $a$ è un residuo quadratico in $\mathbb{Z}_n$ se è un residuo quadratico in ogni $\mathbb{Z}_{p_i}$ (ovvero ogni equazione $x^2\equiv1\Mod p_i$ ha soluzione). Può quindi capitare che $\leg{a}{n}=1$ ma $\leg{a}{p_i}=-1$ per qualche $p_i$. \\ \\ Si osserva facilmente che $Q_n$ è un sottogruppo di $\mathbb{Z}_n^*$, infatti è l'immagine dell'endomorfismo di gruppi\footnote{ricordiamo che un morfismo tra gruppi manda un sottogruppo in partenza ad un sottogruppo in arrivo}
 	\begin{equation*}
 	\arraycolsep=1.4pt
 	\begin{array}{lll}
@@ -2203,6 +2216,12 @@ Non è sufficiente che il numero soddisfi la proprietà che caratterizza il test
 \begin{osservazione}
 	Il test di Wilson è deterministico, tuttavia la sua applicazione non è facile; infatti la presenza del fattoriale lo rende estremamente difficile da calcolare. Vedremo altri test, non deterministici ma molto più facilmente applicabili. \\ \\ Si potrebbe discutere sulla definizione del test di Wilson come \enquote{test} in quanto di natura deterministica, tuttavia speriamo che questa osservazione sia stata abbastanza utile per fare chiarezza.
 \end{osservazione}
+\begin{lemma}
+	Nello stesso spirito del test di Wilson, possiamo dire che se $n$ è composto e diverso da 4 allora
+	\begin{equation*}
+	(n-1)!\equiv0\Mod n
+	\end{equation*}
+\end{lemma}
 \begin{algoritmo}[Test di Fermat]
 	Se $p$ è primo, per ogni $a$ in $\mathbb{Z}_p^*$ vale 
 	\begin{equation*}
@@ -2785,31 +2804,40 @@ questo se $xy$ non è congruo a 0 in modulo $p$, cioè se nessuno dei due è zer
 \subsection{Enunciato e prime conseguenze}
 Sicuramente non basta usare il criterio di Eulero, ci sono infiniti primi da controllare! Con la legge di reciprocità quadratica riusciamo a dare una risposta - anche se non del tutto generale - al problema in studio. \\ Il teorema mette in relazione il simbolo di Jacobi  $\leg{p}{q}$ con il suo \enquote{reciproco} $\leg{q}{p}$, quindi il fatto di essere (o meno) quadrato in $\Mod q$ dell'intero $p$ con il fatto di essere (o meno) quadrato in $\Mod p$ dell'intero $q$. 
 \begin{teorema}[Legge di reciprocità quadratica]
+	\label{RecQuadr}
 	Siano $p$ e $q$ due primi dispari, allora vale
 	\begin{equation*}
 	\leg{p}{q}\cdot\leg{q}{p}=(-1)^{\frac{p-1}{2}\frac{q-1}{2}}
 	\end{equation*}
 \end{teorema}
 \begin{osservazione} 
-	Evidentemente abbiamo due casi:
-	\begin{itemize}
-		\item se $p\equiv3\Mod4$ e $q\equiv3\Mod4$, allora per proprietà delle potenze $\leg{p}{q}=-\leg{q}{p}$
-		\item altrimenti per motivo analogo $\leg{p}{q}=\leg{q}{p}$
-	\end{itemize}
-	in altre parole i due simboli di Jacobi sono uguali se $p$ e $q$ non sono congrui contemporaneamente a $3$ in modulo $4$. 
+	In altre parole, studiando la formula si vede che abbiamo due possibili casi:
+	\begin{enumerate}
+		\item se $p$ e $q$ sono entrambi congrui a 3 in modulo 4, allora $\leg{p}{q}=-\leg{q}{p}$
+		\item altrimenti almeno uno dei due primi è congruo ad 1 in modulo 4, e vale $\leg{p}{q}=\leg{q}{p}$
+	\end{enumerate}
+	difatti dei primi dispari non possono essere congrui a 2 o 0 in modulo 4.
 \end{osservazione}
 \begin{corollario}[Primo complemento]
 	Possiamo ottenere una caratterizzazione esplicita per i primi $p$ per cui $-1$ è un residuo quadratico in $\Mod p$ (e quelli per cui non lo è).
 	\begin{equation*}
 	\leg{-1}{p}=(-1)^{\frac{p-1}{2}}
 	\end{equation*}
+	In altre parole, $-1$ è residuo quadratico in modulo $p$ se e solo se $p\equiv1\Mod 4$.
 \end{corollario}
 \begin{corollario}[Secondo complemento]
-	Una caratterizzazione esplicita per i primi $p$ per cui $2$ è un residuo quadratico in $\Mod p$ (e quelli per cui non lo è).
+	Ne segue una caratterizzazione esplicita anche per i primi $p$ per cui $2$ è un residuo quadratico in $\Mod p$ (e quelli per cui non lo è).
 	\begin{equation*}
 	\leg{2}{p}=(-1)^{\frac{p^2-1}{8}}
 	\end{equation*}
+	In altre parole, $2$ è residuo quadratico in modulo $p$ se e solo se $p\equiv\pm1\Mod 8$.
 \end{corollario}
+\begin{proposizione}[Generalizzazione]
+	Esiste una forma della legge di reciprocità quadratica per il simbolo di Jacobi: siano $n$ ed $m$ composti\footnote{o anche qualunque, ricadremmo nell'enunciato del Teorema \ref{RecQuadr}.}, allora 
+	\begin{equation*}
+	\leg{n}{m}\cdot=\leg{m}{n}(-1)^{\frac{n-1}{2}\frac{m-1}{2}}
+	\end{equation*}
+\end{proposizione}
 \begin{esempio}
 	Per quali primi $p$ l'equazione $x^2\equiv10\Mod p$ è risolvibile? \\ \\ 
 	I complementi ci permettono di capire per quali $p$ è risolvibile, ovvero i primi per cui 10 è un residuo quadratico. In altre parole sto cercando i $p$ primi per cui valga $\leg{10}{p}=1$. \\ Notiamo che per moltiplicatività $\leg{10}{p}=\leg{5}{p}\leg{2}{p}$. Studiamo i due simboli di Legendre\footnote{Questo mostra il motivo per cui la legge di reciprocità quadratica non risolve \textit{tutti} i problemi di questo tipo, ad esempio nel nostro caso il problema è riconducibile alla fattorizzazione di 10.}, in particolare iniziamo dal caso in cui entrambi valgono $1$.
@@ -3554,6 +3582,16 @@ Ricordiamo che i campi di numeri sono estensioni finite di $\mathbb{Q}$, ad esem
 	Allora ho dimostrato la tesi intermedia: $\mathbb{Q}(\theta) = \mathbb{Q}(\alpha,\beta)$. \\ \\ 
 	Per dimostrare la tesi procedo per induzione sul numero di elementi primitivi che costituiscono la mia estensione.
 \end{proof}
+\begin{definizione}[Elemento primitivo] 
+	Come conseguenza del teorema, dato $F$ campo numerico (quindi estensione di $\mathbb{Q}$) diremo $\alpha\in F$ \textbf{elemento primitivo di $F$} se posso definire $F$ come il minimo campo contenente $\mathbb{Q}$ ed $\alpha$.
+	\begin{equation*}
+	F=\mathbb{Q}(\alpha)
+	\end{equation*}
+\end{definizione}
+\begin{esempio}
+	Ad esempio $i$ è un elemento primitivo di $\mathbb{Q}[i]$. Possiamo vedere che dalla scrittura esplicita dell'estensione risulta evidente quale sia un elemento primitivo, che tuttavia \textit{non è unico}. Un altro elemento primitivo può essere $-i$. \\
+	Si noti che questa scrittura è possibile solo nel caso di estensioni semplici.
+\end{esempio}
 \begin{esempio}
 	$\mathbb{Q}(\sqrt[3]{3}+\sqrt{7})=\mathbb{Q}(\sqrt[3]{3},\sqrt{7})$ \\ \\ 
 	Il polinomio minimo di $\sqrt[3]{3}$ infatti è $x^3-3$ che ha soluzioni complesse 
