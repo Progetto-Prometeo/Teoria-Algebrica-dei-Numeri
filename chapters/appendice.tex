@@ -102,7 +102,9 @@ I vantaggi di questo algoritmo sono l'immediata implementazione e la semplicità
 \chapter{Implementazione di alcuni metodi}
 
 	\epigraph{\textit{\enquote{Non c'è certezza nella scienza se la matematica non può esservi applicata, o se non vi è comunque in relazione.}}}{Leonardo da Vinci}
-	L'applicazione della teoria algebrica dei numeri trova più che ampio utilizzo in informatica, in particolare è \textit{fondamentale} nel campo della crittografia. \\ Era più che giusto quindi, addirittura d'obbligo, includere un capitolo del genere in un posto così ricco di algebra. \\ \\ In questo capitolo mostreremo l'implementazione di alcuni algoritmi legati agli argomenti svolti. Non saranno scritti in un particolare linguaggio di programmazione, ma piuttosto descritti \enquote{intuitivamente} per essere di immediata comprensione. \newpage
+	L'applicazione della teoria algebrica dei numeri trova più che ampio utilizzo in informatica, in particolare è \textit{fondamentale} nel campo della crittografia. \\ Era più che giusto quindi, addirittura d'obbligo, includere un capitolo del genere in un posto così ricco di algebra. \\ \\ In questo capitolo mostreremo l'implementazione di alcuni algoritmi legati agli argomenti svolti. Non saranno scritti in un particolare linguaggio di programmazione, ma piuttosto descritti \enquote{intuitivamente} per essere di immediata comprensione. Questo stile di scrittura del codice viene detto \enquote{pseudocodice}. \newpage
+	
+	
 	\section{Ricerca del periodo moltiplicativo}
 	Supponiamo di voler calcolare il periodo moltiplicativo di un certo $a\in\mathbb{Z}_m^*$ dato, sapendo che 
 	\begin{equation*}
@@ -123,6 +125,21 @@ I vantaggi di questo algoritmo sono l'immediata implementazione e la semplicità
 	\end{algoritmo}
 	In sostanza il programma valuta i \enquote{candidati} al ruolo di periodo, che trova se $a_1\equiv1\Mod m$. Questo mostra che fattorizzare $m$ è un problema collegato al calcolo del periodo moltiplicativo di un elemento di $\mathbb{Z}_m^*$. 
 	
+	
+	\section{Test di Solovay-Strassen}
+	\begin{algoritmo} \ \newline
+		{\fontfamily{cmss}\selectfont
+			\hspace*{10 mm} input $n$, numero da testare\\ 
+			\hspace*{10 mm} input $k$, parametro per l'accuratezza\\ 
+			\hspace*{10 mm} for $i=1,k$ do \\
+			\hspace*{15 mm} scegli un valore $a$ in $[2,n-1]$\\
+			\hspace*{15 mm} calcola $x=\leg{a}{n}$\\
+			\hspace*{15 mm} if $x=0$ oppure $a^\frac{n-1}{2}\nequiv x \Mod n$\\
+			\hspace*{20 mm} return "composto"\\
+			\hspace*{15 mm} end if\\
+			\hspace*{10 mm} end for\\
+			\hspace*{10 mm} return "probabilmente primo"}
+	\end{algoritmo}
 	
 	
 	
