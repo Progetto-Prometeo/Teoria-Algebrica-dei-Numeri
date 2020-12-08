@@ -755,7 +755,7 @@ Come abbiamo preannunciato all'inizio dello scorso capitolo, inizieremo a genera
 	Noi vorremo lavorare nei domini a fattorizzazione unica. Abbiamo visto nell'Osservazione \ref{notinD} che la struttura di dominio di integrità \textit{non basta} per lavorare in uno spazio \enquote{buono}, cioè uno che goda di fattorizzazione unica come $\mathbb{Z}$. \\ L'ingrediente fondamentale saranno le catene di ideali principali nella definizione di anello principalmente noetheriano, come vedremo subito.
 \end{osservazione}
 \begin{teorema}[Esistenza della fattorizzazione]
-	Se $A$ è principalmente noetheriano allora posso fattorizzare ogni suo elemento non-nullo e diverso da un'unità come prodotto di elementi irriducibili con \textit{fattorizzazione essenzialmente unica}.
+	Se $A$ è principalmente noetheriano allora posso fattorizzare ogni suo elemento non-nullo e diverso da un'unità come prodotto di elementi irriducibili.
 \end{teorema}
 \begin{proof}
 	Se $a$ fosse irriducibile avremmo già ottenuto la fattorizzazione. Sia allora $a$ riducibile, $a=xy$ per certi $x$ ed $y$ in $A$. Costruiamo una catena con il seguente algoritmo, poi potremo usare l'ipotesi di noetherianità; notiamo che se anche $x$ ed $y$ fossero irriducibili avrei già finito, poniamo che almeno uno dei due non lo sia.
@@ -870,7 +870,7 @@ Come abbiamo preannunciato all'inizio dello scorso capitolo, inizieremo a genera
 		quindi avrei ottenuto $b\in P$ per sua scrittura precedente, il che è un assurdo. In questi ultimi passaggi abbiamo usato $PA=AP=P$, che risulta evidentemente vero scrivendo gli insiemi $PA$ ed $AP$ in forma esplicita.
 	\end{itemize}
 \end{proof}
-\begin{teorema}[Caratterizzazione degli UFD]
+\begin{teorema}
 	Se $A$ è un PID, allora è un dominio a fattorizzazione unica (UFD).
 \end{teorema}
 \begin{proof}
@@ -880,7 +880,7 @@ Come abbiamo preannunciato all'inizio dello scorso capitolo, inizieremo a genera
 	\end{equation*}
 	 e quindi esiste $N>0$ tale che $I_N$ contenga i generatori di $I$: questo vale necessariamente per come ho costruito $I$, per come ho scelto gli ideali e per proprietà di $A$. Ho appena ottenuto che $I \subset I_N$, quindi evidentemente $I_n=I_N$ per ogni $n\geq N$. Allora $A$ è principalmente noetheriano, e siccome è ad ideali principali ogni elemento irriducibile è primo. Allora è un dominio a fattorizzazione unica.
 \end{proof}
-\begin{teorema}[Caratterizzazione degli euclidei] 
+\begin{teorema}
 	Se $A$ è un dominio euclideo, allora è un dominio ad ideali principali (PID).
 \end{teorema}
 \begin{proof}
@@ -1176,7 +1176,7 @@ Osserviamo che l'ideale generato da 2 non è primo in $\mathbb{Z}[\sqrt{-5}]$ (i
 
 
 \chapter{Aritmetica modulare}
-\epigraph{\textit{\enquote{Perché i numeri sono stupendi? Sarebbe come chiedere perché la Nona Sinfonia di Beethoven è stupenda. Se non ne vedi il motivo, nessuno può spiegartelo. Io so che i numeri sono stupendi. Se nn lo sono loro, nulla lo è.}}}{Paul Erd\"os}
+\epigraph{\textit{\enquote{Perché i numeri sono stupendi? Sarebbe come chiedere perché la Nona Sinfonia di Beethoven è stupenda. Se non ne vedi il motivo, nessuno può spiegartelo. Io so che i numeri sono stupendi. Se non lo sono loro, nulla lo è.}}}{Paul Erd\"os}
 L'aritmetica modulare è fondamentale in teoria dei numeri, ad esempio permette di costruire degli importanti criteri: sui residui quadratici, sui numeri primi, e persino nei test di primalità. \\ \\ Vedremo anche le congruenze lineari ed il \textit{teorema cinese del resto}, risultati fondamentali per quanto seguirà. Concluderemo vedendo la struttura degli $\mathbb{Z}_n^*$.
 
 
@@ -2208,7 +2208,7 @@ Non è sufficiente che il numero soddisfi la proprietà che caratterizza il test
 	\end{align*}
 	Supponiamo invece di sapere che $(n-1)!\equiv-1\Mod n$, supponiamo che $n$ non sia primo. Questo equivale a dire che esiste un $d$ intero con $1<d<n$ che divide $n$, quindi divide anche $(n-1)!$ per come è stato scelto. Inoltre posso scrivere
 	\begin{equation*}
-	d \, \mid \, [(n-1)!+1]
+	d  \, \mid \, n \,\mid [(n-1)!+1]
 	\end{equation*}
 	e considerando che 
 	\begin{equation*}
@@ -2217,7 +2217,7 @@ Non è sufficiente che il numero soddisfi la proprietà che caratterizza il test
 	ottengo $d \, \mid \, 1$, che è un assurdo per scelta di $d$.
 \end{proof}
 \begin{osservazione}
-	Il test di Wilson è deterministico, tuttavia la sua applicazione non è facile; infatti la presenza del fattoriale lo rende estremamente difficile da calcolare. Vedremo altri test, non deterministici ma molto più facilmente applicabili. \\ \\ Si potrebbe discutere sulla definizione del test di Wilson come \enquote{test} in quanto di natura deterministica, tuttavia speriamo che questa osservazione sia stata abbastanza utile per fare chiarezza.
+	Il test di Wilson è deterministico, tuttavia la sua applicazione non è facile; infatti la presenza del fattoriale lo rende estremamente difficile da calcolare. Vedremo altri test, non deterministici più efficienti. 
 \end{osservazione}
 \begin{lemma}
 	Nello stesso spirito del test di Wilson, possiamo dire che se $n$ è composto e diverso da 4 allora
@@ -2587,7 +2587,7 @@ Il test di Rabin-Miller viene usato in molte funzioni di valutazione della prima
 		\frac{1}{4} < \frac{2\frac{(p-1)}{2}}{p^{e-1}(p-1)} = \frac{2}{p^{e-1}(p-1)}
 	\end{equation*}
 	che non vale per ogni $e > 1$ e $p > 3$. Vediamo che neanche per $p = 3$ e $e > 1$ vale da cui si ottiene la tesi.\footnote{Stiamo sempre supponedo $n$ primo composto dispari.} 
-	Sia allora $t=2$: ho due primi $p_1$ e $p_2$, che posso supporre maggiori o uguali di 3. Il caso $p_i=2$ infatti è banale e poco interessante.
+	Sia allora $t=2$: ho due primi $p_1$ e $p_2$, che posso supporre maggiori o uguali di 3. Il caso $p_i=2$ infatti è banale e poco interessante. Vale per la supposizione assurda che 
 	\begin{equation*}
 	\frac{1}{4}<2\frac{1}{2p_1^{\alpha_1-1}}\frac{1}{2p_2^{\alpha_2-1}}
 	\end{equation*}
@@ -2598,12 +2598,12 @@ Il test di Rabin-Miller viene usato in molte funzioni di valutazione della prima
 	\begin{equation*}
 	2>\frac{p_1-1}{2^s\MCD(m,p_1-1)}\frac{p_2-1}{2^s\MCD(m,p_2-1)}
 	\end{equation*}
-	Le frazioni sono due numeri interi perché $p-1$ diviso $2^s$ è un dispari, e viene diviso per un dispari. Perché continui a valere la disuguaglianza allora deve necessariamente essere
+	Le frazioni sono due numeri interi perché $p-1$ diviso $2^s$ è un dispari, e viene diviso per un dispari. Affinché continui a valere la disuguaglianza deve necessariamente essere
 	\begin{equation*}
-	p_1-1=2^s\MCD(m,p_1-1)=2^sD_1
-	\end{equation*}
-	\begin{equation*}
-	p_2-1=2^s\MCD(m,p_2-1)=2^sD_2
+		\begin{array}{l}
+			p_1-1=2^s\MCD(m,p_1-1)=2^sD_1
+			p_2-1=2^s\MCD(m,p_2-1)=2^sD_2	
+		\end{array}
 	\end{equation*}
 	Per ipotesi $n=p_1p_2$ ed $n-1=2^km$, quindi $D_1$ divide $m$ (per definizione di massimo comune divisore); ma allora divide anche $p_1p_2-1$, che posso riscrivere come 
 	\begin{equation*}
@@ -3521,6 +3521,12 @@ Come possiamo vedere il loro studio è strettamente legato alla teoria dei numer
 	 x=(y-i)(y+i)=(-1)(i)=1
 	 \end{equation*}
 \end{proof}
+
+\begin{esercizio}
+	Un analogo procedimento si può usare per risolvere l'equazione del tipo $x^3 = y^2 + 2$. Vedere perché non 
+	si può estendere lo stesso procedimento per $x^3 = y^2 + 3$.
+\end{esercizio}
+
 \begin{lemma}
 	Sia $R$ un UFD, $a,b\in R$ coprimi. Sia $x\in R$ tale che $ab=x^n$, $n\in\mathbb{N}$. Allora $a$ e $b$ sono potenze $n$-esime.
 \end{lemma}
@@ -3539,7 +3545,6 @@ Come possiamo vedere il loro studio è strettamente legato alla teoria dei numer
 	Si verifichi che in $\mathbb{Z}[i]$ tutte le unità sono dei cubi. \\ \\ Si può dimostrare in modo diretto, oppure osservando che le unità formano un gruppo ciclico di ordine 4.
 	Infatti tutte le unità di $\mathbb{Z}[i]$ sono $1,i,-1,-i$ e si può vedere che $i$ genera tutto il gruppo, infatti $i^2 = -1$, $i^3 = -i$ e $i^4 = 1$ e quindi $U(\mathbb{Z}[i]) \simeq (\mathbb{Z}_4, +)$.
 \end{esercizio}
-
 
 
 
@@ -4386,7 +4391,7 @@ In questa sezione faremo vedere che l'anello degli interi di un campo numerico �
 		\beta=\alpha-k\gamma_1\in I
 		\end{equation*}
 		\begin{equation*}
-		\beta=(b_1-k)+b_2\gamma_2+\dots+b_n\gamma_n
+		\beta=(b_1-k)\gamma_1+b_2\gamma_2+\dots+b_n\gamma_n
 		\end{equation*}
 		In particolare applicando l'immersione $i$-esima del campo numerico
 		\begin{equation*}
