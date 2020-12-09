@@ -2709,6 +2709,17 @@ Vogliamo sfruttare il \textit{teorema di Eulero} per caratterizzare questa propr
 	\end{align*}
 	Nel penultimo passaggio ho sfruttato il fatto che $xv+yv\equiv x^2+y^2\equiv0\Mod m$ ed $xv-yu\equiv uv-vu\equiv0\Mod m$, quindi in $\mathbb{Z}$ sono multipli di $m$
 \end{proof}
+\begin{proof}
+	Un'altra dimostrazione dovuta a Dedekind che usa la fattorizzazione unica di $\mathbb{Z}[i]$.\\
+	
+	Sia $p \equiv 1 \mod 4$ allora sappiamo che esiste $m$ intero tale che $p \mid m^2  + 1$. 
+	Osserviamo che $m^2 + 1 = (m-i)(m+i)$ in $\mathbb{Z}[i]$, ma $p \nmid m-i$ e $p \nmid m+i$ poiché 
+	$p \nmid i$. Per cui concludiamo che $p$ non è primo in $\mathbb{Z}[i]$. 
+	Vale che $N(p) = p^2$ e dunque, dalla fattorizzazione della norma, 
+	otteniamo che possono essere al massimo due fattori $a,b$ tali che $N(a) = N(b) = p$ e che $p = ab$.
+	Osserviamo che $N(b) = p$ allora vuol dire che $b = x+yi$ con $x^2 + y^2 = p$, da cui la tesi.  
+\end{proof}
+
 \begin{lemma}
 	Sia $n$ somma di due quadrati, $p$ primo somma di due quadrati, se $p$ divide $n$ allora $\sfrac{n}{p}$ è somma di due quadrati.
 \end{lemma}
