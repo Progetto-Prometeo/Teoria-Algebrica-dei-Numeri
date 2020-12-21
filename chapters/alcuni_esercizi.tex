@@ -81,6 +81,18 @@
 \end{esercizio}
 
 \begin{esercizio}
+	Trovare un metodo alternativo per dimostrare che $\mathbb{Z}[\sqrt{d}i]$ per ogni $d$ square-free 
+	è un dominio con fattorizzazione (non per forza di cose unica).\\
+	
+	L'idea qui è di usare gli esercizi precedenti per osservare che $\mathbb{Z}[\sqrt{d}i]$ non è 
+	nient'altro che è un $\mathbb{Z}$-algebra finitamente generata come $\mathbb{Z}$-modulo e quindi
+	è noetheriano se e solo se $\mathbb{Z}$ lo è. Ovviamente $\mathbb{Z}$ è noetheriano.
+	In particolare se un anello è noetheriano è anche principalmente noetheriano, da cui discende 
+	la tesi dell'esistenza della fattorizzazione.
+\end{esercizio}
+
+\begin{esercizio}
+
 	Sia $A$ anello integralmente chiuso sul suo campo delle frazioni $K$. Sia $f(x) \in A[x]$ monico. 
 	Dimostrare che se $f$ è riducibile in $K[x]$ allora $f$ riducibile in $A[x]$\\
 	
@@ -103,7 +115,7 @@
 	attraverso i potenti mezzi della reciprocità quadratica quando $5$ risulta essere 
 	un quadrato. Per reciprocità quadratica
 	\begin{equation*}
-		 \left(\frac{5}{p}\right) \left(\frac{p}{5}\right) = (-1)^{\frac{p-1}{2}}
+		 \left(\frac{5}{p}\right) \left(\frac{p}{5}\right) = (-1)^{p-1}
 	\end{equation*}
 	dunque abbiamo due casi 
 	\begin{equation*}
@@ -116,76 +128,45 @@
 	\begin{enumerate}
 		\item Sia $p \equiv 1 \mod 5$ allora 
 			\begin{equation*}
-				\left(\frac{5}{p}\right) = (-1)^{\frac{p-1}{2}}
+				\left(\frac{5}{p}\right) = (-1)^{p-1}
 			\end{equation*}
-			a questo punto dobbiamo ulteriormente suddividere nei due casi 
-			$p \equiv 1 \mod 4$ e $p \equiv 3 \mod 4$. Allora otteniamo che
-			l'unico modo per cui  $(-1)^{\frac{p-1}{2}}= 1$ dev'essere per
-			$p \equiv 1 \mod 4$. Attraverso il TCR otteniamo la soluzione
+			a questo punto c'è solo un caso $p \equiv 1 \mod 2$. Allora otteniamo 
+			che l'unico modo per cui  $(-1)^{p-1}= 1$ dev'essere per
+			$p \equiv 1 \mod 2$. Attraverso il TCR otteniamo la soluzione
 			\begin{equation*}
 				\begin{cases}
 					p \equiv 1 \mod 5 \\
-					p \equiv 1 \mod 4
+					p \equiv 1 \mod 2
 				\end{cases}
 			\end{equation*}
-			ovvero $p = 20n + 1$.
+			ovvero $p = 10n + 1$.
 		\item Sia $p \equiv 4 \mod 5$ allora 
 			\begin{equation*}
-				\left(\frac{5}{p}\right) = (-1)^{\frac{p-1}{2}}
+				\left(\frac{5}{p}\right) = (-1)^{p-1}
 			\end{equation*}
-			a questo punto dobbiamo ulteriormente suddividere nei due casi 
-			$p \equiv 1 \mod 4$ e $p \equiv 3 \mod 4$. Allora otteniamo che
-			l'unico modo per cui  $(-1)^{\frac{p-1}{2}}= 1$ dev'essere per
-			$p \equiv 1 \mod 4$. Attraverso il TCR otteniamo la soluzione
+			a questo punto c'è solo un caso per $p \equiv 1 \mod 2$. Allora otteniamo 
+			che l'unico modo per cui  $(-1)^{p-1}= 1$ dev'essere per
+			$p \equiv 1 \mod 2$. Attraverso il TCR otteniamo la soluzione
 			\begin{equation*}
 				\begin{cases}
 					p \equiv 4 \mod 5 \\
-					p \equiv 1 \mod 4
+					p \equiv 1 \mod 2
 				\end{cases}
 			\end{equation*}
-			ovvero $p = 20n + 9$.
+			ovvero $p = 10n + 9$.
 		\item Sia $p \equiv 2 \mod 5$ allora 
 			\begin{equation*}
 				\left(\frac{5}{p}\right) = -(-1)^{\frac{p-1}{2}}
 			\end{equation*}
-			a questo punto dobbiamo ulteriormente suddividere nei due casi 
-			$p \equiv 1 \mod 4$ e $p \equiv 3 \mod 4$. Allora otteniamo che
-			l'unico modo per cui  $-(-1)^{\frac{p-1}{2}}= 1$ dev'essere per
-			$p \equiv 3 \mod 4$. Attraverso il TCR otteniamo la soluzione
-			\begin{equation*}
-				\begin{cases}
-					p \equiv 2 \mod 5 \\
-					p \equiv 3 \mod 4
-				\end{cases}
-			\end{equation*}
-			ovvero $p = 20n + 7$.
+			a questo punto vediamo che $p \equiv 1 \mod 2$ e dunque non
+			abbiamo soluzioni.
 		\item Sia $p \equiv 3 \mod 5$ allora 
 			\begin{equation*}
 				\left(\frac{5}{p}\right) = -(-1)^{\frac{p-1}{2}}
 			\end{equation*}
-			a questo punto dobbiamo ulteriormente suddividere nei due casi 
-			$p \equiv 1 \mod 4$ e $p \equiv 3 \mod 4$. Allora otteniamo che
-			l'unico modo per cui  $-(-1)^{\frac{p-1}{2}}= 1$ dev'essere per
-			$p \equiv 3 \mod 4$. Attraverso il TCR otteniamo la soluzione
-			\begin{equation*}
-				\begin{cases}
-					p \equiv 3 \mod 5 \\
-					p \equiv 3 \mod 4
-				\end{cases}
-			\end{equation*}
-			ovvero $p = 20n + 3$.
+			a questo punto vediamo che $p \equiv 1 \mod 2$ e dunque non
+			abbiamo soluzioni.
 	\end{enumerate}
-	Per cui alcuni esempi sono per $p = 3, 7, 23, 29, \dots$.
+	Per cui alcuni esempi sono per $p = 11, 19, \dots$.
 \end{esercizio}
 
-\begin{esercizio}
-	
-\end{esercizio}
-
-\begin{esercizio}
-	
-\end{esercizio}
-
-\begin{esercizio}
-	
-\end{esercizio}
