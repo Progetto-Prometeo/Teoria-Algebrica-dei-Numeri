@@ -4826,15 +4826,16 @@ Un modo per trovare questa unità fondamentale è con le \textit{frazioni contin
 
 
 
-\section{Fattorizzazione unica per anelli degli interi}
-Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizzazione unica. Potremmo ad esempio notarlo dalla trattazione che abbiamo svolto in precedenza.
+\section{Fattorizzazione unica in ideali}
+Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizzazione unica. Potremmo ad esempio notarlo dalla trattazione che abbiamo svolto in precedenza. \\ \\ 
+Tuttavia ciò che possiamo fare è garantire o meno l'esistenza e l'unicità della \textit{fattorizzazione in ideali primi} di un certo ideale $J$ di un anello $A$.
 \begin{esempio}
 	Prendiamo ad esempio $\mathbb{Z}[\sqrt{-5}]$ anello degli interi di $\mathbb{Q}[\sqrt{-5}]$, in questo la fattorizzazione unica non vale. Infatti
 	\begin{equation*}
 	21=(3)(7)=\left(4+i\sqrt{-5}\right)\left(4-i\sqrt{-5}\right)
 	\end{equation*}
 \end{esempio}
-\begin{teorema}[Teorema di Dedekind, scrittura intuitiva]
+\begin{teorema}[Teorema di Dedekind, forma base]
 	Ogni ideale $I$ contenuto in $\mathcal{O}_F$, per $F$ campo numerico, si scrive in modo unico come prodotto di ideali primi.\footnote{Possiamo estendere questo risultato ad una classe di anelli detta degli \textit{anelli di Dedekind}.}
 \end{teorema}
 
@@ -4842,6 +4843,9 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 
 
 \subsection{Il teorema di fattorizzazione di Dedekind}
+\begin{definizione}
+    Un anello $A$ viene detto \textbf{integralmente chiuso rispetto ad $R$ suo sottoanello } se ogni $\rho\in R$ zero di un polinomio monico a coefficienti in $A$ è contenuto in $A$.
+\end{definizione}
 \begin{definizione}[Anello di Dedekind]
 	Sia $A$ un anello, viene detto \textbf{anello di Dedekind} se
 	\begin{enumerate}
@@ -5069,11 +5073,11 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 	Sia $A$ un anello di Dedekind, allora ogni suo ideale non-nullo si scrive in modo unico come prodotto di ideali primi.
 \end{teorema}
 \begin{proof}
-	Definiamo
+	Definiamo l'insieme
 	\begin{equation*}
 		\mathcal{M}=\left\{I\subset A\ \text{ideali non-nulli non prodotto di ideali primi}\right\}
 	\end{equation*}
-	Sia $J$ l'elemento più grande rispetto all'inclusione; si noti che posso trovarlo usando il lemma di Zorn. Allora esiste un $P$ tale che $J$ è contenuto in $P$, inoltre
+	e sia $J$ l'elemento più grande rispetto all'inclusione - qui posso usare il fatto che l'anello sia di Dedekind, e quindi noetheriano. Per teorema (che non vedremo), esiste un $P$ tale che $J$ è contenuto in $P$, inoltre
 	\begin{equation*}
 	J\subset JP^{-1}, \ JP^{-1}\neq A
 	\end{equation*}
@@ -5084,8 +5088,8 @@ Non sempre l'anello degli interi di un campo numerico è un dominio a fattorizza
 	\begin{equation*}
 	J=JP^{-1}P=P_1\dots P_nP
 	\end{equation*}
-
-	Per l'unicità supponiamo che 
+    che è un assurdo sulla richiesta di $J\in\mathcal{M}$. \\ \\
+	Per l'unicità invece supponiamo che 
 	\begin{equation*}
 		J = P_1 \cdots P_n = Q_1 \cdots Q_m
 	\end{equation*}
