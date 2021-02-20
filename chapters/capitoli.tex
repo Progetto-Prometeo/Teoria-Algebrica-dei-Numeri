@@ -64,7 +64,7 @@ Vediamo adesso alcuni brevi richiami di algebra; dovrebbero essere tutti fatti n
 	\end{equation*}
 \end{definizione}
 \begin{osservazione}
-	Prima di tutto vediamo che il massimo comune divisore esiste sempre, difatti appartiene ad un insieme con estremo inferiore $a$ ed estremo superiore il massimo dei moduli di $a$ e $b$.
+	Prima di tutto vediamo che il massimo comune divisore esiste sempre, difatti appartiene ad un insieme con estremo inferiore $1$ ed estremo superiore il massimo dei moduli di $a$ e $b$.
 	Notiamo inoltre che se uno dei due, ad esempio $a$, fosse zero varrebbe che 
 	\begin{equation*}
 	\MCD(a,b)= |b|
@@ -76,22 +76,22 @@ Vediamo adesso alcuni brevi richiami di algebra; dovrebbero essere tutti fatti n
 	\end{equation*}
 \end{teorema}
 \begin{proof}
-	Dimostriamo che $q$ ed $r$ esistono. \\ Supponiamo $a\geq 0$ e $b>0$ senza perdita di generalità; se $a=0$ basta prendere $q=r=0$. Possiamo quindi fissare $b$ e procedere per induzione $a$. L'ipotesi induttiva è che tali $r$ e $q$ esistano per ogni coppia $(n,b)$ con $n<a$; voglio mostrare che esistono anche per la coppia $(a,b)$.
+	Dimostriamo che $q$ ed $r$ esistono. \\ Supponiamo $a\geq 0$ e $b>0$ senza perdita di generalità; se $a=0$ basta prendere $q=r=0$. Possiamo quindi fissare $b$ e procedere per induzione su $a$. L'ipotesi induttiva è che tali $r$ e $q$ esistano per ogni coppia $(n,b)$ con $n<a$; voglio mostrare che esistono anche per la coppia $(a,b)$.
 	\begin{itemize}
 		\item Se $a<b$ basta prendere $q=0$ ed $r=a$, senza necessità di induzione.
 		\item Se $a\geq b$ allora $a-b=c$ per un certo $c\geq 0$; posso usare l'ipotesi induttiva su $c$, quindi esistono $q'$ ed $r'$ tali che 
 		\begin{equation*}
-		c = q'b + r' \ \text{e vale che} \ 0 \leq r' \leq |b|
+		c = q'b + r' \ \text{e} \ 0 \leq r' \leq |b|
 		\end{equation*}
 		e chiaramente ottengo subito
 		\begin{equation*}
-		a = b+c = (q'+1)b + r' \ \text{e vale che} \ 0 \leq r' \leq |b|
+		a = b+c = (q'+1)b + r' \ \text{e} \ 0 \leq r' \leq |b|
 		\end{equation*}
 	\end{itemize}
 	Dimostriamo ora l'unicità. \\
 	Siano $q$ e $q'$, $r$ ed $r'$ tali che 
 	\begin{equation*}
-	a = qb + r= q'b + r'\ \text{e vale che} \ 0 \leq r,r' \leq |b|
+	a = qb + r= q'b + r'\ \text{e} \ 0 \leq r,r' \leq |b|
 	\end{equation*}
 	Sia senza perdita di generalità $r \geq r'$, ma allora
 	\begin{equation*}
@@ -127,10 +127,10 @@ Vediamo adesso alcuni brevi richiami di algebra; dovrebbero essere tutti fatti n
 		quindi i divisori comuni tra $b$ ed $r$ dividono anche $a$.
 		\item Unendo quanto appena visto e definendo
 		\begin{equation*}
-			A = \left\{ d \in \mathbb{Z} \,\middle|\, d \mid a \land d \mid b \right\}
+			A = \left\{ d \in \mathbb{Z} : d \mid a \land d \mid b \right\}
 		\end{equation*}
 		\begin{equation*}
-			B = \left\{ d \in \mathbb{Z} \,\middle|\, d \mid b \land d \mid r \right\}
+			B = \left\{ d \in \mathbb{Z} : d \mid b \land d \mid r \right\}
 		\end{equation*}
 		possiamo notare per le due osservazioni precedenti che $A$=$B$, infatti se $x\in A$ allora questo $x$ divide sia $a$ che $b$ e per prima osservazione divide anche $r$, implicando $x\in B$; l'altro verso è identico, ma usa la seconda osservazione. Per definizione allora vale la seguente:
 		\begin{equation*}
@@ -299,11 +299,11 @@ Posso avere però lo stesso risultato tramite una formalizzazione più algebrica
 	\begin{equation*}
 	 n= p_1\cdot p_2 \cdot \ \dots\ \cdot p_s= q_1\cdot q_2 \cdot \ \dots\ \cdot q_t \ \ (s < t)
 	\end{equation*}
-	Posso osservare che $p_1$ divide $n$, ed essendo primo si ha che $p_1$ divide un $q_i$ per un qualche indice $i$. Ma siccome $q_i$ è irriducibile deve necessariamente essere $p_1=q_i$. Allora ottengo una seconda fattorizzazione rimuovendoli, ripetendo il ragionamento $s$ volte otterrei (a meno di riordinamento)
+	Posso osservare che $p_1$ divide $n$, ed essendo primo si ha che $p_1$ divide un $q_i$ per un qualche indice $i$. Ma siccome $q_i$ è irriducibile deve necessariamente essere $p_1=q_i$. Allora ottengo una seconda fattorizzazione rimuovendoli, e ripetendo il ragionamento $s$ volte otterrei (a meno di riordinamento)
 	\begin{equation*}
 	1 = q_{s+1}\cdot \ \dots \ q_t
 	\end{equation*}
-	che è un assordo siccome 1 non ha fattori irriducibili: allora deve essere $s=t$. \\ Abbiamo già visto la necessità di $p_j = q_i$ per certi indici $i$ e $j$ opportuni, questo chiude la dimostrazione.
+	che è un assurdo siccome 1 non ha fattori irriducibili: allora deve essere $s=t$. \\ Abbiamo già visto la necessità di $p_j = q_i$ per certi indici $i$ e $j$ opportuni, questo chiude la dimostrazione.
 \end{proof}
 Più avanti cercheremo di ottenere risultati \enquote{simili} al teorema fondamentale ma su strutture diverse dall'anello $\mathbb{Z}$. Non sempre sarà una situazione facile da trattare come quella dei numeri interi, ad esempio gli invertibili rispetto al prodotto potrebbero non essere solo $\pm 1$! \\ Avere risultati del genere sarà più fondamentale e meno scontato rispetto agli interi, è importante tenere a mente che ci troviamo in una situazione privilegiata.
 
@@ -451,7 +451,7 @@ Non sempre è facile definire le funzioni aritmetiche, difatti come abbiamo vist
 	\end{align*}
 	Nel secondo passaggio ho usato il fatto che se $d$ generico divide $mn$ e questi sono coprimi, allora $d$ si scrive in modo unico come il prodotto di certi $a$ e $b$ coprimi tali che uno divide $m$ e l'altro divide $n$. \\ L'insieme dei divisori di $n$ e quelli di $m$ è in biezione con il prodotto tra l'insieme dei divisori di $n$ e quello dei divisori di $m$.
 	\begin{equation*}
-	\left\{\text{divisori di $nm$}\right\}\simeq\left\{\text{divisori di $n$}\right\}\times\left\{\text{divisori di $m$}\right\}
+	\left\{\text{divisori di $nm$}\right\}\leftrightarrow\left\{\text{divisori di $n$}\right\}\times\left\{\text{divisori di $m$}\right\}
 	\end{equation*}
 \end{proof}
 
@@ -3138,7 +3138,7 @@ Sia $A$ un anello commutativo con unità, sia $A[x]$ l'insieme dei polinomi a co
 \begin{itemize}
 	\item $A$ è un sottoanello di $A[x]$
 	\item $A[x]$ è un dominio di integrità se e solo se lo è anche $A$
-	\item gli elementi invertibili di $A[x]$ sono tutti e soli gli elementi invertibili dell'anello \enquote{di base} $A$\footnote{Se supponessimo che $A$ non sia un dominio di integrità questo non è più vero. Prendiamo per esempio $A = \mathbb{Z}/4\mathbb{Z}$ e allora il polinomio $2x+3$ è invertibile: $(2x+3)(2x+3) = 4x^2 + (12)x + 9 \equiv 1 \mod \mathbb{Z}/4\mathbb{Z}\left[x\right]$}
+	\item gli elementi invertibili di $A[x]$ sono tutti e soli gli elementi invertibili dell'anello \enquote{di base} $A$ \footnote{Se supponessimo che $A$ non sia un dominio di integrità questo non è più vero. Prendiamo per esempio $A = \mathbb{Z}/4\mathbb{Z}$ e allora il polinomio $2x+3$ è invertibile: $(2x+3)(2x+3) = 4x^2 + (12)x + 9 \equiv 1 \mod \mathbb{Z}/4\mathbb{Z}\left[x\right]$}
 \end{itemize}
 \begin{definizione}[Campo]
 	Sia $(K,+,\cdot)$ un anello commutativo con unità. Se ogni elemento non-nullo ha inverso in $K$ rispetto a $\cdot$, allora si dice \textbf{campo}.
@@ -4907,14 +4907,14 @@ Tuttavia ciò che possiamo fare è garantire o meno l'esistenza e l'unicità del
 
 \subsection{Il teorema di fattorizzazione di Dedekind}
 \begin{definizione}
-    Un anello $A$ viene detto \textbf{integralmente chiuso rispetto ad $R$ suo sottoanello } se ogni $\rho\in R$ zero di un polinomio monico a coefficienti in $A$ è contenuto in $A$.
+    Un anello $A$ viene detto \textbf{integralmente chiuso rispetto ad $R$ suo sottoanello} se ogni $\rho\in R$ zero di un polinomio monico a coefficienti in $A$ è contenuto in $A$.
 \end{definizione}
 \begin{definizione}[Anello di Dedekind]
 	Sia $A$ un anello, viene detto \textbf{anello di Dedekind} se
 	\begin{enumerate}
-		\item è integralmente chiuso rispetto al campo delle frazioni
+		\item è integralmente chiuso rispetto al suo campo delle frazioni
 		\item è Noetheriano
-		\item ogni ideale primo non nullo è massimale
+		\item ogni suo ideale primo non nullo è massimale
 	\end{enumerate}
 \end{definizione}
 
