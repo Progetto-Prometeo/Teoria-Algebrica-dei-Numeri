@@ -1237,9 +1237,8 @@ L'aritmetica modulare lavora negli anelli delle classi di resto
 		\phi([a])&=g^{[a]}=g^{[kn+b]}=g^{[kn]}g^{[b]}=1\cdot g^{[b]}\\
 		&=g^{[b]}=\phi([b])
 		\end{align*}
-		Si noti l'utilizzo della struttura ciclica di $G$.
 		\item[(omomorfismo)] Banalmente vero.
-		\item[(iniettiva)] Vediamo che $\ker \phi = \left\{0\right\}$: se $x \in \ker \phi$ allora $\phi(x) = g^x = 1$, quindi $n \mid x$. Dev'essere che $x \equiv 0 \Mod n$, ovvero $x \equiv 0 \in \mathbb{Z}_n$. 
+		\item[(iniettiva)] Vediamo che $\ker \phi = \left\{0\right\}$: se $x \in \ker \phi$ allora $\phi(x) = g^x = 1$. Siccome $g$ è un generatore, $g^x$ non può essere l'identità per valori più piccoli di $n$, quindi $n \mid x$. Quindi $x \equiv 0 \Mod n$, ovvero $x \equiv 0 \in \mathbb{Z}_n$. Si noti l'utilizzo della struttura ciclica di $G$.
 		\item[(suriettiva)] Per un fatto noto di algebra una funzione iniettiva tra insiemi finiti della stessa dimensione è anche suriettiva, ed i nostri insiemi sono ciclici.
 	\end{itemize}
 	Avendo trovato un isomorfismo abbiamo ottenuto la tesi.
